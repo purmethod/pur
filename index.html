@@ -4,469 +4,656 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PUR METHOD — Design Preview</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<title>PUR METHOD — Paul PUR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#B8960C;--gold-l:#D4AF37;--gold-d:#8B7214;--cream:#FAF8F3;--cream2:#F3EFE6;--cream3:#EDE8DC;--text:#2C2416;--text-d:rgba(44,36,22,0.55);--text-f:rgba(44,36,22,0.1);--white:#fff}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{background:var(--cream);color:var(--text);font-family:"Cormorant Garamond",serif;overflow-x:hidden}
+:root{
+  --p:#F2EBD9;
+  --pd:#E8DFC8;
+  --ink:#1C1612;
+  --ink2:#4A3F35;
+  --s:#8B7355;
+  --sl:#C4A882;
+  --g:#9B7D3A;
+  --sk:#B8A898;
+  --skf:#D4C9BC;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--p);
+  color:var(--ink);
+  font-family:'Crimson Pro',Georgia,serif;
+  font-size:18px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
 
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:16px 48px;background:rgba(250,248,243,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(184,150,12,0.15)}
-.nav-logo{font-size:22px;font-style:italic;color:var(–gold);font-weight:300;text-decoration:none;letter-spacing:0.05em}
-.lang-btns{display:flex}
-.lb{background:none;border:none;color:var(–text-d);font-family:“Courier Prime”,monospace;font-size:10px;letter-spacing:0.2em;cursor:pointer;padding:5px 11px;transition:color 0.2s;text-transform:uppercase;border-left:1px solid var(–text-f)}
-.lb:first-child{border-left:none}
-.lb:hover,.lb.active{color:var(–gold)}
+/* ── ANATOMY SVG BG ── */
+.abg{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:0;
+opacity:.09;
+width:100%;
+height:100%;
+}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 40px 100px;position:relative;overflow:hidden}
-.hero-bg{position:absolute;font-size:30vw;font-weight:300;font-style:italic;color:rgba(184,150,12,0.04);line-height:1;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;white-space:nowrap;user-select:none}
-.eyebrow{font-family:“Courier Prime”,monospace;font-size:10px;letter-spacing:0.5em;color:var(–gold-d);text-transform:uppercase;margin-bottom:40px;animation:fu 0.8s ease forwards;opacity:0}
-.hero-title{font-size:clamp(72px,13vw,170px);font-weight:300;line-height:0.88;letter-spacing:-0.02em;animation:fu 0.8s ease 0.1s forwards;opacity:0}
-.hero-title .pur{color:var(–gold);font-style:italic;display:block}
-.hero-title .method{display:block;font-size:0.33em;letter-spacing:0.5em;font-style:normal;color:var(–text-d);text-transform:uppercase;margin-top:16px}
-.hero-line{width:60px;height:1px;background:var(–gold-d);margin:44px auto;animation:fu 0.8s ease 0.2s forwards;opacity:0}
-.hero-msg{max-width:680px;animation:fu 0.8s ease 0.3s forwards;opacity:0}
-.hero-msg p{font-size:clamp(18px,2.6vw,24px);font-weight:300;line-height:1.7;color:var(–text-d);margin-bottom:16px}
-.hero-msg p strong{color:var(–text);font-weight:400;font-style:italic}
-.hero-msg .hl{color:var(–gold);font-style:italic;font-size:clamp(22px,3.2vw,34px);display:block;margin:8px 0}
-.hero-cta{display:flex;gap:16px;margin-top:56px;flex-wrap:wrap;justify-content:center;animation:fu 0.8s ease 0.4s forwards;opacity:0}
-.btn-g{background:var(–gold);color:var(–white);border:none;padding:18px 44px;font-family:“Courier Prime”,monospace;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
-.btn-g:hover{background:var(–gold-l);transform:translateY(-2px)}
-.btn-o{background:transparent;color:var(–gold);border:1px solid var(–gold-d);padding:18px 44px;font-family:“Courier Prime”,monospace;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;text-decoration:none;display:inline-block}
-.btn-o:hover{border-color:var(–gold);transform:translateY(-2px)}
+/* ── LAYOUT ── */
+.z{position:relative;z-index:2}
+.w{max-width:900px;margin:0 auto;padding:0 28px}
+section{position:relative;z-index:2;padding:96px 0}
 
-/* MANIFESTO */
-.manifesto{padding:100px 40px;background:var(–cream2);border-top:1px solid rgba(184,150,12,0.15);border-bottom:1px solid rgba(184,150,12,0.15)}
-.m-inner{max-width:760px;margin:0 auto;text-align:center}
-.m-quote{font-size:clamp(20px,3vw,34px);font-weight:300;font-style:italic;line-height:1.55;color:var(–text);margin-bottom:36px}
-.m-quote em{color:var(–gold);font-style:normal}
-.m-author{font-family:“Courier Prime”,monospace;font-size:11px;letter-spacing:0.3em;color:var(–gold-d);text-transform:uppercase}
+/* ── RULES ── */
+.rule{width:100%;height:1px;background:linear-gradient(to right,transparent,var(–sl),transparent);margin:52px 0}
+.rule2{border-top:1px solid var(–sl);border-bottom:1px solid var(–sl);padding:2px 0;margin:52px 0}
 
-/* PILLARS */
-.pillars{padding:100px 40px;max-width:900px;margin:0 auto}
-.sec-label{font-family:“Courier Prime”,monospace;font-size:10px;letter-spacing:0.5em;color:var(–gold-d);text-transform:uppercase;margin-bottom:64px;text-align:center}
-.pillar{padding:56px 0;border-top:1px solid rgba(184,150,12,0.2);display:grid;grid-template-columns:200px 1fr;gap:60px;align-items:start}
-.pillar+.pillar{border-top:1px solid rgba(184,150,12,0.12)}
-.p-left{position:relative}
-.p-bg{font-size:130px;font-weight:300;font-style:italic;color:rgba(184,150,12,0.06);line-height:1;position:absolute;top:-16px;left:-12px;pointer-events:none}
-.p-num{font-family:“Courier Prime”,monospace;font-size:10px;letter-spacing:0.3em;color:var(–gold-d);margin-bottom:14px;position:relative}
-.p-name{font-size:32px;font-weight:300;line-height:1.1;position:relative}
+/* ── NAV ── */
+nav{
+position:fixed;top:0;left:0;right:0;z-index:100;
+padding:18px 28px;
+display:flex;justify-content:space-between;align-items:center;
+background:rgba(242,235,217,.96);
+border-bottom:1px solid rgba(139,115,85,.12);
+}
+.nl{font-family:‘Cormorant Garamond’,serif;font-size:12px;letter-spacing:.35em;font-weight:300;color:var(–s);text-transform:uppercase}
+.nlinks{display:flex;gap:32px;list-style:none}
+.nlinks a{font-family:‘Crimson Pro’,serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(–s);text-decoration:none;transition:color .3s}
+.nlinks a:hover{color:var(–g)}
 
-/* MODULE ROWS */
-.mod-row{border-bottom:1px solid rgba(44,36,22,0.08);cursor:pointer}
-.mod-row:last-child{border-bottom:none}
-.mod-top{display:flex;align-items:center;gap:16px;padding:14px 0;transition:all 0.2s}
-.mod-top:hover .mod-title{color:var(–gold)}
-.mod-code{font-family:“Courier Prime”,monospace;font-size:10px;color:var(–gold-d);min-width:30px}
-.mod-zero .mod-code{color:var(–gold)}
-.mod-title{font-size:16px;font-weight:300;color:var(–text-d);flex:1;transition:color 0.2s}
-.mod-zero .mod-title{color:var(–text);font-style:italic}
-.mod-arrow{font-family:“Courier Prime”,monospace;font-size:14px;color:var(–gold-d);transition:transform 0.3s;display:inline-block;margin-left:auto}
-.mod-zero{border-bottom:1px solid rgba(184,150,12,0.2)!important;margin-bottom:4px}
-.mod-zero .mod-top{padding-bottom:16px}
-.mod-dd{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
-.mod-dd.open{max-height:400px}
-.mod-dd-inner{padding:4px 0 20px 46px}
-.mod-trigger{font-size:15px;font-style:italic;color:var(–text);line-height:1.6;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(184,150,12,0.15)}
-.mod-list{list-style:none}
-.mod-list li{font-size:14px;color:var(–text-d);padding:5px 0;display:flex;gap:10px;line-height:1.5}
-.mod-list li::before{content:”—”;color:var(–gold-d);font-family:“Courier Prime”,monospace;font-size:10px;flex-shrink:0;margin-top:2px}
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:110px}
+.hero-eye{font-family:‘Crimson Pro’,serif;font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:var(–g);margin-bottom:28px}
+.hero-h1{font-family:‘Cormorant Garamond’,serif;font-size:clamp(58px,10vw,108px);font-weight:300;line-height:.93;letter-spacing:-.02em;color:var(–ink);margin-bottom:40px}
+.hero-h1 em{font-style:italic;color:var(–g)}
+.hero-sub{font-family:‘Crimson Pro’,serif;font-style:italic;font-size:19px;color:var(–ink2);max-width:540px;line-height:1.65;margin-bottom:48px}
+.hero-ps{display:flex;gap:36px;margin-bottom:48px;flex-wrap:wrap}
+.hp{display:flex;align-items:center;gap:10px}
+.hp-l{font-family:‘Cormorant Garamond’,serif;font-size:30px;font-weight:300;color:var(–g);line-height:1}
+.hp-w{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(–s);line-height:1.4}
+.hero-sep{color:var(–skf);font-size:18px}
+.cta{display:inline-block;padding:15px 42px;background:var(–ink);color:var(–p);font-family:‘Crimson Pro’,serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;border:1px solid var(–ink);transition:all .35s}
+.cta:hover{background:transparent;color:var(–ink)}
+.hero-ann{position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:10px;letter-spacing:.15em;color:var(–skf);writing-mode:vertical-rl;font-family:‘Crimson Pro’,serif}
 
-/* SYSTEM */
-.system{padding:80px 40px;background:var(–cream2);border-top:1px solid rgba(184,150,12,0.15)}
-.sys-inner{max-width:820px;margin:0 auto;text-align:center}
-.badge{display:inline-block;border:1px solid var(–gold);padding:7px 20px;font-family:“Courier Prime”,monospace;font-size:9px;letter-spacing:0.4em;color:var(–gold);text-transform:uppercase;margin-bottom:28px}
-.sys-title{font-size:clamp(34px,6vw,68px);font-weight:300;font-style:italic;line-height:1.1;margin-bottom:18px}
-.sys-desc{font-size:clamp(16px,2.2vw,20px);font-weight:300;color:var(–text-d);line-height:1.75;margin-bottom:44px}
-.sys-desc strong{color:var(–text);font-style:italic;font-weight:400}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:48px}
-.stat{background:var(–cream3);padding:32px 20px}
-.stat-n{font-size:clamp(44px,7vw,72px);font-weight:300;font-style:italic;color:var(–gold);line-height:1}
-.stat-l{font-family:“Courier Prime”,monospace;font-size:9px;letter-spacing:0.4em;color:var(–text-d);text-transform:uppercase;margin-top:8px}
+/* ── INTRO ── */
+.intro-q{font-family:‘Cormorant Garamond’,serif;font-size:clamp(26px,4vw,38px);font-weight:300;line-height:1.4;color:var(–ink);max-width:680px}
+.intro-q em{font-style:italic;color:var(–g)}
+.intro-s{font-family:‘Crimson Pro’,serif;font-style:italic;font-size:17px;color:var(–ink2);max-width:560px;margin-top:28px}
 
-/* QUIZ PREVIEW */
-.quiz-preview{max-width:680px;margin:60px auto 0;text-align:left}
-.quiz-prog{height:2px;background:rgba(184,150,12,0.15);margin-bottom:8px}
-.quiz-prog-fill{height:100%;width:20%;background:var(–gold)}
-.quiz-prog-label{font-family:“Courier Prime”,monospace;font-size:10px;color:var(–gold-d);letter-spacing:0.2em;margin-bottom:40px}
-.quiz-tag{font-family:“Courier Prime”,monospace;font-size:10px;letter-spacing:0.3em;color:var(–gold);text-transform:uppercase;margin-bottom:12px}
-.quiz-q{font-size:clamp(20px,3vw,30px);font-weight:300;line-height:1.45;color:var(–text);margin-bottom:32px}
-.quiz-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-.quiz-opt{background:var(–white);border:1px solid rgba(184,150,12,0.2);padding:18px 20px;font-size:16px;color:var(–text-d);cursor:pointer;text-align:left;line-height:1.4;transition:all 0.2s}
-.quiz-opt:hover{border-color:var(–gold);color:var(–text)}
-.quiz-opt.sel{background:var(–gold);color:var(–white);border-color:var(–gold)}
-.quiz-free-lbl{font-family:“Courier Prime”,monospace;font-size:9px;letter-spacing:0.3em;color:var(–text-d);text-transform:uppercase;margin-bottom:8px}
-.quiz-free{width:100%;background:var(–white);border:1px solid rgba(184,150,12,0.15);color:var(–text);font-family:“Cormorant Garamond”,serif;font-size:16px;padding:14px 18px;resize:none;min-height:70px;outline:none;line-height:1.5}
+/* ── SECTION HEADERS ── */
+.slabel{font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:var(–g);margin-bottom:14px;font-family:‘Crimson Pro’,serif}
+.stitle{font-family:‘Cormorant Garamond’,serif;font-size:clamp(38px,6vw,60px);font-weight:300;line-height:1.05;color:var(–ink);margin-bottom:20px}
+.stitle em{font-style:italic;color:var(–g)}
 
-/* FOOTER */
-footer{padding:50px 48px;border-top:1px solid var(–text-f);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;background:var(–cream)}
-.f-logo{font-size:26px;font-style:italic;color:var(–gold);font-weight:300}
-.f-links{display:flex;gap:28px}
-.f-links a{font-family:“Courier Prime”,monospace;font-size:10px;letter-spacing:0.3em;color:var(–text-d);text-decoration:none;text-transform:uppercase;transition:color 0.2s}
-.f-links a:hover{color:var(–gold)}
-.f-copy{font-family:“Courier Prime”,monospace;font-size:10px;color:rgba(44,36,22,0.25)}
+/* ── PILLARS ── */
+.pgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(–sl);border:1px solid var(–sl);margin-top:56px}
+.pc{background:var(–p);padding:44px 32px;position:relative;overflow:hidden;transition:background .35s}
+.pc:hover{background:var(–pd)}
+.pc-bg{font-family:‘Cormorant Garamond’,serif;font-size:88px;font-weight:300;color:var(–skf);line-height:1;position:absolute;right:14px;top:12px;pointer-events:none}
+.pc-name{font-family:‘Crimson Pro’,serif;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(–g);margin-bottom:14px}
+.pc-title{font-family:‘Cormorant Garamond’,serif;font-size:26px;font-weight:600;color:var(–ink);margin-bottom:16px;line-height:1.2}
+.pc-desc{font-size:14px;color:var(–ink2);line-height:1.6;font-family:‘Crimson Pro’,serif;font-style:italic}
 
-@keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.8s ease,transform 0.8s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+/* ── MODULES ── */
+.m-intro{max-width:600px;margin-bottom:72px}
+.ps{margin-bottom:72px}
+.ph{display:flex;align-items:baseline;gap:18px;margin-bottom:6px;padding-bottom:18px;border-bottom:2px solid var(–sl)}
+.pbl{font-family:‘Cormorant Garamond’,serif;font-size:66px;font-weight:300;color:var(–g);line-height:1}
+.ph-info{}
+.ph-title{font-family:‘Cormorant Garamond’,serif;font-size:32px;font-weight:300;color:var(–ink)}
+.ph-sub{font-family:‘Crimson Pro’,serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(–s);margin-top:3px}
 
-@media(max-width:700px){
-.nav{padding:14px 20px}
-.pillar{grid-template-columns:1fr;gap:24px}
-.p-bg{display:none}
-.hero-cta{flex-direction:column;align-items:center}
-.btn-g,.btn-o{width:260px;text-align:center}
-.quiz-opts{grid-template-columns:1fr}
-footer{flex-direction:column;text-align:center}
+/* ACCORDION */
+.ai{border-bottom:1px solid var(–skf);overflow:hidden}
+.at{width:100%;background:none;border:none;cursor:pointer;padding:22px 0;display:flex;justify-content:space-between;align-items:center;text-align:left;transition:all .25s}
+.at:hover .att{color:var(–g)}
+.al{display:flex;align-items:baseline;gap:18px}
+.an{font-family:‘Cormorant Garamond’,serif;font-size:12px;color:var(–sl);letter-spacing:.1em;min-width:22px}
+.att{font-family:‘Cormorant Garamond’,serif;font-size:21px;font-weight:400;color:var(–ink);transition:color .25s}
+.atag{font-family:‘Crimson Pro’,serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(–sl);margin-left:10px}
+.aar{font-size:17px;color:var(–sl);transition:transform .35s,color .25s;flex-shrink:0}
+.ai.open .aar{transform:rotate(45deg);color:var(–g)}
+.ai.open .att{color:var(–g)}
+.ac{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
+.ai.open .ac{max-height:560px}
+.ain{padding:0 0 28px 40px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.atea{font-family:‘Crimson Pro’,serif;font-style:italic;font-size:16px;color:var(–ink2);line-height:1.7;grid-column:1}
+.apri{grid-column:2}
+.aprl{font-family:‘Crimson Pro’,serif;font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(–g);margin-bottom:10px}
+.apri ul{list-style:none;padding:0}
+.apri ul li{font-family:‘Crimson Pro’,serif;font-size:14px;color:var(–s);padding:5px 0;border-bottom:1px solid var(–skf);display:flex;align-items:center;gap:8px}
+.apri ul li::before{content:’—’;color:var(–sl);font-size:11px}
+.awb{grid-column:1/-1;margin-top:12px;padding:18px 22px;background:rgba(155,125,58,.05);border-left:2px solid var(–g)}
+.awbl{font-family:‘Crimson Pro’,serif;font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(–g);margin-bottom:10px}
+.awbp{font-family:‘Crimson Pro’,serif;font-style:italic;font-size:14px;color:var(–ink2);margin-bottom:8px}
+.awb input{width:100%;background:transparent;border:none;border-bottom:1px solid var(–sk);padding:7px 0;font-family:‘Crimson Pro’,serif;font-size:15px;color:var(–ink);outline:none}
+.awb input:focus{border-bottom-color:var(–g)}
+.awb input::placeholder{color:var(–sk)}
+
+/* ── CURVE ── */
+#curve{text-align:center;padding:112px 0}
+.curvesvg{width:100%;max-width:580px;opacity:.82}
+
+/* ── PAUL ── */
+#paul{padding:112px 0}
+.pgrid2{display:grid;grid-template-columns:1fr 2fr;gap:72px;align-items:start}
+.pvt{font-family:‘Cormorant Garamond’,serif;font-size:72px;font-weight:300;color:var(–skf);writing-mode:vertical-rl;letter-spacing:.1em;line-height:1}
+.pq{font-family:‘Cormorant Garamond’,serif;font-size:clamp(26px,4vw,38px);font-weight:300;font-style:italic;color:var(–ink);line-height:1.35;margin-bottom:28px}
+.pq::before{content:’”’;color:var(–g);font-size:1.3em;line-height:0;vertical-align:-.35em;margin-right:3px}
+.pb{font-size:16px;color:var(–ink2);line-height:1.8;margin-bottom:20px;font-family:‘Crimson Pro’,serif;font-style:italic}
+.phandle{font-family:‘Crimson Pro’,serif;font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(–s)}
+
+/* ── CTA ── */
+#cta{text-align:center;padding:112px 0;border-top:1px solid var(–sl)}
+.cta-eye{font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:var(–sl);margin-bottom:20px;font-family:‘Crimson Pro’,serif}
+.cta-h{font-family:‘Cormorant Garamond’,serif;font-size:clamp(38px,6vw,68px);font-weight:300;color:var(–ink);margin-bottom:16px;line-height:1.1}
+.cta-h em{font-style:italic;color:var(–g)}
+.cta-s{font-family:‘Crimson Pro’,serif;font-style:italic;font-size:18px;color:var(–ink2);margin-bottom:44px}
+.cbts{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.cta2{display:inline-block;padding:15px 42px;background:transparent;color:var(–s);font-family:‘Crimson Pro’,serif;font-size:12px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;border:1px solid var(–sl);transition:all .35s}
+.cta2:hover{border-color:var(–ink);color:var(–ink)}
+
+/* ── FOOTER ── */
+footer{padding:36px 28px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(–skf);font-family:‘Crimson Pro’,serif;font-size:11px;letter-spacing:.2em;color:var(–sl);text-transform:uppercase;position:relative;z-index:2}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:translateY(0)}
+
+/* ── HERO ANIMS ── */
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-eye{opacity:0;animation:fu .9s .2s forwards}
+.hero-h1{opacity:0;animation:fu .9s .4s forwards}
+.hero-sub{opacity:0;animation:fu .9s .6s forwards}
+.hero-ps{opacity:0;animation:fu .9s .75s forwards}
+.cta-hero{opacity:0;animation:fu .9s .9s forwards}
+.hero-ann{opacity:0;animation:fu 1.5s 1.2s forwards}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+nav{padding:14px 18px}
+.nlinks{display:none}
+.w{padding:0 18px}
+section{padding:60px 0}
+#hero{padding-top:90px;min-height:auto;padding-bottom:56px}
+.hero-h1{font-size:46px}
+.hero-ps{flex-direction:column;gap:14px}
+.hero-sep{display:none}
+.hero-ann{display:none}
+.pgrid{grid-template-columns:1fr}
+.ain{grid-template-columns:1fr;padding:0 0 24px 0}
+.atea,.apri{grid-column:1}
+.awb{grid-column:1}
+.ai.open .ac{max-height:820px}
+.pgrid2{grid-template-columns:1fr;gap:28px}
+.pvt{writing-mode:horizontal-tb;font-size:44px}
+.cbts{flex-direction:column;align-items:center}
+.cta,.cta2{width:100%;text-align:center}
+footer{flex-direction:column;gap:10px;text-align:center}
+}
+@media(max-width:390px){
+.hero-h1{font-size:38px}
+.stitle{font-size:32px}
 }
 </style>
 
 </head>
 <body>
 
-<nav class="nav">
-  <a class="nav-logo" href="#">PUR</a>
-  <div class="lang-btns">
-    <button class="lb active">EN</button>
-    <button class="lb">DE</button>
-    <button class="lb">FR</button>
-    <button class="lb">ES</button>
-    <button class="lb">RU</button>
-    <button class="lb">AR</button>
-  </div>
+<!-- ANATOMY BACKGROUND — inline SVG, zero HTTP requests, zero weight -->
+
+<svg class="abg" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" fill="none">
+  <!-- Brain top right -->
+  <g transform="translate(960,44) scale(.62)" stroke="#7A6040" stroke-width=".8">
+    <path d="M180,120C140,80 80,80 60,120C40,160 50,200 80,220C60,240 50,280 70,310C90,340 130,350 160,330C170,360 200,380 240,370C280,360 300,330 290,300C320,290 340,260 330,230C350,210 360,180 340,155C320,130 290,120 270,130C260,100 230,85 210,95C200,105 185,115 180,120Z"/>
+    <path d="M115,162C124,172 132,186 128,202"/><path d="M152,140C157,158 160,180 154,200C149,214 140,222 130,226"/>
+    <path d="M192,130C197,152 200,178 194,202C189,222 179,236 168,242"/>
+    <path d="M232,126C241,148 248,173 244,200C240,224 230,244 218,254"/>
+    <path d="M268,142C277,164 280,188 274,212C268,232 256,248 243,256"/>
+    <path d="M82,222C104,232 132,236 162,230"/><path d="M72,272C97,280 132,283 166,278C196,273 220,264 237,254"/>
+    <line x1="36" y1="200" x2="26" y2="200" stroke-width=".4"/><line x1="36" y1="252" x2="26" y2="252" stroke-width=".4"/>
+    <line x1="31" y1="200" x2="31" y2="252" stroke-width=".4"/>
+    <text x="8" y="230" font-size="7" fill="#7A6040" font-family="serif">42mm</text>
+    <line x1="308" y1="158" x2="366" y2="140" stroke-width=".4"/>
+    <text x="370" y="138" font-size="7" fill="#7A6040" font-family="serif" font-style="italic">cortex</text>
+    <line x1="288" y1="300" x2="348" y2="318" stroke-width=".4"/>
+    <text x="352" y="321" font-size="7" fill="#7A6040" font-family="serif" font-style="italic">cerebellum</text>
+  </g>
+  <!-- Neurons left -->
+  <g transform="translate(22,192)" stroke="#7A6040" stroke-width=".55">
+    <circle cx="96" cy="98" r="5.5" fill="none"/><circle cx="196" cy="156" r="4.5" fill="none"/>
+    <circle cx="74" cy="238" r="3.5" fill="none"/><circle cx="166" cy="308" r="5.5" fill="none"/>
+    <circle cx="46" cy="374" r="3" fill="none"/><circle cx="136" cy="414" r="4.5" fill="none"/>
+    <line x1="96" y1="98" x2="196" y2="156"/><line x1="196" y1="156" x2="74" y2="238"/>
+    <line x1="74" y1="238" x2="166" y2="308"/><line x1="166" y1="308" x2="46" y2="374"/>
+    <line x1="46" y1="374" x2="136" y2="414"/><line x1="96" y1="98" x2="74" y2="238"/>
+    <line x1="196" y1="156" x2="166" y2="308"/>
+    <line x1="96" y1="98" x2="68" y2="73"/><line x1="96" y1="98" x2="122" y2="70"/><line x1="96" y1="98" x2="76" y2="113"/>
+    <line x1="196" y1="156" x2="221" y2="138"/><line x1="196" y1="156" x2="212" y2="181"/>
+    <line x1="74" y1="238" x2="50" y2="226"/><line x1="74" y1="238" x2="56" y2="254"/>
+    <line x1="166" y1="308" x2="188" y2="293"/><line x1="166" y1="308" x2="181" y2="326"/>
+  </g>
+  <!-- Spine center -->
+  <g transform="translate(694,394)" stroke="#7A6040" stroke-width=".65">
+    <ellipse cx="0" cy="0" rx="17" ry="11" fill="none"/><ellipse cx="0" cy="31" rx="19" ry="12" fill="none"/>
+    <ellipse cx="0" cy="63" rx="19" ry="12" fill="none"/><ellipse cx="0" cy="95" rx="18" ry="11" fill="none"/>
+    <ellipse cx="0" cy="126" rx="17" ry="10" fill="none"/>
+    <line x1="0" y1="11" x2="0" y2="19"/><line x1="0" y1="43" x2="0" y2="51"/><line x1="0" y1="75" x2="0" y2="83"/><line x1="0" y1="106" x2="0" y2="114"/>
+    <line x1="17" y1="0" x2="43" y2="-7"/><line x1="-17" y1="0" x2="-43" y2="-7"/>
+    <line x1="19" y1="31" x2="46" y2="26"/><line x1="-19" y1="31" x2="-46" y2="26"/>
+    <line x1="19" y1="63" x2="48" y2="60"/><line x1="-19" y1="63" x2="-48" y2="60"/>
+  </g>
+  <!-- Cell bottom left -->
+  <g transform="translate(52,616)" stroke="#7A6040" stroke-width=".55">
+    <ellipse cx="78" cy="58" rx="52" ry="43" stroke-dasharray="3,3" fill="none"/>
+    <ellipse cx="78" cy="58" rx="19" ry="15" fill="none"/>
+    <line x1="78" y1="43" x2="78" y2="17"/><line x1="78" y1="73" x2="78" y2="100"/>
+    <line x1="26" y1="58" x2="2" y2="44"/><line x1="130" y1="58" x2="156" y2="46"/>
+    <line x1="38" y1="24" x2="22" y2="8"/><line x1="118" y1="24" x2="136" y2="9"/>
+    <text x="60" y="62" font-size="7" fill="#7A6040" font-family="serif" font-style="italic">nucleus</text>
+  </g>
+  <!-- DNA right -->
+  <g transform="translate(1278,294)" stroke="#7A6040" stroke-width=".55">
+    <path d="M19,0C38,19 38,39 19,58C0,77 0,97 19,116C38,135 38,155 19,174C0,193 0,213 19,232"/>
+    <path d="M0,0C-19,19 -19,39 0,58C19,77 19,97 0,116C-19,135 -19,155 0,174C19,193 19,213 0,232"/>
+    <line x1="19" y1="10" x2="0" y2="10"/><line x1="30" y1="29" x2="-11" y2="29"/>
+    <line x1="19" y1="48" x2="0" y2="48"/><line x1="0" y1="68" x2="19" y2="68"/>
+    <line x1="-11" y1="87" x2="30" y2="87"/><line x1="0" y1="106" x2="19" y2="106"/>
+    <line x1="19" y1="126" x2="0" y2="126"/><line x1="30" y1="145" x2="-11" y2="145"/>
+    <line x1="19" y1="164" x2="0" y2="164"/><line x1="0" y1="184" x2="19" y2="184"/>
+  </g>
+  <!-- Synapse top left -->
+  <g transform="translate(8,44)" stroke="#7A6040" stroke-width=".5">
+    <circle cx="58" cy="78" r="3.5" fill="none"/><circle cx="126" cy="48" r="3" fill="none"/><circle cx="88" cy="136" r="4.5" fill="none"/>
+    <line x1="58" y1="78" x2="126" y2="48"/><line x1="58" y1="78" x2="88" y2="136"/><line x1="126" y1="48" x2="88" y2="136"/>
+    <line x1="58" y1="78" x2="34" y2="60"/><line x1="58" y1="78" x2="40" y2="95"/>
+    <line x1="126" y1="48" x2="150" y2="33"/><line x1="126" y1="48" x2="144" y2="65"/>
+    <line x1="88" y1="136" x2="66" y2="157"/><line x1="88" y1="136" x2="112" y2="154"/>
+  </g>
+</svg>
+
+<!-- NAV -->
+
+<nav class="z">
+  <div class="nl">P · U · R · M E T H O D</div>
+  <ul class="nlinks">
+    <li><a href="#pillars">The System</a></li>
+    <li><a href="#modules">Modules</a></li>
+    <li><a href="#paul">Paul PUR</a></li>
+    <li><a href="#cta">eBook</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
 
-<section class="hero">
-  <div class="hero-bg">PUR</div>
-  <div class="eyebrow">purmethod.com</div>
-  <h1 class="hero-title">
-    <span class="pur">PUR</span>
-    <span class="method">Method</span>
-  </h1>
-  <div class="hero-line"></div>
-  <div class="hero-msg">
-    <p>You read books. You search for answers. You never find them.</p>
-    <p>Because every book was written by someone who solved <strong>their own problem</strong> — not yours.</p>
-    <span class="hl">Here, you write your own book.</span>
-    <p>Answer the questions. Receive your Blueprint. <strong>Your life. Your system.</strong></p>
-  </div>
-  <div class="hero-cta">
-    <a href="#system" class="btn-g">Build My Blueprint</a>
-    <a href="https://instagram.com/paulpur_" target="_blank" class="btn-o">Follow @paulpur_</a>
+<section id="hero" class="z">
+  <div class="w">
+    <div style="position:relative">
+      <p class="hero-eye">Physical Control · Understanding the Mind · Responsibility</p>
+      <h1 class="hero-h1">The system you <em>wished</em><br>you had at 18.</h1>
+      <p class="hero-sub">Not a program. A corridor. Built from years of failure, from thousands of years of tradition, and from direct observation of a single human body.</p>
+      <div class="hero-ps">
+        <div class="hp"><span class="hp-l">P</span><span class="hp-w">Physical<br>Control</span></div>
+        <span class="hero-sep">·</span>
+        <div class="hp"><span class="hp-l">U</span><span class="hp-w">Understanding<br>the Mind</span></div>
+        <span class="hero-sep">·</span>
+        <div class="hp"><span class="hp-l">R</span><span class="hp-w">Responsibility</span></div>
+      </div>
+      <a href="#modules" class="cta cta-hero">Discover the System</a>
+      <div class="hero-ann">@paulpur_ · purmethod.com</div>
+    </div>
   </div>
 </section>
 
-<!-- MANIFESTO -->
+<!-- INTRO -->
 
-<section class="manifesto">
-  <div class="m-inner reveal">
-    <p class="m-quote">"I spent <em>thirty years</em> trying every book, every method, every system.<br>None of it worked — because it was built for someone else.<br>This is what <em>I would have told myself at eighteen.</em>"</p>
-    <div class="m-author">— Paul PUR</div>
+<section id="intro" class="z">
+  <div class="w">
+    <div class="rule2"></div>
+    <p class="intro-q rv">The PUR Method is not a rulebook. It is a <em>corridor.</em> Three pillars. Fifteen modules. Every module gives you the tool — but what you build with it is your decision.</p>
+    <p class="intro-s rv">Life is not static. Neither is this system. What applies here is what works for you — within these principles, these habits, this framework.</p>
+    <div class="rule"></div>
   </div>
 </section>
 
-<!-- PILLARS -->
+<!-- THREE PILLARS -->
 
-<section class="pillars">
-  <div class="sec-label reveal">The Architecture of a Man</div>
-
-  <!-- P -->
-
-  <div class="pillar reveal">
-    <div class="p-left">
-      <div class="p-bg">P</div>
-      <div class="p-num">01</div>
-      <div class="p-name">Physical<br>Control</div>
-    </div>
-    <div>
-      <div class="mod-row mod-zero" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">P0</span><span class="mod-title">Body [Foundation]</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">Your body is Werkzeug and temple at once. The only thing you will never replace. Who does not control it — is controlled by it.</div>
-          <ul class="mod-list">
-            <li>Your body is the only vehicle you will never replace</li>
-            <li>Every system in this method depends on physical control first</li>
-            <li>Why physical stress is the fastest path to mental strength</li>
-          </ul>
-        </div></div>
+<section id="pillars" class="z">
+  <div class="w">
+    <p class="slabel rv">The three pillars</p>
+    <h2 class="stitle rv">One System.<br><em>Three Foundations.</em></h2>
+    <div class="pgrid rv">
+      <div class="pc">
+        <span class="pc-bg">P</span>
+        <p class="pc-name">Pillar I</p>
+        <h3 class="pc-title">Physical<br>Control</h3>
+        <p class="pc-desc">The body is the foundation of everything. Sleep, movement, food, breath, temperature — five modules that build your biological base.</p>
       </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">P1</span><span class="mod-title">Sleep</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">Sleep is not rest. It is the only time your brain repairs itself. Who does not protect his sleep — destroys everything else.</div>
-          <ul class="mod-list">
-            <li>Why you cannot fall asleep — what your brain is actually doing</li>
-            <li>The one habit destroying your sleep more than anything else</li>
-            <li>The identity shift that makes early sleep automatic</li>
-          </ul>
-        </div></div>
+      <div class="pc">
+        <span class="pc-bg">U</span>
+        <p class="pc-name">Pillar II</p>
+        <h3 class="pc-title">Understanding<br>the Mind</h3>
+        <p class="pc-desc">Mind ≠ Brain. Impulse. Dopamine. Attention. Identity. Emotions — five modules that show you how you think, and how to change it.</p>
       </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">P2</span><span class="mod-title">Movement</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">Your body was built 2.5 million years ago — to move, not to sit. Movement is not an option. It is biology.</div>
-          <ul class="mod-list">
-            <li>Why your body was built to move — 2.5 million years of DNA</li>
-            <li>How training rewires your brain chemistry in 20 minutes</li>
-            <li>Movement as the fastest antidepressant known to science</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">P3</span><span class="mod-title">Food / Fasting</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">You do not reach for food because you are hungry. You reach because your brain is searching for an exit from discomfort. Learn the difference.</div>
-          <ul class="mod-list">
-            <li>Why you eat when you are not hungry — the real trigger</li>
-            <li>How fasting clears your mind faster than any supplement</li>
-            <li>The eating window that optimizes testosterone and growth hormone</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">P4</span><span class="mod-title">Breath</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">Your breath is the only body function you can consciously control — and through it you reach every other system in you. Five minutes in the morning change your entire day.</div>
-          <ul class="mod-list">
-            <li>The only body function you can consciously control</li>
-            <li>How five minutes of breathing resets your entire nervous system</li>
-            <li>Breath as the bridge between body and mind</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">P5</span><span class="mod-title">Temperature</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">Cold does not kill you. It proves to you that you can do things that feel wrong. That is the training no gym gives you.</div>
-          <ul class="mod-list">
-            <li>Why cold exposure is written into your DNA — 2.5 million years</li>
-            <li>How 30 seconds of cold trains mental resilience faster than anything</li>
-            <li>Cold as daily proof that you can do hard things</li>
-          </ul>
-        </div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- U -->
-
-  <div class="pillar reveal" style="transition-delay:0.1s">
-    <div class="p-left">
-      <div class="p-bg">U</div>
-      <div class="p-num">02</div>
-      <div class="p-name">Understanding<br>the Mind</div>
-    </div>
-    <div>
-      <div class="mod-row mod-zero" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">U0</span><span class="mod-title">Sexual Control [Foundation]</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">Sexual energy is the most powerful force in a man. Uncontrolled it destroys. Controlled and redirected — it builds empires.</div>
-          <ul class="mod-list">
-            <li>Why pornography is destroying your drive — and how to break free</li>
-            <li>The morning protocol that builds sexual energy instead of wasting it</li>
-            <li>Non-ejaculatory mastery — where size, curve and stamina are trained</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">U1</span><span class="mod-title">Impulse Awareness</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">Every impulse has a cause. You did not choose it — but you can decide whether you follow it. That is the difference between a man and a child.</div>
-          <ul class="mod-list">
-            <li>Every impulse has a cause — and you did not choose it</li>
-            <li>How to create the pause between impulse and action</li>
-            <li>Impulse as data — not weakness</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">U2</span><span class="mod-title">Dopamine System</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">Your brain was not built for Instagram. It was built for survival. What you give it daily shapes who you are.</div>
-          <ul class="mod-list">
-            <li>Why dopamine is anticipation — not pleasure</li>
-            <li>The dopamine reset that brings your drive back in 7 days</li>
-            <li>How to become someone who craves the hard thing</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">U3</span><span class="mod-title">Attention Control</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">Where your attention goes, your life goes. You fight every day against algorithms smarter than you. Most men lose this battle without noticing.</div>
-          <ul class="mod-list">
-            <li>Why your attention is the most valuable thing you own</li>
-            <li>How two focused hours per day changes everything in a year</li>
-            <li>Attention as the currency of your one life</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">U4</span><span class="mod-title">Identity Architecture</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">You do not have habits. You have an identity. Change the identity — and the behavior changes automatically. No willpower. No discipline.</div>
-          <ul class="mod-list">
-            <li>You do not have habits — you have an identity</li>
-            <li>How to make the identity shift that makes behavior automatic</li>
-            <li>Why willpower always loses to identity</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">U5</span><span class="mod-title">Emotional Regulation</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">A man who does not know his emotions is ruled by them. Strength is not feeling nothing. Strength is feeling — and deciding anyway.</div>
-          <ul class="mod-list">
-            <li>Why suppression is not strength — and what strength actually is</li>
-            <li>How unprocessed emotion runs your life from underneath</li>
-            <li>Feeling without being controlled — that is the skill</li>
-          </ul>
-        </div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- R -->
-
-  <div class="pillar reveal" style="transition-delay:0.2s">
-    <div class="p-left">
-      <div class="p-bg">R</div>
-      <div class="p-num">03</div>
-      <div class="p-name">Responsibility</div>
-    </div>
-    <div>
-      <div class="mod-row mod-zero" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">R0</span><span class="mod-title">Legacy Thinking [Foundation]</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">What do you live for? If you have no answer, you are drifting. Everything else in this system is built on this one question.</div>
-          <ul class="mod-list">
-            <li>The one question that makes all other questions irrelevant</li>
-            <li>Why a man without a why will always drift</li>
-            <li>The foundation of all responsibility — knowing what it is for</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">R1</span><span class="mod-title">Self Responsibility</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">Nobody is coming. Nobody saves you. That is not bad news — that is the best news of your life.</div>
-          <ul class="mod-list">
-            <li>Nobody is coming — and that is the best news of your life</li>
-            <li>How blame keeps you exactly where you are</li>
-            <li>The decision you have been postponing — and what it costs</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">R2</span><span class="mod-title">Principles</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">A man without principles bends under pressure. Always. Your principles decide before the situation arises.</div>
-          <ul class="mod-list">
-            <li>A man without principles bends under pressure — always</li>
-            <li>How your principles decide before the situation arises</li>
-            <li>The wall your future son will read</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">R3</span><span class="mod-title">Relationship Leadership</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">Most relationships do not fail from lack of love. They fail from lack of leadership. Clarity, boundaries, direct communication — that is love. At the end it always falls on the man. He set the boundaries or he did not. He earned respect or he lost it. A woman can only be as strong as the man next to her leads.</div>
-          <ul class="mod-list">
-            <li>Why most relationships fail — it is not love, it is leadership</li>
-            <li>The pattern you inherited from your parents — and how to break it</li>
-            <li>Forgiveness as a neurochemical necessity — not a weakness</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">R4</span><span class="mod-title">Trust Economy</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">Trust is built in the smallest moments — and destroyed in one. What you promise, you keep. That is your currency.</div>
-          <ul class="mod-list">
-            <li>Trust is built in small moments and destroyed in one</li>
-            <li>Why keeping your word to yourself is where it starts</li>
-            <li>Every promise kept is a deposit — every broken word a withdrawal</li>
-          </ul>
-        </div></div>
-      </div>
-      <div class="mod-row" onclick="tog(this)">
-        <div class="mod-top"><span class="mod-code">R5</span><span class="mod-title">Creation</span><span class="mod-arrow">+</span></div>
-        <div class="mod-dd"><div class="mod-dd-inner">
-          <div class="mod-trigger">You were not born to consume. You were born to create. What do you leave behind?</div>
-          <ul class="mod-list">
-            <li>You were not born to consume — you were born to create</li>
-            <li>The one thing only you can make</li>
-            <li>What you leave behind — that is your R5</li>
-          </ul>
-        </div></div>
+      <div class="pc">
+        <span class="pc-bg">R</span>
+        <p class="pc-name">Pillar III</p>
+        <h3 class="pc-title">Responsibility</h3>
+        <p class="pc-desc">Responsibility for your body. For your relationships. For the legacy you leave behind. Five modules about what defines a man long-term.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SYSTEM -->
+<!-- MODULES -->
 
-<section class="system" id="system">
-  <div class="sys-inner reveal">
-    <div class="badge">Beta — Free Access</div>
-    <h2 class="sys-title">Your Blueprint.<br>Your Life.</h2>
-    <p class="sys-desc">75 questions. Every man different. Every life different.<br>The system reads you — and gives you <strong>your own book.</strong></p>
-    <div class="stats">
-      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Pillars</div></div>
-      <div class="stat"><div class="stat-n">15</div><div class="stat-l">Modules</div></div>
-      <div class="stat"><div class="stat-n">75</div><div class="stat-l">Questions</div></div>
+<section id="modules" class="z">
+  <div class="w">
+    <div class="m-intro rv">
+      <p class="slabel">The fifteen modules</p>
+      <h2 class="stitle">Every module.<br><em>One protocol.</em></h2>
+      <p style="font-family:'Crimson Pro',serif;font-style:italic;font-size:17px;color:var(--ink2);margin-top:14px">Open each module. Read the principle. Decide what applies to you. Write it down.</p>
     </div>
-    <button class="btn-g">Start The System</button>
 
 ```
-<!-- QUIZ PREVIEW -->
-<div class="quiz-preview">
-  <div style="font-family:'Courier Prime',monospace;font-size:11px;letter-spacing:0.3em;color:var(--gold-d);margin-bottom:16px;text-transform:uppercase">— Preview of the question flow —</div>
-  <div class="quiz-prog"><div class="quiz-prog-fill"></div></div>
-  <div class="quiz-prog-label" style="margin-bottom:36px">Question 1 of 75</div>
-  <div class="quiz-tag">U0 — Sexual Control</div>
-  <div class="quiz-q">How often do you watch pornography — and what are you feeling in the 30 minutes before you open it?</div>
-  <div class="quiz-opts">
-    <div class="quiz-opt sel">Daily — I barely notice anymore, it is automatic</div>
-    <div class="quiz-opt">A few times per week — usually when I am bored or stressed</div>
-    <div class="quiz-opt">Rarely — but when I do, it feels like a failure</div>
-    <div class="quiz-opt">Never — I have already worked on this</div>
+<!-- P -->
+<div class="ps rv">
+  <div class="ph">
+    <span class="pbl">P</span>
+    <div><div class="ph-title">Physical Control</div><div class="ph-sub">5 Modules — The Body as Foundation</div></div>
   </div>
-  <div class="quiz-free-lbl">Write everything — this is your space. No one is watching.</div>
-  <textarea class="quiz-free" placeholder="Go deeper if you want. Write what is really going on. Everything from your soul — a separation, a loss, something you have never told anyone. This is your diary. Write it all out."></textarea>
+  <!-- P01 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">01</span><span class="att">Sleep<span class="atag"> — Not Yet Solved</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">Sleep is not a pause. It is the most active phase of your biology. Testosterone is produced during deep sleep. Cortisol regulates itself during sleep. Most men know this — and still sleep wrong. This module is honest: I have not yet fully solved it myself. What I share, I share only after I have lived it.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Circadian rhythm &amp; light exposure</li><li>Cortisol &amp; testosterone timing</li><li>Temperature &amp; sleep architecture</li><li>Non-negotiables before sleep</li><li>Reading the signals your body gives</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">My non-negotiable around sleep is:</p><input type="text" placeholder="e.g. No screen after 9 PM. Same time every night."></div>
+    </div></div>
+  </div>
+  <!-- P02 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">02</span><span class="att">Movement<span class="atag"> — Calisthenics</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">The man who cannot control his body cannot control anything else. No equipment. No gym. Just your own body against gravity. Pull-ups. Dips. Muscle-ups. Pistol squats. Front lever. Nature as your training ground. Every day. Outside.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Foundational movements &amp; progressions</li><li>Ascending &amp; descending ladder systems</li><li>Outdoor training as daily ritual</li><li>Hormonal effect of strength work</li><li>Training without excuses</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">My daily movement non-negotiable is:</p><input type="text" placeholder="e.g. Every morning outdoors. No exceptions."></div>
+    </div></div>
+  </div>
+  <!-- P03 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">03</span><span class="att">Food<span class="atag"> — Fasting</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">Fasting is not a diet. It is an ancient biological practice that modern science is only now beginning to understand. Autophagy. Insulin sensitivity. Hormonal regeneration. I fasted to heal an incurable autoimmune disease. It worked. This module explains why.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Eating windows &amp; timing</li><li>Gironda Hormone Shake</li><li>Raw fat &amp; hormonal building blocks</li><li>Autophagy &amp; cellular renewal</li><li>Food as medicine</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">My eating window and my hard line on food:</p><input type="text" placeholder="e.g. Only between 1–7 PM. No sugar. No grains."></div>
+    </div></div>
+  </div>
+  <!-- P04 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">04</span><span class="att">Breath<span class="atag"> — Wim Hof &amp; DMT</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">Breath is the only autonomous system in your body that you can consciously control. And through that entry point you change everything else — cortisol, adrenaline, focus, pain tolerance. I am a certified Wim Hof Instructor. This module gives you what I learned through years of direct practice.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Wim Hof Method — complete protocol</li><li>Endogenous DMT through breathwork</li><li>CO₂ tolerance &amp; performance</li><li>Breath as stress regulator</li><li>Daily breathing protocol</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">My daily breathing practice and when I do it:</p><input type="text" placeholder="e.g. Every morning, 3 rounds, before I eat."></div>
+    </div></div>
+  </div>
+  <!-- P05 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">05</span><span class="att">Temperature<span class="atag"> — Ice Bath</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">Cold is not a trend. It is an evolutionary signal that tells your body: mobilize everything. Noradrenaline. Dopamine. Testosterone. Brown fat activation. The man who enters cold water every day is not just training his body — he is training his will to not follow the impulse.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Cold bath protocol &amp; timing</li><li>Hormonal effects of cold exposure</li><li>Mental strength through cold</li><li>Temperature contrast &amp; recovery</li><li>Cold as a daily ritual</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">My cold protocol — how long, how cold, how often:</p><input type="text" placeholder="e.g. Daily 3 minutes. No warm-up before."></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- U -->
+<div class="ps rv">
+  <div class="ph">
+    <span class="pbl">U</span>
+    <div><div class="ph-title">Understanding the Mind</div><div class="ph-sub">5 Modules — Mind ≠ Brain</div></div>
+  </div>
+  <!-- U01 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">01</span><span class="att">Impulse Awareness<span class="atag"> — Food, Sex, Relationships</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">Before you can control an impulse, you have to see it. Most men react their entire lives — to hunger, to sexual energy, to social triggers — without ever pausing. This module begins with the simplest and hardest step: observe, without immediately acting.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Recognising the impulse before it acts</li><li>Hunger vs. habit vs. emotion</li><li>Sexual energy as a resource</li><li>Social triggers &amp; reaction patterns</li><li>The gap between stimulus and response</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">My strongest uncontrolled impulse and what I do when it appears:</p><input type="text" placeholder="e.g. When stressed I reach for... Instead I will..."></div>
+    </div></div>
+  </div>
+  <!-- U02 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">02</span><span class="att">Dopamine System<span class="atag"> — Reset &amp; Control</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">The dopamine system is the most powerful weapon in your head — and right now it is pointed at you. Social media. Pornography. Ultra-processed food. All of them use the same neurobiology. This module shows you how to take the system back — and make it work for you.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>How dopamine actually works</li><li>Identifying your dopamine sources</li><li>The dopamine reset: how and why</li><li>Using low-dopamine phases</li><li>Recalibrating your reward system</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">The dopamine sources I eliminate, and the ones I strengthen:</p><input type="text" placeholder="e.g. Out: Instagram before noon. In: cold bath, training."></div>
+    </div></div>
+  </div>
+  <!-- U03 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">03</span><span class="att">Attention Control<span class="atag"> — Social Media, Sex</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">Attention is the most valuable resource you possess — and you give it away every day. To algorithms that are paid to steal it. To sexual energy discharged reactively. This module shows you how to direct your attention deliberately — not through willpower, but through architecture.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Attention as a scarce resource</li><li>Screen time — rules that hold</li><li>Deep work vs. reactive thinking</li><li>Sexual attention &amp; focus</li><li>Your environment as a tool</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">My rule for screens and when my attention belongs to me:</p><input type="text" placeholder="e.g. No phone the first 2 hours. Deep work 9–12."></div>
+    </div></div>
+  </div>
+  <!-- U04 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">04</span><span class="att">Identity Architecture<span class="atag"> — Who I Am</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">You do not act according to your goals. You act according to your identity. The man who says "I'm trying to wake up early" keeps sleeping. The man who says "I am someone who wakes up early" — gets up. This module shows you how to deliberately architect the structure of who you are.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Identity vs. goals</li><li>Values as compass</li><li>The story you tell yourself</li><li>Recognising roles &amp; masks</li><li>Who you are when no one is watching</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">I am someone who:</p><input type="text" placeholder="e.g. I am someone who keeps his word. Who respects himself first."></div>
+    </div></div>
+  </div>
+  <!-- U05 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">05</span><span class="att">Emotional Regulation<span class="atag"> — Stillness, Stoic</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">Suppressing emotions is not strength. Being overwhelmed by them isn't either. Emotional regulation means: feeling without being controlled by it. The Stoics knew this. The greatest warriors knew this. This module shows you the practice — not the theory.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Stoicism as a daily practice</li><li>Stillness as a tool</li><li>Reaction vs. response</li><li>Anger, fear, shame — without escape</li><li>The calm man as the strongest man</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">When I feel anger / fear / stress, my protocol is:</p><input type="text" placeholder="e.g. Breathe first. Never speak in the heat of the moment."></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- R -->
+<div class="ps rv">
+  <div class="ph">
+    <span class="pbl">R</span>
+    <div><div class="ph-title">Responsibility</div><div class="ph-sub">5 Modules — The Legacy of a Man</div></div>
+  </div>
+  <!-- R01 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">01</span><span class="att">Self Responsibility<span class="atag"> — Body, Respect</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">No one is coming. You are your own rescue. The man who waits for circumstances to improve waits his entire life. Self-responsibility means: you take ownership of every aspect of your life — body, mind, finances, relationships — without excuses.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Radical ownership</li><li>Recognising &amp; leaving the victim role</li><li>Respect starts with yourself</li><li>Keeping promises to yourself</li><li>Your body as your business card</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">The area of my life I take full responsibility for starting today:</p><input type="text" placeholder="e.g. My finances. My body. My reactions."></div>
+    </div></div>
+  </div>
+  <!-- R02 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">02</span><span class="att">Principles<span class="atag"> — Red Flags, No-Goes</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">A man without principles is a man without a spine. If you haven't written your boundaries down before someone tests them, you will not hold them. This module shows you how to define your non-negotiables — and why that makes you far happier long-term than any willingness to compromise.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Identifying your core values</li><li>Setting boundaries — and holding them</li><li>Recognising red flags early</li><li>Non-negotiables without negotiation</li><li>Communicating limits without aggression</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">My three absolute non-negotiables in relationships and in life:</p><input type="text" placeholder="e.g. Dishonesty. Disrespect. Anyone who does not share my values."></div>
+    </div></div>
+  </div>
+  <!-- R03 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">03</span><span class="att">Relationship Leadership<span class="atag"> — The Man Leads</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">Leadership in a relationship does not mean control. It means: you are so stable within yourself that the woman you love feels safe enough to be completely herself. The man who leads does not need power. He is the power.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>What leadership in relationships actually means</li><li>Stability as the foundation</li><li>Communication without power struggles</li><li>Attraction through presence</li><li>When leadership fails — what then</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">What leadership means to me in a relationship:</p><input type="text" placeholder="e.g. I decide. I listen. I keep what I promise."></div>
+    </div></div>
+  </div>
+  <!-- R04 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">04</span><span class="att">Trust Economy<span class="atag"> — How Trust Is Built</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">Trust is the hardest currency there is. And like any currency: it is earned, not demanded. Every single day. Through small actions that nobody sees. This module shows you how to build trust — with yourself, with others — and why it is the foundation of every real connection.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Trust as a daily practice</li><li>Consistency over time</li><li>Trust in yourself</li><li>Rebuilding trust after betrayal</li><li>The economy of reputation</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">My standard — when I say something, I:</p><input type="text" placeholder="e.g. Do it. Or I say why I didn't. No silence."></div>
+    </div></div>
+  </div>
+  <!-- R05 -->
+  <div class="ai">
+    <button class="at" onclick="tog(this)">
+      <div class="al"><span class="an">05</span><span class="att">Legacy Thinking<span class="atag"> — Find Your Legacy</span></span></div>
+      <span class="aar">+</span>
+    </button>
+    <div class="ac"><div class="ain">
+      <div class="atea">What remains when you are gone? Not the account balance. Not the title. What remains is the mark you left in other people. This module asks the question most men avoid — because the answer changes everything about how you live today.</div>
+      <div class="apri"><p class="aprl">What this module covers</p><ul><li>Legacy as a daily compass</li><li>What actually counts</li><li>The mark in people, not things</li><li>From taking to giving</li><li>Your life as a message</li></ul></div>
+      <div class="awb"><p class="awbl">Your principle — write it down</p><p class="awbp">What I want people to say about me when I am gone:</p><input type="text" placeholder="e.g. He kept his word. He made others better."></div>
+    </div></div>
+  </div>
 </div>
 ```
 
   </div>
 </section>
 
-<footer>
-  <div class="f-logo">PUR</div>
-  <div class="f-links">
-    <a href="https://instagram.com/paulpur_" target="_blank">Instagram</a>
-    <a href="mailto:paul@purmethod.com">Contact</a>
+<!-- CURVE -->
+
+<section id="curve" class="z">
+  <div class="w">
+    <div class="rule"></div>
+    <p class="slabel rv">The Principle</p>
+    <h2 class="stitle rv" style="text-align:center">Most men stay at the bottom.<br><em>Not because they are weak.</em></h2>
+    <div style="text-align:center" class="rv">
+      <svg class="curvesvg" viewBox="0 0 580 360" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <line x1="76" y1="38" x2="76" y2="322" stroke="#C4A882" stroke-width=".5"/>
+        <line x1="76" y1="322" x2="536" y2="322" stroke="#C4A882" stroke-width=".5"/>
+        <path d="M76,312 C148,310 248,302 318,272 C378,247 418,204 458,156 C488,118 508,80 532,44" stroke="#9B7D3A" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="532" cy="44" r="4" fill="#9B7D3A"/>
+        <circle cx="78" cy="312" r="3" fill="#C4A882"/>
+        <text x="84" y="320" font-size="10" fill="#8B7355" font-family="serif" font-style="italic">80%</text>
+        <text x="238" y="298" font-size="10" fill="#8B7355" font-family="serif" font-style="italic">10%</text>
+        <text x="316" y="268" font-size="10" fill="#8B7355" font-family="serif" font-style="italic">4%</text>
+        <text x="376" y="244" font-size="10" fill="#8B7355" font-family="serif" font-style="italic">3%</text>
+        <text x="424" y="200" font-size="10" fill="#8B7355" font-family="serif" font-style="italic">2%</text>
+        <text x="478" y="42" font-size="13" fill="#9B7D3A" font-family="serif" font-weight="bold" letter-spacing="3">CREATE</text>
+        <line x1="532" y1="50" x2="532" y2="68" stroke="#9B7D3A" stroke-width="1.5"/>
+        <text x="80" y="340" font-size="11" fill="#C4A882" font-family="serif" font-style="italic">Fuck Around</text>
+        <line x1="198" y1="232" x2="158" y2="194" stroke="#C4A882" stroke-width=".5"/>
+        <text x="106" y="190" font-size="9" fill="#8B7355" font-family="serif" font-style="italic">Most men</text>
+      </svg>
+    </div>
+    <p class="rv" style="font-family:'Crimson Pro',serif;font-style:italic;font-size:18px;color:var(--ink2);max-width:480px;margin:28px auto 0;text-align:center">Because no one showed them what the path up looks like.</p>
+    <div class="rule"></div>
   </div>
-  <div class="f-copy">© 2026 PUR METHOD</div>
+</section>
+
+<!-- PAUL -->
+
+<section id="paul" class="z">
+  <div class="w">
+    <div class="pgrid2 rv">
+      <div><div class="pvt">PAUL<br>PUR</div></div>
+      <div>
+        <p class="slabel">The Man Behind the System</p>
+        <p class="pq">I became the brother I never had. This is what I would have told myself at 18.</p>
+        <p class="pb">I did not build this system from books. I lived it. Healed an incurable autoimmune disease through fasting and cold. Rebuilt testosterone through nutrition. Lost a fortune and rebuilt it. A decade of experiments on a single human body — mine.</p>
+        <p class="pb">Certified Wim Hof Instructor. Architect. Entrepreneur. I build structures from the foundation to the top. Every layer supports the next. Nothing is decoration. Everything is load-bearing.</p>
+        <p class="phandle">@paulpur_ · purmethod.com</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+
+<section id="cta" class="z">
+  <div class="w">
+    <p class="cta-eye rv">This is 1% of the system</p>
+    <h2 class="cta-h rv">Ready for<br><em>the rest?</em></h2>
+    <p class="cta-s rv">Start with the Sexual Control eBook. The most complete protocol ever made publicly available.</p>
+    <div class="cbts rv">
+      <a href="#" class="cta">Download the eBook</a>
+      <a href="https://instagram.com/paulpur_" class="cta2">Follow @paulpur_</a>
+    </div>
+  </div>
+</section>
+
+<footer class="z">
+  <span>P · U · R · M E T H O D</span>
+  <span>© 2026 Paul PUR · purmethod.com</span>
+  <span>@paulpur_</span>
 </footer>
 
 <script>
-function tog(row){
-  const dd=row.querySelector('.mod-dd');
-  const arrow=row.querySelector('.mod-arrow');
-  const open=dd.classList.contains('open');
-  document.querySelectorAll('.mod-dd.open').forEach(d=>{
-    d.classList.remove('open');
-    d.closest('.mod-row').querySelector('.mod-arrow').textContent='+';
-  });
-  if(!open){dd.classList.add('open');arrow.textContent='−';}
+// Accordion
+function tog(btn){
+  const item=btn.closest('.ai');
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.ai.open').forEach(el=>el.classList.remove('open'));
+  if(!open)item.classList.add('open');
 }
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:0.08});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Scroll reveal — lightweight IntersectionObserver
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('on'),i*60);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 </script>
 
 </body>
