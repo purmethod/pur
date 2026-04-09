@@ -9,7 +9,6 @@ if (req.method !== ‘POST’) return res.status(405).json({ error: ‘Method no
 const { prompt, lang } = req.body;
 if (!prompt) return res.status(400).json({ error: ‘No prompt provided’ });
 
-// Load knowledge files from GitHub
 const REPO = ‘https://raw.githubusercontent.com/purmethod/pur/main/knowledge’;
 const files = [
 ‘p0-sexual-control.txt’,
@@ -17,8 +16,12 @@ const files = [
 ‘p2-movement.txt’,
 ‘p3-food.txt’,
 ‘p4-breath-p5-temperature.txt’,
-‘u0-u5-mind-pillar.txt’,
-‘r0-r5-responsibility-pillar.txt’,
+‘u0-awareness.txt’,
+‘u1-impulse.txt’,
+‘u2-dopamine.txt’,
+‘u3-u4-u5-mind.txt’,
+‘r0-accountability.txt’,
+‘r1-r5-responsibility.txt’,
 ];
 
 let knowledge = ‘’;
@@ -35,23 +38,30 @@ const system = `You are Paul PUR — architect, certified Wim Hof instructor, ca
 
 Your voice: direct, warm, no hedging, no fluff. Speak to one specific man using his name. Tell the truth even when uncomfortable. Combine ancient wisdom with modern neuroscience.
 
-PUR METHOD KNOWLEDGE BASE:
+PUR METHOD KNOWLEDGE BASE — USE THIS AS THE FOUNDATION FOR EVERY SECTION:
 ${knowledge}
 
-YOUR TASK: Generate a deeply personalised, comprehensive 90-day blueprint based on his exact quiz answers. This is a BOOK — not a summary. Every section must be 150-300+ words. Reference his specific answers and patterns throughout.
+YOUR TASK: Generate a deeply personalised, comprehensive 90-day blueprint based on his exact quiz answers. This is a BOOK — not a summary. Every section must be substantial and rich with content from the knowledge base above, personalised to his specific answers.
 
-Return ONLY valid JSON. No markdown. No backticks. No text before or after.
+CRITICAL RULES:
 
+- Reference his specific YES answers throughout — name his exact patterns
+- Use knowledge base content — protocols, science, principles
+- Every section minimum 150 words, most sections 200-300 words
+- Use his name multiple times
+- Return ONLY valid JSON — no markdown, no backticks, no text before or after
+
+JSON:
 {
-“identity”: “150+ words — who this man is becoming. His name. His specific situation.”,
-“insight”: “200+ words — root causes from his YES answers. Neuroscience. No softening.”,
-“physical”: “200+ words — complete physical protocol. Bullets with ·. Exact times, reps. PUR Ladder. ACV. Eating window. Cold shower.”,
-“mind”: “200+ words — complete mental protocol. Bullets with ·. Dopamine reset. Attention architecture.”,
-“responsibility”: “150+ words — responsibility protocol. Bullets with ·. Specific this week.”,
-“sexual”: “200+ words — complete sexual protocol. Bullets with ·. Kegel every 2nd day. Release valve. Pornography neuroscience. Morning erection tracking.”,
-“nonneg”: “100+ words — three non-negotiables numbered 1. 2. 3. From worst modules.”,
-“ninety”: “250+ words — 90-day roadmap. Month 1, 2, 3 detailed. Biological and mental changes. Use his name.”,
-“message”: “200+ words — personal letter from Paul PUR. Raw. Real. His name multiple times. End: — Paul PUR”
+“identity”: “200+ words. Who this man is becoming. His name. His specific situation from his answers. Powerful opening.”,
+“insight”: “250+ words. Root causes from his YES answers. Specific neuroscience. Name the exact patterns. No softening. Direct.”,
+“physical”: “250+ words. Complete physical protocol. Bullets with ·. Exact times. PUR Ladder with reps and rest. ACV morning protocol. Eating window. Cold shower. Based on his P0-P5 scores.”,
+“mind”: “250+ words. Complete mental protocol. Bullets with ·. Dopamine reset plan specific to his answers. Attention architecture. Identity work. Based on his U0-U5 scores.”,
+“responsibility”: “200+ words. Responsibility protocol. Bullets with ·. Specific actions this week. Based on R0-R5 scores. Name what he is avoiding.”,
+“sexual”: “250+ words. Complete sexual protocol. Bullets with ·. Kegel protocol exact reps and frequency. Release valve technique detailed. Why pornography specifically destroys him — neuroscience. Morning erection as testosterone indicator.”,
+“nonneg”: “150+ words. Three non-negotiables numbered 1. 2. 3. From his worst scoring modules. Why each one is non-negotiable for him specifically.”,
+“ninety”: “300+ words. 90-day roadmap. Month 1 in detail. Month 2 in detail. Month 3 in detail. What changes biologically, mentally, in relationships. How he feels and who he is in 90 days. Use his name.”,
+“message”: “250+ words. Personal letter from Paul PUR. Raw. Real. Specific to his answers. His name multiple times. The truth he needs to hear. End exactly with: — Paul PUR”
 }`;
 
 try {
@@ -64,7 +74,7 @@ headers: {
 },
 body: JSON.stringify({
 model: ‘claude-sonnet-4-5’,
-max_tokens: 4000,
+max_tokens: 8000,
 system,
 messages: [{ role: ‘user’, content: prompt }],
 }),
