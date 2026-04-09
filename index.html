@@ -11,965 +11,1069 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --w:#FFFFFF;--off:#F8F8F6;--ink:#0A0A0A;--ink2:#3A3A3A;--ink3:#888;
-  --gold:#9B7D3A;--line:rgba(0,0,0,.07);--line2:rgba(0,0,0,.04);
-  --sci:#EDF6F9;--sci-b:#9CC8D5;--sci-t:#1E5A6A;
+  --white:#FFFFFF;
+  --off:#F8F8F6;
+  --ink:#0A0A0A;
+  --ink2:#3A3A3A;
+  --ink3:#888;
+  --gold:#9B7D3A;
+  --gold2:rgba(155,125,58,.1);
+  --line:rgba(0,0,0,.08);
+  --line2:rgba(0,0,0,.04);
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--w);color:var(--ink);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
+body{background:var(--white);color:var(--ink);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden}
 
-/* NEURO BG */
-.nbg{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.04}
+/* ── PROGRESS ── */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(–line);z-index:100}
+.progress-fill{height:100%;background:var(–gold);transition:width .3s ease;width:0}
 
-/* PROGRESS */
-.prog{position:fixed;top:0;left:0;right:0;height:2px;background:var(–line);z-index:200}
-.prog-f{height:100%;background:var(–gold);transition:width .3s;width:0}
+/* ── HERO ── */
+#hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:60px 24px;
+scroll-snap-align:start;
+position:relative;
+}
+.hero-brand{
+font-family:‘Inter’,sans-serif;
+font-size:11px;
+font-weight:500;
+letter-spacing:.35em;
+text-transform:uppercase;
+color:var(–gold);
+margin-bottom:40px;
+opacity:0;
+animation:up .8s .1s forwards;
+}
+.hero-title{
+font-family:‘Cormorant Garamond’,serif;
+font-size:clamp(52px,10vw,96px);
+font-weight:300;
+line-height:.95;
+letter-spacing:-.02em;
+color:var(–ink);
+margin-bottom:32px;
+opacity:0;
+animation:up .8s .25s forwards;
+}
+.hero-title em{font-style:italic;color:var(–gold)}
+.hero-sub{
+font-family:‘Inter’,sans-serif;
+font-size:15px;
+font-weight:300;
+color:var(–ink3);
+max-width:400px;
+line-height:1.7;
+margin-bottom:56px;
+opacity:0;
+animation:up .8s .4s forwards;
+}
+.hero-scroll{
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:10px;
+opacity:0;
+animation:up .8s .6s forwards;
+cursor:pointer;
+}
+.hero-scroll-text{
+font-size:11px;
+letter-spacing:.3em;
+text-transform:uppercase;
+color:var(–ink3);
+}
+.hero-scroll-line{
+width:1px;
+height:48px;
+background:linear-gradient(to bottom,var(–ink3),transparent);
+animation:pulse 2s infinite;
+}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 28px;display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.96);border-bottom:1px solid var(–line);backdrop-filter:blur(8px)}
-.nav-logo{font-family:‘Cormorant Garamond’,serif;font-size:13px;letter-spacing:.35em;font-weight:300;color:var(–ink3);text-transform:uppercase}
-.lsw{display:flex;gap:3px}
-.lb{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid var(–line);color:var(–ink3);padding:4px 8px;cursor:pointer;transition:all .2s}
-.lb.on,.lb:hover{border-color:var(–gold);color:var(–gold)}
+/* ── NAME SECTION ── */
+#name-section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:60px 24px;
+scroll-snap-align:start;
+background:var(–off);
+}
+.name-label{
+font-size:11px;
+letter-spacing:.35em;
+text-transform:uppercase;
+color:var(–gold);
+margin-bottom:24px;
+font-weight:500;
+}
+.name-q{
+font-family:‘Cormorant Garamond’,serif;
+font-size:clamp(32px,6vw,52px);
+font-weight:300;
+color:var(–ink);
+margin-bottom:8px;
+text-align:center;
+}
+.name-hint{
+font-size:13px;
+color:var(–ink3);
+margin-bottom:48px;
+font-style:italic;
+}
+.name-input{
+font-family:‘Cormorant Garamond’,serif;
+font-size:32px;
+font-weight:300;
+color:var(–ink);
+background:transparent;
+border:none;
+border-bottom:1px solid var(–ink);
+padding:8px 0;
+text-align:center;
+outline:none;
+width:100%;
+max-width:320px;
+transition:border-color .3s;
+}
+.name-input::placeholder{color:var(–line);font-style:italic}
+.name-input:focus{border-color:var(–gold)}
+.btn-primary{
+margin-top:40px;
+padding:16px 48px;
+background:var(–ink);
+color:var(–white);
+font-family:‘Inter’,sans-serif;
+font-size:12px;
+font-weight:500;
+letter-spacing:.25em;
+text-transform:uppercase;
+border:none;
+cursor:pointer;
+transition:all .3s;
+display:inline-block;
+}
+.btn-primary:hover{background:var(–gold)}
 
-/* LAYOUT */
-.z{position:relative;z-index:2}
-.w{max-width:700px;margin:0 auto;padding:0 24px}
-.scr{display:none}.scr.on{display:block}
-#sl.on{display:flex;flex-direction:column;min-height:100vh}
-#sg.on{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:60px 24px}
+/* ── QUIZ SECTION ── */
+#quiz-section{
+min-height:100vh;
+display:none;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:60px 24px;
+scroll-snap-align:start;
+}
+#quiz-section.active{display:flex}
 
-/* HERO */
-#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 24px 80px;position:relative}
-.h-brand{font-size:10px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:var(–gold);margin-bottom:32px;opacity:0;animation:fu .8s .1s forwards}
-.h-title{font-family:‘Cormorant Garamond’,serif;font-size:clamp(42px,9vw,82px);font-weight:300;line-height:.95;letter-spacing:-.02em;color:var(–ink);margin-bottom:18px;opacity:0;animation:fu .8s .25s forwards}
-.h-title em{font-style:italic;color:var(–gold)}
-.h-sub{font-size:14px;font-weight:300;color:var(–ink3);max-width:360px;line-height:1.75;margin-bottom:48px;opacity:0;animation:fu .8s .4s forwards;font-style:italic}
-.h-scroll{display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;animation:fu .8s .6s forwards;cursor:pointer}
-.h-scroll-t{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(–ink3)}
-.h-scroll-l{width:1px;height:44px;background:linear-gradient(to bottom,var(–ink3),transparent)}
+.q-counter{
+font-size:11px;
+letter-spacing:.3em;
+text-transform:uppercase;
+color:var(–ink3);
+margin-bottom:48px;
+display:flex;
+align-items:center;
+gap:12px;
+}
+.q-counter-bar{
+width:120px;
+height:1px;
+background:var(–line);
+position:relative;
+}
+.q-counter-fill{
+position:absolute;
+top:0;left:0;height:100%;
+background:var(–gold);
+transition:width .4s ease;
+}
+.q-block{
+font-family:‘Cormorant Garamond’,serif;
+font-size:11px;
+font-weight:400;
+letter-spacing:.35em;
+text-transform:uppercase;
+color:var(–gold);
+margin-bottom:20px;
+}
+.q-text{
+font-family:‘Cormorant Garamond’,serif;
+font-size:clamp(24px,5vw,38px);
+font-weight:300;
+color:var(–ink);
+line-height:1.25;
+max-width:600px;
+text-align:center;
+margin-bottom:56px;
+}
+.yn-wrap{
+display:flex;
+gap:16px;
+}
+.yn-btn{
+padding:16px 48px;
+font-family:‘Inter’,sans-serif;
+font-size:13px;
+font-weight:500;
+letter-spacing:.2em;
+text-transform:uppercase;
+border:1px solid var(–line);
+background:transparent;
+cursor:pointer;
+transition:all .2s;
+color:var(–ink2);
+min-width:140px;
+}
+.yn-btn.yes:hover,.yn-btn.yes.sel{background:var(–ink);color:var(–white);border-color:var(–ink)}
+.yn-btn.no:hover,.yn-btn.no.sel{background:var(–off);color:var(–ink);border-color:var(–ink)}
+.q-back{
+margin-top:32px;
+font-size:11px;
+letter-spacing:.2em;
+text-transform:uppercase;
+color:var(–ink3);
+background:none;
+border:none;
+cursor:pointer;
+transition:color .2s;
+}
+.q-back:hover{color:var(–ink)}
 
-/* ABOUT */
-#about{padding:100px 0;border-top:1px solid var(–line)}
-.sec-tag{font-size:10px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:var(–gold);margin-bottom:12px}
-.sec-h{font-family:‘Cormorant Garamond’,serif;font-size:clamp(30px,5vw,46px);font-weight:300;line-height:1.05;color:var(–ink);margin-bottom:18px}
-.sec-h em{font-style:italic;color:var(–gold)}
-.ag{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.ab{font-size:14px;color:var(–ink2);line-height:1.85;font-style:italic}
-.st{padding:18px 0;border-bottom:1px solid var(–line2)}
-.st:first-child{border-top:1px solid var(–line2)}
-.sn{font-family:‘Cormorant Garamond’,serif;font-size:38px;font-weight:300;color:var(–gold);line-height:1;margin-bottom:3px}
-.sl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(–ink3)}
+/* ── GENERATING ── */
+#gen-section{
+min-height:100vh;
+display:none;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:60px 24px;
+text-align:center;
+scroll-snap-align:start;
+}
+#gen-section.active{display:flex}
+.gen-title{
+font-family:‘Cormorant Garamond’,serif;
+font-size:clamp(32px,6vw,52px);
+font-weight:300;
+color:var(–ink);
+margin-bottom:16px;
+animation:breathe 3s ease-in-out infinite;
+}
+.gen-sub{
+font-size:14px;
+color:var(–ink3);
+margin-bottom:48px;
+font-style:italic;
+}
+.gen-steps{
+display:flex;
+flex-direction:column;
+gap:12px;
+text-align:left;
+}
+.gen-step{
+font-size:13px;
+color:var(–line);
+display:flex;
+align-items:center;
+gap:10px;
+letter-spacing:.05em;
+transition:color .4s;
+}
+.gen-step.done{color:var(–gold)}
+.gen-step.active{color:var(–ink)}
+.gen-dot{width:4px;height:4px;border-radius:50%;background:currentColor;flex-shrink:0}
 
-/* PILLARS */
-#pillars{padding:100px 0;background:var(–off)}
-.pg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(–line);border:1px solid var(–line);margin-top:44px}
-.pc{background:var(–w);padding:36px 26px;position:relative;overflow:hidden;transition:background .3s}
-.pc:hover{background:var(–off)}
-.pc-bg{font-family:‘Cormorant Garamond’,serif;font-size:76px;font-weight:300;color:rgba(0,0,0,.04);line-height:1;position:absolute;right:10px;top:6px;pointer-events:none}
-.pc-tag{font-size:9px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:var(–gold);margin-bottom:10px}
-.pc-title{font-family:‘Cormorant Garamond’,serif;font-size:20px;font-weight:600;color:var(–ink);margin-bottom:10px;line-height:1.15}
-.pc-desc{font-size:13px;color:var(–ink2);line-height:1.65;font-style:italic}
+/* ── RESULT SECTION ── */
+#result-section{
+display:none;
+padding:80px 24px 120px;
+scroll-snap-align:start;
+}
+#result-section.active{display:block}
+.result-wrap{max-width:680px;margin:0 auto}
+.result-eye{
+font-size:11px;letter-spacing:.35em;text-transform:uppercase;
+color:var(–gold);margin-bottom:16px;font-weight:500;
+}
+.result-title{
+font-family:‘Cormorant Garamond’,serif;
+font-size:clamp(40px,8vw,72px);
+font-weight:300;line-height:.95;
+color:var(–ink);margin-bottom:12px;
+}
+.result-title em{font-style:italic;color:var(–gold)}
+.result-for{font-size:15px;color:var(–ink3);margin-bottom:56px;font-style:italic}
 
-/* MODULES */
-#modules{padding:100px 0}
-.mi{max-width:520px;margin-bottom:60px}
-.mi p{font-size:13px;color:var(–ink3);margin-top:10px;font-style:italic}
-.ps{margin-bottom:56px}
-.ph{display:flex;align-items:baseline;gap:12px;padding-bottom:12px;border-bottom:1px solid var(–line);margin-bottom:4px}
-.pb{font-family:‘Cormorant Garamond’,serif;font-size:50px;font-weight:300;color:var(–gold);line-height:1}
-.ph-name{font-family:‘Cormorant Garamond’,serif;font-size:20px;font-weight:300;color:var(–ink)}
-.ph-sub{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(–ink3);margin-top:2px}
+/* SCORE BARS */
+.score-section{margin-bottom:48px}
+.score-row{
+display:flex;align-items:center;gap:16px;
+padding:14px 0;border-bottom:1px solid var(–line2);
+}
+.score-label{font-size:13px;color:var(–ink);width:180px;flex-shrink:0;letter-spacing:.02em}
+.score-bar{flex:1;height:1px;background:var(–line)}
+.score-fill{height:100%;transition:width 1s ease}
+.score-pct{font-family:‘Cormorant Garamond’,serif;font-size:18px;font-weight:300;color:var(–ink);width:36px;text-align:right;flex-shrink:0}
+.score-tag{font-size:10px;letter-spacing:.2em;text-transform:uppercase;width:72px;text-align:right;flex-shrink:0}
+
+/* BLUEPRINT BLOCKS */
+.bp-block{
+margin-bottom:32px;
+padding:36px 40px;
+border:1px solid var(–line2);
+position:relative;
+}
+.bp-block:hover{border-color:rgba(155,125,58,.2)}
+.bp-num{
+position:absolute;top:28px;right:32px;
+font-family:‘Cormorant Garamond’,serif;
+font-size:56px;font-weight:300;
+color:rgba(0,0,0,.04);line-height:1;
+}
+.bp-tag{
+font-size:10px;letter-spacing:.4em;text-transform:uppercase;
+color:var(–gold);margin-bottom:8px;font-weight:500;
+}
+.bp-title{
+font-family:‘Cormorant Garamond’,serif;
+font-size:22px;font-weight:600;
+color:var(–ink);margin-bottom:16px;
+}
+.bp-content{
+font-size:14px;color:var(–ink2);
+line-height:1.9;white-space:pre-wrap;
+}
+
+/* DOWNLOAD */
+.dl-section{
+text-align:center;
+padding:56px 0;
+border-top:1px solid var(–line2);
+margin-top:48px;
+}
+.dl-title{
+font-family:‘Cormorant Garamond’,serif;
+font-size:32px;font-weight:300;color:var(–ink);
+margin-bottom:8px;
+}
+.dl-title em{font-style:italic;color:var(–gold)}
+.dl-sub{font-size:13px;color:var(–ink3);margin-bottom:32px;font-style:italic}
+.btn-gold{
+padding:16px 52px;background:var(–gold);color:var(–white);
+font-family:‘Inter’,sans-serif;font-size:12px;font-weight:500;
+letter-spacing:.25em;text-transform:uppercase;border:none;cursor:pointer;
+transition:all .3s;display:inline-block;
+}
+.btn-gold:hover{background:var(–ink)}
+.btn-ghost{
+margin-top:16px;display:block;
+background:none;border:none;
+font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+color:var(–ink3);cursor:pointer;text-decoration:underline;
+text-underline-offset:3px;
+}
+
+/* ── KNOWLEDGE SECTION ── */
+#knowledge{
+padding:120px 24px;
+background:var(–off);
+scroll-snap-align:start;
+}
+.know-wrap{max-width:680px;margin:0 auto}
+.know-tag{
+font-size:11px;letter-spacing:.35em;text-transform:uppercase;
+color:var(–gold);margin-bottom:16px;font-weight:500;
+}
+.know-title{
+font-family:‘Cormorant Garamond’,serif;
+font-size:clamp(36px,6vw,56px);
+font-weight:300;line-height:1.05;
+color:var(–ink);margin-bottom:64px;
+}
+.know-title em{font-style:italic;color:var(–gold)}
+
+/* PILLAR */
+.pillar{margin-bottom:64px}
+.pillar-hdr{
+display:flex;align-items:baseline;gap:16px;
+padding-bottom:16px;border-bottom:1px solid var(–line);
+margin-bottom:4px;
+}
+.pillar-letter{
+font-family:‘Cormorant Garamond’,serif;
+font-size:52px;font-weight:300;color:var(–gold);line-height:1;
+}
+.pillar-name{
+font-family:‘Cormorant Garamond’,serif;
+font-size:24px;font-weight:300;color:var(–ink);
+}
+.pillar-sub{
+font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+color:var(–ink3);margin-top:2px;
+}
 
 /* ACCORDION */
 .acc{border-bottom:1px solid var(–line2);overflow:hidden}
-.acc-btn{width:100%;background:none;border:none;cursor:pointer;padding:16px 0;display:flex;justify-content:space-between;align-items:center;text-align:left;transition:all .2s}
-.acc-btn:hover .at{color:var(–gold)}
-.al{display:flex;align-items:baseline;gap:12px}
-.an{font-size:10px;color:rgba(0,0,0,.2);min-width:18px}
-.at{font-family:‘Cormorant Garamond’,serif;font-size:17px;font-weight:400;color:var(–ink);transition:color .2s}
-.atg{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.2);margin-left:6px}
-.ai{font-size:15px;color:rgba(0,0,0,.2);transition:transform .3s,color .2s;flex-shrink:0}
-.acc.open .ai{transform:rotate(45deg);color:var(–gold)}
-.acc.open .at{color:var(–gold)}
-.ab2{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
-.acc.open .ab2{max-height:420px}
-.ain{padding:0 0 20px 28px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.atea{font-size:13px;color:var(–ink2);line-height:1.75;grid-column:1;font-style:italic}
-.alst{grid-column:2}
-.albl{font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(–gold);margin-bottom:8px;font-weight:500}
-.alst ul{list-style:none}
-.alst ul li{font-size:12px;color:var(–ink3);padding:3px 0;border-bottom:1px solid var(–line2);display:flex;gap:6px;align-items:center}
-.alst ul li::before{content:’—’;color:rgba(0,0,0,.15);font-size:9px}
+.acc-btn{
+width:100%;background:none;border:none;cursor:pointer;
+padding:18px 0;display:flex;justify-content:space-between;
+align-items:center;text-align:left;transition:all .2s;
+}
+.acc-btn:hover .acc-title{color:var(–gold)}
+.acc-left{display:flex;align-items:baseline;gap:14px}
+.acc-n{font-size:11px;color:rgba(0,0,0,.2);min-width:20px;letter-spacing:.1em}
+.acc-title{
+font-family:‘Cormorant Garamond’,serif;
+font-size:19px;font-weight:400;color:var(–ink);
+transition:color .2s;
+}
+.acc-tag{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.25);margin-left:8px}
+.acc-ico{font-size:16px;color:rgba(0,0,0,.25);transition:transform .3s,color .2s;flex-shrink:0}
+.acc.open .acc-ico{transform:rotate(45deg);color:var(–gold)}
+.acc.open .acc-title{color:var(–gold)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.acc.open .acc-body{max-height:360px}
+.acc-inner{
+padding:0 0 24px 34px;
+display:grid;grid-template-columns:1fr 1fr;gap:20px;
+}
+.acc-tea{
+font-size:14px;color:var(–ink2);
+line-height:1.75;grid-column:1;font-style:italic;
+}
+.acc-list{grid-column:2}
+.acc-list-lbl{
+font-size:9px;letter-spacing:.4em;text-transform:uppercase;
+color:var(–gold);margin-bottom:10px;font-weight:500;
+}
+.acc-list ul{list-style:none}
+.acc-list ul li{
+font-size:13px;color:var(–ink3);
+padding:4px 0;border-bottom:1px solid var(–line2);
+display:flex;gap:8px;align-items:center;
+}
+.acc-list ul li::before{content:’—’;color:rgba(0,0,0,.15);font-size:10px}
 
-/* SCIENCE BOX */
-.sci{margin:14px 0;padding:12px 16px;background:var(–sci);border-left:3px solid var(–sci-b)}
-.sci-lbl{font-size:9px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(–sci-t);margin-bottom:4px}
-.sci-txt{font-size:12px;color:var(–sci-t);line-height:1.6;font-style:italic}
-
-/* CTA BAND */
-#cb{padding:100px 0;text-align:center;background:var(–ink)}
-.cb-tag{font-size:10px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:rgba(155,125,58,.7);margin-bottom:14px}
-.cb-h{font-family:‘Cormorant Garamond’,serif;font-size:clamp(34px,7vw,60px);font-weight:300;color:var(–w);line-height:1.05;margin-bottom:12px}
-.cb-h em{font-style:italic;color:var(–gold)}
-.cb-s{font-size:14px;color:rgba(255,255,255,.4);margin-bottom:36px;font-style:italic}
-.btn-g{padding:14px 48px;background:var(–gold);color:var(–w);font-size:12px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;border:none;cursor:pointer;transition:all .3s}
-.btn-g:hover{background:#B8971F}
-
-/* PAUL */
-#paul{padding:100px 0;border-top:1px solid var(–line)}
-.pgd{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:start}
-.pvt{font-family:‘Cormorant Garamond’,serif;font-size:60px;font-weight:300;color:rgba(0,0,0,.05);writing-mode:vertical-rl;letter-spacing:.1em;line-height:1}
-.pq{font-family:‘Cormorant Garamond’,serif;font-size:clamp(20px,4vw,30px);font-weight:300;font-style:italic;color:var(–ink);line-height:1.35;margin-bottom:18px}
-.pq::before{content:’”’;color:var(–gold);font-size:1.3em;line-height:0;vertical-align:-.3em;margin-right:3px}
-.pp{font-size:13px;color:var(–ink2);line-height:1.85;margin-bottom:14px;font-style:italic}
-.ph2{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(–ink3)}
-footer{padding:28px 24px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(–line2);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(–ink3);position:relative;z-index:2}
-
-/* QUIZ */
-#sn{padding:100px 0 80px}
-.nw{max-width:420px}
-.nt{font-size:10px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:var(–gold);margin-bottom:18px}
-.nh{font-family:‘Cormorant Garamond’,serif;font-size:clamp(26px,5vw,40px);font-weight:300;color:var(–ink);margin-bottom:6px;line-height:1.2}
-.nhint{font-size:13px;color:var(–ink3);margin-bottom:36px;font-style:italic}
-.ninp{font-family:‘Cormorant Garamond’,serif;font-size:26px;font-weight:300;color:var(–ink);background:transparent;border:none;border-bottom:1px solid var(–ink);padding:8px 0;outline:none;width:100%;max-width:300px;transition:border-color .3s}
-.ninp::placeholder{color:var(–line);font-style:italic}
-.ninp:focus{border-color:var(–gold)}
-.btn-p{margin-top:32px;padding:14px 40px;background:var(–ink);color:var(–w);font-size:12px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;border:none;cursor:pointer;transition:all .3s;display:inline-block}
-.btn-p:hover{background:var(–gold)}
-
-#sq{padding:80px 0 100px}
-.qt{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;padding-bottom:12px;border-bottom:1px solid var(–line2)}
-.qtb{display:flex;align-items:center;gap:10px}
-.qtl{font-family:‘Cormorant Garamond’,serif;font-size:42px;font-weight:300;color:var(–gold);line-height:1}
-.qtp{font-size:9px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:var(–gold);margin-bottom:2px}
-.qtm{font-family:‘Cormorant Garamond’,serif;font-size:17px;font-weight:600;color:var(–ink)}
-.qtc{text-align:right}
-.qtn{font-family:‘Cormorant Garamond’,serif;font-size:34px;font-weight:300;color:var(–ink);line-height:1}
-.qtof{font-size:9px;letter-spacing:.2em;color:var(–ink3);text-transform:uppercase}
-.qbw{width:100%;height:1px;background:var(–line2);margin-bottom:40px}
-.qbf{height:100%;background:var(–gold);transition:width .3s}
-.qtxt{font-family:‘Cormorant Garamond’,serif;font-size:clamp(20px,4vw,30px);font-weight:300;color:var(–ink);line-height:1.25;max-width:540px;margin-bottom:44px}
-.yn{display:flex;gap:10px}
-.yb{padding:13px 40px;font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;border:1px solid var(–line);background:transparent;cursor:pointer;transition:all .2s;color:var(–ink2);min-width:120px}
-.yb.y:hover,.yb.y.on{background:var(–ink);color:var(–w);border-color:var(–ink)}
-.yb.n:hover,.yb.n.on{background:var(–off);color:var(–ink);border-color:var(–ink)}
-.qbk{margin-top:24px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(–ink3);background:none;border:none;cursor:pointer;transition:color .2s}
-.qbk:hover{color:var(–ink)}
-
-/* GENERATING */
-.gt{font-family:‘Cormorant Garamond’,serif;font-size:clamp(26px,5vw,40px);font-weight:300;color:var(–ink);margin-bottom:10px;animation:breathe 3s ease-in-out infinite}
-.gs2{font-size:13px;color:var(–ink3);margin-bottom:40px;font-style:italic}
-.gst{display:flex;flex-direction:column;gap:9px;text-align:left}
-.gsp{font-size:12px;color:rgba(0,0,0,.15);display:flex;align-items:center;gap:8px;letter-spacing:.05em;transition:color .4s}
-.gsp.act{color:var(–ink)}.gsp.done{color:var(–gold)}
-.gd{width:4px;height:4px;border-radius:50%;background:currentColor;flex-shrink:0}
-
-/* RESULT */
-#sr{display:none;padding:80px 0 100px}
-#sr.on{display:block}
-.rw{max-width:680px;margin:0 auto}
-.re{font-size:10px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:var(–gold);margin-bottom:10px}
-.rh{font-family:‘Cormorant Garamond’,serif;font-size:clamp(34px,7vw,58px);font-weight:300;line-height:.95;color:var(–ink);margin-bottom:8px}
-.rh em{font-style:italic;color:var(–gold)}
-.rf{font-size:14px;color:var(–ink3);margin-bottom:48px;font-style:italic}
-.scr2{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(–line2)}
-.scl{font-size:12px;color:var(–ink);width:150px;flex-shrink:0}
-.scb{flex:1;height:1px;background:var(–line2)}
-.scbf{height:100%;transition:width 1s ease}
-.scp{font-family:‘Cormorant Garamond’,serif;font-size:16px;font-weight:300;color:var(–ink);width:32px;text-align:right;flex-shrink:0}
-.sct{font-size:9px;letter-spacing:.2em;text-transform:uppercase;width:68px;text-align:right;flex-shrink:0}
-.bp{margin-bottom:24px;padding:28px 32px;border:1px solid var(–line2);position:relative;transition:border-color .3s}
-.bp:hover{border-color:rgba(155,125,58,.2)}
-.bpn{position:absolute;top:20px;right:24px;font-family:‘Cormorant Garamond’,serif;font-size:48px;font-weight:300;color:rgba(0,0,0,.04);line-height:1}
-.bpt{font-size:9px;font-weight:500;letter-spacing:.4em;text-transform:uppercase;color:var(–gold);margin-bottom:5px}
-.bptitle{font-family:‘Cormorant Garamond’,serif;font-size:18px;font-weight:600;color:var(–ink);margin-bottom:12px}
-.bpc{font-size:13px;color:var(–ink2);line-height:1.9;white-space:pre-wrap}
-.dlw{text-align:center;padding:48px 0;border-top:1px solid var(–line2);margin-top:40px}
-.dlh{font-family:‘Cormorant Garamond’,serif;font-size:26px;font-weight:300;color:var(–ink);margin-bottom:7px}
-.dlh em{font-style:italic;color:var(–gold)}
-.dls{font-size:13px;color:var(–ink3);margin-bottom:26px;font-style:italic}
-.bgh{display:block;margin:12px auto 0;background:none;border:none;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(–ink3);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+/* FOOTER */
+footer{
+padding:40px 24px;
+display:flex;justify-content:space-between;align-items:center;
+border-top:1px solid var(–line2);
+font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+color:var(–ink3);
+position:relative;z-index:2;
+background:var(–white);
+}
 
 /* ANIMATIONS */
-@keyframes fu{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes breathe{0%,100%{opacity:.5}50%{opacity:1}}
-.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+@keyframes pulse{0%{opacity:1}100%{opacity:0;transform:scaleY(0);transform-origin:top}}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
 .rv.on{opacity:1;transform:translateY(0)}
 
 /* MOBILE */
 @media(max-width:600px){
-nav{padding:11px 14px}
-.nav-logo{display:none}
-.lb{padding:3px 6px;font-size:9px}
-.w{padding:0 14px}
-.ag{grid-template-columns:1fr}
-.pg{grid-template-columns:1fr}
-.ain{grid-template-columns:1fr;padding:0 0 16px 0}
-.atea,.alst{grid-column:1}
-.acc.open .ab2{max-height:520px}
-.pgd{grid-template-columns:1fr;gap:18px}
-.pvt{writing-mode:horizontal-tb;font-size:34px}
-.yn{flex-direction:column;width:100%;max-width:240px}
-.yb{min-width:auto;width:100%}
-.scl{width:110px}
-.sct{display:none}
-.bp{padding:18px 16px}
-footer{flex-direction:column;gap:7px;text-align:center}
+.yn-wrap{flex-direction:column;width:100%;max-width:280px}
+.yn-btn{min-width:auto;width:100%}
+.acc-inner{grid-template-columns:1fr;padding:0 0 20px 0}
+.acc-tea,.acc-list{grid-column:1}
+.acc.open .acc-body{max-height:500px}
+.score-label{width:130px}
+.score-tag{display:none}
+.bp-block{padding:24px 20px}
+.bp-num{font-size:40px}
+footer{flex-direction:column;gap:8px;text-align:center}
 }
 </style>
 
 </head>
 <body>
 
-<svg class="nbg" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" fill="none">
-  <g stroke="#9B7D3A" stroke-width="0.7">
-    <circle cx="80" cy="180" r="4" fill="rgba(155,125,58,.25)"/>
-    <circle cx="170" cy="240" r="3" fill="rgba(155,125,58,.25)"/>
-    <circle cx="60" cy="320" r="3.5" fill="rgba(155,125,58,.25)"/>
-    <circle cx="150" cy="390" r="4" fill="rgba(155,125,58,.25)"/>
-    <line x1="80" y1="180" x2="170" y2="240"/>
-    <line x1="170" y1="240" x2="60" y2="320"/>
-    <line x1="60" y1="320" x2="150" y2="390"/>
-    <line x1="80" y1="180" x2="54" y2="158"/>
-    <line x1="80" y1="180" x2="102" y2="155"/>
-    <line x1="170" y1="240" x2="196" y2="226"/>
-    <line x1="60" y1="320" x2="34" y2="308"/>
-    <circle cx="1360" cy="220" r="4" fill="rgba(155,125,58,.25)"/>
-    <circle cx="1270" cy="290" r="3" fill="rgba(155,125,58,.25)"/>
-    <circle cx="1380" cy="360" r="3.5" fill="rgba(155,125,58,.25)"/>
-    <line x1="1360" y1="220" x2="1270" y2="290"/>
-    <line x1="1270" y1="290" x2="1380" y2="360"/>
-    <line x1="1360" y1="220" x2="1386" y2="200"/>
-    <line x1="1270" y1="290" x2="1244" y2="276"/>
-    <line x1="0" y1="500" x2="100" y2="500" stroke-width="0.3" stroke-dasharray="4,8"/>
-    <line x1="1340" y1="560" x2="1440" y2="560" stroke-width="0.3" stroke-dasharray="4,8"/>
-    <path d="M1400,620 C1418,634 1418,648 1400,662 C1382,676 1382,690 1400,704" stroke-width="0.5"/>
-    <path d="M1388,620 C1370,634 1370,648 1388,662 C1406,676 1406,690 1388,704" stroke-width="0.5"/>
-    <line x1="1400" y1="629" x2="1388" y2="629" stroke-width="0.4"/>
-    <line x1="1406" y1="648" x2="1382" y2="648" stroke-width="0.4"/>
-    <line x1="1400" y1="667" x2="1388" y2="667" stroke-width="0.4"/>
-  </g>
-</svg>
+<div class="progress"><div class="progress-fill" id="pf"></div></div>
 
-<div class="prog z"><div class="prog-f" id="pf"></div></div>
-
-<!-- LANDING -->
-
-<div id="sl" class="scr on z">
-<nav>
-  <div class="nav-logo">P · U · R</div>
-  <div class="lsw">
-    <button class="lb on" onclick="L('en')">EN</button>
-    <button class="lb" onclick="L('de')">DE</button>
-    <button class="lb" onclick="L('fr')">FR</button>
-    <button class="lb" onclick="L('es')">ES</button>
-    <button class="lb" onclick="L('ar')">AR</button>
-    <button class="lb" onclick="L('ru')">RU</button>
-  </div>
-</nav>
+<!-- ══════════ HERO ══════════ -->
 
 <section id="hero">
-  <div class="w">
-    <p class="h-brand">P · U · R · M E T H O D</p>
-    <h1 class="h-title"><span data-t="h1a">I became the brother</span><br><em data-t="h1b">I never had.</em></h1>
-    <p class="h-sub" data-t="h1s">Everything on this page is what I would have told my younger self.</p>
-    <div class="h-scroll" onclick="document.getElementById('ns').scrollIntoView({behavior:'smooth'})">
-      <span class="h-scroll-t" data-t="begin">Begin</span>
-      <div class="h-scroll-l"></div>
-    </div>
+  <p class="hero-brand">P · U · R · M E T H O D</p>
+  <h1 class="hero-title">
+    This is what I would have<br>told my <em>18-year-old self.</em>
+  </h1>
+  <p class="hero-sub">Answer honestly. Get your personal blueprint. 51 questions. 4 minutes.</p>
+  <div class="hero-scroll" onclick="document.getElementById('name-section').scrollIntoView({behavior:'smooth'})">
+    <span class="hero-scroll-text">Begin</span>
+    <div class="hero-scroll-line"></div>
   </div>
 </section>
 
-<section id="about" class="z">
-  <div class="w">
-    <div class="ag rv">
-      <div>
-        <p class="sec-tag" data-t="a_tag">What this is</p>
-        <h2 class="sec-h"><span data-t="a_h1">Not a program.</span><br><em data-t="a_h2">A corridor.</em></h2>
-        <p class="ab" data-t="a_body">Every man's problem is different. Every man's solution is different. Answer the questions honestly. Get the blueprint built from your answers. Follow it for 90 days. Become the man you were supposed to be.</p>
-      </div>
-      <div>
-        <div class="st"><div class="sn">51</div><div class="sl" data-t="s1">Questions designed to reveal, not judge</div></div>
-        <div class="st"><div class="sn">15</div><div class="sl" data-t="s2">Modules across 3 pillars</div></div>
-        <div class="st"><div class="sn">90</div><div class="sl" data-t="s3">Days to become a different man</div></div>
-      </div>
-    </div>
+<!-- ══════════ NAME ══════════ -->
+
+<section id="name-section">
+  <p class="name-label">Before we begin</p>
+  <h2 class="name-q">What is your first name?</h2>
+  <p class="name-hint">Your blueprint will be written for you personally.</p>
+  <input class="name-input" id="nameInp" type="text" placeholder="Your name" autocomplete="given-name" onkeydown="if(event.key==='Enter')startQuiz()">
+  <button class="btn-primary" onclick="startQuiz()">Start Analysis →</button>
+</section>
+
+<!-- ══════════ QUIZ ══════════ -->
+
+<section id="quiz-section">
+  <div class="q-counter">
+    <span id="qNum">1</span>
+    <div class="q-counter-bar"><div class="q-counter-fill" id="qBar"></div></div>
+    <span>51</span>
+  </div>
+  <p class="q-block" id="qBlock">Sexuality</p>
+  <p class="q-text" id="qText"></p>
+  <div class="yn-wrap">
+    <button class="yn-btn yes" onclick="answer(true)">Yes</button>
+    <button class="yn-btn no" onclick="answer(false)">No</button>
+  </div>
+  <button class="q-back" id="qBack" onclick="prevQ()" style="visibility:hidden">← Back</button>
+</section>
+
+<!-- ══════════ GENERATING ══════════ -->
+
+<section id="gen-section">
+  <h2 class="gen-title">Building your blueprint.</h2>
+  <p class="gen-sub">Analysing your answers. Writing your plan.</p>
+  <div class="gen-steps">
+    <div class="gen-step" id="gs1"><span class="gen-dot"></span>Calculating your scores</div>
+    <div class="gen-step" id="gs2"><span class="gen-dot"></span>Identifying critical areas</div>
+    <div class="gen-step" id="gs3"><span class="gen-dot"></span>Building your 90-day protocol</div>
+    <div class="gen-step" id="gs4"><span class="gen-dot"></span>Writing in Paul's voice</div>
+    <div class="gen-step" id="gs5"><span class="gen-dot"></span>Finalising your blueprint</div>
   </div>
 </section>
 
-<section id="pillars" class="z">
-  <div class="w">
-    <p class="sec-tag rv" data-t="p_tag">The three pillars</p>
-    <h2 class="sec-h rv"><span data-t="p_h1">Everything connects.</span><br><em data-t="p_h2">Everything compounds.</em></h2>
-    <div class="pg rv">
-      <div class="pc"><span class="pc-bg">P</span><p class="pc-tag" data-t="pi">Pillar I</p><h3 class="pc-title" data-t="pt1">Physical Control</h3><p class="pc-desc" data-t="pd1">The body is the foundation. Sleep, movement, food, breath, temperature — five modules that build your biological base from the ground up.</p></div>
-      <div class="pc"><span class="pc-bg">U</span><p class="pc-tag" data-t="pii">Pillar II</p><h3 class="pc-title" data-t="pt2">Understanding the Mind</h3><p class="pc-desc" data-t="pd2">Mind ≠ Brain. The same mechanism making you scroll at midnight can make you crave discipline. Five modules to rewire your system.</p></div>
-      <div class="pc"><span class="pc-bg">R</span><p class="pc-tag" data-t="piii">Pillar III</p><h3 class="pc-title" data-t="pt3">Responsibility</h3><p class="pc-desc" data-t="pd3">No one is coming. Five modules about what defines a man — for a lifetime, not a week.</p></div>
-    </div>
-  </div>
-</section>
+<!-- ══════════ RESULT ══════════ -->
 
-<section id="modules" class="z">
-  <div class="w">
-    <div class="mi rv">
-      <p class="sec-tag" data-t="m_tag">The fifteen modules</p>
-      <h2 class="sec-h"><span data-t="m_h1">Every module.</span><br><em data-t="m_h2">One protocol.</em></h2>
-      <p data-t="m_sub">Open each module. Read the principle. This is what your blueprint is built from.</p>
-    </div>
-    <!-- P -->
-    <div class="ps rv">
-      <div class="ph"><span class="pb">P</span><div><div class="ph-name" data-t="pn1">Physical Control</div><div class="ph-sub" data-t="ps1">5 Modules — The Body as Foundation</div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">01</span><span class="at" data-t="m01">Sleep<span class="atg" data-t="m01t"> — Not Yet Solved</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m01d">Sleep is not a pause. It is the most active phase of your biology. Testosterone is produced during deep sleep. This module is honest: I have not yet fully solved it. What I share, I share only after I have lived it.</div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m01l1">Circadian rhythm & light</li><li data-t="m01l2">Cortisol & testosterone timing</li><li data-t="m01l3">Non-negotiables before sleep</li><li data-t="m01l4">The eating cutoff rule</li><li data-t="m01l5">Reading body signals</li></ul></div></div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">02</span><span class="at" data-t="m02">Movement<span class="atg" data-t="m02t"> — Calisthenics</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m02d">No gym. No equipment. Just your body against gravity. The PUR Ladder builds the habit before the performance. 90 days to anchor it permanently.</div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m02l1">The PUR Ladder system</li><li data-t="m02l2">Pull-ups, dips, pistol squats</li><li data-t="m02l3">Outdoor training as ritual</li><li data-t="m02l4">Habit before performance</li><li data-t="m02l5">90 days to anchor it</li></ul></div></div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">03</span><span class="at" data-t="m03">Food<span class="atg" data-t="m03t"> — Fasting</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m03d">Fasting is not a diet. I fasted to heal an incurable autoimmune disease. It worked. Morning protocol: apple cider vinegar and Himalayan salt in water before anything.</div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m03l1">Eating window 13:00–19:00</li><li data-t="m03l2">Morning ACV & salt protocol</li><li data-t="m03l3">Autophagy & cellular renewal</li><li data-t="m03l4">Hormonal building blocks</li><li data-t="m03l5">Food as medicine</li></ul></div></div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">04</span><span class="at" data-t="m04">Breath<span class="atg" data-t="m04t"> — Wim Hof</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m04d">Breath is the only autonomous system you can consciously control. Wim Hof breathing reduces inflammation markers and raises testosterone. I am a certified Wim Hof Instructor.
-<div class="sci"><div class="sci-lbl" data-t="sci">SCIENCE</div><div class="sci-txt">Kox et al., 2014 (PNAS): Wim Hof Method practitioners showed significantly reduced inflammatory markers and increased adrenaline vs. control group.</div></div></div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m04l1">Wim Hof Method complete</li><li data-t="m04l2">Inflammation reduction</li><li data-t="m04l3">CO₂ tolerance & performance</li><li data-t="m04l4">Endogenous DMT</li><li data-t="m04l5">Daily protocol</li></ul></div></div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">05</span><span class="at" data-t="m05">Temperature<span class="atg" data-t="m05t"> — Ice Bath</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m05d">Cold exposure triggers a 200–300% increase in noradrenaline and raises testosterone. Two minutes of cold water daily resets your hormonal baseline.
-<div class="sci"><div class="sci-lbl" data-t="sci">SCIENCE</div><div class="sci-txt">Srámek et al. (Eur J Appl Physiol): Cold water immersion produces significant increases in noradrenaline (up to 300%) and dopamine (up to 250%).</div></div></div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m05l1">Cold bath protocol</li><li data-t="m05l2">Noradrenaline & testosterone</li><li data-t="m05l3">Mental strength</li><li data-t="m05l4">Temperature contrast</li><li data-t="m05l5">Daily non-negotiable</li></ul></div></div></div></div>
-    </div>
-    <!-- U -->
-    <div class="ps rv">
-      <div class="ph"><span class="pb">U</span><div><div class="ph-name" data-t="pn2">Understanding the Mind</div><div class="ph-sub" data-t="ps2">5 Modules — Mind ≠ Brain</div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">01</span><span class="at" data-t="m06">Sexual Control<span class="atg" data-t="m06t"> — The Protocol Nobody Talks About</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m06d">The pelvic floor is the most important muscle in male sexual function. Most men have never deliberately trained it.
-<div class="sci"><div class="sci-lbl" data-t="sci">SCIENCE</div><div class="sci-txt">Dorey et al., 2005 (BJU International): Pelvic floor muscle training resolved erectile dysfunction in 40% of participants after 3 months — comparable to pharmaceutical intervention.</div></div></div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m06l1">Kegel protocol — every 2nd day</li><li data-t="m06l2">Physical development</li><li data-t="m06l3">Ejaculatory control</li><li data-t="m06l4">Non-ejaculatory orgasm</li><li data-t="m06l5">PUR KOK & beef tallow</li></ul></div></div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">02</span><span class="at" data-t="m07">Dopamine System<span class="atg" data-t="m07t"> — Reset & Control</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m07d">Pornography is not a sexual outlet. It is a dopamine delivery system — more damaging to your brain than alcohol.
-<div class="sci"><div class="sci-lbl" data-t="sci">SCIENCE</div><div class="sci-txt">Voon et al., 2014 (PLOS ONE): Compulsive pornography users show identical brain activation in reward circuits as cocaine-dependent individuals.</div></div></div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m07l1">How dopamine works</li><li data-t="m07l2">Pornography & brain rewiring</li><li data-t="m07l3">The dopamine reset</li><li data-t="m07l4">Low-dopamine phases</li><li data-t="m07l5">Recalibrating reward</li></ul></div></div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">03</span><span class="at" data-t="m08">Impulse Awareness<span class="atg" data-t="m08t"> — Food, Sex, Relationships</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m08d">Before you can control an impulse, you have to see it. Most men react their entire lives without ever pausing. Observe, without immediately acting.</div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m08l1">Impulse before it acts</li><li data-t="m08l2">Hunger vs habit vs emotion</li><li data-t="m08l3">Sexual energy as resource</li><li data-t="m08l4">Social triggers</li><li data-t="m08l5">Stimulus & response gap</li></ul></div></div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">04</span><span class="at" data-t="m09">Attention Control<span class="atg" data-t="m09t"> — Social Media, Sex</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m09d">Attention is your most valuable resource. Social media is engineered with the same behavioral psychology as slot machines. Direct it deliberately — through architecture, not willpower.</div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m09l1">Attention as scarce resource</li><li data-t="m09l2">Screen time rules</li><li data-t="m09l3">Deep work protocol</li><li data-t="m09l4">Sexual attention & focus</li><li data-t="m09l5">Environment as tool</li></ul></div></div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">05</span><span class="at" data-t="m10">Identity Architecture<span class="atg" data-t="m10t"> — Who I Am</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m10d">You do not act according to your goals. You act according to your identity. The man who says "I'm trying" keeps struggling. The man who says "I am someone who" — becomes it.</div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m10l1">Identity vs goals</li><li data-t="m10l2">Values as compass</li><li data-t="m10l3">The story you tell yourself</li><li data-t="m10l4">Roles & masks</li><li data-t="m10l5">Who you are when alone</li></ul></div></div></div></div>
-    </div>
-    <!-- R -->
-    <div class="ps rv">
-      <div class="ph"><span class="pb">R</span><div><div class="ph-name" data-t="pn3">Responsibility</div><div class="ph-sub" data-t="ps3">5 Modules — The Legacy of a Man</div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">01</span><span class="at" data-t="m11">Self Responsibility<span class="atg" data-t="m11t"> — Body, Respect</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m11d">No one is coming. You are your own rescue.</div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m11l1">Radical ownership</li><li data-t="m11l2">Leaving the victim role</li><li data-t="m11l3">Respect starts with you</li><li data-t="m11l4">Promises to yourself</li><li data-t="m11l5">Your body as business card</li></ul></div></div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">02</span><span class="at" data-t="m12">Principles<span class="atg" data-t="m12t"> — Red Flags, No-Goes</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m12d">A man without principles is a man without a spine. Write them before someone tests them — or you will not hold them.</div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m12l1">Core values written down</li><li data-t="m12l2">Boundaries that hold</li><li data-t="m12l3">Red flags early</li><li data-t="m12l4">Non-negotiables</li><li data-t="m12l5">Limits without aggression</li></ul></div></div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">03</span><span class="at" data-t="m13">Relationship Leadership<span class="atg" data-t="m13t"> — The Man Leads</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m13d">Leadership does not mean control. It means: you are so stable within yourself that the woman you love feels safe enough to be completely herself.</div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m13l1">What leadership means</li><li data-t="m13l2">Stability as foundation</li><li data-t="m13l3">Without power struggles</li><li data-t="m13l4">Attraction through presence</li><li data-t="m13l5">When leadership fails</li></ul></div></div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">04</span><span class="at" data-t="m14">Trust Economy<span class="atg" data-t="m14t"> — How Trust Is Built</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m14d">Trust is the hardest currency. Earned, not demanded. Your word is either bankable or it is not.</div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m14l1">Trust as daily practice</li><li data-t="m14l2">Consistency over time</li><li data-t="m14l3">Trust in yourself</li><li data-t="m14l4">After betrayal</li><li data-t="m14l5">Economy of reputation</li></ul></div></div></div></div>
-      <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="al"><span class="an">05</span><span class="at" data-t="m15">Legacy Thinking<span class="atg" data-t="m15t"> — Find Your Legacy</span></span></div><span class="ai">+</span></button><div class="ab2"><div class="ain"><div class="atea" data-t="m15d">What remains when you are gone? Not the account balance. What remains is the mark you left in other people.</div><div class="alst"><p class="albl" data-t="covers">Covers</p><ul><li data-t="m15l1">Legacy as daily compass</li><li data-t="m15l2">What actually counts</li><li data-t="m15l3">Mark in people not things</li><li data-t="m15l4">From taking to giving</li><li data-t="m15l5">Your life as message</li></ul></div></div></div></div>
-    </div>
-  </div>
-</section>
-
-<section id="cb" class="z">
-  <div class="w">
-    <p class="cb-tag rv" data-t="c_tag">Your blueprint is waiting</p>
-    <h2 class="cb-h rv"><span data-t="c_h1">No one has</span><br><em data-t="c_h2">your answers.</em></h2>
-    <p class="cb-s rv" data-t="c_sub">But the right questions reveal them.</p>
-    <button class="btn-g rv" onclick="goQ()" data-t="c_btn">Build My Blueprint →</button>
-  </div>
-</section>
-
-<section id="paul" class="z">
-  <div class="w">
-    <div class="pgd rv">
-      <div><div class="pvt">PAUL<br>PUR</div></div>
-      <div>
-        <p class="sec-tag" data-t="paul_tag">The man behind the system</p>
-        <p class="pq" data-t="paul_q">I became the brother I never had. This is what I would have told myself at 18.</p>
-        <p class="pp" data-t="paul_p1">I did not build this system from books. I lived it. Healed an incurable autoimmune disease through fasting and cold. Rebuilt testosterone through nutrition. Lost a fortune and rebuilt it. A decade of experiments on a single human body — mine.</p>
-        <p class="pp" data-t="paul_p2">Certified Wim Hof Instructor. Architect. Entrepreneur. I build structures from the foundation to the top. Every layer supports the next. Nothing is decoration. Everything is load-bearing.</p>
-        <p class="ph2">@paulpur_ · purmethod.com</p>
-      </div>
-    </div>
-  </div>
-</section>
-<footer class="z"><span>P · U · R · M E T H O D</span><span>© 2026 Paul PUR</span><span>@paulpur_</span></footer>
-</div>
-
-<!-- NAME -->
-
-<div id="ns" class="scr z">
-  <div class="w">
-    <div class="nw">
-      <p class="nt" data-t="n_tag">Before we begin</p>
-      <h2 class="nh" data-t="n_h">What is your first name?</h2>
-      <p class="nhint" data-t="n_hint">Your blueprint will be written for you personally.</p>
-      <input class="ninp" id="ni" type="text" autocomplete="given-name" onkeydown="if(event.key==='Enter')sQ()">
-      <br><button class="btn-p" onclick="sQ()" data-t="n_btn">Begin the Analysis →</button>
-    </div>
-  </div>
-</div>
-
-<!-- QUIZ -->
-
-<div id="sq" class="scr z">
-  <div class="w">
-    <div class="qt">
-      <div class="qtb">
-        <div class="qtl" id="qL">S</div>
-        <div><div class="qtp" id="qP">Sexuality</div><div class="qtm" id="qM">Block 1</div></div>
-      </div>
-      <div class="qtc">
-        <div class="qtn" id="qN">1</div>
-        <div class="qtof"><span data-t="of">of</span> 51</div>
-      </div>
-    </div>
-    <div class="qbw"><div class="qbf" id="qB"></div></div>
-    <p class="qtxt" id="qT"></p>
-    <div class="yn">
-      <button class="yb y" onclick="A(true)"><span data-t="yes">Yes</span></button>
-      <button class="yb n" onclick="A(false)"><span data-t="no">No</span></button>
-    </div>
-    <button class="qbk" id="qBk" onclick="pQ()" style="visibility:hidden" data-t="back">← Back</button>
-  </div>
-</div>
-
-<!-- GENERATING -->
-
-<div id="sg" class="scr z">
-  <div style="text-align:center;padding:0 24px">
-    <h2 class="gt" data-t="g_h">Building your blueprint.</h2>
-    <p class="gs2" data-t="g_s">Analysing your answers. Writing your plan.</p>
-    <div class="gst" style="display:inline-flex">
-      <div class="gsp" id="gs1"><span class="gd"></span><span data-t="gs1">Calculating scores</span></div>
-      <div class="gsp" id="gs2"><span class="gd"></span><span data-t="gs2">Identifying critical areas</span></div>
-      <div class="gsp" id="gs3"><span class="gd"></span><span data-t="gs3">Building 90-day protocol</span></div>
-      <div class="gsp" id="gs4"><span class="gd"></span><span data-t="gs4">Writing in Paul's voice</span></div>
-      <div class="gsp" id="gs5"><span class="gd"></span><span data-t="gs5">Finalising blueprint</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- RESULT -->
-
-<div id="sr" class="z">
-  <div class="rw">
-    <p class="re" data-t="r_eye">PUR Method · Personal Blueprint</p>
-    <h2 class="rh"><span data-t="r_h">Your</span> <em data-t="r_he">blueprint.</em></h2>
-    <p class="rf" id="rFor"></p>
-    <div id="scRows" style="margin-bottom:40px"></div>
+<section id="result-section">
+  <div class="result-wrap">
+    <p class="result-eye">PUR Method · Personal Blueprint</p>
+    <h2 class="result-title">Your <em>blueprint.</em></h2>
+    <p class="result-for" id="resultFor"></p>
+    <div class="score-section" id="scoreRows"></div>
     <div id="bpBlocks"></div>
-    <div class="dlw">
-      <h3 class="dlh"><span data-t="dl_h">Download your</span> <em data-t="dl_he">blueprint.</em></h3>
-      <p class="dls" data-t="dl_s">Your personal plan. Print it. Live it.</p>
-      <button class="btn-g" onclick="dPDF()" data-t="dl_btn">↓ Download PDF</button>
-      <button class="bgh" onclick="rst()" data-t="restart">Start over</button>
+    <div class="dl-section">
+      <h3 class="dl-title">Download your <em>blueprint.</em></h3>
+      <p class="dl-sub">Your personal plan. Your name. Print it. Live it.</p>
+      <button class="btn-gold" onclick="dlPDF()">↓ &nbsp; Download PDF</button>
+      <button class="btn-ghost" onclick="restart()">Start over</button>
     </div>
   </div>
+</section>
+
+<!-- ══════════ KNOWLEDGE ══════════ -->
+
+<section id="knowledge">
+  <div class="know-wrap">
+    <p class="know-tag rv">The System</p>
+    <h2 class="know-title rv">Three pillars.<br><em>Fifteen modules.</em></h2>
+
+```
+<!-- P -->
+<div class="pillar rv">
+  <div class="pillar-hdr">
+    <span class="pillar-letter">P</span>
+    <div><div class="pillar-name">Physical Control</div><div class="pillar-sub">5 Modules — The Body as Foundation</div></div>
+  </div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">01</span><span class="acc-title">Sleep<span class="acc-tag"> — Not Yet Solved</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">Sleep is not a pause. It is the most active phase of your biology. Testosterone is produced during deep sleep. This module is honest: I have not yet fully solved it myself.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>Circadian rhythm & light</li><li>Cortisol & testosterone timing</li><li>Non-negotiables before sleep</li><li>Reading your body's signals</li><li>The eating cutoff</li></ul></div></div></div></div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">02</span><span class="acc-title">Movement<span class="acc-tag"> — Calisthenics</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">The man who cannot control his body cannot control anything else. No gym. No equipment. Just your body against gravity. The PUR Ladder builds the habit before the performance.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>The PUR Ladder system</li><li>Pull-ups, dips, pistol squats</li><li>Outdoor training as ritual</li><li>Habit before performance</li><li>90 days to anchor it</li></ul></div></div></div></div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">03</span><span class="acc-title">Food<span class="acc-tag"> — Fasting</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">Fasting is not a diet. I fasted to heal an incurable autoimmune disease. It worked. The morning protocol — apple cider vinegar and salt — activates your brain before anything else.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>Eating window 13:00–19:00</li><li>Apple cider vinegar & salt protocol</li><li>Autophagy & cellular renewal</li><li>Raw fat & hormonal building blocks</li><li>Food as medicine</li></ul></div></div></div></div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">04</span><span class="acc-title">Breath<span class="acc-tag"> — Wim Hof</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">Breath is the only autonomous system you can consciously control. Through that entry point you change everything — cortisol, adrenaline, focus, pain tolerance. I am a certified Wim Hof Instructor.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>Wim Hof Method complete</li><li>Endogenous DMT</li><li>CO₂ tolerance & performance</li><li>Stress regulation</li><li>Daily protocol</li></ul></div></div></div></div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">05</span><span class="acc-title">Temperature<span class="acc-tag"> — Ice Bath</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">Cold is not a trend. It is an evolutionary signal. The man who enters cold water every day trains not just his body — he trains his will to not follow the impulse.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>Cold bath protocol</li><li>Hormonal effects</li><li>Mental strength</li><li>Temperature contrast</li><li>Daily non-negotiable</li></ul></div></div></div></div>
 </div>
+
+<!-- U -->
+<div class="pillar rv">
+  <div class="pillar-hdr">
+    <span class="pillar-letter">U</span>
+    <div><div class="pillar-name">Understanding the Mind</div><div class="pillar-sub">5 Modules — Mind ≠ Brain</div></div>
+  </div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">01</span><span class="acc-title">Sexual Control<span class="acc-tag"> — The Protocol Nobody Talks About</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">The pelvic floor is the most important muscle in male sexual function. Most men have never deliberately trained it. This module gives you the complete protocol — developed over years of direct practice.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>Kegel protocol — every second day</li><li>Physical development protocol</li><li>Ejaculatory control technique</li><li>Non-ejaculatory orgasm</li><li>PUR KOK cream & beef tallow</li></ul></div></div></div></div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">02</span><span class="acc-title">Dopamine System<span class="acc-tag"> — Reset & Control</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">Pornography is not a sexual outlet. It is a dopamine delivery system — engineered exactly like social media and slot machines. This module shows you how to take your system back.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>How dopamine actually works</li><li>Pornography & brain rewiring</li><li>The dopamine reset</li><li>Low-dopamine phases</li><li>Recalibrating reward</li></ul></div></div></div></div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">03</span><span class="acc-title">Impulse Awareness<span class="acc-tag"> — Food, Sex, Relationships</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">Before you can control an impulse, you have to see it. Most men react their entire lives without ever pausing. This module begins with the simplest and hardest step: observe, without immediately acting.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>The impulse before it acts</li><li>Hunger vs habit vs emotion</li><li>Sexual energy as resource</li><li>Social triggers</li><li>Stimulus & response gap</li></ul></div></div></div></div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">04</span><span class="acc-title">Attention Control<span class="acc-tag"> — Social Media, Sex</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">Attention is the most valuable resource you possess — and you give it away every day. To algorithms paid to steal it. This module shows you how to direct it deliberately — not through willpower, but through architecture.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>Attention as scarce resource</li><li>Screen time rules that hold</li><li>Deep work vs reactive thinking</li><li>Sexual attention & focus</li><li>Environment as tool</li></ul></div></div></div></div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">05</span><span class="acc-title">Identity Architecture<span class="acc-tag"> — Who I Am</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">You do not act according to your goals. You act according to your identity. The man who says "I'm trying to wake up early" keeps sleeping. The man who says "I am someone who wakes up early" — gets up.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>Identity vs goals</li><li>Values as compass</li><li>The story you tell yourself</li><li>Roles & masks</li><li>Who you are when alone</li></ul></div></div></div></div>
+</div>
+
+<!-- R -->
+<div class="pillar rv">
+  <div class="pillar-hdr">
+    <span class="pillar-letter">R</span>
+    <div><div class="pillar-name">Responsibility</div><div class="pillar-sub">5 Modules — The Legacy of a Man</div></div>
+  </div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">01</span><span class="acc-title">Self Responsibility<span class="acc-tag"> — Body, Respect</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">No one is coming. You are your own rescue. The man who waits for circumstances to improve waits his entire life.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>Radical ownership</li><li>Leaving the victim role</li><li>Respect starts with you</li><li>Promises to yourself</li><li>Your body as business card</li></ul></div></div></div></div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">02</span><span class="acc-title">Principles<span class="acc-tag"> — Red Flags, No-Goes</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">A man without principles is a man without a spine. If you haven't written your boundaries before someone tests them, you will not hold them.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>Core values written down</li><li>Boundaries that hold</li><li>Red flags early</li><li>Non-negotiables</li><li>Limits without aggression</li></ul></div></div></div></div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">03</span><span class="acc-title">Relationship Leadership<span class="acc-tag"> — The Man Leads</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">Leadership in a relationship does not mean control. It means: you are so stable within yourself that the woman you love feels safe enough to be completely herself.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>What leadership means</li><li>Stability as foundation</li><li>Without power struggles</li><li>Attraction through presence</li><li>When leadership fails</li></ul></div></div></div></div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">04</span><span class="acc-title">Trust Economy<span class="acc-tag"> — How Trust Is Built</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">Trust is the hardest currency there is. Earned, not demanded. Every day. Through small actions nobody sees.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>Trust as daily practice</li><li>Consistency over time</li><li>Trust in yourself</li><li>After betrayal</li><li>Economy of reputation</li></ul></div></div></div></div>
+  <div class="acc"><button class="acc-btn" onclick="tog(this)"><div class="acc-left"><span class="acc-n">05</span><span class="acc-title">Legacy Thinking<span class="acc-tag"> — Find Your Legacy</span></span></div><span class="acc-ico">+</span></button><div class="acc-body"><div class="acc-inner"><div class="acc-tea">What remains when you are gone? Not the account balance. Not the title. What remains is the mark you left in other people.</div><div class="acc-list"><p class="acc-list-lbl">What this covers</p><ul><li>Legacy as daily compass</li><li>What actually counts</li><li>Mark in people not things</li><li>From taking to giving</li><li>Your life as message</li></ul></div></div></div></div>
+</div>
+
+<div class="rv" style="text-align:center;margin-top:64px">
+  <button class="btn-primary" onclick="document.getElementById('name-section').scrollIntoView({behavior:'smooth'})">Build My Blueprint →</button>
+</div>
+```
+
+  </div>
+</section>
+
+<footer>
+  <span>P · U · R · M E T H O D</span>
+  <span>purmethod.com · @paulpur_</span>
+  <span>© 2026 Paul PUR</span>
+</footer>
 
 <script>
-// ═══════════ TRANSLATIONS ═══════════
-const T={
-en:{
-  h1a:"I became the brother",h1b:"I never had.",h1s:"Everything on this page is what I would have told my younger self.",
-  begin:"Begin",a_tag:"What this is",a_h1:"Not a program.",a_h2:"A corridor.",
-  a_body:"Every man's problem is different. Every man's solution is different. Answer the questions honestly. Get the blueprint built from your answers. Follow it for 90 days. Become the man you were supposed to be.",
-  s1:"Questions designed to reveal, not judge",s2:"Modules across 3 pillars",s3:"Days to become a different man",
-  p_tag:"The three pillars",p_h1:"Everything connects.",p_h2:"Everything compounds.",
-  pi:"Pillar I",pt1:"Physical Control",pd1:"The body is the foundation. Sleep, movement, food, breath, temperature — five modules that build your biological base.",
-  pii:"Pillar II",pt2:"Understanding the Mind",pd2:"Mind ≠ Brain. Five modules to rewire your system.",
-  piii:"Pillar III",pt3:"Responsibility",pd3:"No one is coming. Five modules about what defines a man — for a lifetime.",
-  m_tag:"The fifteen modules",m_h1:"Every module.",m_h2:"One protocol.",m_sub:"Open each module. Read the principle.",
-  pn1:"Physical Control",ps1:"5 Modules — The Body as Foundation",
-  m01:"Sleep",m01t:" — Not Yet Solved",m01d:"Sleep is not a pause. It is the most active phase of your biology. Testosterone is produced during deep sleep.",
-  m01l1:"Circadian rhythm & light",m01l2:"Cortisol & testosterone timing",m01l3:"Non-negotiables before sleep",m01l4:"The eating cutoff rule",m01l5:"Reading body signals",
-  m02:"Movement",m02t:" — Calisthenics",m02d:"No gym. No equipment. Just your body against gravity. The PUR Ladder builds the habit before the performance.",
-  m02l1:"The PUR Ladder system",m02l2:"Pull-ups, dips, pistol squats",m02l3:"Outdoor training as ritual",m02l4:"Habit before performance",m02l5:"90 days to anchor it",
-  m03:"Food",m03t:" — Fasting",m03d:"Fasting is not a diet. I fasted to heal an incurable autoimmune disease. Morning protocol: apple cider vinegar and salt.",
-  m03l1:"Eating window 13:00–19:00",m03l2:"Morning ACV & salt protocol",m03l3:"Autophagy & cellular renewal",m03l4:"Hormonal building blocks",m03l5:"Food as medicine",
-  m04:"Breath",m04t:" — Wim Hof",m04d:"Breath is the only autonomous system you can consciously control. I am a certified Wim Hof Instructor.",
-  m04l1:"Wim Hof Method complete",m04l2:"Inflammation reduction",m04l3:"CO₂ tolerance & performance",m04l4:"Endogenous DMT",m04l5:"Daily protocol",
-  m05:"Temperature",m05t:" — Ice Bath",m05d:"Cold exposure triggers a 200–300% increase in noradrenaline and raises testosterone.",
-  m05l1:"Cold bath protocol",m05l2:"Noradrenaline & testosterone",m05l3:"Mental strength",m05l4:"Temperature contrast",m05l5:"Daily non-negotiable",
-  pn2:"Understanding the Mind",ps2:"5 Modules — Mind ≠ Brain",
-  m06:"Sexual Control",m06t:" — The Protocol Nobody Talks About",m06d:"The pelvic floor is the most important muscle in male sexual function. Most men have never deliberately trained it.",
-  m06l1:"Kegel protocol — every 2nd day",m06l2:"Physical development",m06l3:"Ejaculatory control",m06l4:"Non-ejaculatory orgasm",m06l5:"PUR KOK & beef tallow",
-  m07:"Dopamine System",m07t:" — Reset & Control",m07d:"Pornography is not a sexual outlet. It is a dopamine delivery system — more damaging to your brain than alcohol.",
-  m07l1:"How dopamine works",m07l2:"Pornography & brain rewiring",m07l3:"The dopamine reset",m07l4:"Low-dopamine phases",m07l5:"Recalibrating reward",
-  m08:"Impulse Awareness",m08t:" — Food, Sex, Relationships",m08d:"Before you can control an impulse, you have to see it.",
-  m08l1:"Impulse before it acts",m08l2:"Hunger vs habit vs emotion",m08l3:"Sexual energy as resource",m08l4:"Social triggers",m08l5:"Stimulus & response gap",
-  m09:"Attention Control",m09t:" — Social Media, Sex",m09d:"Attention is your most valuable resource. Social media is engineered like slot machines.",
-  m09l1:"Attention as scarce resource",m09l2:"Screen time rules",m09l3:"Deep work protocol",m09l4:"Sexual attention & focus",m09l5:"Environment as tool",
-  m10:"Identity Architecture",m10t:" — Who I Am",m10d:'You do not act according to your goals. You act according to your identity.',
-  m10l1:"Identity vs goals",m10l2:"Values as compass",m10l3:"The story you tell yourself",m10l4:"Roles & masks",m10l5:"Who you are when alone",
-  pn3:"Responsibility",ps3:"5 Modules — The Legacy of a Man",
-  m11:"Self Responsibility",m11t:" — Body, Respect",m11d:"No one is coming. You are your own rescue.",
-  m11l1:"Radical ownership",m11l2:"Leaving the victim role",m11l3:"Respect starts with you",m11l4:"Promises to yourself",m11l5:"Your body as business card",
-  m12:"Principles",m12t:" — Red Flags, No-Goes",m12d:"A man without principles is a man without a spine.",
-  m12l1:"Core values written down",m12l2:"Boundaries that hold",m12l3:"Red flags early",m12l4:"Non-negotiables",m12l5:"Limits without aggression",
-  m13:"Relationship Leadership",m13t:" — The Man Leads",m13d:"Leadership does not mean control. It means stability.",
-  m13l1:"What leadership means",m13l2:"Stability as foundation",m13l3:"Without power struggles",m13l4:"Attraction through presence",m13l5:"When leadership fails",
-  m14:"Trust Economy",m14t:" — How Trust Is Built",m14d:"Trust is the hardest currency. Earned, not demanded.",
-  m14l1:"Trust as daily practice",m14l2:"Consistency over time",m14l3:"Trust in yourself",m14l4:"After betrayal",m14l5:"Economy of reputation",
-  m15:"Legacy Thinking",m15t:" — Find Your Legacy",m15d:"What remains when you are gone? The mark you left in other people.",
-  m15l1:"Legacy as daily compass",m15l2:"What actually counts",m15l3:"Mark in people not things",m15l4:"From taking to giving",m15l5:"Your life as message",
-  covers:"Covers",sci:"SCIENCE",
-  c_tag:"Your blueprint is waiting",c_h1:"No one has",c_h2:"your answers.",c_sub:"But the right questions reveal them.",c_btn:"Build My Blueprint →",
-  paul_tag:"The man behind the system",paul_q:"I became the brother I never had. This is what I would have told myself at 18.",
-  paul_p1:"I did not build this system from books. I lived it. Healed an incurable autoimmune disease through fasting and cold. Rebuilt testosterone through nutrition. Lost a fortune and rebuilt it.",
-  paul_p2:"Certified Wim Hof Instructor. Architect. Entrepreneur. Every layer supports the next. Nothing is decoration. Everything is load-bearing.",
-  n_tag:"Before we begin",n_h:"What is your first name?",n_hint:"Your blueprint will be written for you personally.",n_ph:"Your name",n_btn:"Begin the Analysis →",
-  of:"of",yes:"Yes",no:"No",back:"← Back",
-  g_h:"Building your blueprint.",g_s:"Analysing your answers. Writing your plan.",
-  gs1:"Calculating scores",gs2:"Identifying critical areas",gs3:"Building 90-day protocol",gs4:"Writing in Paul's voice",gs5:"Finalising blueprint",
-  r_eye:"PUR Method · Personal Blueprint",r_h:"Your",r_he:"blueprint.",
-  r_for:"Built for {n}. Based on your honest answers.",
-  dl_h:"Download your",dl_he:"blueprint.",dl_s:"Your personal plan. Print it. Live it.",dl_btn:"↓ Download PDF",restart:"Start over",
-  blocks:["Sexuality","Body","Mind","Identity"],
-  bp_tags:["Identity","Core Insight","Sexual Control","Physical Control","Mind & Dopamine","Responsibility","Non-Negotiables","90-Day Focus","From Paul PUR"],
-  bp_titles:["Who You Are Becoming","What Your Answers Reveal","Your Sexual Protocol","Your Daily Physical Protocol","Your Mental Protocol","Your Actions This Week","Your Three Daily Non-Negotiables","The Next 90 Days","A Message For You"],
-  qs:[
-    "This week I masturbated to pornography.",
-    "I watch pornography because it is my right and nothing is missing in my life because of it.",
-    "After masturbating I feel better for a moment — then empty and without drive.",
-    "I think of my penis only when I use it — not as a trainable part of my body.",
-    "I do not know whether I have a strong morning erection — I do not pay attention to it.",
-    "My sexual energy goes into pornography and masturbation — not into real connection.",
-    "I have never consciously trained my pelvic floor muscle.",
-    "I appear controlled on the outside — but no one knows what I actually do in the evenings.",
-    "I am satisfied with my sex life — but only because I do not know what is actually possible.",
-    "If I am honest — my sexuality runs on autopilot and I have no control over it.",
-    "I will start training next week — I just need the right moment.",
-    "I train regularly — but I no longer know why I actually do it.",
-    "I tell myself my body is still okay for my age.",
-    "I am satisfied with my body — but I am not living my full potential.",
-    "I know what I should eat — I just do not do it.",
-    "I eat a lot in the evenings because I worked hard all day and I deserve it.",
-    "I reach for food when I am stressed — and I find that okay.",
-    "I start the day with coffee — without it I would not be functional.",
-    "I shower warm because cold water is uncomfortable and I do not need that.",
-    "I breathe shallowly — I notice it sometimes but it does not really bother me.",
-    "I have never consciously worked with my breath.",
-    "If I am honest — my body no longer feels like mine.",
-    "I check my phone first thing in the morning because I might miss something.",
-    "I scroll in the evenings because I want to switch off — and I need that after a day like this.",
-    "I drink alcohol because I have earned it and it helps me to wind down.",
-    "I watch series or videos until I fall asleep — that is my relaxation.",
-    "After social media I rarely feel better than before — but I do it anyway.",
-    "Without a screen I do not know what to do with myself.",
-    "I start things and rarely finish them.",
-    "My attention is often interrupted by sexual thoughts or images.",
-    "In the evenings I often do not know what I actually achieved — even though I was busy all day.",
-    "Today I postponed something important even though I had time.",
-    "I have everything I wanted — and still something is missing that I cannot name.",
-    "I feel internally numb — not unhappy but not really alive either.",
-    "If I am honest — I am dependent on things that do not do me good and I know it.",
-    "I no longer know who I am when no one is watching.",
-    "I function well on the outside — but inside something is running on autopilot that I did not choose.",
-    "I adapt to what others expect of me — even when it does not fit me.",
-    "I swallow what bothers me because peace is more important than honesty.",
-    "In my relationship the mood of my partner determines how my day goes.",
-    "I avoid difficult conversations because what comes after matters more than the truth right now.",
-    "I have boundaries — but when someone really pushes I give in.",
-    "I say yes when I mean no — because I do not want to be seen as difficult.",
-    "I have made promises to myself that I have never kept.",
-    "I tell myself I have no time — but I find time for distraction.",
-    "I appear disciplined — but there are areas of my life that no one sees and that I do not control.",
-    "I have achieved everything I wanted — but the man I actually wanted to be I am not living.",
-    "There is a version of me I would like to be — I am not living it.",
-    "If I met my 18-year-old self he would be proud of the man I have become.",
-    "If I died tomorrow I would be satisfied with what I leave behind.",
-    "If I am honest — I have stopped growing."
-  ],
-  qb:["Sexuality","Sexuality","Sexuality","Sexuality","Sexuality","Sexuality","Sexuality","Sexuality","Sexuality","Sexuality","Body","Body","Body","Body","Body","Body","Body","Body","Body","Body","Body","Body","Mind","Mind","Mind","Mind","Mind","Mind","Mind","Mind","Mind","Mind","Mind","Mind","Mind","Identity","Identity","Identity","Identity","Identity","Identity","Identity","Identity","Identity","Identity","Identity","Identity","Identity","Identity","Identity","Identity"]
-},
-de:{
-  h1a:"Ich wurde der Bruder,",h1b:"den ich nie hatte.",h1s:"Alles auf dieser Seite ist das, was ich meinem jüngeren Ich gesagt hätte.",
-  begin:"Beginnen",a_tag:"Was das ist",a_h1:"Kein Programm.",a_h2:"Ein Korridor.",
-  a_body:"Das Problem jedes Mannes ist anders. Die Lösung jedes Mannes ist anders. Beantworte die Fragen ehrlich. Bekomme den Blueprint aus deinen Antworten. Befolge ihn 90 Tage lang. Werde der Mann, der du sein solltest.",
-  s1:"Fragen — entwickelt um aufzudecken, nicht zu urteilen",s2:"Module über 3 Säulen",s3:"Tage um ein anderer Mann zu werden",
-  p_tag:"Die drei Säulen",p_h1:"Alles hängt zusammen.",p_h2:"Alles potenziert sich.",
-  pi:"Säule I",pt1:"Körperliche Kontrolle",pd1:"Der Körper ist das Fundament. Schlaf, Bewegung, Ernährung, Atem, Temperatur — fünf Module die deine biologische Basis aufbauen.",
-  pii:"Säule II",pt2:"Den Geist verstehen",pd2:"Geist ≠ Gehirn. Fünf Module um dein System neu zu verdrahten.",
-  piii:"Säule III",pt3:"Verantwortung",pd3:"Niemand kommt. Fünf Module darüber was einen Mann definiert — für ein Leben.",
-  m_tag:"Die fünfzehn Module",m_h1:"Jedes Modul.",m_h2:"Ein Protokoll.",m_sub:"Öffne jedes Modul. Lies das Prinzip.",
-  pn1:"Körperliche Kontrolle",ps1:"5 Module — Der Körper als Fundament",
-  m01:"Schlaf",m01t:" — Noch nicht gelöst",m01d:"Schlaf ist keine Pause. Es ist die aktivste Phase deiner Biologie. Testosteron wird im Tiefschlaf produziert.",
-  m01l1:"Zirkadianer Rhythmus & Licht",m01l2:"Cortisol & Testosteron-Timing",m01l3:"Non-Negotiables vor dem Schlafen",m01l4:"Die Essens-Cutoff-Regel",m01l5:"Die Signale deines Körpers lesen",
-  m02:"Bewegung",m02t:" — Calisthenics",m02d:"Kein Gym. Keine Geräte. Nur dein Körper gegen die Schwerkraft. Die PUR Leiter baut die Gewohnheit vor der Leistung.",
-  m02l1:"Das PUR Leiter-System",m02l2:"Pull-ups, Dips, Pistol Squats",m02l3:"Outdoor-Training als Ritual",m02l4:"Gewohnheit vor Leistung",m02l5:"90 Tage um sie zu verankern",
-  m03:"Ernährung",m03t:" — Fasten",m03d:"Fasten ist keine Diät. Ich fastete um eine unheilbare Autoimmunerkrankung zu heilen. Morgenprotokoll: Apfelessig und Himalayasalz.",
-  m03l1:"Essensfenster 13:00–19:00",m03l2:"Morgen-ACV & Salzprotokoll",m03l3:"Autophagie & Zellerneuerung",m03l4:"Hormonelle Bausteine",m03l5:"Nahrung als Medizin",
-  m04:"Atem",m04t:" — Wim Hof",m04d:"Atem ist das einzige autonome System das du bewusst kontrollieren kannst. Ich bin zertifizierter Wim Hof Instructor.",
-  m04l1:"Wim Hof Methode komplett",m04l2:"Entzündungsreduktion",m04l3:"CO₂-Toleranz & Leistung",m04l4:"Endogenes DMT",m04l5:"Tägliches Protokoll",
-  m05:"Temperatur",m05t:" — Eisbad",m05d:"Kälteexposition löst einen Anstieg von Noradrenalin um 200–300% aus und erhöht Testosteron.",
-  m05l1:"Kältebad-Protokoll",m05l2:"Noradrenalin & Testosteron",m05l3:"Mentale Stärke",m05l4:"Temperaturwechsel",m05l5:"Tägliches Non-Negotiable",
-  pn2:"Den Geist verstehen",ps2:"5 Module — Geist ≠ Gehirn",
-  m06:"Sexualkontrolle",m06t:" — Das Protokoll über das niemand spricht",m06d:"Der Beckenboden ist der wichtigste Muskel der männlichen Sexualfunktion. Die meisten Männer haben ihn nie bewusst trainiert.",
-  m06l1:"Kegel-Protokoll — jeden zweiten Tag",m06l2:"Physisches Entwicklungsprotokoll",m06l3:"Ejakulationskontrolltechnik",m06l4:"Non-ejakulatorischer Orgasmus",m06l5:"PUR KOK & Rindertalg",
-  m07:"Dopaminsystem",m07t:" — Reset & Kontrolle",m07d:"Pornografie ist kein sexuelles Ventil. Es ist ein Dopamin-Liefersystem — schädlicher für dein Gehirn als Alkohol.",
-  m07l1:"Wie Dopamin wirklich funktioniert",m07l2:"Pornografie & Gehirnumverdrahtung",m07l3:"Der Dopamin-Reset",m07l4:"Low-Dopamin-Phasen",m07l5:"Belohnungssystem neu kalibrieren",
-  m08:"Impulsbewusstsein",m08t:" — Essen, Sex, Beziehungen",m08d:"Bevor du einen Impuls kontrollieren kannst musst du ihn sehen.",
-  m08l1:"Den Impuls bevor er handelt",m08l2:"Hunger vs Gewohnheit vs Emotion",m08l3:"Sexuelle Energie als Ressource",m08l4:"Soziale Trigger",m08l5:"Reiz-Reaktions-Lücke",
-  m09:"Aufmerksamkeitskontrolle",m09t:" — Social Media, Sex",m09d:"Aufmerksamkeit ist deine wertvollste Ressource. Social Media ist wie Spielautomaten konstruiert.",
-  m09l1:"Aufmerksamkeit als knappe Ressource",m09l2:"Bildschirmzeit-Regeln",m09l3:"Deep-Work-Protokoll",m09l4:"Sexuelle Aufmerksamkeit & Fokus",m09l5:"Umgebung als Werkzeug",
-  m10:"Identitätsarchitektur",m10t:" — Wer ich bin",m10d:"Du handelst nicht nach deinen Zielen. Du handelst nach deiner Identität.",
-  m10l1:"Identität vs Ziele",m10l2:"Werte als Kompass",m10l3:"Die Geschichte die du dir erzählst",m10l4:"Rollen & Masken",m10l5:"Wer du bist wenn du allein bist",
-  pn3:"Verantwortung",ps3:"5 Module — Das Erbe eines Mannes",
-  m11:"Selbstverantwortung",m11t:" — Körper, Respekt",m11d:"Niemand kommt. Du bist deine eigene Rettung.",
-  m11l1:"Radikale Eigenverantwortung",m11l2:"Die Opferrolle verlassen",m11l3:"Respekt beginnt mit dir",m11l4:"Versprechen an dich selbst",m11l5:"Dein Körper als Visitenkarte",
-  m12:"Prinzipien",m12t:" — Red Flags, No-Goes",m12d:"Ein Mann ohne Prinzipien ist ein Mann ohne Rückgrat.",
-  m12l1:"Kernwerte schriftlich festhalten",m12l2:"Grenzen die halten",m12l3:"Red Flags früh erkennen",m12l4:"Non-Negotiables",m12l5:"Grenzen ohne Aggression",
-  m13:"Beziehungsführung",m13t:" — Der Mann führt",m13d:"Führung bedeutet keine Kontrolle. Es bedeutet Stabilität.",
-  m13l1:"Was Führung bedeutet",m13l2:"Stabilität als Fundament",m13l3:"Ohne Machtkämpfe",m13l4:"Anziehung durch Präsenz",m13l5:"Wenn Führung versagt",
-  m14:"Vertrauensökonomie",m14t:" — Wie Vertrauen entsteht",m14d:"Vertrauen ist die härteste Währung. Verdient, nicht gefordert.",
-  m14l1:"Vertrauen als tägliche Praxis",m14l2:"Konsistenz über Zeit",m14l3:"Vertrauen in sich selbst",m14l4:"Nach dem Verrat",m14l5:"Ökonomie der Reputation",
-  m15:"Vermächtnisdenken",m15t:" — Finde dein Erbe",m15d:"Was bleibt wenn du gehst? Der Abdruck den du in anderen Menschen hinterlassen hast.",
-  m15l1:"Erbe als täglicher Kompass",m15l2:"Was wirklich zählt",m15l3:"Abdruck in Menschen nicht Dingen",m15l4:"Vom Nehmen zum Geben",m15l5:"Dein Leben als Botschaft",
-  covers:"Inhalt",sci:"WISSENSCHAFT",
-  c_tag:"Dein Blueprint wartet",c_h1:"Niemand hat",c_h2:"deine Antworten.",c_sub:"Aber die richtigen Fragen enthüllen sie.",c_btn:"Meinen Blueprint erstellen →",
-  paul_tag:"Der Mann hinter dem System",paul_q:"Ich wurde der Bruder, den ich nie hatte. Das ist was ich mir mit 18 gesagt hätte.",
-  paul_p1:"Ich habe dieses System nicht aus Büchern gebaut. Ich habe es gelebt. Eine unheilbare Autoimmunerkrankung durch Fasten und Kälte geheilt. Testosteron durch Ernährung wiederaufgebaut. Ein Vermögen verloren und neu aufgebaut.",
-  paul_p2:"Zertifizierter Wim Hof Instructor. Architekt. Unternehmer. Jede Schicht trägt die nächste. Nichts ist Dekoration. Alles ist tragend.",
-  n_tag:"Bevor wir beginnen",n_h:"Wie ist dein Vorname?",n_hint:"Dein Blueprint wird persönlich für dich geschrieben.",n_ph:"Dein Name",n_btn:"Analyse beginnen →",
-  of:"von",yes:"Ja",no:"Nein",back:"← Zurück",
-  g_h:"Dein Blueprint wird erstellt.",g_s:"Deine Antworten werden analysiert. Dein Plan wird geschrieben.",
-  gs1:"Scores werden berechnet",gs2:"Kritische Bereiche identifiziert",gs3:"90-Tage-Protokoll wird erstellt",gs4:"In Pauls Stimme geschrieben",gs5:"Blueprint wird fertiggestellt",
-  r_eye:"PUR Method · Persönlicher Blueprint",r_h:"Dein",r_he:"Blueprint.",
-  r_for:"Erstellt für {n}. Basierend auf deinen ehrlichen Antworten.",
-  dl_h:"Lade deinen",dl_he:"Blueprint herunter.",dl_s:"Dein persönlicher Plan. Ausdrucken. Leben.",dl_btn:"↓ PDF herunterladen",restart:"Neu starten",
-  blocks:["Sexualität","Körper","Geist","Identität"],
-  bp_tags:["Identität","Kernerkenntnisse","Sexualkontrolle","Körperliche Kontrolle","Geist & Dopamin","Verantwortung","Non-Negotiables","90-Tage-Fokus","Von Paul PUR"],
-  bp_titles:["Wer du wirst","Was deine Antworten zeigen","Dein Sexualprotokoll","Dein tägliches körperliches Protokoll","Dein mentales Protokoll","Deine Aktionen diese Woche","Deine drei täglichen Non-Negotiables","Die nächsten 90 Tage","Eine Nachricht für dich"],
-  qs:[
-    "Diese Woche habe ich auf einen Porno masturbiert.",
-    "Ich schaue Pornos weil es mein Recht ist und mir dabei nichts fehlt.",
-    "Nach dem Masturbieren fühle ich mich kurz besser — dann leer und antriebslos.",
-    "Ich denke an meinen Penis nur wenn ich ihn benutze — nicht als trainierbaren Körperteil.",
-    "Ich weiß nicht ob ich jeden Morgen eine Erektion habe — ich achte nicht darauf.",
-    "Meine sexuelle Energie landet in Pornos oder Masturbation — nicht in echter Verbindung.",
-    "Ich habe meinen Beckenboden noch nie bewusst trainiert.",
-    "Nach außen wirke ich kontrolliert — aber niemand weiß was ich abends wirklich tue.",
-    "Ich bin zufrieden mit meinem Sexualleben — aber nur weil ich nicht weiß was wirklich möglich ist.",
-    "Wenn ich ehrlich bin — meine Sexualität läuft auf Autopilot und ich habe keine Kontrolle.",
-    "Ich fange nächste Woche mit dem Training an — ich brauche nur den richtigen Moment.",
-    "Ich trainiere regelmäßig — aber ich weiß nicht mehr warum ich es eigentlich tue.",
-    "Ich sage mir dass mein Körper für mein Alter noch okay ist.",
-    "Ich bin zufrieden mit meinem Körper — aber mein volles Potenzial lebe ich nicht.",
-    "Ich weiß was ich essen sollte — ich tue es nur nicht.",
-    "Ich esse abends viel weil ich hart gearbeitet habe und das verdient habe.",
-    "Ich greife zu Essen wenn ich gestresst bin — und ich finde das okay.",
-    "Ich starte den Tag mit Kaffee — ohne ihn wäre ich nicht funktionsfähig.",
-    "Ich dusche warm weil kaltes Wasser unangenehm ist und ich das nicht brauche.",
-    "Ich atme flach — ich merke es manchmal aber es stört mich nicht wirklich.",
-    "Ich habe noch nie bewusst mit meinem Atem gearbeitet.",
-    "Wenn ich ehrlich bin — mein Körper fühlt sich nicht mehr wie meiner an.",
-    "Ich checke mein Handy als erstes am Morgen weil ich sonst etwas verpasse.",
-    "Ich scrolle abends weil ich abschalten will — das brauche ich nach so einem Tag.",
-    "Ich trinke Alkohol weil ich es verdient habe und weil es mir hilft abzuschalten.",
-    "Ich schaue Serien bis ich einschlafe — das ist meine Entspannung.",
-    "Nach Social Media fühle ich mich selten besser — aber ich mache es trotzdem.",
-    "Ohne Bildschirm weiß ich nicht was ich mit mir anfangen soll.",
-    "Ich beginne Dinge und bringe sie selten zu Ende.",
-    "Meine Aufmerksamkeit wird oft von sexuellen Gedanken oder Bildern unterbrochen.",
-    "Abends weiß ich oft nicht was ich wirklich geleistet habe — obwohl ich beschäftigt war.",
-    "Heute habe ich etwas Wichtiges aufgeschoben obwohl ich Zeit hatte.",
-    "Ich habe alles was ich wollte — und trotzdem fehlt mir etwas das ich nicht benennen kann.",
-    "Ich fühle mich innerlich taub — nicht unglücklich aber auch nicht wirklich lebendig.",
-    "Wenn ich ehrlich bin — ich bin von Dingen abhängig die mir nicht guttun und ich weiß es.",
-    "Ich weiß nicht mehr wer ich bin wenn niemand zuschaut.",
-    "Nach außen funktioniere ich gut — aber innen läuft etwas auf Autopilot das ich nicht gewählt habe.",
-    "Ich passe mich an was andere erwarten — auch wenn es nicht zu mir passt.",
-    "Ich schlucke runter was mich stört weil Frieden wichtiger ist als Wahrheit.",
-    "In meiner Beziehung bestimmt die Stimmung meiner Partnerin wie mein Tag wird.",
-    "Ich vermeide schwierige Gespräche weil das Danach wichtiger ist als die Wahrheit jetzt.",
-    "Ich habe Grenzen — aber wenn jemand wirklich drückt gebe ich nach.",
-    "Ich sage Ja obwohl ich Nein meine — weil ich nicht als schwierig gelten will.",
-    "Ich habe Versprechen an mich selbst gemacht die ich nie eingehalten habe.",
-    "Ich sage mir dass ich keine Zeit habe — aber ich finde Zeit für Ablenkung.",
-    "Ich wirke diszipliniert — aber es gibt Bereiche die niemand sieht und die ich nicht kontrolliere.",
-    "Ich habe alles erreicht was ich wollte — aber den Mann den ich sein wollte lebe ich nicht.",
-    "Es gibt eine Version von mir die ich gerne wäre — ich lebe sie nicht.",
-    "Wenn ich meinem 18-jährigen Ich begegnen würde wäre er stolz auf den Mann den ich geworden bin.",
-    "Wenn ich morgen sterben würde wäre ich zufrieden mit dem was ich hinterlasse.",
-    "Wenn ich ehrlich bin — ich habe aufgehört zu wachsen."
-  ],
-  qb:["Sexualität","Sexualität","Sexualität","Sexualität","Sexualität","Sexualität","Sexualität","Sexualität","Sexualität","Sexualität","Körper","Körper","Körper","Körper","Körper","Körper","Körper","Körper","Körper","Körper","Körper","Körper","Geist","Geist","Geist","Geist","Geist","Geist","Geist","Geist","Geist","Geist","Geist","Geist","Geist","Identität","Identität","Identität","Identität","Identität","Identität","Identität","Identität","Identität","Identität","Identität","Identität","Identität","Identität","Identität","Identität"]
-},
-fr:{h1a:"Je suis devenu le frère",h1b:"que je n'ai jamais eu.",h1s:"Tout ce qui est sur cette page est ce que j'aurais dit à mon moi plus jeune.",begin:"Commencer",a_tag:"Ce que c'est",a_h1:"Pas un programme.",a_h2:"Un corridor.",a_body:"Le problème de chaque homme est différent. La solution de chaque homme est différente. Réponds honnêtement. Reçois ton blueprint. Suis-le 90 jours. Deviens l'homme que tu étais censé être.",s1:"Questions conçues pour révéler, pas pour juger",s2:"Modules sur 3 piliers",s3:"Jours pour devenir un homme différent",p_tag:"Les trois piliers",p_h1:"Tout est connecté.",p_h2:"Tout se compose.",pi:"Pilier I",pt1:"Contrôle Physique",pd1:"Le corps est la base. Cinq modules qui construisent ta base biologique.",pii:"Pilier II",pt2:"Comprendre l'Esprit",pd2:"Esprit ≠ Cerveau. Cinq modules pour recâbler ton système.",piii:"Pilier III",pt3:"Responsabilité",pd3:"Personne ne vient. Cinq modules sur ce qui définit un homme.",m_tag:"Les quinze modules",m_h1:"Chaque module.",m_h2:"Un protocole.",m_sub:"Ouvre chaque module. Lis le principe.",pn1:"Contrôle Physique",ps1:"5 Modules — Le Corps comme Fondation",m01:"Sommeil",m01t:" — Pas Encore Résolu",m01d:"Le sommeil n'est pas une pause. C'est la phase la plus active de ta biologie.",m01l1:"Rythme circadien & lumière",m01l2:"Timing cortisol & testostérone",m01l3:"Non-négociables avant le sommeil",m01l4:"La règle de coupure alimentaire",m01l5:"Lire les signaux du corps",m02:"Mouvement",m02t:" — Callisthénie",m02d:"Pas de gym. Pas d'équipement. L'Échelle PUR construit l'habitude avant la performance.",m02l1:"Le système d'Échelle PUR",m02l2:"Tractions, dips, pistol squats",m02l3:"Entraînement outdoor comme rituel",m02l4:"Habitude avant performance",m02l5:"90 jours pour l'ancrer",m03:"Alimentation",m03t:" — Jeûne",m03d:"Le jeûne n'est pas un régime. J'ai jeûné pour guérir une maladie auto-immune incurable.",m03l1:"Fenêtre alimentaire 13h–19h",m03l2:"Protocole ACV & sel matinal",m03l3:"Autophagie & renouvellement cellulaire",m03l4:"Précurseurs hormonaux",m03l5:"L'alimentation comme médecine",m04:"Respiration",m04t:" — Wim Hof",m04d:"La respiration est le seul système autonome que tu peux contrôler consciemment.",m04l1:"Méthode Wim Hof complète",m04l2:"Réduction de l'inflammation",m04l3:"Tolérance CO₂ & performance",m04l4:"DMT endogène",m04l5:"Protocole quotidien",m05:"Température",m05t:" — Bain de Glace",m05d:"L'exposition au froid déclenche une augmentation de 200–300% de la noradrénaline.",m05l1:"Protocole bain froid",m05l2:"Noradrénaline & testostérone",m05l3:"Force mentale",m05l4:"Contraste de température",m05l5:"Non-négociable quotidien",pn2:"Comprendre l'Esprit",ps2:"5 Modules — Esprit ≠ Cerveau",m06:"Contrôle Sexuel",m06t:" — Le Protocole Dont Personne Ne Parle",m06d:"Le plancher pelvien est le muscle le plus important de la fonction sexuelle masculine.",m06l1:"Protocole Kegel — un jour sur deux",m06l2:"Développement physique",m06l3:"Contrôle éjaculatoire",m06l4:"Orgasme non-éjaculatoire",m06l5:"PUR KOK & suif de bœuf",m07:"Système Dopaminergique",m07t:" — Réinitialisation & Contrôle",m07d:"La pornographie n'est pas un exutoire sexuel. C'est un système de livraison de dopamine.",m07l1:"Comment la dopamine fonctionne",m07l2:"Pornographie & recâblage cérébral",m07l3:"La réinitialisation dopaminergique",m07l4:"Phases de faible dopamine",m07l5:"Recalibrer la récompense",m08:"Conscience des Impulsions",m08t:" — Nourriture, Sexe, Relations",m08d:"Avant de pouvoir contrôler une impulsion, tu dois la voir.",m08l1:"L'impulsion avant qu'elle agisse",m08l2:"Faim vs habitude vs émotion",m08l3:"L'énergie sexuelle comme ressource",m08l4:"Déclencheurs sociaux",m08l5:"L'écart stimulus-réponse",m09:"Contrôle de l'Attention",m09t:" — Réseaux Sociaux, Sexe",m09d:"L'attention est ta ressource la plus précieuse.",m09l1:"L'attention comme ressource rare",m09l2:"Règles de temps d'écran",m09l3:"Protocole de travail profond",m09l4:"Attention sexuelle & focus",m09l5:"L'environnement comme outil",m10:"Architecture de l'Identité",m10t:" — Qui Je Suis",m10d:"Tu n'agis pas selon tes objectifs. Tu agis selon ton identité.",m10l1:"Identité vs objectifs",m10l2:"Les valeurs comme boussole",m10l3:"L'histoire que tu te racontes",m10l4:"Rôles & masques",m10l5:"Qui tu es quand tu es seul",pn3:"Responsabilité",ps3:"5 Modules — L'Héritage d'un Homme",m11:"Auto-Responsabilité",m11t:" — Corps, Respect",m11d:"Personne ne vient. Tu es ton propre sauveur.",m11l1:"Responsabilité radicale",m11l2:"Quitter le rôle de victime",m11l3:"Le respect commence par toi",m11l4:"Les promesses à toi-même",m11l5:"Ton corps comme carte de visite",m12:"Principes",m12t:" — Red Flags, Non-Négociables",m12d:"Un homme sans principes est un homme sans colonne vertébrale.",m12l1:"Valeurs fondamentales écrites",m12l2:"Limites qui tiennent",m12l3:"Red flags tôt",m12l4:"Non-négociables",m12l5:"Limites sans agression",m13:"Leadership Relationnel",m13t:" — L'Homme Mène",m13d:"Le leadership ne signifie pas contrôle. Il signifie stabilité.",m13l1:"Ce que signifie le leadership",m13l2:"La stabilité comme fondation",m13l3:"Sans luttes de pouvoir",m13l4:"Attraction par la présence",m13l5:"Quand le leadership échoue",m14:"Économie de Confiance",m14t:" — Comment la Confiance se Construit",m14d:"La confiance est la monnaie la plus dure.",m14l1:"La confiance comme pratique quotidienne",m14l2:"La cohérence dans le temps",m14l3:"Confiance en soi",m14l4:"Après la trahison",m14l5:"L'économie de la réputation",m15:"Pensée Légacy",m15t:" — Trouve Ton Héritage",m15d:"Qu'est-ce qui reste quand tu es parti ?",m15l1:"L'héritage comme boussole quotidienne",m15l2:"Ce qui compte vraiment",m15l3:"La marque dans les personnes",m15l4:"Du prendre au donner",m15l5:"Ta vie comme message",covers:"Contenu",sci:"SCIENCE",c_tag:"Ton blueprint t'attend",c_h1:"Personne n'a",c_h2:"tes réponses.",c_sub:"Mais les bonnes questions les révèlent.",c_btn:"Créer Mon Blueprint →",paul_tag:"L'homme derrière le système",paul_q:"Je suis devenu le frère que je n'ai jamais eu.",paul_p1:"Je n'ai pas construit ce système à partir de livres. Je l'ai vécu.",paul_p2:"Instructeur Wim Hof certifié. Architecte. Entrepreneur.",n_tag:"Avant de commencer",n_h:"Quel est ton prénom ?",n_hint:"Ton blueprint sera écrit personnellement pour toi.",n_ph:"Ton prénom",n_btn:"Commencer l'Analyse →",of:"sur",yes:"Oui",no:"Non",back:"← Retour",g_h:"Construction de ton blueprint.",g_s:"Analyse de tes réponses.",gs1:"Calcul des scores",gs2:"Zones critiques identifiées",gs3:"Protocole 90 jours",gs4:"Voix de Paul",gs5:"Finalisation",r_eye:"PUR Method · Blueprint Personnel",r_h:"Ton",r_he:"blueprint.",r_for:"Créé pour {n}.",dl_h:"Télécharge ton",dl_he:"blueprint.",dl_s:"Ton plan personnel. Imprime-le. Vis-le.",dl_btn:"↓ Télécharger PDF",restart:"Recommencer",
-  blocks:["Sexualité","Corps","Esprit","Identité"],
-  bp_tags:["Identité","Insight Principal","Contrôle Sexuel","Contrôle Physique","Esprit & Dopamine","Responsabilité","Non-Négociables","Focus 90 Jours","De Paul PUR"],
-  bp_titles:["Qui Tu Deviens","Ce que Révèlent Tes Réponses","Ton Protocole Sexuel","Ton Protocole Physique Quotidien","Ton Protocole Mental","Tes Actions Cette Semaine","Tes Trois Non-Négociables Quotidiens","Les 90 Prochains Jours","Un Message Pour Toi"],
-  qs:["Cette semaine j'ai masturbé en regardant un porno.","Je regarde de la pornographie parce que c'est mon droit.","Après m'être masturbé je me sens mieux un moment — puis vide.","Je pense à mon pénis seulement quand je l'utilise.","Je ne sais pas si j'ai une érection matinale — je n'y fais pas attention.","Mon énergie sexuelle va dans la pornographie — pas dans une vraie connexion.","Je n'ai jamais entraîné mon plancher pelvien.","J'ai l'air contrôlé à l'extérieur — mais personne ne sait ce que je fais le soir.","Je suis satisfait de ma vie sexuelle — mais seulement parce que je ne sais pas ce qui est possible.","Si je suis honnête — ma sexualité tourne en pilote automatique.","Je vais commencer à m'entraîner la semaine prochaine.","Je m'entraîne régulièrement — mais je ne sais plus pourquoi.","Je me dis que mon corps est encore correct pour mon âge.","Je suis satisfait de mon corps — mais je ne vis pas mon plein potentiel.","Je sais ce que je devrais manger — je ne le fais pas.","Je mange beaucoup le soir parce que je le mérite.","Je me tourne vers la nourriture quand je suis stressé.","Je commence la journée avec du café.","Je prends des douches chaudes — l'eau froide est inconfortable.","Je respire superficiellement — ça ne me dérange pas vraiment.","Je n'ai jamais travaillé avec ma respiration.","Si je suis honnête — mon corps ne se sent plus comme le mien.","Je vérifie mon téléphone en premier le matin.","Je scrolle le soir pour décompresser.","Je bois de l'alcool parce que je l'ai mérité.","Je regarde des séries jusqu'à m'endormir.","Après les réseaux sociaux je me sens rarement mieux.","Sans écran je ne sais pas quoi faire de moi-même.","Je commence des choses et les termine rarement.","Mon attention est souvent interrompue par des pensées sexuelles.","Le soir je ne sais pas ce que j'ai accompli.","Aujourd'hui j'ai reporté quelque chose d'important.","J'ai tout ce que je voulais — et pourtant il me manque quelque chose.","Je me sens intérieurement engourdi.","Si je suis honnête — je suis dépendant de choses qui ne me font pas de bien.","Je ne sais plus qui je suis quand personne ne me regarde.","Je fonctionne bien à l'extérieur — mais à l'intérieur c'est le pilote automatique.","Je m'adapte à ce que les autres attendent de moi.","J'avale ce qui me dérange parce que la paix est plus importante.","Dans ma relation l'humeur de ma partenaire détermine ma journée.","J'évite les conversations difficiles.","J'ai des limites — mais quand quelqu'un pousse je cède.","Je dis oui quand je veux dire non.","J'ai fait des promesses à moi-même que je n'ai jamais tenues.","Je me dis que je n'ai pas le temps — mais je trouve du temps pour me distraire.","J'ai l'air discipliné — mais il y a des domaines que personne ne voit.","J'ai accompli ce que je voulais — mais l'homme que je voulais être je ne le vis pas.","Il y a une version de moi que j'aimerais être — je ne la vis pas.","Si je rencontrais mon moi de 18 ans il serait fier de moi.","Si je mourais demain je serais satisfait de ce que je laisse.","Si je suis honnête — j'ai arrêté de grandir."],
-  qb:["Sexualité","Sexualité","Sexualité","Sexualité","Sexualité","Sexualité","Sexualité","Sexualité","Sexualité","Sexualité","Corps","Corps","Corps","Corps","Corps","Corps","Corps","Corps","Corps","Corps","Corps","Corps","Esprit","Esprit","Esprit","Esprit","Esprit","Esprit","Esprit","Esprit","Esprit","Esprit","Esprit","Esprit","Esprit","Identité","Identité","Identité","Identité","Identité","Identité","Identité","Identité","Identité","Identité","Identité","Identité","Identité","Identité","Identité","Identité"]
-},
-es:{h1a:"Me convertí en el hermano",h1b:"que nunca tuve.",h1s:"Todo lo que hay en esta página es lo que le habría dicho a mi yo más joven.",begin:"Comenzar",a_tag:"Qué es esto",a_h1:"No un programa.",a_h2:"Un corredor.",a_body:"El problema de cada hombre es diferente. La solución de cada hombre es diferente. Responde honestamente. Recibe tu blueprint. Síguelo 90 días. Conviértete en el hombre que debías ser.",s1:"Preguntas diseñadas para revelar, no para juzgar",s2:"Módulos en 3 pilares",s3:"Días para convertirte en un hombre diferente",p_tag:"Los tres pilares",p_h1:"Todo está conectado.",p_h2:"Todo se compone.",pi:"Pilar I",pt1:"Control Físico",pd1:"El cuerpo es la base. Cinco módulos que construyen tu base biológica.",pii:"Pilar II",pt2:"Entender la Mente",pd2:"Mente ≠ Cerebro. Cinco módulos para recablear tu sistema.",piii:"Pilar III",pt3:"Responsabilidad",pd3:"Nadie viene. Cinco módulos sobre lo que define a un hombre.",m_tag:"Los quince módulos",m_h1:"Cada módulo.",m_h2:"Un protocolo.",m_sub:"Abre cada módulo. Lee el principio.",pn1:"Control Físico",ps1:"5 Módulos — El Cuerpo como Fundación",m01:"Sueño",m01t:" — Aún No Resuelto",m01d:"El sueño no es una pausa. Es la fase más activa de tu biología.",m01l1:"Ritmo circadiano & luz",m01l2:"Timing cortisol & testosterona",m01l3:"No-negociables antes de dormir",m01l4:"La regla de corte alimenticio",m01l5:"Leer las señales del cuerpo",m02:"Movimiento",m02t:" — Calistenia",m02d:"Sin gimnasio. Sin equipo. La Escalera PUR construye el hábito antes del rendimiento.",m02l1:"El sistema de Escalera PUR",m02l2:"Dominadas, dips, sentadillas pistol",m02l3:"Entrenamiento outdoor como ritual",m02l4:"Hábito antes de rendimiento",m02l5:"90 días para anclarlo",m03:"Alimentación",m03t:" — Ayuno",m03d:"El ayuno no es una dieta. Ayuné para curar una enfermedad autoinmune incurable.",m03l1:"Ventana alimenticia 13:00–19:00",m03l2:"Protocolo matutino ACV & sal",m03l3:"Autofagia & renovación celular",m03l4:"Precursores hormonales",m03l5:"La alimentación como medicina",m04:"Respiración",m04t:" — Wim Hof",m04d:"La respiración es el único sistema autónomo que puedes controlar conscientemente.",m04l1:"Método Wim Hof completo",m04l2:"Reducción de inflamación",m04l3:"Tolerancia CO₂ & rendimiento",m04l4:"DMT endógeno",m04l5:"Protocolo diario",m05:"Temperatura",m05t:" — Baño de Hielo",m05d:"La exposición al frío desencadena un aumento del 200–300% en noradrenalina.",m05l1:"Protocolo baño frío",m05l2:"Noradrenalina & testosterona",m05l3:"Fortaleza mental",m05l4:"Contraste de temperatura",m05l5:"No-negociable diario",pn2:"Entender la Mente",ps2:"5 Módulos — Mente ≠ Cerebro",m06:"Control Sexual",m06t:" — El Protocolo Del Que Nadie Habla",m06d:"El suelo pélvico es el músculo más importante de la función sexual masculina.",m06l1:"Protocolo Kegel — cada dos días",m06l2:"Desarrollo físico",m06l3:"Control eyaculatorio",m06l4:"Orgasmo no-eyaculatorio",m06l5:"PUR KOK & sebo de res",m07:"Sistema de Dopamina",m07t:" — Reset & Control",m07d:"La pornografía no es un escape sexual. Es un sistema de entrega de dopamina.",m07l1:"Cómo funciona la dopamina",m07l2:"Pornografía & recableado cerebral",m07l3:"El reset de dopamina",m07l4:"Fases de baja dopamina",m07l5:"Recalibrar la recompensa",m08:"Conciencia de Impulsos",m08t:" — Comida, Sexo, Relaciones",m08d:"Antes de poder controlar un impulso, tienes que verlo.",m08l1:"El impulso antes de que actúe",m08l2:"Hambre vs hábito vs emoción",m08l3:"La energía sexual como recurso",m08l4:"Desencadenantes sociales",m08l5:"La brecha estímulo-respuesta",m09:"Control de la Atención",m09t:" — Redes Sociales, Sexo",m09d:"La atención es tu recurso más valioso.",m09l1:"La atención como recurso escaso",m09l2:"Reglas de tiempo de pantalla",m09l3:"Protocolo de trabajo profundo",m09l4:"Atención sexual & enfoque",m09l5:"El entorno como herramienta",m10:"Arquitectura de Identidad",m10t:" — Quién Soy",m10d:"No actúas según tus objetivos. Actúas según tu identidad.",m10l1:"Identidad vs objetivos",m10l2:"Los valores como brújula",m10l3:"La historia que te cuentas",m10l4:"Roles & máscaras",m10l5:"Quién eres cuando estás solo",pn3:"Responsabilidad",ps3:"5 Módulos — El Legado de un Hombre",m11:"Auto-Responsabilidad",m11t:" — Cuerpo, Respeto",m11d:"Nadie viene. Tú eres tu propio rescate.",m11l1:"Responsabilidad radical",m11l2:"Dejar el papel de víctima",m11l3:"El respeto empieza contigo",m11l4:"Promesas a ti mismo",m11l5:"Tu cuerpo como tarjeta de presentación",m12:"Principios",m12t:" — Red Flags, No-Goes",m12d:"Un hombre sin principios es un hombre sin columna vertebral.",m12l1:"Valores fundamentales escritos",m12l2:"Límites que se mantienen",m12l3:"Red flags temprano",m12l4:"No-negociables",m12l5:"Límites sin agresión",m13:"Liderazgo Relacional",m13t:" — El Hombre Lidera",m13d:"El liderazgo no significa control. Significa estabilidad.",m13l1:"Lo que significa el liderazgo",m13l2:"La estabilidad como fundación",m13l3:"Sin luchas de poder",m13l4:"Atracción a través de la presencia",m13l5:"Cuando el liderazgo falla",m14:"Economía de Confianza",m14t:" — Cómo se Construye la Confianza",m14d:"La confianza es la moneda más dura.",m14l1:"La confianza como práctica diaria",m14l2:"Consistencia a lo largo del tiempo",m14l3:"Confianza en uno mismo",m14l4:"Después de la traición",m14l5:"La economía de la reputación",m15:"Pensamiento de Legado",m15t:" — Encuentra Tu Legado",m15d:"¿Qué queda cuando te vas?",m15l1:"El legado como brújula diaria",m15l2:"Lo que realmente cuenta",m15l3:"La huella en las personas",m15l4:"Del tomar al dar",m15l5:"Tu vida como mensaje",covers:"Contenido",sci:"CIENCIA",c_tag:"Tu blueprint te espera",c_h1:"Nadie tiene",c_h2:"tus respuestas.",c_sub:"Pero las preguntas correctas las revelan.",c_btn:"Crear Mi Blueprint →",paul_tag:"El hombre detrás del sistema",paul_q:"Me convertí en el hermano que nunca tuve.",paul_p1:"No construí este sistema a partir de libros. Lo viví.",paul_p2:"Instructor Wim Hof certificado. Arquitecto. Emprendedor.",n_tag:"Antes de comenzar",n_h:"¿Cuál es tu nombre?",n_hint:"Tu blueprint será escrito personalmente para ti.",n_ph:"Tu nombre",n_btn:"Comenzar el Análisis →",of:"de",yes:"Sí",no:"No",back:"← Atrás",g_h:"Construyendo tu blueprint.",g_s:"Analizando tus respuestas.",gs1:"Calculando scores",gs2:"Áreas críticas",gs3:"Protocolo 90 días",gs4:"Voz de Paul",gs5:"Finalización",r_eye:"PUR Method · Blueprint Personal",r_h:"Tu",r_he:"blueprint.",r_for:"Creado para {n}.",dl_h:"Descarga tu",dl_he:"blueprint.",dl_s:"Tu plan personal. Imprímelo. Vívelo.",dl_btn:"↓ Descargar PDF",restart:"Empezar de nuevo",
-  blocks:["Sexualidad","Cuerpo","Mente","Identidad"],
-  bp_tags:["Identidad","Insight Principal","Control Sexual","Control Físico","Mente & Dopamina","Responsabilidad","No-Negociables","Enfoque 90 Días","De Paul PUR"],
-  bp_titles:["Quién Te Estás Convirtiendo","Lo que Revelan Tus Respuestas","Tu Protocolo Sexual","Tu Protocolo Físico Diario","Tu Protocolo Mental","Tus Acciones Esta Semana","Tus Tres No-Negociables Diarios","Los Próximos 90 Días","Un Mensaje Para Ti"],
-  qs:["Esta semana me masturbé viendo pornografía.","Veo pornografía porque es mi derecho.","Después de masturbarme me siento mejor un momento — luego vacío.","Pienso en mi pene solo cuando lo uso.","No sé si tengo una erección matutina — no le presto atención.","Mi energía sexual va a la pornografía — no a una conexión real.","Nunca he entrenado mi suelo pélvico.","Parezco controlado por fuera — pero nadie sabe lo que hago por las noches.","Estoy satisfecho con mi vida sexual — pero solo porque no sé lo que es posible.","Si soy honesto — mi sexualidad funciona en piloto automático.","Empezaré a entrenar la semana que viene.","Entreno regularmente — pero ya no sé por qué.","Me digo que mi cuerpo todavía está bien para mi edad.","Estoy satisfecho con mi cuerpo — pero no vivo mi pleno potencial.","Sé lo que debería comer — simplemente no lo hago.","Como mucho por las noches porque me lo merezco.","Recurro a la comida cuando estoy estresado.","Comienzo el día con café.","Me ducho con agua caliente — el agua fría es incómoda.","Respiro superficialmente — no me molesta realmente.","Nunca he trabajado con mi respiración.","Si soy honesto — mi cuerpo ya no se siente como mío.","Reviso mi teléfono lo primero por la mañana.","Hago scroll por las noches para desconectar.","Bebo alcohol porque me lo he ganado.","Veo series hasta dormirme.","Después de las redes sociales raramente me siento mejor.","Sin pantalla no sé qué hacer conmigo mismo.","Empiezo cosas y raramente las termino.","Mi atención a menudo es interrumpida por pensamientos sexuales.","Por las noches no sé lo que realmente logré.","Hoy pospuse algo importante.","Tengo todo lo que quería — y aun así me falta algo.","Me siento internamente entumecido.","Si soy honesto — soy dependiente de cosas que no me hacen bien.","Ya no sé quién soy cuando nadie me mira.","Funciono bien por fuera — pero por dentro es piloto automático.","Me adapto a lo que otros esperan de mí.","Me trago lo que me molesta porque la paz es más importante.","En mi relación el humor de mi pareja determina mi día.","Evito las conversaciones difíciles.","Tengo límites — pero cuando alguien presiona cedo.","Digo sí cuando quiero decir no.","Me he hecho promesas a mí mismo que nunca he cumplido.","Me digo que no tengo tiempo — pero encuentro tiempo para distraerme.","Parezco disciplinado — pero hay áreas que nadie ve.","He logrado todo lo que quería — pero el hombre que quería ser no lo vivo.","Hay una versión de mí que me gustaría ser — no la vivo.","Si me encontrara con mi yo de 18 años estaría orgulloso de mí.","Si muriera mañana estaría satisfecho con lo que dejo.","Si soy honesto — he dejado de crecer."],
-  qb:["Sexualidad","Sexualidad","Sexualidad","Sexualidad","Sexualidad","Sexualidad","Sexualidad","Sexualidad","Sexualidad","Sexualidad","Cuerpo","Cuerpo","Cuerpo","Cuerpo","Cuerpo","Cuerpo","Cuerpo","Cuerpo","Cuerpo","Cuerpo","Cuerpo","Cuerpo","Mente","Mente","Mente","Mente","Mente","Mente","Mente","Mente","Mente","Mente","Mente","Mente","Mente","Identidad","Identidad","Identidad","Identidad","Identidad","Identidad","Identidad","Identidad","Identidad","Identidad","Identidad","Identidad","Identidad","Identidad","Identidad","Identidad"]
-},
-ar:{h1a:"أصبحت الأخ",h1b:"الذي لم يكن لديّ قط.",h1s:"كل ما في هذه الصفحة هو ما كنت سأقوله لنفسي الأصغر.",begin:"ابدأ",a_tag:"ما هذا",a_h1:"ليس برنامجاً.",a_h2:"إنه ممر.",a_body:"مشكلة كل رجل مختلفة. حل كل رجل مختلف. أجب بصدق. احصل على مخططك. اتبعه 90 يوماً. كن الرجل الذي كان من المفترض أن تكونه.",s1:"سؤالاً مصممة للكشف لا للحكم",s2:"وحدات عبر 3 ركائز",s3:"يوماً لتصبح رجلاً مختلفاً",p_tag:"الركائز الثلاث",p_h1:"كل شيء مترابط.",p_h2:"كل شيء يتضاعف.",pi:"الركيزة الأولى",pt1:"التحكم الجسدي",pd1:"الجسد هو الأساس. خمس وحدات تبني قاعدتك البيولوجية.",pii:"الركيزة الثانية",pt2:"فهم العقل",pd2:"العقل ≠ الدماغ. خمس وحدات لإعادة برمجة نظامك.",piii:"الركيزة الثالثة",pt3:"المسؤولية",pd3:"لن يأتي أحد. خمس وحدات عما يُعرّف الرجل.",m_tag:"الخمس عشرة وحدة",m_h1:"كل وحدة.",m_h2:"بروتوكول واحد.",m_sub:"افتح كل وحدة. اقرأ المبدأ.",pn1:"التحكم الجسدي",ps1:"5 وحدات — الجسد كأساس",m01:"النوم",m01t:" — لم يُحل بعد",m01d:"النوم ليس توقفاً. إنه أكثر مراحل بيولوجيتك نشاطاً.",m01l1:"الإيقاع اليومي والضوء",m01l2:"توقيت الكورتيزول والتستوستيرون",m01l3:"الثوابت قبل النوم",m01l4:"قاعدة وقف الأكل",m01l5:"قراءة إشارات الجسد",m02:"الحركة",m02t:" — التمارين البدنية",m02d:"لا صالة. لا معدات. فقط جسدك ضد الجاذبية. سلم PUR يبني العادة قبل الأداء.",m02l1:"نظام سلم PUR",m02l2:"عقلة، دفعات، قرفصاء الطلقة",m02l3:"التمرين في الهواء الطلق كطقس",m02l4:"العادة قبل الأداء",m02l5:"90 يوماً لترسيخها",m03:"الطعام",m03t:" — الصيام",m03d:"الصيام ليس حمية. صمت لعلاج مرض مناعي ذاتي غير قابل للشفاء. نجح الأمر.",m03l1:"نافذة الأكل 13:00–19:00",m03l2:"بروتوكول خل التفاح والملح",m03l3:"الالتهام الذاتي وتجديد الخلايا",m03l4:"المواد البنائية الهرمونية",m03l5:"الطعام كدواء",m04:"التنفس",m04t:" — ويم هوف",m04d:"التنفس هو النظام الذاتي الوحيد الذي يمكنك التحكم فيه بوعي.",m04l1:"طريقة ويم هوف الكاملة",m04l2:"تقليل الالتهاب",m04l3:"تحمل CO₂ والأداء",m04l4:"DMT الداخلي",m04l5:"البروتوكول اليومي",m05:"درجة الحرارة",m05t:" — حمام الجليد",m05d:"التعرض للبرد يطلق زيادة بنسبة 200–300% في النورأدرينالين.",m05l1:"بروتوكول الحمام البارد",m05l2:"النورأدرينالين والتستوستيرون",m05l3:"القوة العقلية",m05l4:"تباين درجة الحرارة",m05l5:"الثابت اليومي غير القابل للتفاوض",pn2:"فهم العقل",ps2:"5 وحدات — العقل ≠ الدماغ",m06:"التحكم الجنسي",m06t:" — البروتوكول الذي لا يتحدث عنه أحد",m06d:"قاع الحوض هو أهم عضلة في الوظيفة الجنسية الذكورية. معظم الرجال لم يدربوها قط.",m06l1:"بروتوكول كيغل — كل يومين",m06l2:"بروتوكول التطوير الجسدي",m06l3:"تقنية التحكم في القذف",m06l4:"الهزة الجنسية غير القذفية",m06l5:"كريم PUR KOK وشحم البقر",m07:"نظام الدوبامين",m07t:" — إعادة الضبط والتحكم",m07d:"الإباحية ليست متنفساً جنسياً. إنها نظام توصيل الدوبامين — أشد ضرراً للدماغ من الكحول.",m07l1:"كيف يعمل الدوبامين فعلاً",m07l2:"الإباحية وإعادة برمجة الدماغ",m07l3:"إعادة ضبط الدوبامين",m07l4:"مراحل الدوبامين المنخفض",m07l5:"إعادة معايرة المكافأة",m08:"الوعي بالدوافع",m08t:" — الطعام والجنس والعلاقات",m08d:"قبل أن تتمكن من السيطرة على دافع ما، عليك رؤيته.",m08l1:"الدافع قبل أن يتصرف",m08l2:"الجوع مقابل العادة مقابل العاطفة",m08l3:"الطاقة الجنسية كمورد",m08l4:"المحفزات الاجتماعية",m08l5:"الفجوة بين المثير والاستجابة",m09:"التحكم في الانتباه",m09t:" — وسائل التواصل والجنس",m09d:"الانتباه هو أثمن مورد تمتلكه.",m09l1:"الانتباه كمورد نادر",m09l2:"قواعد وقت الشاشة",m09l3:"بروتوكول العمل العميق",m09l4:"الانتباه الجنسي والتركيز",m09l5:"بيئتك كأداة",m10:"هندسة الهوية",m10t:" — من أنا",m10d:"لا تتصرف وفق أهدافك. تتصرف وفق هويتك.",m10l1:"الهوية مقابل الأهداف",m10l2:"القيم كبوصلة",m10l3:"القصة التي تحكيها لنفسك",m10l4:"الأدوار والأقنعة",m10l5:"من أنت حين لا يراك أحد",pn3:"المسؤولية",ps3:"5 وحدات — إرث الرجل",m11:"المسؤولية الذاتية",m11t:" — الجسد والاحترام",m11d:"لن يأتي أحد. أنت منقذ نفسك.",m11l1:"الملكية الجذرية",m11l2:"مغادرة دور الضحية",m11l3:"الاحترام يبدأ منك",m11l4:"الوعود لنفسك",m11l5:"جسدك كبطاقة عمل",m12:"المبادئ",m12t:" — العلامات الحمراء والخطوط",m12d:"رجل بلا مبادئ هو رجل بلا عمود فقري.",m12l1:"قيم جوهرية مكتوبة",m12l2:"حدود تصمد",m12l3:"العلامات الحمراء مبكراً",m12l4:"غير قابل للتفاوض",m12l5:"الحدود بلا عدوانية",m13:"قيادة العلاقات",m13t:" — الرجل يقود",m13d:"القيادة لا تعني التحكم. تعني الاستقرار.",m13l1:"ما تعنيه القيادة",m13l2:"الاستقرار كأساس",m13l3:"بلا صراع على السلطة",m13l4:"الجاذبية من خلال الحضور",m13l5:"حين تفشل القيادة",m14:"اقتصاد الثقة",m14t:" — كيف تُبنى الثقة",m14d:"الثقة هي أصعب عملة. تُكتسب لا تُطلب.",m14l1:"الثقة كممارسة يومية",m14l2:"الاتساق عبر الزمن",m14l3:"الثقة بنفسك",m14l4:"بعد الخيانة",m14l5:"اقتصاد السمعة",m15:"التفكير في الإرث",m15t:" — اعثر على إرثك",m15d:"ماذا يبقى حين ترحل؟ الأثر الذي تركته في الآخرين.",m15l1:"الإرث كبوصلة يومية",m15l2:"ما يهم فعلاً",m15l3:"الأثر في الناس لا في الأشياء",m15l4:"من الأخذ إلى العطاء",m15l5:"حياتك كرسالة",covers:"المحتوى",sci:"علم",c_tag:"مخططك ينتظرك",c_h1:"لا أحد يملك",c_h2:"إجاباتك.",c_sub:"لكن الأسئلة الصحيحة تكشفها.",c_btn:"بناء مخططي الشخصي ←",paul_tag:"الرجل وراء النظام",paul_q:"أصبحت الأخ الذي لم يكن لديّ قط. هذا ما كنت سأقوله لنفسي في سن 18.",paul_p1:"لم أبنِ هذا النظام من الكتب. عشته. شفيت مرضاً مناعياً ذاتياً غير قابل للشفاء.",paul_p2:"مدرب ويم هوف معتمد. مهندس معماري. رجل أعمال.",n_tag:"قبل أن نبدأ",n_h:"ما اسمك الأول؟",n_hint:"سيُكتب مخططك شخصياً لك.",n_ph:"اسمك",n_btn:"ابدأ التحليل ←",of:"من",yes:"نعم",no:"لا",back:"رجوع ←",g_h:"بناء مخططك.",g_s:"تحليل إجاباتك. كتابة خطتك.",gs1:"حساب النقاط",gs2:"المناطق الحرجة",gs3:"بروتوكول 90 يوماً",gs4:"صوت بول",gs5:"إتمام المخطط",r_eye:"PUR Method · مخطط شخصي",r_h:"مخططك",r_he:"الشخصي.",r_for:"أُنشئ لـ {n}.",dl_h:"نزّل",dl_he:"مخططك.",dl_s:"خطتك الشخصية. اطبعها. عِشها.",dl_btn:"↓ تنزيل PDF",restart:"البدء من جديد",
-  blocks:["الجنسية","الجسد","العقل","الهوية"],
-  bp_tags:["الهوية","الرؤية الجوهرية","التحكم الجنسي","التحكم الجسدي","العقل والدوبامين","المسؤولية","غير قابل للتفاوض","تركيز 90 يوماً","من بول بور"],
-  bp_titles:["من تصبح","ما تكشفه إجاباتك","بروتوكولك الجنسي","بروتوكولك الجسدي اليومي","بروتوكولك العقلي","أفعالك هذا الأسبوع","ثوابتك اليومية الثلاثة","الـ 90 يوماً القادمة","رسالة لك"],
-  qs:["هذا الأسبوع مارست العادة السرية أمام أفلام إباحية.","أشاهد الإباحية لأن هذا حقي ولا يضرني.","بعد الاستمناء أشعر بتحسن للحظة — ثم بالفراغ وانعدام الدافع.","لا أفكر في عضوي إلا حين أستخدمه — لا كجزء من جسدي يمكن تدريبه.","لا أعرف إن كان لديّ انتصاب صباحي قوي — لا أنتبه لذلك.","طاقتي الجنسية تذهب للإباحية والاستمناء — لا لتواصل حقيقي.","لم أدرّب عضلة قاع الحوض بشكل واعٍ قط.","أبدو متحكماً من الخارج — لكن لا أحد يعرف ما أفعله فعلاً في المساء.","أنا راضٍ عن حياتي الجنسية — لكن فقط لأنني لا أعرف ما هو ممكن.","إذا كنت صادقاً — جنسيتي تعمل بالطيار الآلي وليس لديّ سيطرة عليها.","سأبدأ التدريب الأسبوع القادم — أحتاج فقط للحظة المناسبة.","أتدرب بانتظام — لكنني لم أعد أعرف لماذا.","أقول لنفسي إن جسدي لا يزال بخير لعمري.","أنا راضٍ عن جسدي — لكنني لا أعيش كامل إمكاناتي.","أعرف ما يجب أن آكله — لكنني لا أفعل.","آكل كثيراً في المساء لأنني عملت بجد طوال اليوم وأستحق ذلك.","ألجأ للطعام حين أكون متوتراً — وأجد ذلك مقبولاً.","أبدأ يومي بالقهوة — بدونها لن أكون منتجاً.","أستحم بالماء الساخن لأن الماء البارد مزعج ولا أحتاجه.","أتنفس بشكل ضحل — ألاحظه أحياناً لكنه لا يزعجني حقاً.","لم أعمل بشكل واعٍ مع تنفسي قط.","إذا كنت صادقاً — جسدي لم يعد يبدو كجسدي.","أتحقق من هاتفي أول شيء في الصباح خوفاً من تفويت شيء.","أتصفح في المساء لأريح نفسي — وأحتاج ذلك بعد يوم كهذا.","أشرب الكحول لأنني كسبته وهو يساعدني على الاسترخاء.","أشاهد مسلسلات حتى أنام — هذا استرخائي.","بعد التواصل الاجتماعي نادراً ما أشعر بتحسن — لكنني أفعله على أي حال.","بدون شاشة لا أعرف ماذا أفعل بنفسي.","أبدأ أشياء ونادراً ما أنهيها.","انتباهي كثيراً ما يتقطع بسبب أفكار أو صور جنسية.","في المساء كثيراً ما لا أعرف ما أنجزته فعلاً رغم انشغالي طوال اليوم.","اليوم أجّلت أمراً مهماً رغم توفر الوقت.","لديّ كل ما أردت — ومع ذلك يعوزني شيء لا أستطيع تسميته.","أشعر بخدر داخلي — لا أنا تعيس لكنني لست حياً حقاً.","إذا كنت صادقاً — أنا مدمن لأشياء لا تنفعني وأعرف ذلك.","لم أعد أعرف من أنا حين لا يراني أحد.","أعمل جيداً في الخارج — لكن بالداخل شيء يعمل بالطيار الآلي لم أختره.","أتكيف مع ما يتوقعه الآخرون مني — حتى حين لا يناسبني.","أبتلع ما يزعجني لأن السلام أهم من الصدق.","في علاقتي مزاج شريكتي يحدد كيف يسير يومي.","أتجنب المحادثات الصعبة لأن ما يأتي بعدها أهم من الحقيقة الآن.","لديّ حدود — لكن حين يضغط أحدهم فعلاً أتراجع.","أقول نعم وأنا أقصد لا — لأنني لا أريد أن أُعتبر صعب المراس.","قطعت وعوداً لنفسي لم أفِ بها قط.","أقول لنفسي ليس لديّ وقت — لكنني أجد وقتاً للمشتتات.","أبدو منضبطاً — لكن هناك مجالات لا يراها أحد ولا أسيطر عليها.","حققت كل ما أردت — لكن الرجل الذي أردت أن أكونه لا أعيشه.","هناك نسخة مني أتمنى أن أكونها — لا أعيشها.","لو قابلت نفسي في سن 18 لكان فخوراً بالرجل الذي أصبحته.","لو مت غداً لكنت راضياً عما أتركه وراءي.","إذا كنت صادقاً — لقد توقفت عن النمو."],
-  qb:["الجنسية","الجنسية","الجنسية","الجنسية","الجنسية","الجنسية","الجنسية","الجنسية","الجنسية","الجنسية","الجسد","الجسد","الجسد","الجسد","الجسد","الجسد","الجسد","الجسد","الجسد","الجسد","الجسد","الجسد","العقل","العقل","العقل","العقل","العقل","العقل","العقل","العقل","العقل","العقل","العقل","العقل","العقل","الهوية","الهوية","الهوية","الهوية","الهوية","الهوية","الهوية","الهوية","الهوية","الهوية","الهوية","الهوية","الهوية","الهوية","الهوية","الهوية"]
-},
-ru:{h1a:"Я стал тем братом,",h1b:"которого у меня никогда не было.",h1s:"Всё на этой странице — то, что я сказал бы своему молодому «я».",begin:"Начать",a_tag:"Что это такое",a_h1:"Не программа.",a_h2:"Коридор.",a_body:"Проблема каждого мужчины уникальна. Решение каждого мужчины уникально. Отвечай честно. Получи свой план. Следуй ему 90 дней. Стань тем мужчиной, которым должен был стать.",s1:"Вопросов — созданных раскрыть, а не судить",s2:"Модулей в 3 опорах",s3:"Дней чтобы стать другим мужчиной",p_tag:"Три опоры",p_h1:"Всё взаимосвязано.",p_h2:"Всё накапливается.",pi:"Опора I",pt1:"Физический Контроль",pd1:"Тело — это фундамент. Пять модулей, которые строят твою биологическую базу.",pii:"Опора II",pt2:"Понимание Разума",pd2:"Разум ≠ Мозг. Пять модулей для перепрограммирования твоей системы.",piii:"Опора III",pt3:"Ответственность",pd3:"Никто не придёт. Пять модулей о том, что определяет мужчину на всю жизнь.",m_tag:"Пятнадцать модулей",m_h1:"Каждый модуль.",m_h2:"Один протокол.",m_sub:"Открой каждый модуль. Прочитай принцип.",pn1:"Физический Контроль",ps1:"5 Модулей — Тело как Фундамент",m01:"Сон",m01t:" — Ещё не решено",m01d:"Сон — это не пауза. Это самая активная фаза твоей биологии. Тестостерон вырабатывается во время глубокого сна.",m01l1:"Циркадный ритм и свет",m01l2:"Тайминг кортизола и тестостерона",m01l3:"Обязательные правила перед сном",m01l4:"Правило последнего приёма пищи",m01l5:"Читать сигналы тела",m02:"Движение",m02t:" — Калистеника",m02d:"Никакого зала. Никакого оборудования. Только твоё тело против гравитации. Лестница PUR строит привычку до результата.",m02l1:"Система Лестницы PUR",m02l2:"Подтягивания, отжимания, пистолет",m02l3:"Тренировки на улице как ритуал",m02l4:"Привычка до результата",m02l5:"90 дней для закрепления",m03:"Питание",m03t:" — Голодание",m03d:"Голодание — не диета. Я голодал чтобы вылечить неизлечимую аутоиммунную болезнь. Это сработало.",m03l1:"Окно питания 13:00–19:00",m03l2:"Утренний протокол ACV и соль",m03l3:"Аутофагия и обновление клеток",m03l4:"Гормональные строительные блоки",m03l5:"Еда как лекарство",m04:"Дыхание",m04t:" — Вим Хоф",m04d:"Дыхание — единственная автономная система, которую ты можешь сознательно контролировать. Я сертифицированный инструктор Вим Хоф.",m04l1:"Метод Вим Хоф полностью",m04l2:"Снижение воспаления",m04l3:"Переносимость CO₂ и производительность",m04l4:"Эндогенный ДМТ",m04l5:"Ежедневный протокол",m05:"Температура",m05t:" — Ледяная Ванна",m05d:"Холодовое воздействие вызывает рост норадреналина на 200–300% и повышает тестостерон.",m05l1:"Протокол холодной ванны",m05l2:"Норадреналин и тестостерон",m05l3:"Ментальная сила",m05l4:"Контраст температур",m05l5:"Ежедневный обязательный ритуал",pn2:"Понимание Разума",ps2:"5 Модулей — Разум ≠ Мозг",m06:"Сексуальный Контроль",m06t:" — Протокол о Котором Никто Не Говорит",m06d:"Мышцы тазового дна — важнейший мышечный комплекс для мужской сексуальной функции. Большинство мужчин никогда не тренировали их сознательно.",m06l1:"Протокол Кегеля — через день",m06l2:"Протокол физического развития",m06l3:"Техника контроля эякуляции",m06l4:"Оргазм без эякуляции",m06l5:"PUR KOK и говяжий жир",m07:"Система Дофамина",m07t:" — Сброс и Контроль",m07d:"Порнография — не сексуальный выход. Это система доставки дофамина, более разрушительная для мозга, чем алкоголь.",m07l1:"Как дофамин работает на самом деле",m07l2:"Порнография и перепрограммирование мозга",m07l3:"Сброс дофамина",m07l4:"Фазы низкого дофамина",m07l5:"Перекалибровка системы вознаграждения",m08:"Осознанность Импульсов",m08t:" — Еда, Секс, Отношения",m08d:"Прежде чем контролировать импульс, нужно его увидеть.",m08l1:"Импульс до того как он действует",m08l2:"Голод vs привычка vs эмоция",m08l3:"Сексуальная энергия как ресурс",m08l4:"Социальные триггеры",m08l5:"Разрыв между стимулом и реакцией",m09:"Контроль Внимания",m09t:" — Соцсети, Секс",m09d:"Внимание — твой самый ценный ресурс. Соцсети созданы по той же психологии что и игровые автоматы.",m09l1:"Внимание как редкий ресурс",m09l2:"Правила времени перед экраном",m09l3:"Протокол глубокой работы",m09l4:"Сексуальное внимание и фокус",m09l5:"Среда как инструмент",m10:"Архитектура Идентичности",m10t:" — Кто Я",m10d:"Ты действуешь не по своим целям. Ты действуешь по своей идентичности.",m10l1:"Идентичность vs цели",m10l2:"Ценности как компас",m10l3:"История которую ты себе рассказываешь",m10l4:"Роли и маски",m10l5:"Кто ты когда один",pn3:"Ответственность",ps3:"5 Модулей — Наследие Мужчины",m11:"Самоответственность",m11t:" — Тело, Уважение",m11d:"Никто не придёт. Ты сам себе спасатель.",m11l1:"Радикальная ответственность",m11l2:"Выход из роли жертвы",m11l3:"Уважение начинается с тебя",m11l4:"Обещания себе",m11l5:"Твоё тело как визитная карточка",m12:"Принципы",m12t:" — Красные Флаги, Запреты",m12d:"Мужчина без принципов — мужчина без хребта.",m12l1:"Ключевые ценности записаны",m12l2:"Границы которые держатся",m12l3:"Красные флаги заранее",m12l4:"Непреговариваемое",m12l5:"Границы без агрессии",m13:"Лидерство в Отношениях",m13t:" — Мужчина Ведёт",m13d:"Лидерство не значит контроль. Оно значит стабильность.",m13l1:"Что означает лидерство",m13l2:"Стабильность как фундамент",m13l3:"Без борьбы за власть",m13l4:"Притяжение через присутствие",m13l5:"Когда лидерство рушится",m14:"Экономика Доверия",m14t:" — Как Строится Доверие",m14d:"Доверие — самая твёрдая валюта. Заработанная, не требуемая.",m14l1:"Доверие как ежедневная практика",m14l2:"Последовательность во времени",m14l3:"Доверие к себе",m14l4:"После предательства",m14l5:"Экономика репутации",m15:"Мышление о Наследии",m15t:" — Найди Своё Наследие",m15d:"Что останется когда тебя не станет? Не счёт в банке. След который ты оставил в людях.",m15l1:"Наследие как ежедневный компас",m15l2:"Что действительно важно",m15l3:"След в людях, не в вещах",m15l4:"От брать к давать",m15l5:"Твоя жизнь как послание",covers:"Содержание",sci:"НАУКА",c_tag:"Твой план ждёт",c_h1:"Никто не имеет",c_h2:"твоих ответов.",c_sub:"Но правильные вопросы раскрывают их.",c_btn:"Создать Мой Blueprint →",paul_tag:"Мужчина за системой",paul_q:"Я стал тем братом, которого у меня никогда не было. Это то, что я сказал бы себе в 18 лет.",paul_p1:"Я не строил эту систему из книг. Я её прожил. Вылечил неизлечимую аутоиммунную болезнь через голодание и холод. Восстановил тестостерон через питание.",paul_p2:"Сертифицированный инструктор Вим Хоф. Архитектор. Предприниматель. Каждый уровень поддерживает следующий. Ничего лишнего. Всё несущее.",n_tag:"Прежде чем начать",n_h:"Как тебя зовут?",n_hint:"Твой план будет написан лично для тебя.",n_ph:"Твоё имя",n_btn:"Начать Анализ →",of:"из",yes:"Да",no:"Нет",back:"← Назад",g_h:"Создаю твой план.",g_s:"Анализирую ответы. Пишу твой план.",gs1:"Подсчёт очков",gs2:"Критические зоны",gs3:"90-дневный протокол",gs4:"Голос Пола",gs5:"Завершение плана",r_eye:"PUR Method · Персональный Blueprint",r_h:"Твой",r_he:"план.",r_for:"Создан для {n}.",dl_h:"Скачай свой",dl_he:"план.",dl_s:"Твой личный план. Распечатай. Живи по нему.",dl_btn:"↓ Скачать PDF",restart:"Начать заново",
-  blocks:["Сексуальность","Тело","Разум","Идентичность"],
-  bp_tags:["Идентичность","Ключевой Инсайт","Сексуальный Контроль","Физический Контроль","Разум и Дофамин","Ответственность","Обязательные Правила","Фокус 90 Дней","От Пола ПУР"],
-  bp_titles:["Кем Ты Становишься","Что Раскрывают Твои Ответы","Твой Сексуальный Протокол","Твой Ежедневный Физический Протокол","Твой Ментальный Протокол","Твои Действия На Этой Неделе","Твои Три Ежедневных Обязательных Правила","Следующие 90 Дней","Сообщение Для Тебя"],
-  qs:["На этой неделе я мастурбировал, смотря порно.","Я смотрю порно потому что это моё право и мне от этого ничего не плохо.","После мастурбации я чувствую себя лучше на мгновение — потом пустоту и отсутствие мотивации.","Я думаю о своём члене только когда использую его — не как о тренируемой части тела.","Я не знаю есть ли у меня сильная утренняя эрекция — я не обращаю на это внимания.","Моя сексуальная энергия уходит в порно и мастурбацию — не в настоящую связь.","Я никогда осознанно не тренировал мышцы тазового дна.","Внешне я выгляжу контролируемым — но никто не знает что я делаю по вечерам.","Я доволен своей сексуальной жизнью — но только потому что не знаю что реально возможно.","Если честно — моя сексуальность работает на автопилоте и я не контролирую её.","Я начну тренироваться на следующей неделе — мне просто нужен правильный момент.","Я тренируюсь регулярно — но больше не понимаю зачем.","Я говорю себе что моё тело ещё нормально для моего возраста.","Я доволен своим телом — но не живу своим полным потенциалом.","Я знаю что нужно есть — просто не делаю этого.","Я много ем вечером потому что работал весь день и заслужил это.","Я тянусь к еде когда в стрессе — и считаю это нормальным.","Я начинаю день с кофе — без него я не функционирую.","Я принимаю тёплый душ потому что холодная вода неприятна и мне это не нужно.","Я дышу поверхностно — замечаю это иногда но особо не беспокоюсь.","Я никогда осознанно не работал с дыханием.","Если честно — моё тело уже не ощущается как моё.","Я проверяю телефон первым делом утром чтобы ничего не пропустить.","Я листаю ленту вечером чтобы расслабиться — и мне это нужно после такого дня.","Я пью алкоголь потому что заслужил и он помогает мне расслабиться.","Я смотрю сериалы пока не засну — это моё расслабление.","После соцсетей я редко чувствую себя лучше — но всё равно делаю это.","Без экрана я не знаю чем себя занять.","Я начинаю дела и редко довожу их до конца.","Моё внимание часто прерывается сексуальными мыслями или образами.","Вечерами я часто не знаю что реально сделал — хотя был занят весь день.","Сегодня я отложил что-то важное хотя было время.","У меня есть всё что хотел — и всё равно чего-то не хватает и я не могу это назвать.","Я чувствую внутреннее онемение — не несчастен но и не по-настоящему живу.","Если честно — я зависим от вещей которые мне вредят и знаю это.","Я больше не знаю кто я когда никто не смотрит.","Снаружи я функционирую хорошо — но внутри что-то работает на автопилоте который я не выбирал.","Я адаптируюсь к тому чего от меня ожидают — даже когда это мне не подходит.","Я проглатываю то что меня беспокоит потому что мир важнее честности.","В моих отношениях настроение партнёрши определяет каким будет мой день.","Я избегаю сложных разговоров потому что то что будет после важнее правды сейчас.","У меня есть границы — но когда кто-то реально давит я сдаюсь.","Я говорю да когда имею в виду нет — потому что не хочу казаться сложным.","Я давал себе обещания которые никогда не выполнял.","Я говорю себе что нет времени — но нахожу время на отвлечения.","Я выгляжу дисциплинированным — но есть сферы жизни которых никто не видит и которые я не контролирую.","Я достиг всего что хотел — но мужчиной которым хотел быть я не живу.","Есть версия меня которой я хотел бы быть — я её не живу.","Если бы я встретил себя в 18 лет он бы гордился мужчиной которым я стал.","Если бы я умер завтра я был бы доволен тем что оставляю после себя.","Если честно — я перестал расти."],
-  qb:["Сексуальность","Сексуальность","Сексуальность","Сексуальность","Сексуальность","Сексуальность","Сексуальность","Сексуальность","Сексуальность","Сексуальность","Тело","Тело","Тело","Тело","Тело","Тело","Тело","Тело","Тело","Тело","Тело","Тело","Разум","Разум","Разум","Разум","Разум","Разум","Разум","Разум","Разум","Разум","Разум","Разум","Разум","Идентичность","Идентичность","Идентичность","Идентичность","Идентичность","Идентичность","Идентичность","Идентичность","Идентичность","Идентичность","Идентичность","Идентичность","Идентичность","Идентичность","Идентичность","Идентичность"]
+// ══════════════════════════════════════════
+// QUESTIONS
+// ══════════════════════════════════════════
+const Qs = [
+  // BLOCK 1 — SEXUALITY (10)
+  {b:'Sexuality',q:'This week I masturbated to pornography.'},
+  {b:'Sexuality',q:'I watch pornography because it is my right and nothing is missing in my life because of it.'},
+  {b:'Sexuality',q:'After masturbating I feel better for a moment — then empty and without drive.'},
+  {b:'Sexuality',q:'I think of my penis only when I use it — not as a trainable part of my body.'},
+  {b:'Sexuality',q:'I do not know whether I have a strong morning erection — I do not pay attention to it.'},
+  {b:'Sexuality',q:'My sexual energy goes into pornography and masturbation — not into real connection.'},
+  {b:'Sexuality',q:'I have never consciously trained my pelvic floor muscle.'},
+  {b:'Sexuality',q:'I appear controlled on the outside — but no one knows what I actually do in the evenings.'},
+  {b:'Sexuality',q:'I am satisfied with my sex life — but only because I do not know what is actually possible.'},
+  {b:'Sexuality',q:'If I am honest — my sexuality runs on autopilot and I have no control over it.'},
+
+  // BLOCK 2 — BODY (12)
+  {b:'Body',q:'I will start training next week — I just need the right moment.'},
+  {b:'Body',q:'I train regularly — but I no longer know why I actually do it.'},
+  {b:'Body',q:'I tell myself that my body is still okay for my age.'},
+  {b:'Body',q:'I am satisfied with my body — but I am not living my full potential.'},
+  {b:'Body',q:'I know what I should eat — I just do not do it.'},
+  {b:'Body',q:'I eat a lot in the evenings because I worked hard all day and I deserve it.'},
+  {b:'Body',q:'I reach for food when I am stressed — and I find that okay.'},
+  {b:'Body',q:'I start the day with coffee — without it I would not be functional.'},
+  {b:'Body',q:'I shower warm because cold water is uncomfortable and I do not need that.'},
+  {b:'Body',q:'I breathe shallowly — I notice it sometimes but it does not really bother me.'},
+  {b:'Body',q:'I have never consciously worked with my breath.'},
+  {b:'Body',q:'If I am honest — my body no longer feels like mine.'},
+
+  // BLOCK 3 — MIND & DOPAMINE (13)
+  {b:'Mind',q:'I check my phone first thing in the morning because I might miss something.'},
+  {b:'Mind',q:'I scroll in the evenings because I want to switch off — and I need that after a day like this.'},
+  {b:'Mind',q:'I drink alcohol because I have earned it and it helps me to wind down.'},
+  {b:'Mind',q:'I watch series or videos until I fall asleep — that is my relaxation.'},
+  {b:'Mind',q:'After social media I rarely feel better than before — but I do it anyway.'},
+  {b:'Mind',q:'Without a screen I do not know what to do with myself.'},
+  {b:'Mind',q:'I start things and rarely finish them.'},
+  {b:'Mind',q:'My attention is often interrupted by sexual thoughts or images.'},
+  {b:'Mind',q:'In the evenings I often do not know what I actually achieved — even though I was busy all day.'},
+  {b:'Mind',q:'Today I postponed something important even though I had time.'},
+  {b:'Mind',q:'I have everything I wanted — and still something is missing that I cannot name.'},
+  {b:'Mind',q:'I feel internally numb — not unhappy but not really alive either.'},
+  {b:'Mind',q:'If I am honest — I am dependent on things that do not do me good and I know it.'},
+
+  // BLOCK 4 — IDENTITY & LIFE (16)
+  {b:'Identity',q:'I no longer know who I am when no one is watching.'},
+  {b:'Identity',q:'I function well on the outside — but inside something is running on autopilot that I did not choose.'},
+  {b:'Identity',q:'I adapt to what others expect of me — even when it does not fit me.'},
+  {b:'Identity',q:'I swallow what bothers me because peace is more important than honesty.'},
+  {b:'Identity',q:'In my relationship the mood of my partner determines how my day goes.'},
+  {b:'Identity',q:'I avoid difficult conversations because what comes after matters more than the truth right now.'},
+  {b:'Identity',q:'I have boundaries — but when someone really pushes I give in.'},
+  {b:'Identity',q:'I say yes when I mean no — because I do not want to be seen as difficult.'},
+  {b:'Identity',q:'I have made promises to myself that I have never kept.'},
+  {b:'Identity',q:'I tell myself I have no time — but I find time for distraction.'},
+  {b:'Identity',q:'I appear disciplined — but there are areas of my life that no one sees and that I do not control.'},
+  {b:'Identity',q:'I have achieved everything I wanted — but the man I actually wanted to be I am not living.'},
+  {b:'Identity',q:'There is a version of me I would like to be — I am not living it.'},
+  {b:'Identity',q:'If I met my 18-year-old self he would be proud of the man I have become.'},
+  {b:'Identity',q:'If I died tomorrow I would be satisfied with what I leave behind.'},
+  {b:'Identity',q:'If I am honest — I have stopped growing.'},
+];
+
+const BLOCKS = ['Sexuality','Body','Mind','Identity'];
+
+let curQ = 0;
+const ans = new Array(51).fill(null);
+let userName = '';
+
+// ══════════════════════════════════════════
+// QUIZ LOGIC
+// ══════════════════════════════════════════
+function startQuiz() {
+  const n = document.getElementById('nameInp').value.trim();
+  if (!n) { document.getElementById('nameInp').focus(); return; }
+  userName = n;
+  curQ = 0;
+  document.getElementById('quiz-section').classList.add('active');
+  document.getElementById('quiz-section').scrollIntoView({behavior:'smooth'});
+  renderQ();
 }
-};
 
-// ═══════════ STATE ═══════════
-let lang='en',cur=0,userName='';
-const ans=new Array(51).fill(null);
+function renderQ() {
+  const q = Qs[curQ];
+  const pct = (curQ / 51 * 100);
+  document.getElementById('pf').style.width = pct + '%';
+  document.getElementById('qBar').style.width = pct + '%';
+  document.getElementById('qNum').textContent = curQ + 1;
+  document.getElementById('qBlock').textContent = q.b;
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('qBack').style.visibility = curQ === 0 ? 'hidden' : 'visible';
+  document.querySelectorAll('.yn-btn').forEach(b => b.classList.remove('sel'));
+  if (ans[curQ] !== null) {
+    document.querySelector(ans[curQ] ? '.yn-btn.yes' : '.yn-btn.no').classList.add('sel');
+  }
+}
 
-// ═══════════ LANG ═══════════
-function L(l){
-  lang=l;
-  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('on',b.textContent===l.toUpperCase()));
-  const isRTL=l==='ar';
-  document.documentElement.lang=l;
-  document.documentElement.dir=isRTL?'rtl':'ltr';
-  const t=T[l];
-  document.querySelectorAll('[data-t]').forEach(el=>{
-    const k=el.getAttribute('data-t');
-    if(t[k]!==undefined)el.textContent=t[k];
+function answer(val) {
+  ans[curQ] = val;
+  document.querySelector('.yn-btn.yes').classList.toggle('sel', val === true);
+  document.querySelector('.yn-btn.no').classList.toggle('sel', val === false);
+  setTimeout(() => {
+    if (curQ < 50) { curQ++; renderQ(); }
+    else generate();
+  }, 320);
+}
+
+function prevQ() {
+  if (curQ > 0) { curQ--; renderQ(); }
+}
+
+// ══════════════════════════════════════════
+// SCORING
+// ══════════════════════════════════════════
+function calcScores() {
+  // Yes = problem (1 point), No = no problem (0 points)
+  // Higher score = more issues in that area
+  const blocks = { Sexuality: 0, Body: 0, Mind: 0, Identity: 0 };
+  const counts = { Sexuality: 0, Body: 0, Mind: 0, Identity: 0 };
+  Qs.forEach((q, i) => {
+    counts[q.b]++;
+    if (ans[i] === true) blocks[q.b]++;
   });
-  document.getElementById('ni').placeholder=t.n_ph||'';
+  // Convert to percentage of problems
+  const result = {};
+  Object.keys(blocks).forEach(b => {
+    result[b] = Math.round(blocks[b] / counts[b] * 100);
+  });
+  return result;
 }
 
-// ═══════════ QUIZ ═══════════
-function goQ(){
-  show('ns');
-  document.querySelector('.prog').style.display='block';
-  document.getElementById('pf').style.width='2%';
-  setTimeout(()=>document.getElementById('ni').focus(),300);
+function getTag(pct) {
+  if (pct >= 70) return { l: 'Critical', c: '#8B3A3A' };
+  if (pct >= 40) return { l: 'Needs Work', c: '#8B6A3A' };
+  if (pct >= 20) return { l: 'Developing', c: '#6B7A3A' };
+  return { l: 'Strong', c: '#3A6B3A' };
 }
 
-function sQ(){
-  const n=document.getElementById('ni').value.trim();
-  if(!n){document.getElementById('ni').focus();return;}
-  userName=n;cur=0;show('sq');rQ();
-}
+// ══════════════════════════════════════════
+// GENERATE
+// ══════════════════════════════════════════
+async function generate() {
+  document.getElementById('quiz-section').classList.remove('active');
+  document.getElementById('gen-section').classList.add('active');
+  document.getElementById('gen-section').scrollIntoView({behavior:'smooth'});
+  document.getElementById('pf').style.width = '96%';
 
-function rQ(){
-  const t=T[lang];
-  const q=t.qs[cur];
-  const bl=t.qb[cur];
-  document.getElementById('pf').style.width=(cur/51*100)+'%';
-  document.getElementById('qB').style.width=(cur/51*100)+'%';
-  document.getElementById('qN').textContent=cur+1;
-  document.getElementById('qL').textContent=bl.charAt(0);
-  document.getElementById('qP').textContent=bl;
-  document.getElementById('qM').textContent='Block '+(Math.floor(cur/10)+1);
-  document.getElementById('qT').textContent=q;
-  document.getElementById('qBk').style.visibility=cur===0?'hidden':'visible';
-  document.querySelectorAll('.yb').forEach(b=>b.classList.remove('on'));
-  if(ans[cur]!==null)document.querySelector(ans[cur]?'.yb.y':'.yb.n').classList.add('on');
-}
+  const steps = ['gs1','gs2','gs3','gs4','gs5'];
+  steps.forEach((id, i) => {
+    setTimeout(() => {
+      document.getElementById(id).classList.add('active');
+      if (i > 0) {
+        document.getElementById(steps[i-1]).classList.remove('active');
+        document.getElementById(steps[i-1]).classList.add('done');
+      }
+    }, i * 900);
+  });
 
-function A(v){
-  ans[cur]=v;
-  document.querySelector('.yb.y').classList.toggle('on',v===true);
-  document.querySelector('.yb.n').classList.toggle('on',v===false);
-  setTimeout(()=>{if(cur<50){cur++;rQ();}else gen();},320);
-}
+  const scores = calcScores();
+  const criticals = Object.entries(scores).sort((a,b) => b[1]-a[1]).slice(0,2).map(x=>x[0]);
 
-function pQ(){if(cur>0){cur--;rQ();}}
+  // Build detailed answer summary for AI
+  const yesList = Qs.filter((q,i) => ans[i] === true).map(q => q.q);
+  const noList = Qs.filter((q,i) => ans[i] === false).map(q => q.q);
 
-// ═══════════ SCORING ═══════════
-function scores(){
-  const t=T[lang];
-  const bl=t.blocks;
-  const s={};bl.forEach(b=>s[b]=0);
-  const c={};bl.forEach(b=>c[b]=0);
-  t.qb.forEach((b,i)=>{c[b]++;if(ans[i]===true)s[b]++;});
-  const r={};
-  bl.forEach(b=>r[b]=Math.round(s[b]/c[b]*100));
-  return r;
-}
+  const prompt = `Create a deeply personalised PUR Method 90-day blueprint for ${userName}.
 
-function tag(p){
-  if(p>=70)return{l:'Critical',c:'#8B3A3A'};
-  if(p>=40)return{l:'Needs Work',c:'#8B6A3A'};
-  if(p>=20)return{l:'Developing',c:'#6B7A3A'};
-  return{l:'Strong',c:'#3A6B3A'};
-}
+SCORES (% of problems identified):
+Sexuality: ${scores.Sexuality}%
+Body: ${scores.Body}%
+Mind: ${scores.Mind}%
+Identity: ${scores.Identity}%
 
-// ═══════════ GENERATE ═══════════
-async function gen(){
-  show('sg');
-  document.getElementById('pf').style.width='96%';
-  const steps=['gs1','gs2','gs3','gs4','gs5'];
-  steps.forEach((id,i)=>setTimeout(()=>{
-    document.getElementById(id).classList.add('act');
-    if(i>0){document.getElementById(steps[i-1]).classList.remove('act');document.getElementById(steps[i-1]).classList.add('done');}
-  },i*900));
+CRITICAL AREAS: ${criticals.join(', ')}
 
-  const sc=scores();
-  const t=T[lang];
-  const crits=Object.entries(sc).sort((a,b)=>b[1]-a[1]).slice(0,2).map(x=>x[0]);
-  const yesQs=t.qs.filter((_,i)=>ans[i]===true);
-  const langNames={en:'English',de:'German',fr:'French',es:'Spanish',ar:'Arabic',ru:'Russian'};
+ANSWERED YES TO (these are his real problems):
+${yesList.join('\n')}
 
-  const prompt=`Create a deeply personalised PUR Method 90-day blueprint for ${userName}.
+ANSWERED NO TO (these are his strengths):
+${noList.slice(0,5).join('\n')}
 
-SCORES (% of problems):
-${Object.entries(sc).map(([k,v])=>`${k}: ${v}%`).join('\n')}
-
-CRITICAL AREAS: ${crits.join(', ')}
-
-HE ANSWERED YES TO (his real problems):
-${yesQs.join('\n')}
-
-Paul PUR's methods to use:
-- PUR Ladder: 1 rep/10s → 2 reps/20s → 3 reps/30s, 5 ladders, no increase for 30 days
-- Morning: apple cider vinegar + Himalayan salt in water before anything
+Paul PUR's methods to apply:
+- PUR Ladder for movement: 1 rep/10s → 2 reps/20s → 3 reps/30s, 5 ladders, no increase for 30 days
+- Morning protocol: apple cider vinegar + Himalayan salt in water before anything
 - Eating window: 13:00–19:00 only
-- Kegel: 100 contractions every SECOND day (muscle needs recovery)
-- Cold shower: 2+ minutes daily
-- Sexual control: pelvic floor training, release valve (release not hold), no pornography
-- Dopamine: no phone first 90min, no pornography, no alcohol
-- Brain manipulation over willpower — create rewards
+- Kegel protocol: 100 contractions every second day (muscle needs recovery)
+- Cold shower: minimum 2 minutes daily
+- Sexual control: pelvic floor training, release valve technique (release not hold), no pornography
+- Dopamine reset: no phone first 90 minutes, no pornography, no alcohol
+- Brain manipulation over willpower: create rewards that make the brain crave the good habits
 
-WRITE ENTIRELY IN ${langNames[lang]}. Use ${userName}'s name. Paul PUR's voice — direct, like an older brother who tells the truth.
+Write in Paul PUR's voice — direct, no fluff, like an older brother who tells the truth. Use ${userName}'s name. Make it feel like it was written specifically for him based on his exact answers.
 
-Return ONLY this JSON:
-{"identity":"One powerful sentence in ${langNames[lang]} — who ${userName} is becoming. Use his name.","insight":"3-4 sentences — root cause of his situation based on his YES answers. Specific. No softening.","sexuality":"Sexual protocol in ${langNames[lang]}. 5-6 bullets starting ·. Include kegel every 2nd day, release valve technique, no pornography, why pornography is worse than alcohol.","physical":"Physical protocol in ${langNames[lang]}. 5-6 bullets starting ·. PUR Ladder, ACV morning, eating window, cold shower. Specific times.","mind":"Dopamine/attention protocol in ${langNames[lang]}. 4-5 bullets starting ·. Based on his YES answers.","responsibility":"Responsibility actions in ${langNames[lang]}. 3-4 bullets starting ·. Specific this week.","nonneg":"3 non-negotiables in ${langNames[lang]}. Numbered 1. 2. 3. From his worst areas.","ninety":"One paragraph in ${langNames[lang]} — next 90 days for ${userName}. Month 1, 2, 3. End with how he feels in 90 days.","message":"Direct personal message from Paul PUR to ${userName} in ${langNames[lang]}. 4-5 sentences. Raw. Real. Use his name."}`;
+Return ONLY this JSON object, nothing else:
+{
+  "identity": "One powerful sentence — who ${userName} is becoming. Specific to his answers. Use his name.",
+  "insight": "3-4 sentences — what his answers reveal about the ROOT CAUSE of his situation. Be specific. Name what you see. No softening.",
+  "sexuality": "His sexual control protocol. Specific to what he answered yes to. 5-6 bullet points starting with ·. Include kegel every second day, the release valve technique, no pornography protocol, and why pornography is worse than alcohol for the brain.",
+  "physical": "His exact daily physical protocol. 5-6 bullet points starting with ·. Include PUR Ladder, apple cider vinegar morning protocol, eating window, cold shower. Specific times.",
+  "mind": "His dopamine and attention protocol. 4-5 bullet points starting with ·. Based on what he answered yes to.",
+  "responsibility": "His responsibility actions this week. 3-4 bullet points starting with ·. The specific conversation to have, the boundary to set.",
+  "nonneg": "His 3 daily non-negotiables. Numbered 1. 2. 3. Built from his highest-scoring problem areas.",
+  "ninety": "One paragraph — what the next 90 days look like for ${userName}. Specific. Month 1, Month 2, Month 3. End with what he will feel like in 90 days.",
+  "message": "A direct personal message from Paul PUR to ${userName}. 4-5 sentences. Raw. Real. Use his name. Reference something specific from his answers."
+}`;
 
   let bp;
-  try{
-    const r=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});
-    const d=await r.json();
-    bp=d.blueprint||fallback(crits,sc);
-  }catch(e){bp=fallback(crits,sc);}
-  setTimeout(()=>showResult(sc,bp),600);
+  try {
+    const r = await fetch('/api/analyze', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({prompt})
+    });
+    const d = await r.json();
+    bp = d.blueprint || getFallback(scores, criticals, yesList);
+  } catch(e) {
+    bp = getFallback(scores, criticals, yesList);
+  }
+
+  setTimeout(() => showResult(scores, bp), 600);
 }
 
-function fallback(crits,sc){
-  const hasPorn=T[lang].qs.some((q,i)=>ans[i]===true&&q.toLowerCase().includes('porn'));
-  return{
-    identity:`${userName} — ${lang==='de'?'du hast heute 51 ehrliche Fragen über dich beantwortet. Das allein setzt dich vor 80% der Männer.':lang==='ru'?'ты ответил на 51 честный вопрос о себе сегодня. Это уже ставит тебя впереди большинства.':'you answered 51 honest questions about yourself today. That alone puts you ahead of most men.'}`,
-    insight:`${lang==='de'?`Deine Scores zeigen die tiefsten Probleme in ${crits.join(' und ')}. ${hasPorn?'Pornografie verdrahtet dein Gehirn um — weg von deinem Körper, hin zum Bildschirm. Es ist schädlicher als Alkohol.':''} Das Muster ist klar: du weißt was sich ändern muss. Du wartest auf den richtigen Moment. Der richtige Moment ist jetzt.`:lang==='ru'?`Твои результаты показывают самые глубокие проблемы в ${crits.join(' и ')}. ${hasPorn?'Порнография перепрограммирует твой мозг — от тела к экрану. Это разрушительнее алкоголя.':''} Паттерн ясен: ты знаешь что нужно изменить. Ты ждёшь правильного момента. Правильный момент — сейчас.`:`Your scores show the deepest problems in ${crits.join(' and ')}. ${hasPorn?'Pornography is rewiring your brain away from your body toward a screen. It is more damaging than alcohol.':''} The pattern is clear: you know what needs to change. You are waiting for the right moment. The right moment is now.`}`,
-    sexuality:lang==='de'?`· Kein Pornos — ab heute, nicht ab Montag\n· Kegel: 100 Kontraktionen jeden zweiten Tag vor dem Aufstehen. Volle Kontraktion, vollständige Entspannung. Die Entspannung ist die Technik.\n· Release Valve: wenn du dich dem Punkt of no return näherst — Beckenboden vollständig entspannen, vollständig ausatmen. Nicht halten. Loslassen.\n· Morgenerektion täglich beobachten — das ist dein Testosteron-Indikator`:lang==='ru'?`· Никакого порно — начиная с сегодня, не с понедельника\n· Кегель: 100 сокращений через день до подъёма. Полное сокращение, полное расслабление. Расслабление — это техника.\n· Клапан сброса: когда приближаешься к точке невозврата — полностью расслабь тазовое дно, полностью выдохни. Не держи. Отпусти.\n· Наблюдай утреннюю эрекцию ежедневно — это твой индикатор тестостерона`:`· No pornography — starting today, not Monday\n· Kegel: 100 contractions every second day before getting up. Full contraction, full release. The release is the skill.\n· Release valve: when approaching the point of no return — completely release pelvic floor, exhale fully. Do not hold. Let go.\n· Observe morning erection daily — it is your testosterone indicator`,
-    physical:lang==='de'?`· Aufwachen 5:30 Uhr — jeden Tag, keine Snooze\n· Zuerst: 1 EL Apfelessig + Himalayasalz in Wasser — vor dem Kaffee, vor allem\n· PUR Leiter: 1 Wdh/10s → 2 Wdh/20s → 3 Wdh/30s. 5 Leitern. Jeden Tag. Push-ups, Pull-ups, Kniebeugen\n· Kalte Dusche — minimum 2 Minuten — jeden Morgen\n· Essensfenster: 13:00–19:00 — nichts davor, nichts danach`:lang==='ru'?`· Подъём в 5:30 — каждый день, без отсрочки\n· Сначала: 1 ст.л. яблочного уксуса + гималайская соль в воде — до кофе, до всего\n· Лестница PUR: 1 повт/10с → 2 повт/20с → 3 повт/30с. 5 лестниц. Каждый день.\n· Холодный душ — минимум 2 минуты — каждое утро\n· Окно питания: 13:00–19:00 — ничего до, ничего после`:`· Wake at 5:30 — every day, no snooze\n· First: 1 tbsp apple cider vinegar + Himalayan salt in water — before coffee, before everything\n· PUR Ladder: 1 rep/10s → 2 reps/20s → 3 reps/30s. 5 ladders. Every day.\n· Cold shower — minimum 2 minutes — every morning\n· Eating window: 13:00–19:00 — nothing before, nothing after`,
-    mind:lang==='de'?`· Kein Handy die ersten 90 Minuten nach dem Aufwachen\n· Kein Porno — dein Gehirn braucht echte Stimulation, nicht Bildschirm\n· Kein Social Media vor 12:00\n· Ein 90-Minuten Deep-Work-Block täglich — gleiche Zeit, Handy aus\n· Wenn ein Impuls kommt: 90 Sekunden warten vor dem Handeln`:lang==='ru'?`· Никакого телефона первые 90 минут после пробуждения\n· Никакого порно — твоему мозгу нужна настоящая стимуляция\n· Никаких соцсетей до 12:00\n· Один блок глубокой работы в день — то же время, телефон выключен\n· Когда приходит импульс: подожди 90 секунд прежде чем действовать`:`· No phone for the first 90 minutes after waking\n· No pornography — your brain needs real stimulation, not a screen\n· No social media before 12:00\n· One 90-minute deep work block daily — same time, phone off\n· When an impulse hits: wait 90 seconds before acting`,
-    responsibility:lang==='de'?`· Schreibe deine 3 Non-Negotiables diese Woche — auf Papier, nicht im Kopf\n· Führe das Gespräch das du vermeidest — diese Woche, nicht nächsten Monat\n· Jeden Abend: ein Sieg, eine Niederlage, eine Lektion`:lang==='ru'?`· Запиши свои 3 обязательных правила на этой неделе — на бумаге, не в голове\n· Проведи разговор который ты избегаешь — на этой неделе, не в следующем месяце\n· Каждый вечер: одна победа, одна неудача, один урок`:`· Write your 3 non-negotiables this week — on paper, not in your head\n· Have the conversation you are avoiding — this week, not next month\n· Every evening: one win, one failure, one lesson`,
-    nonneg:lang==='de'?`1. Kein Porno, keine Masturbation zur Ejakulation — lenke diese Energie in deinen Körper\n2. Trainiere jeden Morgen — die Leiter, jeden Tag, keine Ausnahmen\n3. Halte dein Essensfenster — 13:00–19:00, keine Ausnahmen`:lang==='ru'?`1. Никакого порно, никакой мастурбации до эякуляции — направь эту энергию в тело\n2. Тренируйся каждое утро — Лестница, каждый день, без исключений\n3. Соблюдай окно питания — 13:00–19:00, без исключений`:`1. No pornography, no masturbation to ejaculation — redirect that energy into your body\n2. Train every morning — the Ladder, every day, no exceptions\n3. Protect your eating window — 13:00–19:00, no exceptions`,
-    ninety:lang==='de'?`${userName}, die nächsten 90 Tage geht es nicht um Motivation. Es geht darum, Systeme zu installieren die deinen Gehirn dazu bringen die richtigen Dinge zu wollen. Monat 1: du baust die Gewohnheiten — die Leiter, das Morgenprotokoll, die kalte Dusche, kein Porno. Du wirst Widerstand spüren. Du tust es trotzdem. Monat 2: die Gewohnheiten beginnen zu haften. Dein Gehirn fühlt sich schlecht wenn du sie überspringst — das ist das Ziel. Monat 3: du bist ein anderer Mann. In 90 Tagen schaust du in den Spiegel und erkennst den Mann den du sein solltest.`:lang==='ru'?`${userName}, следующие 90 дней — не о мотивации. Они о том чтобы установить системы которые заставят твой мозг хотеть правильных вещей. Месяц 1: строишь привычки — Лестница, утренний протокол, холодный душ, никакого порно. Ты почувствуешь сопротивление. Делаешь это всё равно. Месяц 2: привычки начинают закрепляться. Твой мозг чувствует себя плохо когда ты их пропускаешь — это и есть цель. Месяц 3: ты другой мужчина. Через 90 дней ты смотришь в зеркало и узнаёшь мужчину которым должен был стать.`:`${userName}, the next 90 days are not about motivation. They are about installing systems that make your brain want the right things. Month 1: you build the habits — the Ladder, the morning protocol, the cold shower, no pornography. You will feel resistance. You do it anyway. Month 2: the habits begin to stick. Your brain starts to feel bad when you skip them — that is the goal. Month 3: you are a different man. In 90 days you look in the mirror and recognize the man you were supposed to become.`,
-    message:lang==='de'?`${userName} — du hast heute 51 ehrliche Fragen über dich selbst beantwortet. Die meisten Männer tun das nie. Sie scrollen weiter, trinken weiter, schauen Pornos und wundern sich warum sich nichts ändert. Du hast etwas anderes getan. Jetzt tue etwas damit. Das Protokoll liegt in deinen Händen. Befolge es 90 Tage lang. Nicht weil ich es sage. Weil du es entschieden hast. — Paul PUR`:lang==='ru'?`${userName} — ты ответил на 51 честный вопрос о себе сегодня. Большинство мужчин никогда этого не делают. Они продолжают листать, пить, смотреть порно и удивляться почему ничего не меняется. Ты сделал что-то другое. Теперь сделай что-то с этим. Протокол у тебя в руках. Следуй ему 90 дней. Не потому что я так сказал. Потому что ты так решил. — Пол ПУР`:`${userName} — you answered 51 honest questions about yourself today. Most men never do that. They keep scrolling, keep drinking, keep watching pornography, and keep wondering why nothing changes. You did something different. Now do something with it. The protocol is in your hands. Follow it for 90 days. Not because I said so. Because you decided. — Paul PUR`
+function getFallback(scores, criticals, yesList) {
+  const hasPorn = yesList.some(q => q.includes('pornography'));
+  const hasBody = yesList.some(q => q.includes('body'));
+  return {
+    identity: `${userName} — you are a man who has been honest with himself today. That alone puts you ahead. Now the work begins.`,
+    insight: `Your scores show the deepest problems in ${criticals.join(' and ')}. ${hasPorn ? 'Pornography is rewiring your brain away from your own body — it is not harmless, it is more damaging than alcohol to your focus and drive.' : ''} The pattern is clear: you know what needs to change. You have been waiting for the right moment. The right moment is now.`,
+    sexuality: `· Stop pornography completely — starting today, not Monday\n· Kegel protocol: 100 contractions every second day before leaving bed. Full contraction, full release. The release is the skill.\n· The release valve: when approaching the point of no return — release the pelvic floor completely, exhale fully, relax everything. Do not hold. Let go.\n· Apply PUR KOK or beef tallow to the tissue before every training session — every second day\n· Morning erection is your hormonal indicator — track it daily`,
+    physical: `· Wake at 5:30 AM — every day, same time, no snooze\n· First thing: 1 tbsp apple cider vinegar + pinch Himalayan salt in water. Before coffee. Before anything.\n· PUR Ladder: 1 rep / 10 seconds → 2 reps / 20 seconds → 3 reps / 30 seconds. 5 ladders. Every day. Push-ups, pull-ups, squats.\n· Cold shower — minimum 2 minutes — every morning. No negotiation.\n· Eating window: 13:00–19:00 only. Nothing before. Nothing after.`,
+    mind: `· No phone for the first 90 minutes after waking — non-negotiable\n· No pornography — it trains your brain away from your body and toward a screen\n· No social media before 12:00\n· One 90-minute block of focused work — same time every day, phone off\n· When an impulse hits: pause 90 seconds before acting. Every time.`,
+    responsibility: `· Write your 3 non-negotiables this week — on paper, not in your head\n· Have the conversation you have been avoiding — this week, not next month\n· Say no to one thing this week that you would normally say yes to out of fear\n· Every evening: one win, one failure, one lesson`,
+    nonneg: `1. No pornography, no masturbation to ejaculation — redirect that energy into your body\n2. Train every morning — the Ladder, every day, no exceptions\n3. Protect your eating window — 13:00–19:00, nothing outside these hours`,
+    ninety: `${userName}, the next 90 days are not about motivation. They are about installing systems that make your brain crave the right things. Month 1: you build the habits — the Ladder, the morning protocol, the cold shower, no pornography. You will feel resistance. You do it anyway. Month 2: the habits begin to stick. Your brain starts to feel bad when you skip them — that is the goal. Month 3: you are a different man. Not because someone told you to change. Because you rewired yourself. In 90 days you will look in the mirror and recognize the man you were supposed to become.`,
+    message: `${userName} — you answered 51 honest questions about yourself today. Most men never do that. Most men keep scrolling, keep drinking, keep watching pornography, and keep wondering why nothing changes. You did something different. Now do something with it. The protocol is in your hands. Follow it for 90 days. Not because I said so. Because you decided. — Paul PUR`
   };
 }
 
-// ═══════════ SHOW RESULT ═══════════
-function showResult(sc,bp){
-  document.getElementById('pf').style.width='100%';
-  show('sr');
-  const t=T[lang];
-  document.getElementById('rFor').textContent=(t.r_for||'Built for {n}.').replace('{n}',userName);
+// ══════════════════════════════════════════
+// SHOW RESULT
+// ══════════════════════════════════════════
+function showResult(scores, bp) {
+  document.getElementById('pf').style.width = '100%';
+  document.getElementById('gen-section').classList.remove('active');
+  document.getElementById('result-section').classList.add('active');
+  document.getElementById('result-section').scrollIntoView({behavior:'smooth'});
 
-  let sHtml='';
-  Object.entries(sc).forEach(([bl,pct])=>{
-    const tg=tag(pct);
-    sHtml+=`<div class="scr2"><span class="scl">${bl}</span><div class="scb"><div class="scbf" style="width:${pct}%;background:${tg.c}"></div></div><span class="scp">${pct}%</span><span class="sct" style="color:${tg.c}">${tg.l}</span></div>`;
+  document.getElementById('resultFor').textContent = `Built for ${userName}. Based on your honest answers.`;
+
+  // SCORE ROWS
+  let sHtml = '';
+  Object.entries(scores).forEach(([block, pct]) => {
+    const tag = getTag(pct);
+    const fill = pct;
+    sHtml += `<div class="score-row">
+      <span class="score-label">${block}</span>
+      <div class="score-bar"><div class="score-fill" style="width:${fill}%;background:${tag.c}"></div></div>
+      <span class="score-pct">${pct}%</span>
+      <span class="score-tag" style="color:${tag.c}">${tag.l}</span>
+    </div>`;
   });
-  document.getElementById('scRows').innerHTML=sHtml;
+  document.getElementById('scoreRows').innerHTML = sHtml;
 
-  const btags=t.bp_tags||['Identity','Core Insight','Sexual Control','Physical Control','Mind & Dopamine','Responsibility','Non-Negotiables','90-Day Focus','From Paul PUR'];
-  const btitles=t.bp_titles||['Who You Are Becoming','What Your Answers Reveal','Your Sexual Protocol','Your Daily Physical Protocol','Your Mental Protocol','Your Actions This Week','Your Three Daily Non-Negotiables','The Next 90 Days','A Message For You'];
-  const keys=['identity','insight','sexuality','physical','mind','responsibility','nonneg','ninety','message'];
-  const sci_label=t.sci||'SCIENCE';
+  // BLUEPRINT BLOCKS
+  const sections = [
+    {n:'∞', tag:'Identity', title:'Who You Are Becoming', key:'identity'},
+    {n:'!', tag:'Core Insight', title:'What Your Answers Reveal', key:'insight'},
+    {n:'S', tag:'Sexual Control', title:'Your Sexual Protocol', key:'sexuality'},
+    {n:'P', tag:'Physical Control', title:'Your Daily Physical Protocol', key:'physical'},
+    {n:'U', tag:'Mind & Dopamine', title:'Your Mental Protocol', key:'mind'},
+    {n:'R', tag:'Responsibility', title:'Your Actions This Week', key:'responsibility'},
+    {n:'3', tag:'Non-Negotiables', title:'Your Three Daily Non-Negotiables', key:'nonneg'},
+    {n:'90', tag:'90-Day Focus', title:'The Next 90 Days', key:'ninety'},
+    {n:'✦', tag:'From Paul PUR', title:'A Message For You', key:'message'},
+  ];
 
-  const sciBoxes={
-    sexuality:`<div class="sci"><div class="sci-lbl">${sci_label}</div><div class="sci-txt">Dorey et al., 2005 (BJU International): Pelvic floor muscle training resolved erectile dysfunction in 40% of participants after 3 months.</div></div>`,
-    physical:`<div class="sci"><div class="sci-lbl">${sci_label}</div><div class="sci-txt">Srámek et al. (Eur J Appl Physiol): Cold water immersion produces significant increases in noradrenaline (300%) and dopamine (250%).</div></div>`,
-    mind:`<div class="sci"><div class="sci-lbl">${sci_label}</div><div class="sci-txt">Voon et al., 2014 (PLOS ONE): Compulsive pornography users show identical brain activation as cocaine-dependent individuals.</div></div>`,
-    ninety:`<div class="sci"><div class="sci-lbl">${sci_label}</div><div class="sci-txt">Zhejiang University, 2003: Testosterone peaked at 145.7% of baseline on day 7 of abstinence from ejaculation.</div></div>`
-  };
-
-  const nums=['∞','!','S','P','U','R','3','90','✦'];
-  let bpHtml='';
-  keys.forEach((k,i)=>{
-    const content=(bp[k]||'').replace(/\n/g,'<br>');
-    const sci=sciBoxes[k]||'';
-    bpHtml+=`<div class="bp"><div class="bpn">${nums[i]}</div><p class="bpt">${btags[i]}</p><h3 class="bptitle">${btitles[i]}</h3><p class="bpc">${content}</p>${sci}</div>`;
+  let bpHtml = '';
+  sections.forEach((s, i) => {
+    bpHtml += `<div class="bp-block rv" style="animation-delay:${i*0.06}s">
+      <div class="bp-num">${s.n}</div>
+      <p class="bp-tag">${s.tag}</p>
+      <h3 class="bp-title">${s.title}</h3>
+      <p class="bp-content">${(bp[s.key]||'').replace(/\n/g,'<br>')}</p>
+    </div>`;
   });
-  document.getElementById('bpBlocks').innerHTML=bpHtml;
-  window._bp=bp;window._sc=sc;
+  document.getElementById('bpBlocks').innerHTML = bpHtml;
+
+  window._bp = bp;
+  window._scores = scores;
+
+  // trigger reveal
+  setTimeout(() => {
+    document.querySelectorAll('#result-section .rv').forEach(el => el.classList.add('on'));
+  }, 100);
 }
 
-// ═══════════ PDF ═══════════
-function dPDF(){
-  const{jsPDF}=window.jspdf;
-  const doc=new jsPDF({format:'a4',unit:'mm'});
-  const W=210,M=22,MW=W-M*2;let y=0;
-  const ap=()=>{doc.addPage();y=24;};
-  const ck=(n)=>{if(y+n>272)ap();};
-  const wr=(txt,sz,col,bold,italic,center)=>{
-    doc.setFont('times',bold&&italic?'bolditalic':bold?'bold':italic?'italic':'normal');
-    doc.setFontSize(sz);doc.setTextColor(...col);
-    const lines=doc.splitTextToSize(txt||'',MW);
-    lines.forEach(l=>{ck(sz*.4+2);if(center)doc.text(l,W/2,y,{align:'center'});else doc.text(l,M,y);y+=sz*.4+1.5;});
+// ══════════════════════════════════════════
+// PDF
+// ══════════════════════════════════════════
+function dlPDF() {
+  const {jsPDF} = window.jspdf;
+  const doc = new jsPDF({format:'a4',unit:'mm'});
+  const W = 210, M = 22, MW = W - M*2;
+  let y = 0;
+  const ap = () => { doc.addPage(); y = 24; };
+  const ck = (n) => { if (y + n > 272) ap(); };
+  const write = (text, size, color, bold, italic, center) => {
+    doc.setFont('times', bold && italic ? 'bolditalic' : bold ? 'bold' : italic ? 'italic' : 'normal');
+    doc.setFontSize(size);
+    doc.setTextColor(...color);
+    const lines = doc.splitTextToSize(text || '', MW);
+    lines.forEach(l => {
+      ck(size * 0.4 + 2);
+      if (center) doc.text(l, W/2, y, {align:'center'});
+      else doc.text(l, M, y);
+      y += size * 0.4 + 1.5;
+    });
   };
-  doc.setFillColor(250,250,247);doc.rect(0,0,210,297,'F');
-  y=44;
-  wr('P  ·  U  ·  R  ·  M E T H O D',8,[155,125,58],false,false,true);y+=8;
-  wr('Personal Blueprint.',40,[10,10,10],false,true,true);y+=8;
-  doc.setDrawColor(196,168,130);doc.setLineWidth(.3);doc.line(M+20,y,W-M-20,y);y+=12;
-  wr(`${T[lang].r_for?.replace('{n}',userName)||'For '+userName+'.'}`,14,[10,10,10],false,false,true);y+=4;
-  wr('Physical Control · Understanding the Mind · Responsibility',9,[139,115,85],false,false,true);
-  y=268;wr('purmethod.com  ·  @paulpur_  ·  '+new Date().toLocaleDateString(),8,[196,168,130],false,false,true);
 
-  const t=T[lang];
-  const btags=t.bp_tags||['Identity','Core Insight','Sexual Control','Physical Control','Mind & Dopamine','Responsibility','Non-Negotiables','90-Day Focus','From Paul PUR'];
-  const btitles=t.bp_titles||['Who You Are Becoming','What Your Answers Reveal','Your Sexual Protocol','Your Daily Physical Protocol','Your Mental Protocol','Your Actions This Week','Your Three Daily Non-Negotiables','The Next 90 Days','A Message For You'];
-  const keys=['identity','insight','sexuality','physical','mind','responsibility','nonneg','ninety','message'];
-  const bp=window._bp;
+  // COVER
+  doc.setFillColor(250,250,247);
+  doc.rect(0,0,210,297,'F');
+  y = 44;
+  write('P  ·  U  ·  R  ·  M E T H O D', 8, [155,125,58], false, false, true);
+  y += 8;
+  write('Personal Blueprint.', 40, [10,10,10], false, true, true);
+  y += 8;
+  doc.setDrawColor(196,168,130);
+  doc.setLineWidth(0.3);
+  doc.line(M+20, y, W-M-20, y);
+  y += 12;
+  write(`For ${userName}.`, 16, [10,10,10], false, false, true);
+  y += 4;
+  write('Physical Control · Understanding the Mind · Responsibility', 9, [139,115,85], false, false, true);
+  y = 268;
+  write('purmethod.com  ·  @paulpur_  ·  ' + new Date().toLocaleDateString('en-GB'), 8, [196,168,130], false, false, true);
 
-  keys.forEach((k,i)=>{
+  // SCORES PAGE
+  ap();
+  write('YOUR ANALYSIS', 8, [155,125,58], true, false);
+  y += 4;
+  write('Where you stand.', 22, [10,10,10], true, false);
+  y += 6;
+  doc.setDrawColor(196,168,130);
+  doc.setLineWidth(0.2);
+  doc.line(M, y, W-M, y);
+  y += 10;
+  Object.entries(window._scores).forEach(([block, pct]) => {
+    ck(12);
+    doc.setFont('times','normal');
+    doc.setFontSize(11);
+    doc.setTextColor(10,10,10);
+    doc.text(block, M, y);
+    const barW = (W - M*2 - 60);
+    const fillW = barW * pct / 100;
+    doc.setFillColor(220,220,220);
+    doc.rect(M+60, y-3, barW, 2, 'F');
+    if (pct >= 70) doc.setFillColor(139,58,58);
+    else if (pct >= 40) doc.setFillColor(139,106,58);
+    else doc.setFillColor(107,122,58);
+    doc.rect(M+60, y-3, fillW, 2, 'F');
+    doc.setFontSize(10);
+    doc.setTextColor(139,115,85);
+    doc.text(pct + '%', W-M, y, {align:'right'});
+    y += 10;
+  });
+
+  // BLUEPRINT SECTIONS
+  const bp = window._bp;
+  const secs = [
+    {tag:'Identity', title:'Who You Are Becoming', key:'identity'},
+    {tag:'Core Insight', title:'What Your Answers Reveal', key:'insight'},
+    {tag:'Sexual Control', title:'Your Sexual Protocol', key:'sexuality'},
+    {tag:'Physical Control', title:'Your Daily Physical Protocol', key:'physical'},
+    {tag:'Mind & Dopamine', title:'Your Mental Protocol', key:'mind'},
+    {tag:'Responsibility', title:'Your Actions This Week', key:'responsibility'},
+    {tag:'Non-Negotiables', title:'Your Three Daily Non-Negotiables', key:'nonneg'},
+    {tag:'90-Day Focus', title:'The Next 90 Days', key:'ninety'},
+    {tag:'From Paul PUR', title:'A Message For You', key:'message'},
+  ];
+
+  secs.forEach(s => {
     ap();
-    doc.setFillColor(155,125,58);doc.rect(M,y-3,2,18,'F');y+=2;
-    wr(btags[i].toUpperCase(),8,[155,125,58],true,false);y+=2;
-    wr(btitles[i],18,[10,10,10],true,false);y+=3;
-    doc.setDrawColor(196,168,130);doc.setLineWidth(.2);doc.line(M+6,y,W-M,y);y+=8;
-    wr(bp[k]||'',11,[74,63,53],false,true);
-
-    if(['sexuality','physical','mind','ninety'].includes(k)){
-      ck(24);y+=4;
-      doc.setFillColor(232,244,248);doc.rect(M,y-3,MW,16,'F');
-      doc.setDrawColor(184,216,232);doc.setLineWidth(.4);doc.rect(M,y-3,MW,16,'S');
-      wr({
-        sexuality:'Dorey et al., 2005 (BJU Int.): Pelvic floor training resolved ED in 40% of participants.',
-        physical:'Srámek et al.: Cold immersion raises noradrenaline 300%, dopamine 250%.',
-        mind:'Voon et al., 2014 (PLOS ONE): Porn users show same brain patterns as cocaine addicts.',
-        ninety:'Zhejiang Univ., 2003: Testosterone +145.7% on day 7 of ejaculation abstinence.'
-      }[k],9,[30,90,106],false,true);y+=6;
-    }
-    doc.setFont('times','normal');doc.setFontSize(8);doc.setTextColor(196,168,130);
-    doc.text(`purmethod.com  ·  ${userName}`,W/2,285,{align:'center'});
+    doc.setFillColor(155,125,58);
+    doc.rect(M, y-3, 2, 18, 'F');
+    y += 2;
+    write(s.tag.toUpperCase(), 8, [155,125,58], true, false);
+    y += 2;
+    write(s.title, 19, [10,10,10], true, false);
+    y += 3;
+    doc.setDrawColor(196,168,130);
+    doc.setLineWidth(0.2);
+    doc.line(M+6, y, W-M, y);
+    y += 8;
+    write(bp[s.key]||'', 11, [74,63,53], false, true);
+    doc.setFont('times','normal');
+    doc.setFontSize(8);
+    doc.setTextColor(196,168,130);
+    doc.text(`purmethod.com  ·  ${userName}'s Blueprint`, W/2, 285, {align:'center'});
   });
+
   doc.save(`PUR-Blueprint-${userName}.pdf`);
 }
 
-// ═══════════ HELPERS ═══════════
-function show(id){
-  document.querySelectorAll('.scr').forEach(s=>s.classList.remove('on'));
-  const el=document.getElementById(id);
-  if(el)el.classList.add('on');
-  if(id==='sr'){document.getElementById('sr').style.display='block';document.getElementById('sr').classList.add('on');}
-  window.scrollTo({top:0,behavior:'smooth'});
+// ══════════════════════════════════════════
+// ACCORDION & REVEAL
+// ══════════════════════════════════════════
+function tog(btn) {
+  const item = btn.closest('.acc');
+  const open = item.classList.contains('open');
+  document.querySelectorAll('.acc.open').forEach(el => el.classList.remove('open'));
+  if (!open) item.classList.add('open');
 }
 
-function tog(btn){
-  const item=btn.closest('.acc');
-  const open=item.classList.contains('open');
-  document.querySelectorAll('.acc.open').forEach(el=>el.classList.remove('open'));
-  if(!open)item.classList.add('open');
+function restart() {
+  ans.fill(null);
+  curQ = 0;
+  userName = '';
+  document.getElementById('pf').style.width = '0%';
+  document.getElementById('quiz-section').classList.remove('active');
+  document.getElementById('gen-section').classList.remove('active');
+  document.getElementById('result-section').classList.remove('active');
+  document.getElementById('nameInp').value = '';
+  document.getElementById('hero').scrollIntoView({behavior:'smooth'});
 }
 
-function rst(){
-  ans.fill(null);cur=0;userName='';
-  document.querySelector('.prog').style.display='none';
-  document.getElementById('pf').style.width='0%';
-  document.getElementById('ni').value='';
-  document.getElementById('sr').style.display='none';
-  show('sl');
-}
-
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*60);obs.unobserve(e.target);}});
-},{threshold:.1});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('on'), i * 60);
+      obs.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.1});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
 </script>
 
 </body>
