@@ -9,7 +9,6 @@ if (req.method !== ‘POST’) return res.status(405).json({ error: ‘Method no
 const body = req.body;
 const lang = body.lang || ‘en’;
 
-// Load knowledge files from GitHub
 const REPO = ‘https://raw.githubusercontent.com/purmethod/pur/main/knowledge’;
 const files = [
 ‘p0-sexual-control.txt’,
@@ -30,18 +29,15 @@ for (const f of files) {
 try {
 const r = await fetch(`${REPO}/${f}`);
 if (r.ok) knowledge += ‘\n\n’ + await r.text();
-else console.log(‘Knowledge file not found:’, f);
 } catch (e) {
 console.error(‘Failed to load’, f, e.message);
 }
 }
 
 if (!knowledge.trim()) {
-console.log(‘No knowledge files loaded - using inline knowledge’);
-knowledge = `PUR METHOD CORE PROTOCOLS: P0 Sexual Control: Kegel 100 contractions every 2nd day. Release valve technique: at point of no return fully release pelvic floor and exhale. No pornography - Voon et al 2014 identical brain activation to cocaine. Testosterone peaks 145.7% day 7 abstinence (Zhejiang 2003). P1 Sleep: Last meal 15:00. Phone away 18:00. Bed 21:00. Wake 05:00. Testosterone produced during deep sleep. P2 Movement: PUR Ladder - 1 rep 10s rest, 2 reps 20s rest, 3 reps 30s rest. 5 ladders daily. Pull-ups, dips, pistol squats. Outdoor training. P3 Food: 21h fasting window. ACV + Himalayan salt in water first thing. Eating window 13:00-19:00. Food as medicine. P4 Breath: Wim Hof Method - 30 breaths, retention, recovery. Kox et al 2014 reduced inflammation markers. P5 Temperature: Cold shower minimum 2 minutes daily. Noradrenaline +300%, dopamine +250% (Sramek et al). U0 Awareness: Gap between stimulus and response. 90-second rule. Observe before acting. U1 Impulse: See impulse before obeying it. Hunger vs habit vs emotion. U2 Dopamine: No phone first 90 min. No pornography. No social media before noon. Deep work block daily. U3 Attention: 90-min deep work block. Phone in other room. Environment design over willpower. U4 Identity: You act from identity not goals. Write who you are becoming. Values as compass. U5 Emotional: Feel without being controlled. Stoic tradition. Conflict without coldness. R0 Accountability: No one is coming. Radical ownership. Fault vs responsibility. R1 Responsibility: Body as business card. Private promises build self-trust. R2 Principles: Write principles before tested. Red flags early. Non-negotiables. R3 Relationship: Stability not control. Your mood independent of hers. Presence as attraction. R4 Trust: Word is bankable or not. Consistency over time. Self-trust first. R5 Legacy: What remains is mark in people. Daily compass question: is this consistent with who I want to have been.`;
+knowledge = `PUR METHOD PROTOCOLS: P0 Sexual Control: Kegel 100 contractions every 2nd day. Release valve at point of no return: fully release pelvic floor, exhale completely. No pornography - Voon et al 2014 identical brain activation to cocaine. Testosterone peaks 145.7% day 7 abstinence (Zhejiang 2003). PUR KOK cream: beef tallow base, prickly pear cactus seed oil. P1 Sleep: Last meal 15:00. Phone away 18:00. Bed 21:00. Wake 05:00. Testosterone produced during deep sleep. Leproult 2011: one week sleep restriction reduces testosterone 10-15%. P2 Movement: PUR Ladder - 1 rep 10s rest, 2 reps 20s rest, 3 reps 30s rest. 5 ladders daily. Pull-ups, dips, pistol squats, muscle-ups. Outdoor training as ritual. Habit before performance. P3 Food: 21h fasting window. ACV + Himalayan salt in water first thing morning. Eating window 13:00-19:00. Autophagy activates after 16-18h fast. Food as medicine not anesthesia. P4 Breath: Wim Hof Method - 30 breaths, retention on empty lungs, recovery breath. Kox et al 2014: reduced inflammatory markers. CO2 tolerance training. P5 Temperature: Cold shower minimum 2 minutes daily. Noradrenaline +300%, dopamine +250% (Sramek). Mental strength through voluntary discomfort. U0 Awareness: Gap between stimulus and response. 90-second rule - physiological emotion lasts 90s. Observe before acting. Viktor Frankl: between stimulus and response is freedom. U1 Impulse: See impulse before obeying. Hunger vs habit vs emotion. Sexual energy as resource not waste. U2 Dopamine: No phone first 90 min. No pornography. Dopamine reset 2-4 weeks discomfort then recalibration. Voon 2014: pornography = cocaine neural patterns. U3 Attention: 90-min deep work block daily. Phone in other room. Environment design over willpower. Cal Newport Deep Work. U4 Identity: Act from identity not goals. Write who you are becoming. Values as compass. I am someone who - not I am trying to. U5 Emotional: Feel without being controlled. Stoic tradition. Conflict without coldness. Anger as information. R0 Accountability: No one is coming. Radical ownership. Fault looks backward, responsibility looks forward. R1 Responsibility: Body as business card. Private promises build self-trust. The man nobody sees. R2 Principles: Write principles before tested. Red flags in women: multiple close male friendships when wanting family, emotional instability, dishonesty in small things. Non-negotiables. R3 Relationship: Stability not control. Your mood independent of hers. Presence as attraction. Leadership means she feels safe to be herself. R4 Trust: Word is bankable or not. Consistency over time. Self-trust first. R5 Legacy: What remains is mark in people. Daily compass: is this consistent with the man I want to have been.`;
 }
 
-// Build prompt
 let prompt = ‘’;
 if (body.prompt) {
 prompt = body.prompt;
@@ -72,7 +68,7 @@ prompt = `Generate a deeply personalised PUR Method 90-day blueprint for ${profi
 
 LANGUAGE: Write entirely in ${langNames[lang] || ‘English’}.
 
-MODULE SCORES (% problem — higher = more critical):
+MODULE SCORES (% problem, higher = more critical):
 ${Object.entries(scores).map(([k, v]) => `${k.toUpperCase()}: ${v}%`).join(’\n’)}
 
 TOP CRITICAL AREAS: ${sortedScores.join(’ | ’)}
@@ -80,34 +76,36 @@ TOP CRITICAL AREAS: ${sortedScores.join(’ | ’)}
 VALUES PROFILE:
 ${values.join(’\n’)}
 
-CONFIRMED PROBLEMS:
+CONFIRMED PROBLEMS (his real issues):
 ${problems.slice(0, 30).join(’\n’)}
 
-SYNTHESIS:
+SYNTHESIS ANSWERS:
 ${synthesis.join(’\n’)}
 
-Write entirely in ${langNames[lang] || ‘English’}. Use ${profile.name}’s name throughout.`;
+Write entirely in ${langNames[lang] || ‘English’}. Use ${profile.name}’s name and age throughout.`;
 } else {
-return res.status(400).json({ error: ‘Missing fields’ });
+return res.status(400).json({ error: ‘Missing required fields’ });
 }
 
-const system = `You are Paul PUR — architect, certified Wim Hof instructor, calisthenics athlete, creator of the PUR Method. Direct, warm, no hedging. The brother most men never had.
+const system = `You are Paul PUR — architect, certified Wim Hof instructor, calisthenics athlete, creator of the PUR Method. You healed an autoimmune disease through fasting. You rebuilt testosterone through nutrition. You are the brother most men never had.
 
-PUR METHOD KNOWLEDGE:
+Your voice: direct, warm, no hedging, no fluff. Speak to one specific man using his name. Tell the truth even when uncomfortable.
+
+PUR METHOD KNOWLEDGE BASE:
 ${knowledge}
 
-Generate a comprehensive personalised blueprint. Every section 200-300+ words. Reference his specific answers. Use his name. Return ONLY valid JSON:
+Generate a comprehensive personalised blueprint. Every section 200-300+ words minimum. Reference his specific answers. Use his name throughout. Return ONLY valid JSON, no markdown, no backticks:
 
 {
-“identity”: “250+ words who this man is becoming”,
-“insight”: “300+ words root causes from his answers with neuroscience”,
-“physical”: “300+ words complete physical protocol with bullets starting with ·”,
-“mind”: “300+ words complete mental protocol with bullets starting with ·”,
-“responsibility”: “250+ words responsibility protocol with bullets starting with ·”,
-“sexual”: “300+ words complete sexual protocol with bullets starting with ·”,
-“nonneg”: “200+ words three non-negotiables numbered 1. 2. 3.”,
-“ninety”: “350+ words 90-day roadmap month by month”,
-“message”: “300+ words personal letter from Paul PUR ending with: — Paul PUR”
+“identity”: “250+ words — who this man is becoming, his name, his specific situation”,
+“insight”: “300+ words — root causes from his exact answers, neuroscience, no softening”,
+“physical”: “300+ words — complete physical protocol, bullets with ·, exact times and reps”,
+“mind”: “300+ words — complete mental protocol, bullets with ·, dopamine reset, attention”,
+“responsibility”: “250+ words — responsibility protocol, bullets with ·, specific this week”,
+“sexual”: “300+ words — complete sexual protocol, bullets with ·, kegel, release valve, no porn”,
+“nonneg”: “200+ words — three non-negotiables numbered 1. 2. 3.”,
+“ninety”: “350+ words — 90-day roadmap, month 1, month 2, month 3 in detail”,
+“message”: “300+ words — personal letter from Paul PUR, end with: — Paul PUR”
 }`;
 
 try {
@@ -145,7 +143,7 @@ try {
   else throw new Error('No JSON in response');
 }
 
-console.log('Blueprint generated successfully for', body.profile?.name || 'user');
+console.log('Blueprint generated for', body.profile?.name || 'user');
 return res.status(200).json({ blueprint });
 ```
 
