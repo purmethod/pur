@@ -1,0 +1,12 @@
+{
+  "name": "pur",
+  "private": true,
+  "description": "purmethod.com: static site + one Vercel function that writes the PUR blueprint with Claude.",
+  "engines": { "node": "22.x" },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.127.0"
+  },
+  "scripts": {
+    "check": "node scripts/check.mjs"
+  }
+}
