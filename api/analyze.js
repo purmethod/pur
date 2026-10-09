@@ -1,5 +1,6 @@
 module.exports = async function handler(req, res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Origin", "https://purmethod.com");
+  res.setHeader("Vary", "Origin");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
@@ -9,6 +10,11 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== "POST") {
     return res.status(405).json({ error: "method not allowed" });
+  }
+
+  // the blueprint is not live yet: keep the paid model call closed until it launches
+  if (process.env.PUR_BLUEPRINT_ENABLED !== "1") {
+    return res.status(503).json({ error: "the blueprint is coming soon" });
   }
 
   try {
@@ -21,14 +27,11 @@ module.exports = async function handler(req, res) {
 
     const knowledge = await loadKnowledge();
 
-    let prompt = "";
-    if (body.prompt) {
-      prompt = String(body.prompt).trim();
-    } else if (body.profile && body.scores && body.answers) {
-      prompt = buildPromptFromPayload(body, lang);
-    } else {
+    // only the structured questionnaire payload is accepted, never a free-form prompt
+    if (!body.profile || !body.scores || !Array.isArray(body.answers) || body.answers.length > 200) {
       return res.status(400).json({ error: "missing fields" });
     }
+    const prompt = buildPromptFromPayload(body, lang).slice(0, 12000);
 
     const system = buildSystemPrompt(knowledge, lang);
 
