@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>your blueprint · PUR METHOD</title>
+  <meta name="description" content="68 honest questions about your body, your mind and your responsibility. your answers become a personal 90-day blueprint, written for your age and your life." />
+  <link rel="canonical" href="https://purmethod.com/blueprint" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="your blueprint · PUR METHOD" />
+  <meta property="og:description" content="68 honest questions. one personal 90-day blueprint." />
+  <meta property="og:image" content="https://purmethod.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --w: #ffffff;
+      --off: #f8f8f6;
+      --ink: #0a0a0a;
+      --ink2: #3a3a3a;
+      --ink3: #6e6e6e;
+      --gold: #846a2f;
+      --line: rgba(0,0,0,.09);
+      --warn-bg: #fbf3e2;
+      --warn: #7a5200;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--w); color: var(--ink); font: 16px/1.6 var(--sans); }
+    a { color: var(--gold); }
+    button { font: inherit; color: inherit; }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+    nav { position: sticky; top: 0; z-index: 10; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; gap: 12px; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); backdrop-filter: blur(8px); }
+    .logo { font-family: var(--serif); font-size: 13px; letter-spacing: .35em; color: var(--ink3); text-decoration: none; text-transform: uppercase; }
+    .lsw { display: flex; gap: 3px; flex-wrap: wrap; justify-content: flex-end; }
+    .lb { font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; background: transparent; border: 1px solid var(--line); color: var(--ink3); padding: 8px 10px; min-width: 36px; min-height: 32px; cursor: pointer; }
+    .lb[aria-pressed="true"], .lb:hover { border-color: var(--gold); color: var(--gold); }
+    .bar { height: 2px; background: var(--line); }
+    .bar i { display: block; height: 100%; width: 0; background: var(--gold); transition: width .4s; }
+
+    main { max-width: 680px; margin: 0 auto; padding: 48px 24px 120px; }
+    .tag { font-size: 10px; font-weight: 500; letter-spacing: .4em; text-transform: uppercase; color: var(--gold); }
+    h1 { font-family: var(--serif); font-weight: 300; font-size: clamp(40px, 8vw, 68px); line-height: 1; letter-spacing: -.02em; margin: 18px 0 18px; text-wrap: balance; }
+    h1 em, h2 em { font-style: italic; }
+    h2 { font-family: var(--serif); font-weight: 300; font-size: clamp(30px, 6vw, 44px); line-height: 1.05; margin: 14px 0 12px; text-wrap: balance; }
+    h3 { font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 1.2; margin-bottom: 8px; }
+    .lead { color: var(--ink2); font-size: 17px; max-width: 58ch; }
+    .meta { margin-top: 28px; display: grid; gap: 6px; color: var(--ink3); font-size: 14px; }
+    .meta b { color: var(--ink); font-weight: 500; }
+
+    .step-head { position: relative; padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+    .step-letter { position: absolute; right: 0; top: -14px; font-family: var(--serif); font-size: 120px; line-height: 1; color: rgba(0,0,0,.05); pointer-events: none; }
+    .q { padding: 26px 0; border-bottom: 1px solid var(--line); }
+    .q.missing .q-text { color: #a8261d; }
+    .q-text { font-size: 17px; line-height: 1.45; margin-bottom: 14px; }
+    .q-code { display: inline-block; font-size: 10px; letter-spacing: .14em; color: var(--gold); margin-right: 8px; font-weight: 500; }
+    .opts { display: flex; flex-wrap: wrap; gap: 8px; }
+    .opts.scale { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .opt { border: 1px solid var(--line); background: var(--w); padding: 10px 14px; min-height: 44px; font-size: 14px; cursor: pointer; text-align: center; transition: border-color .15s, background .15s; }
+    .opt:hover { border-color: var(--ink3); }
+    .opt[aria-checked="true"] { border-color: var(--ink); background: var(--ink); color: var(--w); }
+    .opts.scale .opt { padding: 10px 6px; }
+    input[type=text], input[type=number], textarea { width: 100%; border: 1px solid var(--line); background: var(--off); padding: 12px 14px; font: 16px var(--sans); color: var(--ink); }
+    textarea { min-height: 96px; resize: vertical; }
+    input:focus, textarea:focus { outline: none; border-color: var(--gold); background: var(--w); }
+    .count { font-size: 12px; color: var(--ink3); margin-top: 6px; text-align: end; }
+    .note { margin-top: 14px; padding: 14px 16px; background: var(--warn-bg); color: var(--warn); font-size: 14px; }
+
+    .actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+    .btn { display: inline-block; border: 1px solid var(--ink); background: var(--ink); color: var(--w); padding: 14px 26px; min-height: 48px; font-size: 12px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; text-decoration: none; }
+    .btn:hover { background: var(--gold); border-color: var(--gold); }
+    .btn[disabled] { opacity: .35; cursor: not-allowed; background: var(--ink); border-color: var(--ink); }
+    .ghost { background: none; border: none; color: var(--ink3); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; padding: 14px 0; min-height: 44px; }
+    .ghost:hover { color: var(--ink); }
+    .err { margin-top: 18px; color: #a8261d; font-size: 14px; }
+
+    .consent { display: flex; gap: 12px; align-items: flex-start; margin-top: 26px; padding: 18px; background: var(--off); font-size: 14px; color: var(--ink2); cursor: pointer; }
+    .consent input { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--ink); flex: none; }
+
+    .loading { text-align: center; padding-top: 12vh; }
+    .loading .line { width: 1px; height: 64px; background: linear-gradient(var(--gold), transparent); margin: 30px auto; animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 50% { opacity: .2; } }
+    .loading p { color: var(--ink3); min-height: 1.6em; }
+
+    .bp section { padding: 34px 0; border-bottom: 1px solid var(--line); display: grid; gap: 4px; }
+    .bp section > .tag { margin-bottom: 10px; }
+    .bp .tag { color: var(--gold); }
+    .bp .note { color: var(--warn); }
+    .bp section:last-of-type { border-bottom: 0; }
+    .bp p { color: var(--ink2); max-width: 62ch; }
+    .bp p + p { margin-top: 12px; }
+    .bp .greet { font-family: var(--serif); font-size: 26px; line-height: 1.35; color: var(--ink); font-style: italic; }
+    .prio { display: grid; gap: 14px; margin-top: 16px; }
+    .prio div { padding: 18px 20px; border: 1px solid var(--line); display: grid; gap: 6px; }
+    .prio .code { font-size: 10px; letter-spacing: .2em; color: var(--gold); font-weight: 500; text-transform: uppercase; }
+    .prio .first { font-size: 14px; color: var(--ink); }
+    .prio .first b { font-weight: 500; }
+    .day { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+    .day h4, .phase h4 { font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+    ul.clean { list-style: none; display: grid; gap: 8px; }
+    ul.clean li { font-size: 14px; color: var(--ink2); padding-inline-start: 14px; position: relative; }
+    ul.clean li::before { content: ""; position: absolute; inset-inline-start: 0; top: .7em; width: 5px; height: 1px; background: var(--gold); }
+    .phases { display: grid; gap: 18px; margin-top: 16px; }
+    .phase { padding-inline-start: 18px; border-inline-start: 1px solid var(--gold); }
+    .phase .focus { font-family: var(--serif); font-size: 20px; margin-bottom: 8px; }
+    .nn { counter-reset: n; list-style: none; display: grid; gap: 10px; margin-top: 14px; }
+    .nn li { counter-increment: n; display: flex; gap: 14px; font-size: 15px; }
+    .nn li::before { content: counter(n); font-family: var(--serif); font-size: 22px; line-height: 1; color: var(--gold); min-width: 18px; }
+    .bp .closing { font-family: var(--serif); font-size: 22px; line-height: 1.45; color: var(--ink); }
+    .sign { margin-top: 16px; font-size: 12px; letter-spacing: .3em; text-transform: uppercase; color: var(--ink3); }
+
+    footer { border-top: 1px solid var(--line); padding: 24px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink3); }
+
+    @media (max-width: 560px) {
+      main { padding-top: 32px; }
+      .opts.scale { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .day { grid-template-columns: 1fr; }
+      .step-letter { font-size: 90px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    @media print {
+      nav, .bar, .actions, footer, .no-print { display: none !important; }
+      main { padding: 0; max-width: none; }
+      .bp section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="logo" href="/">P · U · R</a>
+    <div class="lsw" role="group" aria-label="language">
+      <button class="lb" type="button" data-lang="en">EN</button>
+      <button class="lb" type="button" data-lang="de">DE</button>
+      <button class="lb" type="button" data-lang="fr">FR</button>
+      <button class="lb" type="button" data-lang="es">ES</button>
+      <button class="lb" type="button" data-lang="ar">AR</button>
+      <button class="lb" type="button" data-lang="ru">RU</button>
+    </div>
+  </nav>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+
+  <main id="app" tabindex="-1">
+    <noscript><p class="lead">the blueprint needs javascript to ask its questions. please turn it on and reload.</p></noscript>
+  </main>
+
+  <footer>
+    <span>P · U · R · M E T H O D</span>
+    <span>© 2026 Paul PUR</span>
+  </footer>
+
+  <script src="/blueprint/questions.js"></script>
+  <script src="/blueprint/app.js"></script>
+</body>
+</html>
