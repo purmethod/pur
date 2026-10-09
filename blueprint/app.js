@@ -185,6 +185,9 @@
   const L = (obj) => obj[st.lang] || obj.en;
   const persist = () => store.save({ lang: st.lang, step: st.step >= N + 1 && !st.blueprint ? N : st.step, answers: st.answers, blueprint: st.blueprint });
 
+  // native append turns null into the text "null", so empty slots are dropped first
+  const add = (parent, ...kids) => parent.append(...kids.flat().filter((k) => k != null));
+
   function el(tag, attrs, ...kids) {
     const n = document.createElement(tag);
     for (const [k, v] of Object.entries(attrs || {})) {
@@ -240,7 +243,7 @@
 
   function renderIntro() {
     const x = t();
-    app.append(
+    add(app, 
       el("p", { class: "tag" }, x.tag),
       el("h1", {}, x.h1a + " ", el("em", {}, x.h1b)),
       el("p", { class: "lead" }, x.lead),
@@ -248,17 +251,17 @@
     );
     const actions = el("div", { class: "actions" });
     if (st.open === false) {
-      actions.append(el("p", { class: "lead" }, x.closed), el("a", { class: "btn", href: "https://www.instagram.com/paulpur_/", target: "_blank", rel: "noopener noreferrer" }, x.closedBtn));
+      add(actions, el("p", { class: "lead" }, x.closed), el("a", { class: "btn", href: "https://www.instagram.com/paulpur_/", target: "_blank", rel: "noopener noreferrer" }, x.closedBtn));
     } else {
-      actions.append(el("span"), el("button", { class: "btn", type: "button", onclick: () => go(0), disabled: st.open === null }, x.start));
+      add(actions, el("span"), el("button", { class: "btn", type: "button", onclick: () => go(0), disabled: st.open === null }, x.start));
     }
-    app.append(actions);
+    add(app, actions);
   }
 
   function renderSection(sec, idx) {
     const x = t();
     const letter = { p: "P", u: "U", r: "R" }[sec.id] || "";
-    app.append(
+    add(app, 
       el("div", { class: "step-head" },
         letter ? el("span", { class: "step-letter", "aria-hidden": "true" }, letter) : null,
         el("p", { class: "tag" }, `${x.step} ${idx + 1} ${x.of} ${N}`),
@@ -266,10 +269,10 @@
         el("p", { class: "lead" }, L(sec.intro)),
       ),
     );
-    for (const it of visibleItems(sec.id)) app.append(renderItem(it));
+    for (const it of visibleItems(sec.id)) add(app, renderItem(it));
     const miss = missingIn(sec.id);
-    if (st.showMissing && miss.length) app.append(el("p", { class: "err", role: "alert" }, x.missing));
-    app.append(
+    if (st.showMissing && miss.length) add(app, el("p", { class: "err", role: "alert" }, x.missing));
+    add(app, 
       el("div", { class: "actions" },
         el("button", { class: "ghost", type: "button", onclick: () => go(idx - 1) }, x.back),
         el("button", {
@@ -289,7 +292,7 @@
     const wrap = el("div", { class: "q" + (st.showMissing && it.required && !isAnswered(it) ? " missing" : ""), id });
     const code = it.module && it.module !== "syn" ? el("span", { class: "q-code" }, it.module.toUpperCase()) : null;
     const label = el("p", { class: "q-text", id: id + "-l" }, code, L(it.q), it.required ? "" : ` (${x.optional})`);
-    wrap.append(label);
+    add(wrap, label);
     const set = (v) => { st.answers[it.id] = v; persist(); };
 
     if (it.type === "text" || it.type === "number" || it.type === "textarea") {
@@ -316,14 +319,14 @@
       });
       // age changes which questions are asked later, so recompute when the field is left
       if (it.id === "age") input.addEventListener("change", () => render());
-      wrap.append(input, count, note);
+      add(wrap, input, count, note);
       showNote();
       return wrap;
     }
 
     const options = it.type === "scale" ? Q.scale : it.options;
     const group = el("div", { class: "opts" + (it.type === "scale" ? " scale" : ""), role: it.type === "multi" ? "group" : "radiogroup", "aria-labelledby": id + "-l" });
-    if (it.type === "multi") wrap.append(el("p", { class: "count", style: "text-align:start;margin:-8px 0 10px" }, x.multi));
+    if (it.type === "multi") add(wrap, el("p", { class: "count", style: "text-align:start;margin:-8px 0 10px" }, x.multi));
     for (const o of options) {
       const cur = st.answers[it.id];
       const on = it.type === "multi" ? Array.isArray(cur) && cur.includes(o.v) : cur === o.v;
@@ -342,8 +345,8 @@
       });
       group.append(b);
     }
-    wrap.append(group);
-    if (it.id === "inner" && st.answers.inner === "crisis") wrap.append(el("p", { class: "note", role: "note" }, x.crisis));
+    add(wrap, group);
+    if (it.id === "inner" && st.answers.inner === "crisis") add(wrap, el("p", { class: "note", role: "note" }, x.crisis));
     return wrap;
   }
 
@@ -352,7 +355,7 @@
     const box = el("input", { type: "checkbox", id: "consent" });
     const btn = el("button", { class: "btn", type: "button", disabled: true, onclick: submit }, x.generate);
     box.addEventListener("change", () => (btn.disabled = !box.checked));
-    app.append(
+    add(app, 
       el("p", { class: "tag" }, x.reviewTag),
       el("h2", {}, x.reviewH),
       el("p", { class: "lead" }, x.reviewLead),
@@ -367,7 +370,7 @@
   function renderLoading() {
     const x = t();
     const line = el("p", { "aria-live": "polite" }, x.wait[0]);
-    app.append(el("div", { class: "loading" }, el("p", { class: "tag" }, x.tag), el("div", { class: "line", "aria-hidden": "true" }), line));
+    add(app, el("div", { class: "loading" }, el("p", { class: "tag" }, x.tag), el("div", { class: "line", "aria-hidden": "true" }), line));
     let i = 0;
     clearInterval(waitTimer);
     waitTimer = setInterval(() => { i = Math.min(i + 1, x.wait.length - 1); line.textContent = x.wait[i]; }, 14000);
@@ -405,8 +408,8 @@
     const b = st.blueprint || {};
     const sec = (title, ...kids) => el("section", {}, title ? el("p", { class: "tag" }, title) : null, ...kids);
     const wrap = el("div", { class: "bp" });
-    app.append(wrap);
-    wrap.append(
+    add(app, wrap);
+    add(wrap, 
       el("p", { class: "tag" }, x.tag),
       el("h1", {}, x.h1a + " ", el("em", {}, x.h1b)),
       sec(null, el("p", { class: "greet" }, b.greeting)),
