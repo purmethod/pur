@@ -1,5 +1,5 @@
 P2 — MOVEMENT
-PUR Method · Physical Control · Module 2
+PURE Method · Physical Control · Module 2
 
 ═══ CORE PRINCIPLE ═══
 The body was built to move. Not to sit. Not to be driven to a gym three times a week and otherwise sedentary. Daily movement — real, outdoor, bodyweight movement — is not exercise. It is maintenance of what you are. A man who does not move his body daily is slowly losing it.
@@ -17,14 +17,16 @@ Calisthenics develops:
 
 Science: Kraemer & Ratamess, 2005 (Sports Medicine) — Compound resistance exercises (including bodyweight) trigger acute testosterone and growth hormone elevation. Multi-joint movements produce greater hormonal response than isolation exercises.
 
-═══ THE PUR LADDER SYSTEM ═══
-The PUR Ladder is the daily movement protocol. It is designed specifically for habit formation — not performance optimization. The goal in the first 90 days is not to get stronger. The goal is to make movement non-negotiable.
+═══ THE PURE LADDER SYSTEM ═══
+The PURE Ladder is the daily movement protocol. It is designed specifically for habit formation — not performance optimization. The goal in the first 90 days is not to get stronger. The goal is to make movement non-negotiable.
 
-PROTOCOL:
-1 rep — 10 second rest
-2 reps — 20 second rest
-3 reps — 30 second rest
+PROTOCOL (Paul Brinkmann, current version):
+1 rep — 1 minute rest
+2 reps — 1 minute rest
+3 reps — 1 minute rest
 = 1 Ladder (6 reps total)
+
+Why it works: it starts so small that the brain thinks "that was not bad at all, I want that again". The ladder hijacks the brain. Everyone can start with one push-up.
 
 Complete 5 Ladders per session.
 Total: 30 reps per movement.
@@ -67,12 +69,12 @@ The most common training mistake: optimizing for performance before building the
 
 Most men train hard for 2-3 weeks, overtrain, get sore, skip a day, skip two days, stop.
 
-The PUR approach: make it so easy that missing feels wrong.
+The PURE approach: make it so easy that missing feels wrong.
 5 Ladders = 30 reps. Takes 15-20 minutes. Anyone can do 30 reps.
 
 The goal is not to be destroyed by training. The goal is to never miss a day.
 
 After 90 days of daily training, the habit is anchored. The nervous system expects it. Missing creates discomfort. This is the goal — make training the default, not the exception.
 
-═══ PAUL PUR PERSONAL PROTOCOL ═══
+═══ PAUL BRINKMANN PERSONAL PROTOCOL ═══
 Daily outdoor calisthenics. Pull-ups, dips, muscle-ups, pistol squats, front lever progressions. Always outside. Always in the morning. Every single day regardless of weather. The body does not have rest days — it has active recovery days. Light movement every day.
