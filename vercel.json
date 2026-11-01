@@ -6,5 +6,27 @@
       "maxDuration": 300,
       "includeFiles": "{knowledge/**,blueprint/questions.js}"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/pure",
+      "destination": "/"
+    },
+    {
+      "source": "/pure/:path*",
+      "destination": "/:path*"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://brinkmannpaul.com/pure",
+      "permanent": false
+    },
+    {
+      "source": "/blueprint",
+      "destination": "https://brinkmannpaul.com/pure/blueprint",
+      "permanent": false
+    }
+  ]
 }

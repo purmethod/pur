@@ -1,4 +1,6 @@
-# purmethod.com
+# pure (brinkmannpaul.com/pure)
+
+The site is shown at **https://brinkmannpaul.com/pure**: brinkmannpaul.com proxies `/pure/*` to this project, which serves everything under `/pure` (see `vercel.json`). `purmethod.com/` and `/blueprint` redirect there. The blueprint calls `https://purmethod.com/api/analyze` directly (CORS allows brinkmannpaul.com), so a long answer never runs through the proxy.
 
 Static site (`index.html`) plus the PURE blueprint: a questionnaire at `/blueprint` and one Vercel function that writes a personal 90-day plan with Claude. The plan is shown as a small book, on the phone or saved as a PDF.
 
