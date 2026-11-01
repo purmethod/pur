@@ -23,7 +23,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       reviewTag: "last step", reviewH: "ready.", reviewLead: "the blueprint takes one to three minutes to write.",
       voicePrivacy: "voice input uses your browser's speech recognition (apple or google).",
       generate: "write my blueprint",
-      wait: ["reading your answers", "finding the pattern behind them", "choosing your three priorities", "making every first step small", "writing your 90 days"],
+      wait: ["reading your answers", "finding the pattern behind them", "choosing your three priorities", "making every first step small", "writing your 90 days", "writing your chapters on body, mind, responsibility and ego", "your book is being written. this takes three to five minutes. keep this page open."],
       errBusy: "too many blueprints are being written right now. try again in a few minutes.",
       errLimit: "you have written several blueprints in the last hour. try again later.",
       errGeneric: "something went wrong while writing your blueprint. your answers are kept, try again.",
@@ -43,7 +43,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       reviewTag: "letzter schritt", reviewH: "bereit.", reviewLead: "der blueprint braucht ein bis drei minuten.",
       voicePrivacy: "die spracheingabe nutzt die spracherkennung deines browsers (apple oder google).",
       generate: "meinen blueprint schreiben",
-      wait: ["deine antworten werden gelesen", "das muster dahinter wird gesucht", "deine drei prioritäten werden gewählt", "jeder erste schritt wird klein gemacht", "deine 90 tage werden geschrieben"],
+      wait: ["deine antworten werden gelesen", "das muster dahinter wird gesucht", "deine drei prioritäten werden gewählt", "jeder erste schritt wird klein gemacht", "deine 90 tage werden geschrieben", "deine kapitel zu körper, geist, verantwortung und ego werden geschrieben", "dein buch wird geschrieben. das dauert drei bis fünf minuten. lass diese seite offen."],
       errBusy: "gerade werden zu viele blueprints geschrieben. versuch es in ein paar minuten noch einmal.",
       errLimit: "du hast in der letzten stunde schon mehrere blueprints geschrieben. versuch es später noch einmal.",
       errGeneric: "beim schreiben deines blueprints ist etwas schiefgegangen. deine antworten bleiben erhalten, versuch es noch einmal.",
@@ -63,7 +63,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       reviewTag: "dernière étape", reviewH: "prêt.", reviewLead: "l'écriture du blueprint prend une à trois minutes.",
       voicePrivacy: "la saisie vocale utilise la reconnaissance vocale de ton navigateur (apple ou google).",
       generate: "écrire mon blueprint",
-      wait: ["lecture de tes réponses", "recherche du schéma derrière elles", "choix de tes trois priorités", "chaque premier pas devient petit", "écriture de tes 90 jours"],
+      wait: ["lecture de tes réponses", "recherche du schéma derrière elles", "choix de tes trois priorités", "chaque premier pas devient petit", "écriture de tes 90 jours", "écriture de tes chapitres sur le corps, l'esprit, la responsabilité et l'ego", "ton livre est en cours d'écriture. cela prend trois à cinq minutes. garde cette page ouverte."],
       errBusy: "trop de blueprints sont en cours d'écriture. réessaie dans quelques minutes.",
       errLimit: "tu as déjà écrit plusieurs blueprints cette heure-ci. réessaie plus tard.",
       errGeneric: "un problème est survenu pendant l'écriture. tes réponses sont conservées, réessaie.",
@@ -83,7 +83,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       reviewTag: "último paso", reviewH: "listo.", reviewLead: "escribir el blueprint lleva de uno a tres minutos.",
       voicePrivacy: "la entrada de voz usa el reconocimiento de voz de tu navegador (apple o google).",
       generate: "escribir mi blueprint",
-      wait: ["leyendo tus respuestas", "buscando el patrón detrás de ellas", "eligiendo tus tres prioridades", "haciendo pequeño cada primer paso", "escribiendo tus 90 días"],
+      wait: ["leyendo tus respuestas", "buscando el patrón detrás de ellas", "eligiendo tus tres prioridades", "haciendo pequeño cada primer paso", "escribiendo tus 90 días", "escribiendo tus capítulos sobre cuerpo, mente, responsabilidad y ego", "tu libro se está escribiendo. tarda de tres a cinco minutos. deja esta página abierta."],
       errBusy: "ahora se están escribiendo demasiados blueprints. inténtalo de nuevo en unos minutos.",
       errLimit: "ya has escrito varios blueprints en la última hora. inténtalo más tarde.",
       errGeneric: "algo salió mal al escribir tu blueprint. tus respuestas se conservan, inténtalo de nuevo.",
@@ -103,7 +103,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       reviewTag: "الخطوة الأخيرة", reviewH: "جاهز.", reviewLead: "تستغرق كتابة المخطط من دقيقة إلى ثلاث دقائق.",
       voicePrivacy: "الإدخال الصوتي يستخدم خاصية التعرف على الكلام في متصفحك (apple أو google).",
       generate: "اكتب مخططي",
-      wait: ["قراءة إجاباتك", "البحث عن النمط خلفها", "اختيار أولوياتك الثلاث", "جعل كل خطوة أولى صغيرة", "كتابة أيامك التسعين"],
+      wait: ["قراءة إجاباتك", "البحث عن النمط خلفها", "اختيار أولوياتك الثلاث", "جعل كل خطوة أولى صغيرة", "كتابة أيامك التسعين", "كتابة فصولك عن الجسد والعقل والمسؤولية والأنا", "كتابك قيد الكتابة. يستغرق ذلك من ثلاث إلى خمس دقائق. أبقِ هذه الصفحة مفتوحة."],
       errBusy: "يتم الآن كتابة عدد كبير من المخططات. حاول مرة أخرى بعد بضع دقائق.",
       errLimit: "لقد كتبت عدة مخططات في الساعة الأخيرة. حاول لاحقًا.",
       errGeneric: "حدث خطأ أثناء كتابة مخططك. إجاباتك محفوظة، حاول مرة أخرى.",
@@ -123,7 +123,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       reviewTag: "последний шаг", reviewH: "готово.", reviewLead: "написание blueprint занимает от одной до трёх минут.",
       voicePrivacy: "голосовой ввод использует распознавание речи твоего браузера (apple или google).",
       generate: "написать мой blueprint",
-      wait: ["читаю твои ответы", "ищу закономерность за ними", "выбираю три твоих приоритета", "делаю каждый первый шаг маленьким", "пишу твои 90 дней"],
+      wait: ["читаю твои ответы", "ищу закономерность за ними", "выбираю три твоих приоритета", "делаю каждый первый шаг маленьким", "пишу твои 90 дней", "пишу твои главы о теле, разуме, ответственности и эго", "твоя книга пишется. это займёт от трёх до пяти минут. не закрывай эту страницу."],
       errBusy: "сейчас пишется слишком много blueprint. попробуй через несколько минут.",
       errLimit: "за последний час ты уже написал несколько blueprint. попробуй позже.",
       errGeneric: "при написании blueprint что-то пошло не так. твои ответы сохранены, попробуй ещё раз.",
@@ -520,7 +520,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     add(app, el("div", { class: "loading" }, el("p", { class: "tag" }, x.tag), el("div", { class: "line", "aria-hidden": "true" }), line));
     let i = 0;
     clearInterval(waitTimer);
-    waitTimer = setInterval(() => { i = Math.min(i + 1, x.wait.length - 1); line.textContent = x.wait[i]; }, 16000);
+    waitTimer = setInterval(() => { i = Math.min(i + 1, x.wait.length - 1); line.textContent = x.wait[i]; }, 22000);
   }
 
   async function submit() {
@@ -614,8 +614,8 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       el("p", { class: "cover-meta" }, (st.created || "") + " · " + B("made_for", { name: name || "" }).trim()),
       el("p", { class: "cover-sign" }, "paul brinkmann · " + L(C.ui.founder))));
 
-    // opening and the three sources
-    add(book, el("section", { class: "part" },
+    // opening letter, the three sources and his map
+    add(book, el("section", { class: "part page" },
       el("p", { class: "opening" }, B("opening", { name: name || "" }).replace(/^,\s*/, "")),
       ...paras(b.intro),
       sourcesGraphic(),
@@ -624,24 +624,29 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
 
     // contents
     const pillarsIn = PILLARS.filter((P) => (b.pillars || []).some((p) => p.pillar === P.letter));
-    const toc = [["pt-prio", B("priorities")], ["pt-ladder", B("ladder_title")],
+    const toc = [["pt-insight", B("insight_title")], ["pt-prio", B("priorities")], ["pt-ladder", B("ladder_title")],
       ...pillarsIn.map((P) => ["pt-" + P.letter, P.letter + " · " + pillarName(P.letter)]),
-      ["pt-90", B("timeline")], ["pt-day", B("daily")], ["pt-method", B("method_part")]];
-    add(book, el("nav", { class: "part", "aria-label": B("toc") },
+      ["pt-90", B("timeline")], ["pt-day", B("daily")], ["pt-end", B("closing_title")], ["pt-method", B("appendix")]];
+    add(book, el("nav", { class: "part page", "aria-label": B("toc") },
       el("p", { class: "tag" }, B("toc")),
       el("ol", { class: "toc" }, toc.map(([id, label]) => el("li", {}, el("a", { href: "#" + id }, label))))));
 
-    // insight
-    if (b.insight) add(book, el("section", { class: "part" }, paras(b.insight).map((n) => { n.className = "insight"; return n; })));
+    // what i see in you, and what he does not see yet
+    if (b.insight) add(book, el("section", { class: "part page", id: "pt-insight" },
+      el("p", { class: "tag" }, B("insight_title")),
+      paras(b.insight).map((n) => { n.className = "insight"; return n; })));
+    if ((b.blindspots || []).length) add(book, el("section", { class: "part" },
+      el("p", { class: "tag" }, B("blindspots")),
+      el("div", { class: "spots" }, b.blindspots.map((sp) => el("div", { class: "spot" }, el("h3", {}, sp.title), ...paras(sp.text))))));
 
     // three priorities
-    add(book, el("section", { class: "part", id: "pt-prio" },
+    add(book, el("section", { class: "part page", id: "pt-prio" },
       el("p", { class: "tag" }, B("priorities")),
       el("div", { class: "prio" }, (b.priorities || []).map((p, i) => el("div", { class: "prio-card" },
         el("span", { class: "prio-n" }, String(i + 1)),
         el("span", { class: "code" }, String(p.level || "").toUpperCase() + " · " + levelName(p.level)),
         el("h3", {}, p.title),
-        el("p", {}, p.why),
+        ...paras(p.why),
         el("div", { class: "start" }, el("p", { class: "start-tag" }, B("start_small")), el("p", { class: "start-text" }, p.start)),
         growthGraphic(p.growth),
         paulNote(p.level)))),
@@ -649,7 +654,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       el("p", { class: "never" }, B("never_too_late"))));
 
     // the ladder
-    add(book, el("section", { class: "part", id: "pt-ladder" },
+    add(book, el("section", { class: "part page", id: "pt-ladder" },
       el("p", { class: "tag" }, B("ladder_title")),
       ladderGraphic(),
       el("p", { class: "ladder-why" }, B("ladder_why")),
@@ -657,54 +662,78 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       b.ladder && b.ladder.note ? el("p", { class: "hint" }, b.ladder.note) : null,
       paulNote("p2")));
 
-    // one chapter per pillar
+    // one part per pillar, one chapter per level, each followed by the method on that level
     for (const P of PILLARS) {
       const mine = (b.pillars || []).find((p) => p.pillar === P.letter);
       if (!mine) continue;
-      add(book, el("section", { class: "part pillar-part", id: "pt-" + P.letter },
+      add(book, el("section", { class: "part page pillar-part", id: "pt-" + P.letter },
         el("div", { class: "pillar-head" }, el("span", { class: "pillar-big", "aria-hidden": "true" }, P.letter),
           el("div", {}, el("p", { class: "tag" }, B("your_pillar")), el("h2", {}, pillarName(P.letter)))),
-        ...paras(mine.intro),
-        el("ol", { class: "levels" }, (mine.levels || []).map((lv) => el("li", { class: "level" },
+        ...paras(mine.intro)));
+      for (const lv of mine.levels || []) {
+        const deep = Boolean(lv.reading);
+        add(book, el("section", { class: "part level-ch" + (deep ? " page" : ""), id: "lv-" + lv.level },
           el("div", { class: "level-head" },
             el("span", { class: "code" }, String(lv.level || "").toUpperCase()),
             el("span", { class: "level-name" }, levelName(lv.level)),
             meter(scores[lv.level])),
-          el("p", { class: "start-text" }, lv.start),
+          lv.title ? el("h3", { class: "level-title" }, lv.title) : null,
+          deep ? el("p", { class: "start-tag" }, B("where_you_stand")) : null,
+          ...paras(lv.reading),
+          lv.why ? el("p", { class: "start-tag" }, B("why_now")) : null,
+          ...paras(lv.why),
+          el("div", { class: "start" }, el("p", { class: "start-tag" }, B("start_small")), el("p", { class: "start-text" }, lv.start)),
           lv.next ? el("p", { class: "next" }, "→ " + lv.next) : null,
+          growthGraphic(lv.protocol),
+          (lv.obstacles || []).length ? el("div", { class: "obstacles" }, el("p", { class: "start-tag" }, B("obstacles")),
+            el("dl", {}, lv.obstacles.flatMap((o) => [el("dt", {}, o.when), el("dd", {}, o.answer)]))) : null,
+          (lv.signs || []).length ? el("div", { class: "signs" }, el("p", { class: "start-tag" }, B("signs")), list(lv.signs)) : null,
           paulNote(lv.level),
-          chapterSlot(lv.level))))));
+          chapterSlot(lv.level)));
+      }
+      if (mine.closing) add(book, el("section", { class: "part pillar-close" }, ...paras(mine.closing)));
     }
     if (b.ego && !(b.pillars || []).some((p) => p.pillar === "E")) add(book, el("section", { class: "part" }, el("h2", {}, L(C.ui.ego_section)), ...paras(b.ego)));
 
-    // 90 days, the day, the rules
-    add(book, el("section", { class: "part", id: "pt-90" },
+    // 90 days: thirteen weeks (older books: three phases)
+    const weeks = b.weeks || [];
+    add(book, el("section", { class: "part page", id: "pt-90" },
       el("p", { class: "tag" }, B("timeline")),
-      timelineGraphic(b.phases || []),
-      el("div", { class: "phases" }, (b.phases || []).map((p) => el("div", { class: "phase" }, el("h4", {}, p.days), el("p", { class: "focus" }, p.focus), list(p.actions))))));
-    add(book, el("section", { class: "part", id: "pt-day" },
+      timelineGraphic(b.phases && b.phases.length ? b.phases : [{ days: "1–30" }, { days: "31–60" }, { days: "61–90" }]),
+      weeks.length
+        ? el("div", { class: "weeks" }, weeks.map((w) => el("div", { class: "week" },
+            el("h4", {}, B("week_n", { n: w.week })), el("p", { class: "focus" }, w.focus), list(w.actions),
+            w.check ? el("p", { class: "check" }, el("span", { class: "start-tag" }, B("check")), " ", w.check) : null)))
+        : el("div", { class: "phases" }, (b.phases || []).map((p) => el("div", { class: "phase" }, el("h4", {}, p.days), el("p", { class: "focus" }, p.focus), list(p.actions))))));
+    const free = b.daily && b.daily.free_day && b.daily.free_day.length;
+    add(book, el("section", { class: "part page", id: "pt-day" },
       el("p", { class: "tag" }, B("daily")),
+      free ? el("h4", { class: "day-kind" }, B("workday")) : null,
       el("div", { class: "day" },
         ["morning", "day", "evening"].map((k) => el("div", {}, el("h4", {}, x[k]), list(b.daily && b.daily[k])))),
+      free ? el("h4", { class: "day-kind" }, B("free_day")) : null,
+      free ? list(b.daily.free_day) : null,
+      el("p", { class: "tag", style: "margin-top:34px" }, B("rules")),
       el("ol", { class: "nn" }, (b.non_negotiables || []).map((n) => el("li", {}, n))),
       b.safety ? el("p", { class: "note" }, b.safety) : null));
 
     // closing
-    add(book, el("section", { class: "part closing-part" },
-      el("p", { class: "closing" }, b.message),
+    add(book, el("section", { class: "part page closing-part", id: "pt-end" },
+      el("p", { class: "tag" }, B("closing_title")),
+      ...paras(b.message).map((n) => { n.className = "closing"; return n; }),
       el("p", { class: "sign" }, x.sign),
       el("p", { class: "hint" }, x.disclaimer)));
 
-    // the method itself, most important chapters first
-    const method = el("section", { class: "part method", id: "pt-method" }, el("p", { class: "tag" }, B("method_part")), el("p", { class: "hint" }, B("method_hint")));
+    // the rest of the method: the structure and every chapter not already placed after his levels
+    const method = el("section", { class: "part page method", id: "pt-method" }, el("p", { class: "tag" }, B("appendix")), el("p", { class: "hint" }, B("method_hint")));
     add(book, method);
     loadChapters().then((chs) => {
       if (st.step !== N + 2) return;
+      const placed = new Set();
+      document.querySelectorAll(".chapter-slot").forEach((slot) => { if (fillSlot(slot)) placed.add(slot.dataset.level); });
       const order = (c) => (c.id === "pure" ? 1000 : Math.max(0, ...c.levels.map((l) => scores[l] || 0)));
-      const sorted = chs.filter((c) => c.id !== "notes").sort((a, z) => order(z) - order(a));
-      add(method, sorted.map((c) => chapterEl(c, st.view === "pdf")));
-      // links to chapters and paul boxes now that chapters are here
-      document.querySelectorAll(".chapter-slot").forEach((slot) => fillSlot(slot));
+      const rest = chs.filter((c) => c.id !== "notes" && !placed.has(c.id)).sort((a, z) => order(z) - order(a));
+      add(method, rest.map((c) => chapterEl(c, st.view === "pdf")));
       document.querySelectorAll("[data-paul]").forEach((n) => { const box = paulNote(n.dataset.paul); if (box) n.replaceWith(box); else n.remove(); });
     });
 
@@ -716,12 +745,12 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
   function chapterSlot(level) {
     return el("div", { class: "chapter-slot", "data-level": level });
   }
+  // the method chapter on a level, right after his personal chapter on it
   function fillSlot(slot) {
-    const level = slot.dataset.level;
-    const ch = (st.chapters || []).find((c) => c.id === level);
-    if (!ch) return;
-    slot.replaceChildren(el("a", { class: "to-chapter", href: "#ch-" + ch.id, onclick: () => { const d = document.getElementById("ch-" + ch.id); if (d) d.open = true; } },
-      B("chapter_open") + " · " + ch.title + " →"));
+    const ch = (st.chapters || []).find((c) => c.id === slot.dataset.level);
+    if (!ch) return false;
+    slot.replaceChildren(el("p", { class: "tag method-tag" }, B("the_method_on") + " · " + levelName(ch.id)), chapterEl(ch, st.view === "pdf"));
+    return true;
   }
   function chapterEl(c, open) {
     return el("details", { class: "chapter", id: "ch-" + c.id, open },

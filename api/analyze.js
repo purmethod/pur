@@ -318,12 +318,18 @@ const PILLAR_INFO = {
   E: "E ego: e1 killing the ego without drugs, e2 what the ego is, ef fuck around, find out, create, e5 something greater than you (the end boss)",
 };
 
-function pillarTask(letter, scores) {
-  const levels = PILLAR_LEVELS[letter].map((l) => `${l} (score ${scores[l] ?? "not answered"})`).join(", ");
+// each pillar is written in two halves at once, so no single request runs too long
+const HALVES = { P: [["p0", "p1", "p2"], ["p3", "p4", "p5"]], U: [["u0", "u1", "u2"], ["u3", "u4", "u5"]], R: [["r0", "r1", "r2"], ["r3", "r4", "r5"]], E: [["e1", "e2"], ["ef", "e5"]] };
+
+function pillarTask(letter, scores, half) {
+  const mine = HALVES[letter][half];
+  const levels = mine.map((l) => `${l} (score ${scores[l] ?? "not answered"})`).join(", ");
+  const other = HALVES[letter][1 - half].join(", ");
   return `write his personal chapters for one pillar: ${PILLAR_INFO[letter]}.
+this request covers only the levels ${mine.join(", ")}. the levels ${other} are written in a separate request, so do not write about them, though you may refer to them in a sentence.
 the method chapter on each level follows your text in the book, so do not retell the method. apply it to him.
-- intro: 150 to 250 words. what this pillar means for him, where he stands in it as a whole, and how it connects to his goal.
-- levels: every level of this pillar, in this order: ${levels}. for each:
+- intro: ${half === 0 ? "150 to 250 words. what this pillar means for him, where he stands in it as a whole, and how it connects to his goal." : "an empty string."}
+- levels: exactly these, in this order: ${levels}. for each:
   - title: a short title for his chapter on this level.
   - reading: where he stands, 150 to 250 words, two paragraphs separated by a blank line. concrete to his life. a solid level (score under 35) gets a shorter reading on what to protect and how to use it as a strength for his weak levels.
   - why: why this level matters for him now, 80 to 150 words, linked to his goal and his other levels.
@@ -331,7 +337,7 @@ the method chapter on each level follows your text in the book, so do not retell
   - protocol: week1, week2, weeks34, month2, month3, one or two sentences each, each a small step up from the last. respect his safety rules.
   - obstacles: two or three moments when he will want to quit (when) and what he does then (answer, one or two sentences).
   - signs: three signs of progress he will notice in his body, his mind or his life.
-- closing: 60 to 120 words that close this pillar for him.`;
+- closing: ${half === 1 ? "60 to 120 words that close this pillar for him." : "an empty string."}`;
 }
 
 // the schema cannot say "three priorities" or "levels of this pillar only", so the answer is tidied here
@@ -340,14 +346,21 @@ function tidyCore(b) {
   b.weeks = (b.weeks || []).slice(0, 13);
   return b;
 }
-function tidyPillar(letter, p) {
+function tidyPillar(letter, halves) {
   const seen = new Set();
-  p.pillar = letter;
-  p.levels = (p.levels || []).filter((l) => PILLAR_LEVELS[letter].includes(l.level) && !seen.has(l.level) && seen.add(l.level));
-  return p;
+  const [first, second] = halves;
+  const levels = [...((first && first.levels) || []), ...((second && second.levels) || [])];
+  return {
+    pillar: letter,
+    intro: (first && first.intro) || "",
+    levels: levels.filter((l) => PILLAR_LEVELS[letter].includes(l.level) && !seen.has(l.level) && seen.add(l.level)),
+    closing: (second && second.closing) || "",
+  };
 }
 
-async function writePart(brief, task, schema) {
+// started: called once the model has read the prompt, so the parts started after it read the
+// method knowledge from the cache instead of paying to write it again
+async function writePart(brief, task, schema, started) {
   client = client || new AnthropicClient();
   const stream = client.beta.messages.stream({
     model: MODEL,
@@ -356,8 +369,13 @@ async function writePart(brief, task, schema) {
     fallbacks: "default",
     output_config: { effort: "medium", format: { type: "json_schema", schema } },
     system,
-    messages: [{ role: "user", content: `${brief}\n\n<task>\n${task}\n</task>` }],
+    // the brief is the same for every part, so it is cached too
+    messages: [{ role: "user", content: [{ type: "text", text: brief, cache_control: { type: "ephemeral" } }, { type: "text", text: `<task>\n${task}\n</task>` }] }],
   });
+  if (started) {
+    stream.once("streamEvent", started);
+    stream.once("error", started);
+  }
   const msg = await stream.finalMessage();
   if (msg.stop_reason === "refusal") throw Object.assign(new Error("refused"), { code: "refused" });
   if (msg.stop_reason === "max_tokens") throw Object.assign(new Error("too long"), { code: "incomplete" });
@@ -366,22 +384,30 @@ async function writePart(brief, task, schema) {
   return JSON.parse(text);
 }
 
-// five parts in parallel: the frame and one per pillar. the frame must succeed; a pillar that fails
-// leaves the book with its method chapters only. a man in crisis gets the frame only: short and steady.
+// the frame and two halves per pillar, all in parallel. the frame must succeed; a half that fails
+// leaves those levels with their method chapters only. a man in crisis gets the frame only: short and steady.
 async function writeBlueprint(answers, lang) {
   const brief = buildBrief(answers, lang);
   const scores = Q.score(answers);
   const crisis = Q.safety(answers).crisis;
   const letters = crisis ? [] : ["P", "U", "R", "E"];
-  const [core, ...pillars] = await Promise.allSettled([
-    writePart(brief, CORE_TASK, CORE_SCHEMA),
-    ...letters.map((l) => writePart(brief, pillarTask(l, scores), PILLAR_SCHEMA)),
-  ]);
-  if (core.status === "rejected") throw core.reason;
-  const book = tidyCore(core.value);
+  let ready;
+  const cached = new Promise((resolve) => { ready = resolve; setTimeout(resolve, 15000); });
+  const core = writePart(brief, CORE_TASK, CORE_SCHEMA, ready);
+  core.catch(() => {}); // awaited below; this only keeps an early failure from counting as unhandled
+  await cached;
+  const halves = await Promise.allSettled(letters.flatMap((l) => [0, 1].map((h) => writePart(brief, pillarTask(l, scores, h), PILLAR_SCHEMA))));
+  const book = tidyCore(await core);
   book.version = 2;
   book.pillars = letters
-    .map((l, i) => (pillars[i].status === "fulfilled" ? tidyPillar(l, pillars[i].value) : (console.error("pillar failed", l, pillars[i].reason && pillars[i].reason.message), null)))
+    .map((l, i) => {
+      const parts = [halves[2 * i], halves[2 * i + 1]].map((r) => {
+        if (r.status === "fulfilled") return r.value;
+        console.error("pillar half failed", l, r.reason && r.reason.message);
+        return null;
+      });
+      return parts.some(Boolean) ? tidyPillar(l, parts) : null;
+    })
     .filter(Boolean);
   return book;
 }

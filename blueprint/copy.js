@@ -866,6 +866,118 @@ window.PUR_COPY = {
    "es": "hecho para {name}",
    "ar": "أُعدّ خصيصًا لـ {name}",
    "ru": "сделано для {name}"
+  },
+  "blindspots": {
+   "en": "what you don't see yet",
+   "de": "was du noch nicht siehst",
+   "fr": "ce que tu ne vois pas encore",
+   "es": "lo que aún no ves",
+   "ar": "ما لا تراه بعد",
+   "ru": "чего ты пока не видишь"
+  },
+  "where_you_stand": {
+   "en": "where you stand",
+   "de": "wo du stehst",
+   "fr": "où tu en es",
+   "es": "dónde estás",
+   "ar": "أين تقف",
+   "ru": "где ты сейчас"
+  },
+  "why_now": {
+   "en": "why now",
+   "de": "warum jetzt",
+   "fr": "pourquoi maintenant",
+   "es": "por qué ahora",
+   "ar": "لماذا الآن",
+   "ru": "почему сейчас"
+  },
+  "obstacles": {
+   "en": "when you want to quit",
+   "de": "wenn du aufhören willst",
+   "fr": "quand tu voudras arrêter",
+   "es": "cuando quieras dejarlo",
+   "ar": "عندما تريد أن تتوقف",
+   "ru": "когда захочется бросить"
+  },
+  "signs": {
+   "en": "signs that it works",
+   "de": "zeichen, dass es wirkt",
+   "fr": "signes que ça marche",
+   "es": "señales de que funciona",
+   "ar": "علامات أن الأمر ينجح",
+   "ru": "признаки, что это работает"
+  },
+  "week_n": {
+   "en": "week {n}",
+   "de": "woche {n}",
+   "fr": "semaine {n}",
+   "es": "semana {n}",
+   "ar": "الأسبوع {n}",
+   "ru": "неделя {n}"
+  },
+  "check": {
+   "en": "your question at the end of the week",
+   "de": "deine frage am ende der woche",
+   "fr": "ta question en fin de semaine",
+   "es": "tu pregunta al final de la semana",
+   "ar": "سؤالك في نهاية الأسبوع",
+   "ru": "твой вопрос в конце недели"
+  },
+  "workday": {
+   "en": "working day",
+   "de": "arbeitstag",
+   "fr": "jour de travail",
+   "es": "día de trabajo",
+   "ar": "يوم عمل",
+   "ru": "рабочий день"
+  },
+  "free_day": {
+   "en": "free day",
+   "de": "freier tag",
+   "fr": "jour libre",
+   "es": "día libre",
+   "ar": "يوم عطلة",
+   "ru": "выходной"
+  },
+  "rules": {
+   "en": "your rules for the 90 days",
+   "de": "deine regeln für die 90 tage",
+   "fr": "tes règles pour les 90 jours",
+   "es": "tus reglas para los 90 días",
+   "ar": "قواعدك للأيام التسعين",
+   "ru": "твои правила на 90 дней"
+  },
+  "appendix": {
+   "en": "more from the method",
+   "de": "mehr aus der methode",
+   "fr": "plus de la méthode",
+   "es": "más del método",
+   "ar": "المزيد من الطريقة",
+   "ru": "ещё из метода"
+  },
+  "insight_title": {
+   "en": "what i see in you",
+   "de": "was ich in dir sehe",
+   "fr": "ce que je vois en toi",
+   "es": "lo que veo en ti",
+   "ar": "ما أراه فيك",
+   "ru": "что я вижу в тебе"
+  },
+  "closing_title": {
+   "en": "before you start",
+   "de": "bevor du anfängst",
+   "fr": "avant de commencer",
+   "es": "antes de empezar",
+   "ar": "قبل أن تبدأ",
+   "ru": "прежде чем начать"
+  },
+  "the_method_on": {
+   "en": "the method",
+   "de": "die methode",
+   "fr": "la méthode",
+   "es": "el método",
+   "ar": "الطريقة",
+   "ru": "метод"
   }
  }
 };
