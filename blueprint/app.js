@@ -650,8 +650,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
         el("div", { class: "start" }, el("p", { class: "start-tag" }, B("start_small")), el("p", { class: "start-text" }, p.start)),
         growthGraphic(p.growth),
         paulNote(p.level)))),
-      paulNote("core"),
-      el("p", { class: "never" }, B("never_too_late"))));
+      paulNote("core")));
 
     // the ladder
     add(book, el("section", { class: "part page", id: "pt-ladder" },

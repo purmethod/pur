@@ -3865,7 +3865,7 @@
   },
   "r0": {
    "en": "self accountability",
-   "de": "selbstverantwortung",
+   "de": "rechenschaft vor dir selbst",
    "fr": "auto responsabilité",
    "es": "auto responsabilidad",
    "ar": "المساءلة الذاتية",
