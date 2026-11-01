@@ -36,8 +36,20 @@
   // ---------- state ----------
   const saved = (() => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } })();
   const blank = () => ({ n: "", g: "", l: "en", r: ITEMS.map(() => 0), o: [] });
-  const st = { lang: saved.lang || null, me: saved.me && saved.me.r && saved.me.r.length === ITEMS.length ? saved.me : blank(), step: -1, other: null, result: null, broken: false };
-  const persist = () => { try { localStorage.setItem(KEY, JSON.stringify({ lang: st.lang, me: st.me })); } catch { /* private mode */ } };
+  const valid = (m) => m && Array.isArray(m.r) && m.r.length === ITEMS.length;
+  const st = { lang: saved.lang || null, me: valid(saved.me) ? saved.me : blank(), step: -1, other: null, result: null, broken: false };
+  // a received pact is answered in its own draft, never in the sender's: on a shared phone
+  // the sender's name and answers would otherwise show up in the form.
+  let replyFor = null;
+  const persist = () => {
+    try {
+      const keep = { lang: st.lang, me: replyFor ? saved.me : st.me };
+      if (replyFor) { keep.reply = st.me; keep.replyFor = replyFor; }
+      else if (saved.replyFor) { keep.reply = saved.reply; keep.replyFor = saved.replyFor; }
+      if (!replyFor) saved.me = st.me;
+      localStorage.setItem(KEY, JSON.stringify(keep));
+    } catch { /* private mode */ }
+  };
 
   const hash = readHash();
   if (hash.a) {
@@ -45,7 +57,11 @@
     const b = hash.b ? unpack(hash.b) : null;
     if (!a || (hash.b && !b)) st.broken = true;
     else if (b) st.result = { a, b, mine: false };
-    else st.other = a;
+    else {
+      st.other = a;
+      replyFor = hash.a;
+      st.me = saved.replyFor === hash.a && valid(saved.reply) ? saved.reply : blank();
+    }
     if (!st.lang && a) st.lang = a.l;
   }
   if (!st.lang) {
@@ -242,7 +258,7 @@
       ownBlock(a), ownBlock(b),
       mine ? el("div", { class: "back-box" }, el("h3", {}, T("send_back")), shareBox(location.href, "msg_b", T("send_back_hint", { name: a.n }))) : null,
       el("p", { class: "fine" }, T("note")),
-      el("button", { type: "button", class: "ghost", onclick: () => { history.replaceState(null, "", base()); st.result = null; st.other = null; st.me = blank(); persist(); go(-1); } }, T("new_pact"))));
+      el("button", { type: "button", class: "ghost", onclick: () => { history.replaceState(null, "", base()); st.result = null; st.other = null; replyFor = null; st.me = blank(); persist(); go(-1); } }, T("new_pact"))));
   }
 
   setLang(st.lang);
