@@ -1,0 +1,76 @@
+/* pure: the same calm as brinkmannpaul.com. White paper, graphite ink, one
+   system font, everything lowercase, thin lines instead of colour fields.
+   Loaded after each page's own styles, so it only has to say what changes. */
+:root {
+  --w: #ffffff;
+  --off: #ffffff;
+  --ink: #5c5c56;
+  --ink2: #5c5c56;
+  --ink3: #7b7b75;
+  --gold: #5c5c56;
+  --line: #cfcfca;
+  --line2: #e4e4e0;
+  --sci: #f7f7f5;
+  --sci_b: #cfcfca;
+  --sci_t: #5c5c56;
+}
+html, body { background: #ffffff; color: #5c5c56; }
+body, body * {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-style: normal !important;
+  text-transform: lowercase !important;
+}
+/* Headings: light, close-set, no ornament. */
+h1, h2, h3, .h_title, .sec_h, .cb_h, .pc_title, .ph_name, .pvt {
+  font-weight: 400 !important;
+  letter-spacing: -.035em !important;
+  color: #5c5c56 !important;
+}
+.h_title { font-size: clamp(40px, 8vw, 74px) !important; line-height: 1.02 !important; }
+.sec_h, .cb_h { font-size: clamp(28px, 4.6vw, 42px) !important; line-height: 1.1 !important; }
+em, .h_title em, .sec_h em, .cb_h em { color: inherit !important; }
+/* Small labels: quiet, never gold. */
+.h_brand, .sec_tag, .pc_tag, .cb_tag, .fund_badge, .sl, .h_scroll_t {
+  color: #7b7b75 !important;
+  letter-spacing: .12em !important;
+  font-weight: 400 !important;
+}
+.fund_badge { border-color: #cfcfca !important; }
+/* The big background letters and numbers recede to a trace. */
+.pc_bg { color: rgba(92, 92, 86, .07) !important; }
+.sn, .pb { color: #5c5c56 !important; font-weight: 400 !important; }
+/* Header: a 2px line on top, like brinkmannpaul.com. */
+nav { border-top: 2px solid #5c5c56 !important; border-bottom: 1px solid #cfcfca !important; background: rgba(255, 255, 255, .97) !important; }
+.nav_logo { color: #5c5c56 !important; letter-spacing: .35em !important; font-size: 13px !important; }
+.lb { border-color: #cfcfca !important; color: #7b7b75 !important; border-radius: 0 !important; }
+.lb.on, .lb:hover { border-color: #5c5c56 !important; color: #5c5c56 !important; }
+/* Sections are separated by lines, not by grey fields. */
+#pillars { background: #ffffff !important; border-top: 1px solid #cfcfca; }
+.pg { background: #cfcfca !important; border-color: #cfcfca !important; }
+.pc:hover { background: #fafaf8 !important; }
+.sci { border-left-color: #cfcfca !important; }
+/* The call to action: white, with a graphite button instead of a dark gold block. */
+#cb { background: #ffffff !important; border-top: 1px solid #cfcfca; border-bottom: 1px solid #cfcfca; }
+.cb_s { color: #7b7b75 !important; }
+.btn_g {
+  background: #5c5c56 !important;
+  color: #ffffff !important;
+  letter-spacing: .06em !important;
+  border-radius: 0 !important;
+}
+.btn_g:hover { background: #4a4a45 !important; }
+a { color: inherit; }
+footer { border-top: 1px solid #cfcfca; color: #7b7b75 !important; }
+/* The blueprint and its book: the same palette under its own names. */
+:root {
+  --off2: #f7f7f5;
+  --gold-soft: #ececea;
+  --serif: Arial, Helvetica, sans-serif;
+  --sans: Arial, Helvetica, sans-serif;
+}
+.paul-tag { color: #7b7b75 !important; letter-spacing: .12em !important; }
+.tl-1 { fill: #b9b9b3; }
+/* The module accordion: buttons inherit no browser black, the quiet
+   numbers and arrows sit in the light graphite. */
+.acc_btn, .al { color: #5c5c56 !important; }
+.an, .atg, .ai, .acc_btn span { color: #b4b4ae !important; }

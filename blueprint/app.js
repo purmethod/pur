@@ -605,7 +605,7 @@
 
     // cover
     add(book, el("section", { class: "cover part" },
-      el("p", { class: "tag" }, "P · U · R · E\u00a0\u00a0 M E T H O D"),
+      el("p", { class: "tag" }, "pure"),
       el("h1", {}, name ? name + "." : x.h1a + " " + x.h1b),
       el("p", { class: "cover-line" }, B("cover_line")),
       el("p", { class: "cover-meta" }, (st.created || "") + " · " + B("made_for", { name: name || "" }).trim()),
