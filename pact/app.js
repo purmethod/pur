@@ -2,12 +2,13 @@
 // nothing is stored on a server: the answers travel in the part of the link after #, which browsers never send.
 (function () {
   const P = window.PACT;
-  const VERSION = 2; // 2: statements without negations, so the scale alone says yes or no
+  const VERSION = 3; // 2: statements without negations. 3: the porn statement split in two (together, alone)
+  const PORN_V2 = 33; // where the single porn statement sat in version 2 links
   const ITEMS = P.areas.flatMap((a) => a.items);
   const OWN_MAX = 5, OWN_LEN = 140, NAME_LEN = 30;
   const app = document.getElementById("app");
   const bar = document.getElementById("bar");
-  const KEY = "pure-pact-v2";
+  const KEY = "pure-pact-v3";
 
   // ---------- link encoding ----------
   const b64 = (s) => btoa(unescape(encodeURIComponent(s))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
@@ -18,8 +19,10 @@
   function unpack(s) {
     try {
       const d = JSON.parse(unb64(s));
-      if (!d || d.v !== VERSION || typeof d.r !== "string") return null;
-      const r = d.r.slice(0, ITEMS.length).split("").map((c) => (/[0-4]/.test(c) ? Number(c) : 0));
+      if (!d || (d.v !== VERSION && d.v !== 2) || typeof d.r !== "string") return null;
+      // a version 2 answer to "watching porn while we are together" fits neither new statement: both start empty
+      const raw = d.v === 2 && d.r.length > PORN_V2 ? d.r.slice(0, PORN_V2) + "00" + d.r.slice(PORN_V2 + 1) : d.r;
+      const r = raw.slice(0, ITEMS.length).split("").map((c) => (/[0-4]/.test(c) ? Number(c) : 0));
       while (r.length < ITEMS.length) r.push(0);
       const o = (Array.isArray(d.o) ? d.o : []).slice(0, OWN_MAX)
         .filter((x) => Array.isArray(x) && typeof x[0] === "string")
