@@ -514,45 +514,45 @@ window.PACT = {
   {
    "id": "boundaries",
    "t": [
-    "boundaries",
-    "grenzen",
-    "limites",
-    "límites",
-    "الحدود",
-    "границы"
+    "honest with myself",
+    "ehrlich zu mir selbst",
+    "honnête avec moi-même",
+    "sinceridad conmigo",
+    "الصدق مع نفسي",
+    "честно о себе"
    ],
    "items": [
     [
-     "small white lies",
-     "kleine notlügen",
-     "les petits mensonges pieux",
-     "pequeñas mentiras piadosas",
-     "الكذبات البيضاء الصغيرة",
-     "маленькая ложь во благо"
+     "keeping a few things to myself, even from you",
+     "ein paar dinge für mich behalten, auch vor dir",
+     "garder quelques choses pour moi, même vis-à-vis de toi",
+     "guardarme algunas cosas para mí, también ante ti",
+     "أن أحتفظ ببعض الأمور لنفسي، حتى عنك",
+     "держать кое-что при себе, даже от тебя"
     ],
     [
-     "shouting or insults in a fight",
-     "anschreien oder beleidigen im streit",
-     "crier ou insulter pendant une dispute",
-     "gritar o insultar en una discusión",
-     "الصراخ أو الإهانة أثناء الخلاف",
-     "крик или оскорбления в ссоре"
+     "letting my anger out in a fight, and then it's over",
+     "im streit meine wut rauslassen, danach ist es wieder gut",
+     "laisser sortir ma colère pendant une dispute, et ensuite c'est fini",
+     "soltar mi rabia en una discusión, y después se acabó",
+     "أن أُخرج غضبي في الخلاف، ثم ينتهي الأمر",
+     "выпустить злость в ссоре, и потом всё прошло"
     ],
     [
-     "silence as punishment",
-     "schweigen als strafe",
-     "le silence comme punition",
-     "el silencio como castigo",
-     "الصمت كعقاب",
-     "молчание как наказание"
+     "some distance after a fight, until you come to me",
+     "nach einem streit abstand, bis du auf mich zukommst",
+     "de la distance après une dispute, jusqu'à ce que tu viennes vers moi",
+     "distancia después de una pelea, hasta que tú vengas a mí",
+     "مسافة بعد الخلاف، حتى تأتي أنت إليّ",
+     "дистанция после ссоры, пока ты не придёшь ко мне"
     ],
     [
-     "checking the other's phone or location",
-     "das handy oder den standort des anderen kontrollieren",
-     "contrôler le téléphone ou la localisation de l'autre",
-     "revisar el móvil o la ubicación del otro",
-     "تفتيش هاتف الآخر أو تتبع موقعه",
-     "проверять телефон или геолокацию партнёра"
+     "knowing where you are and who you are texting",
+     "wissen, wo du bist und mit wem du schreibst",
+     "savoir où tu es et à qui tu écris",
+     "saber dónde estás y con quién te escribes",
+     "أن أعرف أين أنت ومع من تراسل",
+     "знать, где ты и с кем переписываешься"
     ],
     [
      "chemical drugs",
@@ -563,13 +563,37 @@ window.PACT = {
      "химические наркотики"
     ],
     [
-     "taking our fights to friends or online",
-     "unsere streits zu freunden oder ins internet tragen",
-     "raconter nos disputes aux amis ou en ligne",
-     "contar nuestras peleas a amigos o en redes",
-     "نقل خلافاتنا إلى الأصدقاء أو الإنترنت",
-     "выносить наши ссоры к друзьям или в сеть"
+     "talking our fights through with my closest friends",
+     "unsere streits mit meinen engsten freunden durchsprechen",
+     "parler de nos disputes avec mes amis les plus proches",
+     "hablar nuestras peleas con mis amigos más cercanos",
+     "مناقشة خلافاتنا مع أقرب أصدقائي",
+     "обсуждать наши ссоры с самыми близкими друзьями"
+    ],
+    [
+     "being right at the end of an argument",
+     "am ende eines streits recht behalten",
+     "avoir raison à la fin d'une dispute",
+     "tener razón al final de una discusión",
+     "أن أكون على حق في نهاية الخلاف",
+     "оказаться правым в конце спора"
+    ],
+    [
+     "you showing me again and again that i come first",
+     "dass du mir immer wieder zeigst, dass ich an erster stelle stehe",
+     "que tu me montres encore et encore que je passe en premier",
+     "que me demuestres una y otra vez que soy lo primero",
+     "أن تُثبت لي مرارًا أنني أولويتك",
+     "снова и снова видеть, что я для тебя на первом месте"
     ]
+   ],
+   "note": [
+    "no right or wrong here. the more honest you answer, the more you both learn.",
+    "hier gibt es kein richtig oder falsch. je ehrlicher du antwortest, desto mehr erfahrt ihr beide.",
+    "ici, pas de bonne ou de mauvaise réponse. plus tu es honnête, plus vous apprenez tous les deux.",
+    "aquí no hay bien ni mal. cuanta más sinceridad pongas, más aprendéis los dos.",
+    "لا صواب ولا خطأ هنا. كلما كنت أصدق، عرفتما أكثر.",
+    "здесь нет правильных и неправильных ответов. чем честнее ты отвечаешь, тем больше вы оба узнаёте."
    ]
   },
   {

@@ -2,7 +2,7 @@
 // nothing is stored on a server: the answers travel in the part of the link after #, which browsers never send.
 (function () {
   const P = window.PACT;
-  const VERSION = 4; // 2: statements without negations. 3: porn split in two. 4: area "man and woman"
+  const VERSION = 5; // 2: no negations. 3: porn split in two. 4: area "man and woman". 5: "honest with myself"
   const PORN_V2 = 33; // where the single porn statement sat in version 2 links
   // version 3 to 4: "provide" (20) and "lead" (48) move into the new area at 23, followed by the new feminine statement
   const V3_PROVIDE = 20, V3_LEAD = 48, V4_ROLES = 23;
@@ -14,11 +14,21 @@
     rest.splice(V4_ROLES, 0, provide, lead, "0");
     return rest.join("");
   }
+  // version 4 to 5: the area at 39-44 asks new questions, so old answers there are cleared,
+  // except "chemical drugs" (43); two new statements follow at 45
+  const V4_HONEST = 39, V4_DRUGS = 43, V4_HONEST_END = 45;
+  function fromV4(r) {
+    if (r.length < V4_HONEST_END) return r;
+    const a = r.split("");
+    for (let i = V4_HONEST; i < V4_HONEST_END; i++) if (i !== V4_DRUGS) a[i] = "0";
+    a.splice(V4_HONEST_END, 0, "0", "0");
+    return a.join("");
+  }
   const ITEMS = P.areas.flatMap((a) => a.items);
   const OWN_MAX = 5, OWN_LEN = 140, NAME_LEN = 30;
   const app = document.getElementById("app");
   const bar = document.getElementById("bar");
-  const KEY = "pure-pact-v4";
+  const KEY = "pure-pact-v5";
 
   // ---------- link encoding ----------
   const b64 = (s) => btoa(unescape(encodeURIComponent(s))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
@@ -29,10 +39,11 @@
   function unpack(s) {
     try {
       const d = JSON.parse(unb64(s));
-      if (!d || ![2, 3, VERSION].includes(d.v) || typeof d.r !== "string") return null;
+      if (!d || ![2, 3, 4, VERSION].includes(d.v) || typeof d.r !== "string") return null;
       // a version 2 answer to "watching porn while we are together" fits neither new statement: both start empty
       let raw = d.v === 2 && d.r.length > PORN_V2 ? d.r.slice(0, PORN_V2) + "00" + d.r.slice(PORN_V2 + 1) : d.r;
       if (d.v < 4) raw = fromV3(raw);
+      if (d.v < 5) raw = fromV4(raw);
       const r = raw.slice(0, ITEMS.length).split("").map((c) => (/[0-4]/.test(c) ? Number(c) : 0));
       while (r.length < ITEMS.length) r.push(0);
       const o = (Array.isArray(d.o) ? d.o : []).slice(0, OWN_MAX)
