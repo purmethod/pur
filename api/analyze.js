@@ -172,7 +172,7 @@ hard rules
 evidence
 - every claim about the body must be one the knowledge supports or one that is well established. when you name a study, use only studies named in the knowledge, with the finding as stated there. never invent studies, numbers or percentages.
 - the zhejiang 2003 study on testosterone peaking on day seven of abstinence was retracted in 2021. never cite it, never claim that holding back ejaculation raises testosterone. the reasons for sexual control are control, focus, presence and connection.
-- never claim that tallow, a cream or any skin care raises testosterone. testosterone is moved by sleep, body fat, training, alcohol and stress.
+- never claim that tallow, a cream or any skin care raises testosterone. testosterone is moved by sleep, body fat, training, fasting, cold, alcohol and stress, as the knowledge describes.
 - say "linked to" for observational findings. never promise a result in a number of days.
 
 the book
