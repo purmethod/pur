@@ -333,12 +333,12 @@ window.PACT = {
      "стол и кровать без телефонов"
     ],
     [
-     "training or doing sport together",
-     "zusammen trainieren oder sport machen",
-     "s'entraîner ou faire du sport ensemble",
-     "entrenar o hacer deporte juntos",
-     "التمرين أو الرياضة معًا",
-     "тренироваться или заниматься спортом вместе"
+     "each of us training regularly, in whatever form",
+     "jeder von uns trainiert regelmäßig, in welcher form auch immer",
+     "chacun de nous s'entraîne régulièrement, quel que soit le sport",
+     "cada uno entrena con regularidad, sea cual sea el deporte",
+     "كل منا يتمرن بانتظام، أيًا كان نوع الرياضة",
+     "каждый из нас регулярно тренируется, любым видом спорта"
     ],
     [
      "alcohol and parties as part of our life",
