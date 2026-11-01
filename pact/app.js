@@ -2,13 +2,23 @@
 // nothing is stored on a server: the answers travel in the part of the link after #, which browsers never send.
 (function () {
   const P = window.PACT;
-  const VERSION = 3; // 2: statements without negations. 3: the porn statement split in two (together, alone)
+  const VERSION = 4; // 2: statements without negations. 3: porn split in two. 4: area "man and woman"
   const PORN_V2 = 33; // where the single porn statement sat in version 2 links
+  // version 3 to 4: "provide" (20) and "lead" (48) move into the new area at 23, followed by the new feminine statement
+  const V3_PROVIDE = 20, V3_LEAD = 48, V4_ROLES = 23;
+  function fromV3(r) {
+    if (r.length <= V3_LEAD) return r;
+    const a = r.split("");
+    const provide = a[V3_PROVIDE], lead = a[V3_LEAD];
+    const rest = a.filter((_, i) => i !== V3_PROVIDE && i !== V3_LEAD);
+    rest.splice(V4_ROLES, 0, provide, lead, "0");
+    return rest.join("");
+  }
   const ITEMS = P.areas.flatMap((a) => a.items);
   const OWN_MAX = 5, OWN_LEN = 140, NAME_LEN = 30;
   const app = document.getElementById("app");
   const bar = document.getElementById("bar");
-  const KEY = "pure-pact-v3";
+  const KEY = "pure-pact-v4";
 
   // ---------- link encoding ----------
   const b64 = (s) => btoa(unescape(encodeURIComponent(s))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
@@ -19,9 +29,10 @@
   function unpack(s) {
     try {
       const d = JSON.parse(unb64(s));
-      if (!d || (d.v !== VERSION && d.v !== 2) || typeof d.r !== "string") return null;
+      if (!d || ![2, 3, VERSION].includes(d.v) || typeof d.r !== "string") return null;
       // a version 2 answer to "watching porn while we are together" fits neither new statement: both start empty
-      const raw = d.v === 2 && d.r.length > PORN_V2 ? d.r.slice(0, PORN_V2) + "00" + d.r.slice(PORN_V2 + 1) : d.r;
+      let raw = d.v === 2 && d.r.length > PORN_V2 ? d.r.slice(0, PORN_V2) + "00" + d.r.slice(PORN_V2 + 1) : d.r;
+      if (d.v < 4) raw = fromV3(raw);
       const r = raw.slice(0, ITEMS.length).split("").map((c) => (/[0-4]/.test(c) ? Number(c) : 0));
       while (r.length < ITEMS.length) r.push(0);
       const o = (Array.isArray(d.o) ? d.o : []).slice(0, OWN_MAX)
@@ -83,6 +94,9 @@
     return s;
   };
   const L = (arr) => arr[li()];
+  // a statement is the same for everyone, or {m, f, c}: worded for a man, for a woman, and one shared line to compare
+  const say = (it, g) => (Array.isArray(it) ? L(it) : L(g === "f" ? it.f : it.m));
+  const shared = (it) => (Array.isArray(it) ? L(it) : L(it.c));
 
   // ---------- dom ----------
   function el(tag, attrs, ...kids) {
@@ -169,7 +183,7 @@
       el("h2", {}, L(area.t)),
       area.note ? el("p", { class: "lead area-note" }, L(area.note)) : null,
       el("p", { class: "fine" }, T("rate_hint")),
-      el("div", { class: "rows" }, area.items.map((it, k) => rateRow(L(it), st.me.r[offset + k], (v) => { st.me.r[offset + k] = v; persist(); render(); }))),
+      el("div", { class: "rows" }, area.items.map((it, k) => rateRow(say(it, st.me.g), st.me.r[offset + k], (v) => { st.me.r[offset + k] = v; persist(); render(); }))),
       nav(i - 1, i + 1, T("next"))));
   }
 
@@ -259,7 +273,7 @@
 
   function renderResult({ a, b, mine }) {
     const rows = { break: [], talk: [], fit: [] };
-    ITEMS.forEach((it, k) => { const v = verdict(a.r[k], b.r[k]); if (v) rows[v].push({ t: L(it), x: a.r[k], y: b.r[k] }); });
+    ITEMS.forEach((it, k) => { const v = verdict(a.r[k], b.r[k]); if (v) rows[v].push({ t: shared(it), x: a.r[k], y: b.r[k] }); });
     const total = rows.break.length + rows.talk.length + rows.fit.length;
     const pct = total ? Math.round((rows.fit.length / total) * 100) : 0;
     const label = (v) => (v ? L(P.scale[v - 1]) : "—");

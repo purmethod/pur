@@ -1,4 +1,5 @@
 // pure pact: the statements and the page texts in six languages.
+// statements are arrays (six languages) or {m, f, c}: what a man answers, what a woman answers, the shared line in the comparison.
 // order matters: answers travel in the link as one digit per statement, in this order.
 // add new statements only at the end of an area's list and bump VERSION in app.js if you ever reorder.
 window.PACT = {
@@ -256,14 +257,6 @@ window.PACT = {
      "раздельные деньги: у каждого свои"
     ],
     [
-     "a man who can provide for us",
-     "ein mann, der uns versorgen kann",
-     "un homme capable de subvenir à nos besoins",
-     "un hombre capaz de mantenernos",
-     "رجل قادر على إعالتنا",
-     "мужчина, способный нас обеспечить"
-    ],
-    [
      "deciding big purchases together beforehand",
      "große ausgaben vorher gemeinsam entscheiden",
      "décider ensemble des grosses dépenses à l'avance",
@@ -287,6 +280,105 @@ window.PACT = {
      "الادخار والاستثمار بدل الاستهلاك",
      "копить и инвестировать вместо трат"
     ]
+   ]
+  },
+  {
+   "id": "roles",
+   "t": [
+    "man and woman",
+    "mann und frau",
+    "homme et femme",
+    "hombre y mujer",
+    "الرجل والمرأة",
+    "мужчина и женщина"
+   ],
+   "note": [
+    "masculine and feminine energy: how you want to live it. a man answers for himself, a woman for herself.",
+    "maskuline und feminine energie: wie du sie leben willst. der mann antwortet für sich, die frau für sich.",
+    "l'énergie masculine et féminine : comment tu veux la vivre. l'homme répond pour lui, la femme pour elle.",
+    "energía masculina y femenina: cómo quieres vivirla. el hombre responde por sí mismo, la mujer por sí misma.",
+    "الطاقة الذكورية والأنثوية: كيف تريد أن تعيشها. يجيب الرجل عن نفسه، والمرأة عن نفسها.",
+    "мужская и женская энергия: как ты хочешь её проживать. мужчина отвечает за себя, женщина — за себя."
+   ],
+   "items": [
+    {
+     "m": [
+      "i provide for our family",
+      "ich versorge unsere familie",
+      "je subviens aux besoins de notre famille",
+      "yo mantengo a nuestra familia",
+      "أنا أعيل عائلتنا",
+      "я обеспечиваю нашу семью"
+     ],
+     "f": [
+      "a man who can provide for our family",
+      "ein mann, der unsere familie versorgen kann",
+      "un homme capable de subvenir aux besoins de notre famille",
+      "un hombre capaz de mantener a nuestra familia",
+      "رجل قادر على إعالة عائلتنا",
+      "мужчина, способный обеспечить нашу семью"
+     ],
+     "c": [
+      "the man provides for the family",
+      "der mann versorgt die familie",
+      "l'homme subvient aux besoins de la famille",
+      "el hombre mantiene a la familia",
+      "الرجل يعيل العائلة",
+      "мужчина обеспечивает семью"
+     ]
+    },
+    {
+     "m": [
+      "i lead our family: clear, steady, protective",
+      "ich führe unsere familie: klar, ruhig, schützend",
+      "je guide notre famille : clair, calme, protecteur",
+      "yo guío a nuestra familia: claro, sereno, protector",
+      "أنا أقود عائلتنا: بوضوح وثبات وحماية",
+      "я веду нашу семью: ясно, спокойно, защищая"
+     ],
+     "f": [
+      "a man who leads: clear, steady, protective",
+      "ein mann, der führt: klar, ruhig, schützend",
+      "un homme qui guide : clair, calme, protecteur",
+      "un hombre que guía: claro, sereno, protector",
+      "رجل يقود: بوضوح وثبات وحماية",
+      "мужчина, который ведёт: ясно, спокойно, защищая"
+     ],
+     "c": [
+      "the man leads: masculine energy",
+      "der mann führt: maskuline energie",
+      "l'homme guide : énergie masculine",
+      "el hombre guía: energía masculina",
+      "الرجل يقود: طاقة ذكورية",
+      "мужчина ведёт: мужская энергия"
+     ]
+    },
+    {
+     "m": [
+      "a woman with feminine energy: warm, soft, open",
+      "eine frau mit femininer energie: warm, weich, offen",
+      "une femme à l'énergie féminine : chaleureuse, douce, ouverte",
+      "una mujer con energía femenina: cálida, suave, abierta",
+      "امرأة ذات طاقة أنثوية: دافئة، ناعمة، منفتحة",
+      "женщина с женской энергией: тёплая, мягкая, открытая"
+     ],
+     "f": [
+      "i live my feminine energy: warm, soft, open",
+      "ich lebe meine feminine energie: warm, weich, offen",
+      "je vis mon énergie féminine : chaleureuse, douce, ouverte",
+      "vivo mi energía femenina: cálida, suave, abierta",
+      "أعيش طاقتي الأنثوية: دافئة، ناعمة، منفتحة",
+      "я живу своей женской энергией: тёплая, мягкая, открытая"
+     ],
+     "c": [
+      "the woman brings feminine energy",
+      "die frau bringt feminine energie",
+      "la femme apporte l'énergie féminine",
+      "la mujer aporta energía femenina",
+      "المرأة تجلب الطاقة الأنثوية",
+      "женщина привносит женскую энергию"
+     ]
+    }
    ]
   },
   {
@@ -530,14 +622,6 @@ window.PACT = {
      "ayuda externa ante problemas grandes, por ejemplo terapia de pareja",
      "مساعدة خارجية في المشكلات الكبيرة، مثل الاستشارة الزوجية",
      "помощь со стороны при больших проблемах, например семейный консультант"
-    ],
-    [
-     "the man taking the lead in hard moments",
-     "der mann übernimmt in schweren momenten die führung",
-     "l'homme prend les choses en main dans les moments difficiles",
-     "el hombre toma el mando en los momentos difíciles",
-     "الرجل يتولى القيادة في اللحظات الصعبة",
-     "мужчина берёт на себя ведущую роль в трудные моменты"
     ]
    ]
   },
