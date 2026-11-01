@@ -51,8 +51,8 @@ High CO2 tolerance = calm breathing, stress resilience, optimal oxygenation
 
 Training CO2 tolerance: extend the exhale. Breathe in for 4 counts, out for 6-8 counts. Practice nasal breathing exclusively. Over weeks, the breathing reflex recalibrates — you breathe less, feel more.
 
-═══ ENDOGENOUS DMT ═══
-The pineal gland produces DMT (dimethyltryptamine) endogenously. Intense breathwork practices — including Wim Hof — are associated with altered states of consciousness that parallel low-dose psychedelic experiences. This is not mysticism — it is neurochemistry. The precise mechanism is still under research but the phenomenological reports are consistent across thousands of practitioners.
+═══ ALTERED STATES ═══
+Intense breathwork can produce strong altered states: tingling, light-headedness, vivid images, deep calm. Some link this to DMT made in the body, but that has only been shown in animals; in humans it is speculation. What is certain: fast breathing changes the blood gases enough to cause fainting. That is why it is done only sitting or lying down, never in or near water, never while driving.
 
 ═══ DAILY PROTOCOL ═══
 Morning: 1-3 rounds Wim Hof breathing before cold shower
@@ -72,9 +72,8 @@ Voluntary discomfort is the training ground for mental strength. The cold does n
 Srámek et al. (European Journal of Applied Physiology):
 Cold water immersion produces:
 
-- Noradrenaline increase: up to 300%
-- Dopamine increase: up to 250%
-- These effects last 2-3 hours after cold exposure
+- In water at 14°C for one hour, noradrenaline rose by about 530% and dopamine by about 250% (Šrámek et al., 2000)
+- A short cold shower is a much smaller dose: the direction is the same, the size is not known
 
 Noradrenaline (norepinephrine) effects:
 
@@ -90,11 +89,9 @@ Dopamine effects:
 - Reduced cravings for other dopamine sources
 
 TESTOSTERONE:
-Cold water increases testosterone through multiple mechanisms:
-
-- The testes are temperature-sensitive — they function optimally at slightly below body temperature (which is why they are external)
-- Cold exposure activates the hypothalamic-pituitary-gonadal axis
-- Noradrenaline release stimulates Leydig cells to produce testosterone
+The claim that cold water raises testosterone is widespread, but there is no good evidence for it in humans.
+- The testes work best slightly below body temperature, which is why they sit outside the body. Keeping heat away from them (laptop on the lap, very tight underwear, long hot baths) is better supported than adding cold.
+- The real value of cold lies elsewhere: alertness, mood, and the daily training of choosing discomfort.
 
 ═══ THE PROTOCOL ═══
 MINIMUM: 2 minutes of cold water at the end of every shower

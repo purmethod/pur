@@ -245,7 +245,7 @@ const LIST = { type: "array", items: STR };
 const CORE_SCHEMA = {
   type: "object",
   additionalProperties: false,
-  required: ["intro", "insight", "blindspots", "priorities", "ladder", "weeks", "daily", "non_negotiables", "safety", "message"],
+  required: ["intro", "insight", "blindspots", "priorities", "ladder", "non_negotiables", "message", "weeks", "daily", "safety"],
   properties: {
     intro: STR,
     insight: STR,
@@ -260,14 +260,14 @@ const CORE_SCHEMA = {
       },
     },
     ladder: { type: "object", additionalProperties: false, required: ["exercise", "note"], properties: { exercise: STR, note: STR } },
+    non_negotiables: LIST,
+    message: STR,
     weeks: {
       type: "array",
       items: { type: "object", additionalProperties: false, required: ["week", "focus", "actions", "check"], properties: { week: { type: "integer" }, focus: STR, actions: LIST, check: STR } },
     },
     daily: { type: "object", additionalProperties: false, required: ["morning", "day", "evening", "free_day"], properties: { morning: LIST, day: LIST, evening: LIST, free_day: LIST } },
-    non_negotiables: LIST,
     safety: STR,
-    message: STR,
   },
 };
 
@@ -299,17 +299,18 @@ const PILLAR_SCHEMA = {
   },
 };
 
-const CORE_TASK = `write the frame of his book: everything except the pillar chapters, which are written separately.
+const CORE_TASK = `write the frame of his book: everything except the pillar chapters, which are written separately. every field is required and must be filled; only safety may be empty.
 - intro: a personal letter that opens the book, 250 to 400 words. what these 90 days are about for him, why now, what the book will do. no greeting formula like "dear", no "this blueprint is built from your answers". the page already prints the opening line, the three sources and his map.
 - insight: what you see in him, 350 to 500 words, in three to five paragraphs separated by blank lines. the pattern behind his answers and his words, his real strength, the one thing in his way, and how his levels pull on each other (for example how sleep feeds his impulses, or how his ego blocks his relationship).
 - blindspots: two to four, from his blind spots and patterns you see. title = a short sentence. text = 80 to 140 words: what he does not see yet, why it matters, the first thing to notice. if there are none in the brief, find the two most important patterns he is likely underrating.
 - priorities: exactly three levels, most important first. foundations (p0, u0, r0) carry their pillars. his own goal and the highest needs decide. title = a short title. why = three to four sentences. start = the tiny first step, one sentence. growth = week1, week2, weeks34, month2, month3, one or two sentences each, each a small step up.
 - ladder: exercise = his ladder, two or three sentences, scaled to him, with the 1-minute rests. note = two sentences on how it grows over the 90 days.
+- non_negotiables: seven short rules for the 90 days.
+- message: the closing letter from paul, 200 to 300 words, personal, about who he is becoming and what waits after the 90 days. it closes the book, so write it as the last words he reads.
 - weeks: exactly 13, week 1 to 13. focus = one line. actions = three to five short, concrete items, building on the week before, mixing his three priorities with the rest of his levels as they come in. check = one question he answers honestly at the end of the week, in his head or out loud.
 - daily: morning, day, evening for a working day and free_day for a day off, four to six short actions each, with times that fit his wake time and work. small at first.
-- non_negotiables: seven short rules for the 90 days.
 - safety: what he must watch out for given his health check, two to five sentences, or an empty string if nothing applies.
-- message: the closing letter from paul, 200 to 300 words, personal, about who he is becoming and what waits after the 90 days.`;
+`;
 
 const PILLAR_INFO = {
   P: "P physical control: p0 sexual control (foundation), p1 sleep, p2 movement, p3 food, p4 breath, p5 temperature",
@@ -384,6 +385,31 @@ async function writePart(brief, task, schema, started) {
   return JSON.parse(text);
 }
 
+// structured output guarantees the shape, not that every field is filled. an incomplete part is
+// written once more if there is time left; the function has 300 seconds in all.
+const filled = (v) => (Array.isArray(v) ? v.length > 0 : typeof v === "string" ? v.trim().length > 0 : Boolean(v));
+function coreGaps(b) {
+  const gaps = ["intro", "insight", "priorities", "ladder", "non_negotiables", "message", "weeks", "daily"].filter((k) => !filled(b[k]));
+  if ((b.weeks || []).length < 13) gaps.push("weeks");
+  return gaps;
+}
+function halfGaps(b, letter, half) {
+  const want = HALVES[letter][half];
+  const got = (b.levels || []).filter((l) => want.includes(l.level) && filled(l.reading) && filled(l.start));
+  const gaps = got.length < want.length ? ["levels"] : [];
+  if (half === 0 && !filled(b.intro)) gaps.push("intro");
+  if (half === 1 && !filled(b.closing)) gaps.push("closing");
+  return gaps;
+}
+async function writeComplete(brief, task, schema, gapsOf, t0, started) {
+  const first = await writePart(brief, task, schema, started);
+  const gaps = gapsOf(first);
+  if (!gaps.length || Date.now() - t0 > 140000) return first;
+  console.error("part incomplete, writing it again:", gaps.join(", "));
+  const second = await writePart(brief, task, schema).catch(() => null);
+  return second && gapsOf(second).length < gaps.length ? second : first;
+}
+
 // the frame and two halves per pillar, all in parallel. the frame must succeed; a half that fails
 // leaves those levels with their method chapters only. a man in crisis gets the frame only: short and steady.
 async function writeBlueprint(answers, lang) {
@@ -393,10 +419,11 @@ async function writeBlueprint(answers, lang) {
   const letters = crisis ? [] : ["P", "U", "R", "E"];
   let ready;
   const cached = new Promise((resolve) => { ready = resolve; setTimeout(resolve, 15000); });
-  const core = writePart(brief, CORE_TASK, CORE_SCHEMA, ready);
+  const t0 = Date.now();
+  const core = writeComplete(brief, CORE_TASK, CORE_SCHEMA, coreGaps, t0, ready);
   core.catch(() => {}); // awaited below; this only keeps an early failure from counting as unhandled
   await cached;
-  const halves = await Promise.allSettled(letters.flatMap((l) => [0, 1].map((h) => writePart(brief, pillarTask(l, scores, h), PILLAR_SCHEMA))));
+  const halves = await Promise.allSettled(letters.flatMap((l) => [0, 1].map((h) => writeComplete(brief, pillarTask(l, scores, h), PILLAR_SCHEMA, (b) => halfGaps(b, l, h), t0))));
   const book = tidyCore(await core);
   book.version = 2;
   book.pillars = letters
