@@ -36,7 +36,11 @@
   // ---------- state ----------
   const saved = (() => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } })();
   const blank = () => ({ n: "", g: "", l: "en", r: ITEMS.map(() => 0), o: [] });
-  const valid = (m) => m && Array.isArray(m.r) && m.r.length === ITEMS.length;
+  const valid = (m) => {
+    if (!m || !Array.isArray(m.r) || m.r.length > ITEMS.length) return false;
+    while (m.r.length < ITEMS.length) m.r.push(0);
+    return true;
+  };
   const st = { lang: saved.lang || null, me: valid(saved.me) ? saved.me : blank(), step: -1, other: null, result: null, broken: false };
   // a received pact is answered in its own draft, never in the sender's: on a shared phone
   // the sender's name and answers would otherwise show up in the form.
@@ -160,6 +164,7 @@
     app.append(el("section", { class: "area" },
       el("p", { class: "tag" }, T("of", { i: i + 1, n: N }) + " · " + T("tag")),
       el("h2", {}, L(area.t)),
+      area.note ? el("p", { class: "lead area-note" }, L(area.note)) : null,
       el("p", { class: "fine" }, T("rate_hint")),
       el("div", { class: "rows" }, area.items.map((it, k) => rateRow(L(it), st.me.r[offset + k], (v) => { st.me.r[offset + k] = v; persist(); render(); }))),
       nav(i - 1, i + 1, T("next"))));
@@ -231,6 +236,24 @@
     return "fit";
   }
 
+  // how each one feels loved: their need-it answers in the love area, or want-it when there are none
+  function lovedBlock(a, b) {
+    const area = P.areas.find((x) => x.id === "love");
+    if (!area) return null;
+    const offset = P.areas.slice(0, P.areas.indexOf(area)).reduce((n, x) => n + x.items.length, 0);
+    const pick = (p) => {
+      const rated = area.items.map((it, k) => ({ t: L(it), v: p.r[offset + k] }));
+      const need = rated.filter((x) => x.v === 1);
+      return need.length ? need : rated.filter((x) => x.v === 2);
+    };
+    const one = (p) => {
+      const list = pick(p);
+      return el("div", { class: "ownres" }, el("h4", {}, p.n),
+        list.length ? el("ul", { class: "cmps" }, list.map((x) => el("li", { class: "cmp" }, el("p", { class: "stmt" }, x.t), el("p", { class: "both" }, el("b", { class: "v" + x.v }, L(P.scale[x.v - 1])))))) : el("p", { class: "fine" }, T("loved_none")));
+    };
+    return el("div", { class: "loved" }, el("h3", {}, T("loved")), one(a), one(b));
+  }
+
   function renderResult({ a, b, mine }) {
     const rows = { break: [], talk: [], fit: [] };
     ITEMS.forEach((it, k) => { const v = verdict(a.r[k], b.r[k]); if (v) rows[v].push({ t: L(it), x: a.r[k], y: b.r[k] }); });
@@ -256,6 +279,7 @@
       fitList,
       (a.o.length || b.o.length) ? el("h3", {}, T("owns")) : null,
       ownBlock(a), ownBlock(b),
+      lovedBlock(a, b),
       mine ? el("div", { class: "back-box" }, el("h3", {}, T("send_back")), shareBox(location.href, "msg_b", T("send_back_hint", { name: a.n }))) : null,
       el("p", { class: "fine" }, T("note")),
       el("button", { type: "button", class: "ghost", onclick: () => { history.replaceState(null, "", base()); st.result = null; st.other = null; replyFor = null; st.me = blank(); persist(); go(-1); } }, T("new_pact"))));

@@ -362,12 +362,12 @@ window.PACT = {
    ],
    "items": [
     [
-     "sex at least once a week",
-     "sex mindestens einmal pro woche",
-     "faire l'amour au moins une fois par semaine",
-     "sexo al menos una vez por semana",
-     "الجماع مرة في الأسبوع على الأقل",
-     "секс минимум раз в неделю"
+     "sex and passion, a big part of our relationship",
+     "sex und leidenschaft, ein großer teil unserer beziehung",
+     "le sexe et la passion, une grande part de notre relation",
+     "el sexo y la pasión, una gran parte de nuestra relación",
+     "الجنس والشغف جزء كبير من علاقتنا",
+     "секс и страсть — большая часть наших отношений"
     ],
     [
      "physical closeness every day, also when there is no sex",
@@ -591,6 +591,75 @@ window.PACT = {
      "tiempo con amigos con regularidad, también por mi cuenta",
      "وقت منتظم مع الأصدقاء، وأحيانًا وحدي",
      "регулярное время с друзьями, в том числе одному"
+    ]
+   ]
+  },
+  {
+   "id": "love",
+   "t": [
+    "how i feel loved",
+    "woran ich liebe spüre",
+    "ce qui me fait sentir l'amour",
+    "cómo siento el amor",
+    "كيف أشعر بالحب",
+    "как я чувствую любовь"
+   ],
+   "note": [
+    "the five love languages (gary chapman): words, time, gifts, help and touch, plus desire. studies show that most people value all of them; what helps is knowing which matter most to the other.",
+    "die fünf liebessprachen nach gary chapman: worte, zeit, geschenke, hilfe und berührung, dazu begehren. studien zeigen: die meisten menschen schätzen alle davon. was hilft, ist zu wissen, welche dem anderen am wichtigsten sind.",
+    "les cinq langages de l'amour (gary chapman) : les mots, le temps, les cadeaux, l'aide et le toucher, plus le désir. les études montrent que la plupart des gens tiennent à tous ; ce qui aide, c'est de savoir lesquels comptent le plus pour l'autre.",
+    "los cinco lenguajes del amor (gary chapman): palabras, tiempo, regalos, ayuda y contacto, además del deseo. los estudios muestran que la mayoría valora todos; lo que ayuda es saber cuáles importan más al otro.",
+    "لغات الحب الخمس (غاري تشابمان): الكلمات، والوقت، والهدايا، والمساعدة، واللمس، إضافة إلى الرغبة. تُظهر الدراسات أن معظم الناس يقدّرونها كلها؛ وما يفيد هو معرفة أيها الأهم للطرف الآخر.",
+    "пять языков любви (гэри чепмен): слова, время, подарки, помощь и прикосновения, плюс желание. исследования показывают, что большинство людей ценит их все; помогает знать, какие важнее всего для другого."
+   ],
+   "items": [
+    [
+     "hearing it in words: i love you, you matter to me",
+     "es in worten hören: ich liebe dich, du bist mir wichtig",
+     "l'entendre en mots : je t'aime, tu comptes pour moi",
+     "oírlo en palabras: te quiero, me importas",
+     "أن أسمعها بالكلمات: أحبك، وجودك يهمني",
+     "слышать это в словах: я люблю тебя, ты мне дорог"
+    ],
+    [
+     "your full attention: time just for us, phone away",
+     "deine volle aufmerksamkeit: zeit nur für uns, handy weg",
+     "toute ton attention : du temps rien que pour nous, téléphone rangé",
+     "toda tu atención: tiempo solo para nosotros, móvil fuera",
+     "انتباهك الكامل: وقت لنا فقط، والهاتف جانبًا",
+     "всё твоё внимание: время только для нас, телефон в сторону"
+    ],
+    [
+     "a gift that shows you were thinking of me",
+     "ein geschenk, das zeigt, dass du an mich gedacht hast",
+     "un cadeau qui montre que tu as pensé à moi",
+     "un regalo que muestra que pensaste en mí",
+     "هدية تُظهر أنك فكّرت بي",
+     "подарок, по которому видно, что ты обо мне помнишь"
+    ],
+    [
+     "help in everyday life: you take something off my plate before i ask",
+     "hilfe im alltag: du nimmst mir etwas ab, bevor ich frage",
+     "de l'aide au quotidien : tu me soulages d'une tâche avant que je demande",
+     "ayuda en el día a día: me quitas algo de encima antes de que lo pida",
+     "المساعدة في الحياة اليومية: تحمل عني شيئًا قبل أن أطلب",
+     "помощь в быту: ты берёшь на себя что-то раньше, чем я попрошу"
+    ],
+    [
+     "touch: holding hands, a hug, falling asleep close",
+     "berührung: hand halten, umarmen, nah beieinander einschlafen",
+     "le toucher : se tenir la main, un câlin, s'endormir l'un contre l'autre",
+     "contacto: ir de la mano, un abrazo, dormirnos juntos",
+     "اللمس: إمساك اليد، عناق، النوم متقاربين",
+     "прикосновения: держаться за руки, объятия, засыпать рядом"
+    ],
+    [
+     "desire: feeling that you want me",
+     "begehren: spüren, dass du mich willst",
+     "le désir : sentir que tu me veux",
+     "deseo: sentir que me deseas",
+     "الرغبة: أن أشعر بأنك تريدني",
+     "желание: чувствовать, что ты меня хочешь"
     ]
    ]
   }
@@ -947,6 +1016,22 @@ window.PACT = {
    "un comienzo para hablar, no un contrato. hablad de cada punto, sobre todo de los que encajan demasiado fácil.",
    "بداية لحديث، لا عقد. تحدثا عن كل نقطة، خاصة تلك التي تتوافق بسهولة زائدة.",
    "начало разговора, а не договор. обсудите каждый пункт, особенно те, что совпадают слишком легко."
+  ],
+  "loved": [
+   "how each of you feels loved",
+   "woran jeder von euch liebe spürt",
+   "ce qui fait sentir l'amour à chacun",
+   "cómo siente el amor cada uno",
+   "كيف يشعر كل منكما بالحب",
+   "как каждый из вас чувствует любовь"
+  ],
+  "loved_none": [
+   "no need it here.",
+   "hier kein brauche ich.",
+   "aucun indispensable ici.",
+   "ningún imprescindible aquí.",
+   "لا «ضروري لي» هنا.",
+   "здесь нет «обязательно»."
   ]
  }
 };
