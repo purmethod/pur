@@ -256,12 +256,12 @@ window.PACT = {
      "раздельные деньги: у каждого свои"
     ],
     [
-     "the man paying the larger share of our costs",
-     "der mann zahlt den größeren teil unserer kosten",
-     "l'homme paie la plus grande part de nos dépenses",
-     "el hombre paga la mayor parte de nuestros gastos",
-     "الرجل يدفع الجزء الأكبر من مصاريفنا",
-     "мужчина оплачивает большую часть наших расходов"
+     "a man who can provide for us",
+     "ein mann, der uns versorgen kann",
+     "un homme capable de subvenir à nos besoins",
+     "un hombre capaz de mantenernos",
+     "رجل قادر على إعالتنا",
+     "мужчина, способный нас обеспечить"
     ],
     [
      "deciding big purchases together beforehand",
