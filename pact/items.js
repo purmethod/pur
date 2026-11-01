@@ -36,12 +36,12 @@ window.PACT = {
    "неважно"
   ],
   [
-   "no-go",
-   "geht gar nicht",
-   "hors de question",
-   "ni hablar",
-   "مرفوض",
-   "ни в коем случае"
+   "don't want it",
+   "will ich nicht",
+   "je ne veux pas",
+   "no lo quiero",
+   "لا أريده",
+   "не хочу"
   ]
  ],
  "areas": [
@@ -386,12 +386,20 @@ window.PACT = {
      "открыто говорить о желаниях в постели"
     ],
     [
-     "watching porn while we are together",
-     "pornos schauen, während wir zusammen sind",
-     "regarder du porno pendant notre relation",
-     "ver porno mientras estamos juntos",
-     "مشاهدة الإباحية ونحن معًا",
-     "смотреть порно, пока мы вместе"
+     "watching porn together now and then",
+     "ab und zu gemeinsam pornos schauen",
+     "regarder du porno ensemble de temps en temps",
+     "ver porno juntos de vez en cuando",
+     "مشاهدة الإباحية معًا من حين لآخر",
+     "иногда смотреть порно вместе"
+    ],
+    [
+     "watching porn alone, each on their own",
+     "pornos alleine schauen, jeder für sich",
+     "regarder du porno seul, chacun de son côté",
+     "ver porno a solas, cada uno por su cuenta",
+     "مشاهدة الإباحية على انفراد، كلٌّ على حدة",
+     "смотреть порно в одиночку, каждый сам по себе"
     ],
     [
      "trying new things in bed",
@@ -455,12 +463,12 @@ window.PACT = {
      "проверять телефон или геолокацию партнёра"
     ],
     [
-     "drugs",
-     "drogen",
-     "les drogues",
-     "drogas",
-     "المخدرات",
-     "наркотики"
+     "chemical drugs",
+     "chemische drogen",
+     "les drogues chimiques",
+     "drogas químicas",
+     "المخدرات الكيميائية",
+     "химические наркотики"
     ],
     [
      "taking our fights to friends or online",
@@ -962,12 +970,12 @@ window.PACT = {
    "показать всё"
   ],
   "none_break": [
-   "nothing breaks: no point meets need it on one side and no-go on the other.",
-   "nichts bricht: kein punkt hat auf einer seite brauche ich und auf der anderen geht gar nicht.",
-   "rien ne casse : aucun point n'a indispensable d'un côté et hors de question de l'autre.",
-   "nada se rompe: ningún punto tiene imprescindible de un lado y ni hablar del otro.",
-   "لا شيء ينكسر: لا نقطة فيها «ضروري لي» من جهة و«مرفوض» من الأخرى.",
-   "ничего не ломается: ни один пункт не стоит «обязательно» с одной стороны и «ни в коем случае» с другой."
+   "nothing breaks: no point has need it on one side and don't want it on the other.",
+   "nichts bricht: kein punkt hat auf einer seite brauche ich und auf der anderen will ich nicht.",
+   "rien ne casse : aucun point n'a indispensable d'un côté et je ne veux pas de l'autre.",
+   "nada se rompe: ningún punto tiene imprescindible de un lado y no lo quiero del otro.",
+   "لا شيء ينكسر: لا نقطة فيها «ضروري لي» من جهة و«لا أريده» من الأخرى.",
+   "ничего не ломается: ни один пункт не стоит «обязательно» с одной стороны и «не хочу» с другой."
   ],
   "owns": [
    "own points",
