@@ -1011,6 +1011,65 @@
    ]
   },
   {
+   "id": "belly",
+   "section": "body",
+   "type": "single",
+   "q": {
+    "en": "your belly, honestly",
+    "de": "dein bauch, ehrlich",
+    "fr": "ton ventre, honnêtement",
+    "es": "tu barriga, con sinceridad",
+    "ar": "بطنك، بصراحة",
+    "ru": "твой живот, честно"
+   },
+   "options": [
+    {
+     "v": "flat",
+     "l": {
+      "en": "flat",
+      "de": "flach",
+      "fr": "plat",
+      "es": "plana",
+      "ar": "مسطّح",
+      "ru": "плоский"
+     }
+    },
+    {
+     "v": "little",
+     "l": {
+      "en": "a little extra",
+      "de": "ein bisschen zu viel",
+      "fr": "un peu en trop",
+      "es": "un poco de más",
+      "ar": "زيادة بسيطة",
+      "ru": "немного лишнего"
+     }
+    },
+    {
+     "v": "clear",
+     "l": {
+      "en": "clearly a belly",
+      "de": "deutlicher bauch",
+      "fr": "du ventre, clairement",
+      "es": "barriga clara",
+      "ar": "كرش واضح",
+      "ru": "заметный живот"
+     }
+    },
+    {
+     "v": "large",
+     "l": {
+      "en": "a large belly",
+      "de": "großer bauch",
+      "fr": "un gros ventre",
+      "es": "barriga grande",
+      "ar": "كرش كبير",
+      "ru": "большой живот"
+     }
+    }
+   ]
+  },
+  {
    "id": "eating",
    "section": "body",
    "type": "single",
@@ -1076,6 +1135,54 @@
       "es": "una sola comida al día",
       "ar": "وجبة واحدة في اليوم",
       "ru": "один приём пищи в день"
+     }
+    }
+   ]
+  },
+  {
+   "id": "daylight",
+   "section": "body",
+   "type": "single",
+   "q": {
+    "en": "time outside in daylight on a normal day",
+    "de": "zeit draußen im tageslicht an einem normalen tag",
+    "fr": "temps dehors à la lumière du jour, un jour normal",
+    "es": "tiempo al aire libre con luz de día en un día normal",
+    "ar": "الوقت في ضوء النهار خارج المنزل في يوم عادي",
+    "ru": "время на улице при дневном свете в обычный день"
+   },
+   "options": [
+    {
+     "v": "lt15",
+     "l": {
+      "en": "under 15 minutes",
+      "de": "unter 15 minuten",
+      "fr": "moins de 15 minutes",
+      "es": "menos de 15 minutos",
+      "ar": "أقل من 15 دقيقة",
+      "ru": "меньше 15 минут"
+     }
+    },
+    {
+     "v": "15_60",
+     "l": {
+      "en": "15 to 60 minutes",
+      "de": "15 bis 60 minuten",
+      "fr": "15 à 60 minutes",
+      "es": "de 15 a 60 minutos",
+      "ar": "من 15 إلى 60 دقيقة",
+      "ru": "от 15 до 60 минут"
+     }
+    },
+    {
+     "v": "gt60",
+     "l": {
+      "en": "more than an hour",
+      "de": "mehr als eine stunde",
+      "fr": "plus d'une heure",
+      "es": "más de una hora",
+      "ar": "أكثر من ساعة",
+      "ru": "больше часа"
      }
     }
    ]
@@ -1419,6 +1526,186 @@
       "es": "a diario",
       "ar": "يوميًا",
       "ru": "ежедневно"
+     }
+    }
+   ]
+  },
+  {
+   "id": "morning",
+   "section": "habits",
+   "type": "single",
+   "optional": true,
+   "q": {
+    "en": "morning erections, in a normal week",
+    "de": "morgenerektionen in einer normalen woche",
+    "fr": "érections matinales, sur une semaine normale",
+    "es": "erecciones matutinas, en una semana normal",
+    "ar": "الانتصاب الصباحي في أسبوع عادي",
+    "ru": "утренняя эрекция в обычную неделю"
+   },
+   "options": [
+    {
+     "v": "most",
+     "l": {
+      "en": "most mornings",
+      "de": "an den meisten morgen",
+      "fr": "la plupart des matins",
+      "es": "la mayoría de las mañanas",
+      "ar": "معظم الصباحات",
+      "ru": "почти каждое утро"
+     }
+    },
+    {
+     "v": "some",
+     "l": {
+      "en": "some mornings",
+      "de": "an manchen morgen",
+      "fr": "certains matins",
+      "es": "algunas mañanas",
+      "ar": "بعض الصباحات",
+      "ru": "иногда"
+     }
+    },
+    {
+     "v": "rare",
+     "l": {
+      "en": "rarely or never",
+      "de": "selten oder nie",
+      "fr": "rarement ou jamais",
+      "es": "rara vez o nunca",
+      "ar": "نادرًا أو أبدًا",
+      "ru": "редко или никогда"
+     }
+    },
+    {
+     "v": "unknown",
+     "l": {
+      "en": "i don't pay attention to it",
+      "de": "achte ich nicht drauf",
+      "fr": "je n'y fais pas attention",
+      "es": "no me fijo",
+      "ar": "لا أنتبه لذلك",
+      "ru": "не обращаю внимания"
+     }
+    }
+   ]
+  },
+  {
+   "id": "control",
+   "section": "habits",
+   "type": "single",
+   "optional": true,
+   "q": {
+    "en": "during sex, do you decide when you come?",
+    "de": "beim sex: entscheidest du, wann du kommst?",
+    "fr": "pendant le sexe, est-ce toi qui décides quand tu jouis ?",
+    "es": "en el sexo, ¿decides tú cuándo llegas al orgasmo?",
+    "ar": "أثناء الجماع، هل تقرر أنت متى تقذف؟",
+    "ru": "во время секса ты сам решаешь, когда кончить?"
+   },
+   "options": [
+    {
+     "v": "yes",
+     "l": {
+      "en": "mostly yes",
+      "de": "meistens ja",
+      "fr": "la plupart du temps",
+      "es": "casi siempre",
+      "ar": "غالبًا نعم",
+      "ru": "чаще всего да"
+     }
+    },
+    {
+     "v": "sometimes",
+     "l": {
+      "en": "sometimes",
+      "de": "manchmal",
+      "fr": "parfois",
+      "es": "a veces",
+      "ar": "أحيانًا",
+      "ru": "иногда"
+     }
+    },
+    {
+     "v": "rarely",
+     "l": {
+      "en": "rarely, it comes too early",
+      "de": "selten, es kommt zu früh",
+      "fr": "rarement, ça vient trop tôt",
+      "es": "pocas veces, llega demasiado pronto",
+      "ar": "نادرًا، يأتي مبكرًا جدًا",
+      "ru": "редко, всё происходит слишком быстро"
+     }
+    },
+    {
+     "v": "none",
+     "l": {
+      "en": "no sex at the moment",
+      "de": "gerade kein sex",
+      "fr": "pas de sexe en ce moment",
+      "es": "ahora mismo no tengo sexo",
+      "ar": "لا علاقة جنسية حاليًا",
+      "ru": "сейчас секса нет"
+     }
+    }
+   ]
+  },
+  {
+   "id": "libido",
+   "section": "habits",
+   "type": "single",
+   "optional": true,
+   "q": {
+    "en": "your desire for sex right now",
+    "de": "deine lust auf sex gerade",
+    "fr": "ton désir sexuel en ce moment",
+    "es": "tu deseo sexual ahora mismo",
+    "ar": "رغبتك الجنسية حاليًا",
+    "ru": "твоё сексуальное желание сейчас"
+   },
+   "options": [
+    {
+     "v": "strong",
+     "l": {
+      "en": "strong",
+      "de": "stark",
+      "fr": "fort",
+      "es": "fuerte",
+      "ar": "قوية",
+      "ru": "сильное"
+     }
+    },
+    {
+     "v": "normal",
+     "l": {
+      "en": "normal",
+      "de": "normal",
+      "fr": "normal",
+      "es": "normal",
+      "ar": "عادية",
+      "ru": "обычное"
+     }
+    },
+    {
+     "v": "low",
+     "l": {
+      "en": "low",
+      "de": "gering",
+      "fr": "faible",
+      "es": "bajo",
+      "ar": "ضعيفة",
+      "ru": "слабое"
+     }
+    },
+    {
+     "v": "gone",
+     "l": {
+      "en": "almost gone",
+      "de": "fast weg",
+      "fr": "presque disparu",
+      "es": "casi desaparecido",
+      "ar": "شبه معدومة",
+      "ru": "почти пропало"
      }
     }
    ]
@@ -3578,7 +3865,7 @@
   },
   "r0": {
    "en": "self accountability",
-   "de": "selbstverantwortung",
+   "de": "rechenschaft vor dir selbst",
    "fr": "auto responsabilité",
    "es": "auto responsabilidad",
    "ar": "المساءلة الذاتية",
@@ -3739,6 +4026,21 @@
     return { ok: errors.length === 0, answers: a, errors };
   }
 
+  // what his habits say about a level, 0 solid .. 100 needs work. people judge themselves
+  // kindly; frequencies and hours are harder to bend, so they weigh in on the score.
+  const HABITS = {
+    p0: { porn: { never: 0, monthly: 25, weekly: 55, several: 80, daily: 100 }, morning: { most: 0, some: 40, rare: 90 }, control: { yes: 0, sometimes: 50, rarely: 100 } },
+    p1: { sleep: { lt5: 100, "5_6": 75, "6_7": 40, "7_8": 0, gt8: 30 }, wake: { lt5: 20, "5_6": 0, "6_7": 0, "7_8": 15, gt8: 60, irregular: 100 }, daylight: { lt15: 70, "15_60": 30, gt60: 0 } },
+    p2: { training: { none: 100, walk: 70, "1_2": 40, "3_4": 10, "5p": 0 }, pullups: { 0: 90, "1_5": 55, "6_12": 20, gt12: 0 } },
+    p3: { eating: { graze: 90, meals_snacks: 50, meals: 10, window: 10, omad: 30 }, belly: { flat: 0, little: 35, clear: 70, large: 100 } },
+    p4: { breathwork: { none: 70, some: 35, regular: 0 } },
+    p5: { cold: { never: 70, sometimes: 35, daily: 0, ice: 0 } },
+    u1: { nicotine: { no: 0, sometimes: 50, daily: 100 }, alcohol: { never: 0, monthly: 10, weekly: 40, several: 75, daily: 100 } },
+    u2: { screen: { lt1: 0, "1_2": 30, "2_4": 65, gt4: 100 }, porn: { never: 0, monthly: 20, weekly: 50, several: 75, daily: 100 } },
+    u3: { phone_morning: { no: 0, sometimes: 50, always: 100 }, screen: { lt1: 0, "1_2": 30, "2_4": 65, gt4: 100 } },
+  };
+  const HABIT_WEIGHT = 0.35;
+
   // 0 = solid, 100 = this level needs the most work, null = not answered
   function score(a) {
     const out = {};
@@ -3750,8 +4052,28 @@
         sum += it.polarity > 0 ? a[it.id] : 3 - a[it.id];
         n++;
       }
-      out[mod] = n ? Math.round((sum / (n * 3)) * 100) : null;
+      const own = n ? (sum / (n * 3)) * 100 : null;
+      const hv = Object.entries(HABITS[mod] || {}).map(([id, map]) => map[a[id]]).filter((v) => v !== undefined);
+      const habit = hv.length ? hv.reduce((x, y) => x + y, 0) / hv.length : null;
+      out[mod] = own === null ? (habit === null ? null : Math.round(habit)) : Math.round(habit === null ? own : own * (1 - HABIT_WEIGHT) + habit * HABIT_WEIGHT);
     }
+    return out;
+  }
+
+  // where what he says about himself and what he does disagree. english, for the model only.
+  function blindspots(a) {
+    const out = [];
+    const has = (id, ...vals) => vals.includes(a[id]);
+    if (a.p0_1 !== undefined && a.p0_1 <= 1 && has("porn", "several", "daily")) out.push("he says porn is not his default outlet, yet he watches it several times a week or daily. he does not see this pattern yet.");
+    if (a.p1_1 !== undefined && a.p1_1 <= 1 && (has("sleep", "lt5", "5_6") || (has("wake", "irregular") && a.work !== "shift"))) out.push("he says he does not go to bed late without reason, yet he sleeps under six hours or wakes at no fixed time. his sleep is worse than he thinks.");
+    if (a.p2_2 !== undefined && a.p2_2 >= 2 && has("training", "none", "walk")) out.push("he says he has a fixed training ritual, yet he trains less than once a week. the ritual exists in his head more than in his week.");
+    if (a.u3_2 !== undefined && a.u3_2 >= 2 && has("phone_morning", "always") && has("screen", "gt4")) out.push("he says he can stay on one thing for 30 minutes, yet his phone comes first every morning and he spends over four hours a day on screens.");
+    if (a.r4_2 !== undefined && a.r4_2 >= 2 && a.r1_1 !== undefined && a.r1_1 >= 2) out.push("he says people can count on his word, yet he often breaks promises to himself. the first person his word fails is himself.");
+    if (a.e2_1 === 3 && a.e2_2 !== undefined && a.e2_2 <= 1) out.push("he sees ego clearly in others and rarely in himself. that is the ego's favourite hiding place.");
+    if (a.p3_2 !== undefined && a.p3_2 >= 2 && has("belly", "clear", "large")) out.push("he says he stops eating when full, yet he carries a clear belly. what he eats or drinks between meals may be the gap.");
+    if (a.u1_2 !== undefined && a.u1_2 >= 2 && a.u1_1 !== undefined && a.u1_1 >= 2) out.push("he believes he can tell real hunger and want from boredom, yet under stress he reaches for phone, food, porn or nicotine without deciding. knowing is not yet stopping.");
+    if (a.syn_1 !== undefined && a.syn_1 >= 2 && a.syn_2 !== undefined && a.syn_2 <= 1) out.push("he feels he lives below his potential, yet he is not ready to trade comfort for change. the first 30 days must be so small that readiness is not needed.");
+    if (has("libido", "low", "gone") && Number(a.age) < 45) out.push("his desire for sex is low for his age. sleep, stress, alcohol, body fat and porn all pull on it; a doctor can check the rest.");
     return out;
   }
 
@@ -3777,7 +4099,9 @@
     const c = a.conditions || [];
     const age = Number(a.age) || 0;
     return {
-      noBreathHolds: c.includes("heart") || c.includes("bp") || c.includes("epilepsy") || c.includes("acute"),
+      noBreathHolds: c.includes("heart") || c.includes("bp") || c.includes("epilepsy") || c.includes("acute") || c.includes("circulation") || age >= 65,
+      // erection trouble can be an early sign of heart and vessel disease (thompson et al., jama 2005)
+      sexualDoctorCheck: a.morning === "rare" || a.libido === "gone",
       coldOnlyGentle: c.includes("heart") || c.includes("bp") || c.includes("circulation") || c.includes("acute") || age >= 65,
       noFasting: c.includes("diabetes") || c.includes("eating_disorder") || c.includes("acute") || a.medication === "yes",
       noFoodRules: c.includes("eating_disorder"),
@@ -3818,6 +4142,7 @@
   Q.traits_of = traits;
   Q.safety = safety;
   Q.describe = describe;
+  Q.blindspots = blindspots;
 
   if (typeof module !== "undefined" && module.exports) module.exports = Q;
   else root.PUR_Q = Q;
