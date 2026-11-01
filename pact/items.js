@@ -219,12 +219,12 @@ window.PACT = {
      "воспитывать детей в вере"
     ],
     [
-     "caring for our parents ourselves when they are old",
-     "unsere eltern im alter selbst versorgen",
-     "nous occuper nous-mêmes de nos parents quand ils seront âgés",
-     "cuidar nosotros mismos de nuestros padres cuando sean mayores",
-     "رعاية والدينا بأنفسنا عندما يكبران",
-     "самим заботиться о родителях в старости"
+     "being there for our parents, also when they are very old",
+     "für unsere eltern da sein, auch im hohen alter",
+     "être là pour nos parents, même quand ils seront très âgés",
+     "estar ahí para nuestros padres, también cuando sean muy mayores",
+     "أن نكون بجانب والدينا، حتى في شيخوختهما",
+     "быть рядом с нашими родителями, даже в глубокой старости"
     ]
    ]
   },
