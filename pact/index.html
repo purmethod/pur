@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pure pact · the conversation most couples never have</title>
+  <meta name="description" content="before you start a relationship, both of you say what matters, where your boundaries are and what you wish for. then you see where you fit, where you need to talk and where it breaks." />
+  <link rel="canonical" href="https://brinkmannpaul.com/pure/pact" />
+  <link rel="icon" href="/pure/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="robots" content="noindex" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="pure pact" />
+  <meta property="og:description" content="the conversation most couples never have. fill it in, send the link, see where you fit." />
+  <meta property="og:image" content="https://brinkmannpaul.com/pure/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --ink: #5c5c56; --ink3: #7b7b75; --line: #cfcfca; --line2: #e4e4e0; --soft: #f7f7f5; --break: #8a3b2e; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { background: #fff; color: var(--ink); font: 16px/1.6 Arial, Helvetica, sans-serif; text-transform: lowercase; }
+    button, input { font: inherit; color: inherit; text-transform: none; }
+    :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+    [hidden] { display: none !important; }
+    nav { position: sticky; top: 0; z-index: 10; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; gap: 16px; background: rgba(255,255,255,.97); }
+    .logo { text-decoration: none; }
+    .lsw { display: flex; gap: 4px; }
+    .lb { background: #fff; border: 1px solid var(--line); cursor: pointer; }
+    .bar { height: 2px; background: var(--line2); }
+    .bar i { display: block; height: 100%; width: 0; background: var(--ink); transition: width .3s; }
+    main { max-width: 640px; margin: 0 auto; padding: 40px 20px 80px; outline: none; }
+    .tag { font-size: 12px; letter-spacing: .04em; color: var(--ink3); margin-bottom: 14px; }
+    h1 { font-size: clamp(32px, 7vw, 48px); line-height: 1.08; margin-bottom: 18px; }
+    h2 { font-size: clamp(26px, 5vw, 34px); line-height: 1.15; margin-bottom: 6px; }
+    h3 { font-size: 18px; margin: 34px 0 10px; font-weight: 400; }
+    h4 { font-size: 15px; font-weight: 400; margin: 18px 0 6px; }
+    .lead { font-size: 18px; margin-bottom: 22px; }
+    .fine { font-size: 13px; color: var(--ink3); margin: 14px 0; }
+    .how { list-style: none; border-top: 1px solid var(--line); margin: 6px 0 28px; }
+    .how li { display: grid; grid-template-columns: 28px 1fr; gap: 8px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .how .n { color: var(--ink3); }
+    .form { display: grid; gap: 8px; margin-bottom: 22px; }
+    .form label, .label { font-size: 13px; color: var(--ink3); margin-top: 6px; }
+    input[type=text] { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 0; background: #fff; font-size: 16px; }
+    .chips { display: flex; gap: 8px; }
+    .chip { padding: 10px 18px; border: 1px solid var(--line); background: #fff; cursor: pointer; }
+    .chip[aria-pressed=true] { border-color: var(--ink); background: var(--ink); color: #fff; }
+    .btn { padding: 14px 26px; border: 0; background: var(--ink); color: #fff; cursor: pointer; letter-spacing: .04em; }
+    .btn:disabled { opacity: .35; cursor: default; }
+    .ghost { padding: 13px 20px; border: 1px solid var(--line); background: #fff; cursor: pointer; }
+    .ghost.small { padding: 7px 12px; font-size: 13px; }
+    .rows { border-top: 1px solid var(--line); margin-top: 18px; }
+    .row { padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .stmt { margin-bottom: 10px; color: var(--ink); }
+    .seg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .seg button { padding: 9px 4px; border: 1px solid var(--line); background: #fff; cursor: pointer; font-size: 12px; line-height: 1.25; text-transform: lowercase; }
+    .seg button[aria-pressed=true] { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .seg .s4[aria-pressed=true] { background: var(--break); border-color: var(--break); }
+    .own { border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+    .own .row { border-bottom: 0; }
+    .addrow { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-top: 16px; }
+    .nav { display: flex; justify-content: space-between; gap: 10px; margin-top: 28px; flex-wrap: wrap; }
+    .share { margin: 10px 0 24px; }
+    .linkfield { font-size: 13px !important; color: var(--ink3); }
+    .score { font-size: clamp(40px, 9vw, 64px); line-height: 1; margin: 10px 0 12px; }
+    .meter { height: 4px; background: var(--line2); margin-bottom: 10px; }
+    .meter i { display: block; height: 100%; background: var(--ink); }
+    .cmps { list-style: none; border-top: 1px solid var(--line); }
+    .cmp { padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .cmp .stmt { margin-bottom: 4px; }
+    .both { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; color: var(--ink3); }
+    .both b { font-weight: 400; color: var(--ink); }
+    .both .v4 { color: var(--break); }
+    .h-break { color: var(--break); }
+    .back-box { margin-top: 36px; padding-top: 6px; border-top: 2px solid var(--ink); }
+    footer { max-width: 640px; margin: 0 auto; padding: 20px; display: flex; justify-content: space-between; font-size: 12px; color: var(--ink3); border-top: 1px solid var(--line); }
+    @media (max-width: 380px) { .seg button { font-size: 11px; padding: 8px 2px; } }
+  </style>
+  <link rel="stylesheet" href="/pure/pure.css?v=3" />
+</head>
+<body>
+  <nav>
+    <a class="logo" href="/pure/">P · U · R · E</a>
+    <div class="lsw" role="group" aria-label="language">
+      <button class="lb" type="button" data-lang="en">EN</button>
+      <button class="lb" type="button" data-lang="de">DE</button>
+      <button class="lb" type="button" data-lang="fr">FR</button>
+      <button class="lb" type="button" data-lang="es">ES</button>
+      <button class="lb" type="button" data-lang="ar">AR</button>
+      <button class="lb" type="button" data-lang="ru">RU</button>
+    </div>
+  </nav>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  <main id="app" tabindex="-1">
+    <noscript><p class="lead">pure pact needs javascript. please turn it on and reload.</p></noscript>
+  </main>
+  <footer>
+    <span>pure pact</span>
+    <span>© 2026 Paul Brinkmann</span>
+  </footer>
+  <script src="/pure/pact/items.js"></script>
+  <script src="/pure/pact/app.js"></script>
+</body>
+</html>
