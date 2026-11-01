@@ -2,12 +2,12 @@
 // nothing is stored on a server: the answers travel in the part of the link after #, which browsers never send.
 (function () {
   const P = window.PACT;
-  const VERSION = 1;
+  const VERSION = 2; // 2: statements without negations, so the scale alone says yes or no
   const ITEMS = P.areas.flatMap((a) => a.items);
   const OWN_MAX = 5, OWN_LEN = 140, NAME_LEN = 30;
   const app = document.getElementById("app");
   const bar = document.getElementById("bar");
-  const KEY = "pure-pact-v1";
+  const KEY = "pure-pact-v2";
 
   // ---------- link encoding ----------
   const b64 = (s) => btoa(unescape(encodeURIComponent(s))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
@@ -221,7 +221,7 @@
   }
 
   // ---------- the comparison ----------
-  // 1 must, 2 important, 3 doesn't matter, 4 no-go. a must against a no-go breaks it;
+  // 1 need it, 2 want it, 3 don't mind, 4 no-go. a must against a no-go breaks it;
   // two steps apart is worth a talk; the same or one step apart fits.
   function verdict(x, y) {
     if (!x || !y) return null;
