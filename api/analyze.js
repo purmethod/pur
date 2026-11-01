@@ -8,7 +8,7 @@ const Q = require("../blueprint/questions.js");
 
 const MODEL = "claude-opus-5-5";
 const LANG_NAMES = { en: "English", de: "German", fr: "French", es: "Spanish", ar: "Arabic", ru: "Russian" };
-const ALLOWED_ORIGIN = /^https:\/\/((www\.)?purmethod\.com|pur-[a-z0-9-]+-pur1\.vercel\.app)$|^http:\/\/localhost(:\d+)?$/;
+const ALLOWED_ORIGIN = /^https:\/\/((www\.)?purmethod\.com|(www\.)?brinkmannpaul\.com|pur-[a-z0-9-]+-pur1\.vercel\.app|brinkmannpaul-[a-z0-9-]+-pur1\.vercel\.app)$|^http:\/\/localhost(:\d+)?$/;
 const MODULE_NAMES = {
   p0: "sexual control", p1: "sleep", p2: "movement", p3: "food", p4: "breath", p5: "temperature",
   u0: "awareness", u1: "impulse awareness", u2: "dopamine system", u3: "attention control", u4: "identity architecture", u5: "emotional regulation",

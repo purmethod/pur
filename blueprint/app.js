@@ -1,6 +1,9 @@
 // the pure blueprint: asks the questions from questions.js step by step (with voice input),
 // sends the answers to /api/analyze and turns the answer into a book: phone view or pdf.
 // vanilla, no dependencies. all reader-facing copy lives in questions.js and copy.js.
+// The page lives at brinkmannpaul.com/pure. The blueprint function stays on purmethod.com
+// and is called there directly, so a long answer never passes through a proxy.
+const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod.com/api/analyze" : "/api/analyze";
 (function () {
   const Q = window.PUR_Q;
   const C = window.PUR_COPY;
@@ -529,7 +532,7 @@
     }
     go(N + 1);
     try {
-      const r = await fetch("/api/analyze", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ lang: st.lang, consent: true, answers: check.answers }) });
+      const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ lang: st.lang, consent: true, answers: check.answers }) });
       const data = await r.json().catch(() => ({}));
       clearInterval(waitTimer);
       if (r.ok && data.blueprint) {
@@ -572,7 +575,7 @@
   async function loadChapters() {
     if (st.chapters) return st.chapters;
     try {
-      const r = await fetch(`/blueprint/book/${st.lang}.json`);
+      const r = await fetch(`/pure/blueprint/book/${st.lang}.json`);
       st.chapters = r.ok ? await r.json() : [];
     } catch { st.chapters = []; }
     return st.chapters;
@@ -816,7 +819,7 @@
   // ---------- start ----------
 
   setLang(st.lang);
-  fetch("/api/analyze", { method: "GET" })
+  fetch(API, { method: "GET" })
     .then((r) => r.json())
     .then((d) => { st.open = Boolean(d.open); })
     .catch(() => { st.open = false; })
