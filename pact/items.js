@@ -341,12 +341,12 @@ window.PACT = {
      "каждый из нас регулярно тренируется, любым видом спорта"
     ],
     [
-     "alcohol and parties as part of our life",
-     "alkohol und partys als teil unseres lebens",
-     "l'alcool et les fêtes dans notre vie",
-     "el alcohol y las fiestas como parte de nuestra vida",
-     "الكحول والحفلات جزء من حياتنا",
-     "алкоголь и вечеринки как часть жизни"
+     "going out to celebrate now and then as part of our life",
+     "ab und zu feiern gehen als teil unseres lebens",
+     "sortir faire la fête de temps en temps, comme partie de notre vie",
+     "salir de fiesta de vez en cuando como parte de nuestra vida",
+     "الخروج للاحتفال من حين لآخر كجزء من حياتنا",
+     "время от времени выходить праздновать как часть нашей жизни"
     ]
    ]
   },
