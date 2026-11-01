@@ -32,7 +32,7 @@ em, .h_title em, .sec_h em, .cb_h em { color: inherit !important; }
 /* Small labels: quiet, never gold. */
 .h_brand, .sec_tag, .pc_tag, .cb_tag, .fund_badge, .sl, .h_scroll_t {
   color: #7b7b75 !important;
-  letter-spacing: .12em !important;
+  letter-spacing: .04em !important;
   font-weight: 400 !important;
 }
 .fund_badge { border-color: #cfcfca !important; }
@@ -41,7 +41,7 @@ em, .h_title em, .sec_h em, .cb_h em { color: inherit !important; }
 .sn, .pb { color: #5c5c56 !important; font-weight: 400 !important; }
 /* Header: a 2px line on top, like brinkmannpaul.com. */
 nav { border-top: 2px solid #5c5c56 !important; border-bottom: 1px solid #cfcfca !important; background: rgba(255, 255, 255, .97) !important; }
-.nav_logo { color: #5c5c56 !important; letter-spacing: .35em !important; font-size: 13px !important; }
+.nav_logo, .logo { color: #5c5c56 !important; letter-spacing: .08em !important; font-size: 13px !important; white-space: nowrap; }
 .lb { border-color: #cfcfca !important; color: #7b7b75 !important; border-radius: 0 !important; }
 .lb.on, .lb:hover { border-color: #5c5c56 !important; color: #5c5c56 !important; }
 /* Sections are separated by lines, not by grey fields. */
@@ -74,3 +74,21 @@ footer { border-top: 1px solid #cfcfca; color: #7b7b75 !important; }
    numbers and arrows sit in the light graphite. */
 .acc_btn, .al { color: #5c5c56 !important; }
 .an, .atg, .ai, .acc_btn span { color: #b4b4ae !important; }
+
+/* Lowercase does not need wide tracking: every small label, button and tag
+   sits close-set, the way brinkmannpaul.com writes them. Headings above keep
+   their own tighter spacing. */
+body * { letter-spacing: .02em !important; }
+h1, h2, h3, .h_title, .sec_h, .cb_h, .pc_title, .ph_name, .pvt { letter-spacing: -.035em !important; }
+/* The header in one line on a phone: a compact mark and small language
+   squares, like the language links at the foot of brinkmannpaul.com. */
+nav { padding: 12px 20px !important; gap: 16px; flex-wrap: nowrap !important; }
+.lsw { display: flex !important; flex-wrap: nowrap !important; gap: 4px !important; }
+.lb {
+  min-width: 28px !important;
+  min-height: 28px !important;
+  height: 28px;
+  padding: 0 6px !important;
+  font-size: 11px !important;
+  line-height: 26px !important;
+}
