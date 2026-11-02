@@ -98,12 +98,12 @@ window.PACT = {
      "рано и ясно сказать, чего я жду от нас"
     ],
     [
-     "already imagining the rest of my life with you",
-     "mir schon jetzt den rest meines lebens mit dir vorstellen",
-     "imaginer déjà le reste de ma vie avec toi",
-     "imaginar ya el resto de mi vida contigo",
-     "أن أتخيل منذ الآن بقية حياتي معك",
-     "уже сейчас представлять с тобой всю оставшуюся жизнь"
+     "keeping my options open until i am sure about you",
+     "mir andere optionen offenhalten, bis ich mir bei dir sicher bin",
+     "garder d’autres options ouvertes, le temps d’avoir une certitude sur toi",
+     "mantener otras opciones abiertas hasta tener claro lo nuestro",
+     "إبقاء خيارات أخرى مفتوحة حتى أتأكد منك",
+     "держать другие варианты открытыми, пока нет уверенности в нас"
     ]
    ]
   },
