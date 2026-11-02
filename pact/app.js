@@ -2,7 +2,7 @@
 // nothing is stored on a server: the answers travel in the part of the link after #, which browsers never send.
 (function () {
   const P = window.PACT;
-  const VERSION = 5; // 2: no negations. 3: porn split in two. 4: area "man and woman". 5: "honest with myself"
+  const VERSION = 6; // 2: no negations. 3: porn split. 4: "man and woman". 5: "honest with myself". 6: "what i am looking for" and "how we stay in touch"
   const PORN_V2 = 33; // where the single porn statement sat in version 2 links
   // version 3 to 4: "provide" (20) and "lead" (48) move into the new area at 23, followed by the new feminine statement
   const V3_PROVIDE = 20, V3_LEAD = 48, V4_ROLES = 23;
@@ -24,11 +24,16 @@
     a.splice(V4_HONEST_END, 0, "0", "0");
     return a.join("");
   }
+  // version 5 to 6: "how we stay in touch" (8) after the fights area, which ended at 52, and "what i am looking for" (5) in front
+  function fromV5(r) {
+    if (r.length < 52) return r;
+    return "0".repeat(5) + r.slice(0, 52) + "0".repeat(8) + r.slice(52);
+  }
   const ITEMS = P.areas.flatMap((a) => a.items);
   const OWN_MAX = 5, OWN_LEN = 140, NAME_LEN = 30;
   const app = document.getElementById("app");
   const bar = document.getElementById("bar");
-  const KEY = "pure-pact-v5";
+  const KEY = "pure-pact-v6";
 
   // ---------- link encoding ----------
   const b64 = (s) => btoa(unescape(encodeURIComponent(s))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
@@ -39,11 +44,12 @@
   function unpack(s) {
     try {
       const d = JSON.parse(unb64(s));
-      if (!d || ![2, 3, 4, VERSION].includes(d.v) || typeof d.r !== "string") return null;
+      if (!d || ![2, 3, 4, 5, VERSION].includes(d.v) || typeof d.r !== "string") return null;
       // a version 2 answer to "watching porn while we are together" fits neither new statement: both start empty
       let raw = d.v === 2 && d.r.length > PORN_V2 ? d.r.slice(0, PORN_V2) + "00" + d.r.slice(PORN_V2 + 1) : d.r;
       if (d.v < 4) raw = fromV3(raw);
       if (d.v < 5) raw = fromV4(raw);
+      if (d.v < 6) raw = fromV5(raw);
       const r = raw.slice(0, ITEMS.length).split("").map((c) => (/[0-4]/.test(c) ? Number(c) : 0));
       while (r.length < ITEMS.length) r.push(0);
       const o = (Array.isArray(d.o) ? d.o : []).slice(0, OWN_MAX)

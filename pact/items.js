@@ -47,6 +47,67 @@ window.PACT = {
  ],
  "areas": [
   {
+   "id": "intent",
+   "t": [
+    "what i am looking for",
+    "was ich suche",
+    "ce que je cherche",
+    "lo que busco",
+    "ما الذي أبحث عنه",
+    "что я ищу"
+   ],
+   "note": [
+    "most relationships break on what nobody said at the start. say it here.",
+    "die meisten beziehungen zerbrechen an dem, was am anfang keiner gesagt hat. sag es hier.",
+    "la plupart des relations se brisent sur ce que personne n'a dit au début. dis-le ici.",
+    "la mayoría de las relaciones se rompen por lo que nadie dijo al principio. dilo aquí.",
+    "تنكسر معظم العلاقات بسبب ما لم يقله أحد في البداية. قله هنا.",
+    "большинство отношений ломается на том, чего никто не сказал в начале. скажи это здесь."
+   ],
+   "items": [
+    [
+     "marrying within the next two years",
+     "in den nächsten zwei jahren heiraten",
+     "nous marier dans les deux prochaines années",
+     "casarnos en los próximos dos años",
+     "الزواج خلال السنتين القادمتين",
+     "пожениться в ближайшие два года"
+    ],
+    [
+     "knowing within the first months whether this is for life",
+     "in den ersten monaten wissen, ob es für immer ist",
+     "savoir dans les premiers mois si c'est pour la vie",
+     "saber en los primeros meses si es para toda la vida",
+     "أن أعرف في الأشهر الأولى إن كانت هذه علاقة العمر",
+     "в первые месяцы понять, на всю ли это жизнь"
+    ],
+    [
+     "taking our time: getting to know each other long before we commit",
+     "uns zeit lassen: uns lange kennenlernen, bevor wir uns festlegen",
+     "prendre notre temps : apprendre à nous connaître longtemps avant de nous engager",
+     "tomarnos tiempo: conocernos mucho antes de comprometernos",
+     "أن نأخذ وقتنا: نتعرف طويلًا قبل أن نلتزم",
+     "время на знакомство: долго узнавать друг друга, прежде чем связать себя обязательствами"
+    ],
+    [
+     "saying early and clearly what i want from us",
+     "früh und klar sagen, was ich von uns will",
+     "dire tôt et clairement ce que j'attends de nous",
+     "decir pronto y con claridad lo que quiero de nosotros",
+     "أن أقول مبكرًا وبوضوح ما أنتظره منا",
+     "рано и ясно сказать, чего я жду от нас"
+    ],
+    [
+     "already imagining the rest of my life with you",
+     "mir schon jetzt den rest meines lebens mit dir vorstellen",
+     "imaginer déjà le reste de ma vie avec toi",
+     "imaginar ya el resto de mi vida contigo",
+     "أن أتخيل منذ الآن بقية حياتي معك",
+     "уже сейчас представлять с тобой всю оставшуюся жизнь"
+    ]
+   ]
+  },
+  {
    "id": "values",
    "t": [
     "what matters to me",
@@ -646,6 +707,91 @@ window.PACT = {
      "ayuda externa ante problemas grandes, por ejemplo terapia de pareja",
      "مساعدة خارجية في المشكلات الكبيرة، مثل الاستشارة الزوجية",
      "помощь со стороны при больших проблемах, например семейный консультант"
+    ]
+   ]
+  },
+  {
+   "id": "contact",
+   "t": [
+    "how we stay in touch",
+    "wie wir in kontakt bleiben",
+    "comment nous restons en contact",
+    "cómo seguimos en contacto",
+    "كيف نبقى على تواصل",
+    "как мы остаёмся на связи"
+   ],
+   "note": [
+    "phone, messages, distance: this is where most fights start, long before the fight.",
+    "telefon, nachrichten, abstand: hier fangen die meisten streits an, lange vor dem streit.",
+    "téléphone, messages, distance : c'est là que commencent la plupart des disputes, bien avant la dispute.",
+    "teléfono, mensajes, distancia: aquí empiezan la mayoría de las peleas, mucho antes de la pelea.",
+    "الهاتف، الرسائل، المسافة: هنا تبدأ معظم الخلافات، قبل الخلاف بوقت طويل.",
+    "телефон, сообщения, расстояние: здесь начинается большинство ссор, задолго до самой ссоры."
+   ],
+   "items": [
+    [
+     "you picking up when i call",
+     "dass du rangehst, wenn ich anrufe",
+     "que tu décroches quand j'appelle",
+     "que contestes cuando llamo",
+     "أن ترد عندما أتصل",
+     "ответ, когда я звоню"
+    ],
+    [
+     "an answer once you have read my message",
+     "eine antwort, sobald du meine nachricht gelesen hast",
+     "une réponse dès que tu as lu mon message",
+     "una respuesta en cuanto leas mi mensaje",
+     "ردّ بمجرد أن تقرأ رسالتي",
+     "ответ сразу после того, как сообщение прочитано"
+    ],
+    [
+     "a short \"i'll get back to you\" when you can't talk",
+     "ein kurzes „ich melde mich später“, wenn du gerade nicht kannst",
+     "un petit « je te rappelle » quand tu ne peux pas parler",
+     "un breve «te escribo luego» cuando no puedes hablar",
+     "كلمة قصيرة «سأعود إليك لاحقًا» عندما لا تستطيع الكلام",
+     "короткое «перезвоню позже», когда ты не можешь говорить"
+    ],
+    [
+     "hearing from you several times a day",
+     "mehrmals am tag von dir hören",
+     "avoir de tes nouvelles plusieurs fois par jour",
+     "saber de ti varias veces al día",
+     "أن أسمع منك عدة مرات في اليوم",
+     "слышать тебя несколько раз в день"
+    ],
+    [
+     "time when i am unreachable, without having to explain it",
+     "zeit, in der ich nicht erreichbar bin, ohne es erklären zu müssen",
+     "des moments où je suis injoignable, sans avoir à m'expliquer",
+     "ratos en los que estoy ilocalizable, sin tener que explicarlo",
+     "أوقات لا يمكن الوصول إليّ فيها، دون أن أضطر للتبرير",
+     "время, когда я вне связи, и объяснять это не нужно"
+    ],
+    [
+     "weeks or months apart, for travel or work, and still close",
+     "wochen oder monate getrennt, für reisen oder arbeit, und trotzdem nah",
+     "des semaines ou des mois séparés, pour voyager ou travailler, et pourtant proches",
+     "semanas o meses separados, por viajes o trabajo, y aun así cerca",
+     "أسابيع أو أشهر بعيدين، للسفر أو العمل، ومع ذلك قريبين",
+     "недели или месяцы врозь, из-за поездок или работы, и всё равно близко"
+    ],
+    [
+     "a bond that holds anywhere in the world, with no daily proof needed",
+     "ein band, das überall auf der welt hält, auch ohne täglichen beweis",
+     "un lien qui tient partout dans le monde, sans preuve quotidienne",
+     "un lazo que aguanta en cualquier lugar del mundo, sin pruebas diarias",
+     "رابط يصمد في أي مكان في العالم، بلا حاجة إلى دليل يومي",
+     "связь, которая держится в любой точке мира, без ежедневных доказательств"
+    ],
+    [
+     "you showing me every day that you are there for me",
+     "dass du mir jeden tag zeigst, dass du für mich da bist",
+     "que tu me montres chaque jour que tu es là pour moi",
+     "que me demuestres cada día que estás ahí para mí",
+     "أن تُظهر لي كل يوم أنك موجود لأجلي",
+     "каждый день видеть, что ты рядом со мной"
     ]
    ]
   },
