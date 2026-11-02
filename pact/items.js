@@ -796,6 +796,107 @@ window.PACT = {
    ]
   },
   {
+   "id": "talk",
+   "t": [
+    "communication",
+    "kommunikation",
+    "communication",
+    "comunicación",
+    "الحوار بيننا",
+    "общение"
+   ],
+   "note": [
+    "silence, sulking, little games: most relationships do not die in the fight, but in the silence after it. answer honestly.",
+    "schweigen, beleidigt sein, spielchen: die meisten beziehungen sterben nicht im streit, sondern im schweigen danach. antworte ehrlich.",
+    "le silence, la bouderie, les petits jeux : la plupart des relations ne meurent pas dans la dispute, mais dans le silence qui suit. réponds honnêtement.",
+    "silencio, enfados, jueguecitos: la mayoría de las relaciones no mueren en la pelea, sino en el silencio de después. responde con sinceridad.",
+    "الصمت، الزعل، الألاعيب الصغيرة: معظم العلاقات لا تموت في الخلاف، بل في الصمت الذي يليه. أجب بصدق.",
+    "молчание, обиды, игры: большинство отношений умирает не в ссоре, а в тишине после неё. отвечай честно."
+   ],
+   "items": [
+    [
+     "letting you feel that i am hurt, before i say why",
+     "dich spüren lassen, dass ich verletzt bin, bevor ich sage, warum",
+     "te faire sentir ma blessure avant de dire pourquoi",
+     "hacerte sentir que algo me dolió, antes de decir por qué",
+     "أن أجعلك تشعر بجرحي قبل أن أقول السبب",
+     "дать тебе почувствовать мою обиду, прежде чем сказать почему"
+    ],
+    [
+     "you guessing what is wrong when i go quiet",
+     "dass du errätst, was los ist, wenn ich still werde",
+     "que tu devines ce qui ne va pas quand je me tais",
+     "que adivines qué pasa cuando me callo",
+     "أن تخمّن ما الخطب عندما أصمت",
+     "когда я замолкаю, ты угадываешь, что не так"
+    ],
+    [
+     "waiting before i reply when i am upset with you, so you notice",
+     "mit der antwort warten, wenn ich sauer auf dich bin, damit du es merkst",
+     "attendre avant de répondre quand je t'en veux, pour que tu le remarques",
+     "tardar en responder cuando algo tuyo me molesta, para que lo notes",
+     "أن أتأخر في الرد عندما يغضبني شيء منك، لكي تلاحظ",
+     "тянуть с ответом, когда я на тебя злюсь, чтобы это было заметно"
+    ],
+    [
+     "testing whether you will fight for me",
+     "testen, ob du um mich kämpfst",
+     "tester si tu vas te battre pour moi",
+     "poner a prueba si luchas por mí",
+     "أن أختبر إن كنت ستتمسك بي",
+     "проверять, будешь ли ты за меня бороться"
+    ],
+    [
+     "being the first to reach out after a fight",
+     "nach einem streit als erstes auf dich zugehen",
+     "faire le premier pas après une dispute",
+     "dar el primer paso después de una pelea",
+     "أن أبادر أولًا بعد الخلاف",
+     "делать первый шаг после ссоры"
+    ],
+    [
+     "saying in words what bothers me, the same day",
+     "noch am selben tag in worten sagen, was mich stört",
+     "dire avec des mots ce qui me dérange, le jour même",
+     "decir con palabras lo que me molesta, el mismo día",
+     "أن أقول بالكلمات ما يزعجني، في اليوم نفسه",
+     "в тот же день сказать словами, что меня задевает"
+    ],
+    [
+     "a sharp remark or a bit of irony when something bothers me",
+     "eine spitze bemerkung oder etwas ironie, wenn mich etwas stört",
+     "une remarque piquante ou un peu d'ironie quand quelque chose me dérange",
+     "un comentario afilado o algo de ironía cuando algo me molesta",
+     "تعليق لاذع أو قليل من السخرية عندما يزعجني شيء",
+     "колкое замечание или немного иронии, когда меня что-то задевает"
+    ],
+    [
+     "bringing up old mistakes when we fight",
+     "im streit alte fehler wieder auf den tisch bringen",
+     "ressortir de vieilles erreurs pendant une dispute",
+     "sacar errores viejos cuando discutimos",
+     "إعادة فتح الأخطاء القديمة أثناء الخلاف",
+     "вспоминать старые ошибки во время ссоры"
+    ],
+    [
+     "taking back something i said in anger, on my own",
+     "etwas, das ich im zorn gesagt habe, von mir aus zurücknehmen",
+     "retirer de moi-même ce que j'ai dit sous la colère",
+     "retirar por mi cuenta algo que dije con rabia",
+     "أن أتراجع من تلقاء نفسي عن كلام قلته في الغضب",
+     "по своей инициативе забрать назад слова, сказанные в гневе"
+    ],
+    [
+     "you apologising first, even when we both played a part",
+     "dass du dich zuerst entschuldigst, auch wenn wir beide schuld hatten",
+     "que tu t'excuses en premier, même quand nous y étions tous les deux pour quelque chose",
+     "que te disculpes primero, aunque los dos tuviéramos parte de culpa",
+     "أن تعتذر أولًا، حتى لو كان لكلينا دور",
+     "твои извинения первыми, даже если виноваты оба"
+    ]
+   ]
+  },
+  {
    "id": "wishes",
    "t": [
     "my wishes",
