@@ -16,7 +16,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       lead: "honest answers about your body, your mind, your responsibility and your ego. from them your own 90-day plan is written: for your age, your life, your goal.",
       meta1: "<b>{q} questions</b> in {s} short steps", meta2: "<b>about 15 minutes</b>, speak instead of typing", meta3: "<b>written for you</b>, nothing from a template",
       start: "begin", next: "next", back: "back", step: "step", of: "of", go: "go on",
-      closed: "the blueprint opens soon. follow the build on instagram.", closedBtn: "follow paul brinkmann",
+      closed: "the blueprint opens soon.",
       under18: "the pure blueprint is for men aged 18 and over.",
       crisis: "if you are in a crisis, talk to someone today. germany: telefonseelsorge 0800 111 0 111 or 0800 111 0 222, free, day and night. elsewhere: your local crisis line or emergency number.",
       multi: "choose all that apply", optional: "optional",
@@ -36,7 +36,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       lead: "ehrliche antworten über deinen körper, deinen geist, deine verantwortung und dein ego. daraus wird dein eigener 90-tage-plan geschrieben: für dein alter, dein leben, dein ziel.",
       meta1: "<b>{q} fragen</b> in {s} kurzen schritten", meta2: "<b>etwa 15 minuten</b>, sprechen statt tippen", meta3: "<b>für dich geschrieben</b>, nichts aus einer vorlage",
       start: "beginnen", next: "weiter", back: "zurück", step: "schritt", of: "von", go: "weiter",
-      closed: "der blueprint öffnet bald. verfolge den aufbau auf instagram.", closedBtn: "paul brinkmann folgen",
+      closed: "der blueprint öffnet bald.",
       under18: "der pure blueprint ist für männer ab 18 jahren.",
       crisis: "wenn du in einer krise bist, sprich heute mit jemandem. telefonseelsorge 0800 111 0 111 oder 0800 111 0 222, kostenlos, tag und nacht. außerhalb deutschlands: dein örtliches krisentelefon oder der notruf.",
       multi: "alles auswählen, was zutrifft", optional: "optional",
@@ -56,7 +56,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       lead: "des réponses honnêtes sur ton corps, ton esprit, ta responsabilité et ton ego. à partir d'elles, ton propre plan de 90 jours est écrit : pour ton âge, ta vie, ton objectif.",
       meta1: "<b>{q} questions</b> en {s} courtes étapes", meta2: "<b>environ 15 minutes</b>, parler au lieu de taper", meta3: "<b>écrit pour toi</b>, rien d'un modèle",
       start: "commencer", next: "suivant", back: "retour", step: "étape", of: "sur", go: "continuer",
-      closed: "le blueprint ouvre bientôt. suis la construction sur instagram.", closedBtn: "suivre paul brinkmann",
+      closed: "le blueprint ouvre bientôt.",
       under18: "le blueprint pure est destiné aux hommes de 18 ans et plus.",
       crisis: "si tu es en crise, parle à quelqu'un aujourd'hui : un médecin, une personne de confiance, ou la ligne de crise ou le numéro d'urgence de ton pays. en allemagne : telefonseelsorge 0800 111 0 111.",
       multi: "choisis tout ce qui s'applique", optional: "facultatif",
@@ -76,7 +76,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       lead: "respuestas honestas sobre tu cuerpo, tu mente, tu responsabilidad y tu ego. con ellas se escribe tu propio plan de 90 días: para tu edad, tu vida, tu objetivo.",
       meta1: "<b>{q} preguntas</b> en {s} pasos cortos", meta2: "<b>unos 15 minutos</b>, hablar en vez de escribir", meta3: "<b>escrito para ti</b>, nada de plantillas",
       start: "empezar", next: "siguiente", back: "atrás", step: "paso", of: "de", go: "seguir",
-      closed: "el blueprint abre pronto. sigue la construcción en instagram.", closedBtn: "seguir a paul brinkmann",
+      closed: "el blueprint abre pronto.",
       under18: "el blueprint pure es para hombres de 18 años o más.",
       crisis: "si estás en crisis, habla hoy con alguien: un médico, una persona de confianza, o la línea de crisis o el número de emergencias de tu país. en alemania: telefonseelsorge 0800 111 0 111.",
       multi: "elige todo lo que corresponda", optional: "opcional",
@@ -96,7 +96,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       lead: "إجابات صادقة عن جسدك وعقلك ومسؤوليتك وأناك. منها تُكتب خطتك الخاصة لمدة 90 يومًا: لعمرك وحياتك وهدفك.",
       meta1: "<b>{q} سؤالًا</b> في {s} خطوات قصيرة", meta2: "<b>حوالي 15 دقيقة</b>، تحدّث بدل الكتابة", meta3: "<b>مكتوب لك</b>، لا شيء من قالب جاهز",
       start: "ابدأ", next: "التالي", back: "رجوع", step: "الخطوة", of: "من", go: "تابع",
-      closed: "المخطط يفتح قريبًا. تابع البناء على إنستغرام.", closedBtn: "تابع paul brinkmann",
+      closed: "المخطط يفتح قريبًا.",
       under18: "مخطط pure مخصص للرجال من عمر 18 عامًا فما فوق.",
       crisis: "إذا كنت في أزمة، تحدث مع شخص اليوم: طبيب أو شخص تثق به أو خط الأزمات أو رقم الطوارئ في بلدك.",
       multi: "اختر كل ما ينطبق", optional: "اختياري",
@@ -116,7 +116,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       lead: "честные ответы о твоём теле, уме, ответственности и эго. по ним пишется твой собственный план на 90 дней: под твой возраст, твою жизнь, твою цель.",
       meta1: "<b>{q} вопросов</b> в {s} коротких шагах", meta2: "<b>около 15 минут</b>, говори вместо того, чтобы печатать", meta3: "<b>написано для тебя</b>, ничего по шаблону",
       start: "начать", next: "дальше", back: "назад", step: "шаг", of: "из", go: "дальше",
-      closed: "blueprint скоро откроется. следи за созданием в instagram.", closedBtn: "подписаться на paul brinkmann",
+      closed: "blueprint скоро откроется.",
       under18: "blueprint pure предназначен для мужчин от 18 лет.",
       crisis: "если ты в кризисе, поговори с кем-нибудь сегодня: с врачом, с близким человеком или позвони на линию помощи или в экстренную службу своей страны.",
       multi: "выбери всё, что подходит", optional: "необязательно",
@@ -250,7 +250,20 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     );
     const actions = el("div", { class: "actions" });
     if (st.open === false) {
-      add(actions, el("p", { class: "lead" }, x.closed), el("a", { class: "btn", href: "https://www.instagram.com/buildpaul/", target: "_blank", rel: "noopener noreferrer" }, x.closedBtn));
+      const icon = svg("svg", { viewBox: "0 0 24 24", width: 20, height: 20, "aria-hidden": "true" },
+        svg("rect", { x: 3, y: 3, width: 18, height: 18, rx: 5, fill: "none", stroke: "currentColor", "stroke-width": 1.8 }),
+        svg("circle", { cx: 12, cy: 12, r: 4, fill: "none", stroke: "currentColor", "stroke-width": 1.8 }),
+        svg("circle", { cx: 17.4, cy: 6.7, r: 1, fill: "currentColor" })
+      );
+      add(actions, el("p", { class: "lead" }, x.closed),
+        el("a", {
+          class: "ig",
+          href: "https://www.instagram.com/buildpaul/",
+          target: "_blank",
+          rel: "noopener noreferrer",
+          "aria-label": "instagram · paul brinkmann"
+        }, icon)
+      );
     } else {
       add(actions, el("span"), el("button", { class: "btn", type: "button", onclick: () => go(0), disabled: st.open === null }, x.start));
     }

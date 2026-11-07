@@ -60,6 +60,18 @@ nav { border-top: 2px solid #5c5c56 !important; border-bottom: 1px solid #cfcfca
 }
 .btn_g:hover { background: #4a4a45 !important; }
 a { color: inherit; }
+.ig {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+}
+.ig:hover { color: var(--ink); }
+.ig:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
 footer { border-top: 1px solid #cfcfca; color: #7b7b75 !important; }
 /* The blueprint and its book: the same palette under its own names. */
 :root {
