@@ -351,8 +351,20 @@
       "ar": "حبّ العمر",
       "ru": "большая любовь"
      }
+    },
+    {
+     "v": "unsure",
+     "l": {
+      "en": "i do not know yet",
+      "de": "weiß ich gerade nicht",
+      "fr": "je ne sais pas encore",
+      "es": "todavía no lo sé",
+      "ar": "لا أعرف بعد",
+      "ru": "пока не знаю"
+     }
     }
-   ]
+   ],
+   "exclusive": "unsure"
   },
   {
    "id": "children",
@@ -507,6 +519,65 @@
    "exclusive": "nobody"
   },
   {
+   "id": "friends",
+   "section": "you",
+   "type": "single",
+   "q": {
+    "en": "how many people could you call at three in the morning if things were bad?",
+    "de": "wie viele menschen könntest du nachts um drei anrufen, wenn es dir schlecht geht?",
+    "fr": "combien de personnes pourrais-tu appeler à trois heures du matin si ça allait mal ?",
+    "es": "¿a cuántas personas podrías llamar a las tres de la madrugada si te fuera mal?",
+    "ar": "كم شخصًا يمكنك أن تتصل به في الثالثة فجرًا إذا كنت في حال سيئة؟",
+    "ru": "скольким людям ты мог бы позвонить в три часа ночи, если тебе плохо?"
+   },
+   "options": [
+    {
+     "v": "none",
+     "l": {
+      "en": "nobody",
+      "de": "niemanden",
+      "fr": "personne",
+      "es": "a nadie",
+      "ar": "لا أحد",
+      "ru": "никому"
+     }
+    },
+    {
+     "v": "one",
+     "l": {
+      "en": "one",
+      "de": "einen",
+      "fr": "une",
+      "es": "a una",
+      "ar": "شخص واحد",
+      "ru": "одному"
+     }
+    },
+    {
+     "v": "few",
+     "l": {
+      "en": "two or three",
+      "de": "zwei oder drei",
+      "fr": "deux ou trois",
+      "es": "a dos o tres",
+      "ar": "شخصين أو ثلاثة",
+      "ru": "двум или трём"
+     }
+    },
+    {
+     "v": "many",
+     "l": {
+      "en": "more than three",
+      "de": "mehr als drei",
+      "fr": "plus de trois",
+      "es": "a más de tres",
+      "ar": "أكثر من ثلاثة",
+      "ru": "больше чем трём"
+     }
+    }
+   ]
+  },
+  {
    "id": "work",
    "section": "you",
    "type": "single",
@@ -640,12 +711,12 @@
    "section": "you",
    "type": "voice",
    "q": {
-    "en": "what do you want to change in the next 90 days? how should your relationship be, how do you want to meet women, do you want more sex or less fighting at home? just tell me what you want, how you see yourself and what your goals are: body, relationship, women.",
-    "de": "was willst du in den nächsten 90 tagen ändern? wie soll deine beziehung sein, wie willst du frauen kennenlernen, willst du mehr sex oder weniger streit zu hause? erzähl einfach, was du willst, wie du dich siehst und was deine ziele sind: körper, beziehung, frauen.",
-    "fr": "qu'est-ce que tu veux changer dans les 90 prochains jours ? comment tu veux que soit ta relation, comment tu veux rencontrer des femmes, tu veux plus de sexe ou moins de disputes à la maison ? raconte simplement ce que tu veux, comment tu te vois et quels sont tes objectifs : corps, relation, femmes.",
-    "es": "¿qué quieres cambiar en los próximos 90 días? ¿cómo quieres que sea tu relación, cómo quieres conocer mujeres, quieres más sexo o menos peleas en casa? cuéntame sin más qué quieres, cómo te ves y cuáles son tus metas: cuerpo, relación, mujeres.",
-    "ar": "ما الذي تريد أن تغيّره في الأيام التسعين القادمة؟ كيف تريد أن تكون علاقتك، كيف تريد أن تتعرّف على النساء، هل تريد جنسًا أكثر أو خلافات أقل في البيت؟ احكِ لي ببساطة ما تريده، وكيف ترى نفسك، وما أهدافك: الجسد، العلاقة، النساء.",
-    "ru": "что ты хочешь изменить за следующие 90 дней? какими должны быть твои отношения, как ты хочешь знакомиться с женщинами, хочешь больше секса или меньше ссор дома? просто расскажи, чего ты хочешь, каким ты себя видишь и какие у тебя цели: тело, отношения, женщины."
+    "en": "imagine 90 days have passed and it worked. what has changed, and what do you notice first? your body, your energy, your relationship, women, your work: say what really matters to you, how you see yourself today, and why you want to change something now.",
+    "de": "stell dir vor, 90 tage sind vorbei und es hat funktioniert. was hat sich verändert, woran merkst du es zuerst? dein körper, deine energie, deine beziehung, frauen, deine arbeit: sag, was dir wirklich wichtig ist, wie du dich heute siehst und warum du gerade jetzt etwas ändern willst.",
+    "fr": "imagine que 90 jours sont passés et que ça a marché. qu'est-ce qui a changé, et qu'est-ce que tu remarques en premier ? ton corps, ton énergie, ta relation, les femmes, ton travail : dis ce qui compte vraiment pour toi, comment tu te vois aujourd'hui et pourquoi tu veux changer quelque chose maintenant.",
+    "es": "imagina que han pasado 90 días y ha funcionado. ¿qué ha cambiado y qué es lo primero que notas? tu cuerpo, tu energía, tu relación, las mujeres, tu trabajo: di lo que de verdad te importa, cómo te ves hoy y por qué quieres cambiar algo justo ahora.",
+    "ar": "تخيّل أن 90 يومًا مرّت وأن الأمر نجح. ما الذي تغيّر، وما أول شيء تلاحظه؟ جسدك، طاقتك، علاقتك، النساء، عملك: قل ما يهمّك حقًا، وكيف ترى نفسك اليوم، ولماذا تريد أن تغيّر شيئًا الآن بالذات.",
+    "ru": "представь, что прошло 90 дней и всё получилось. что изменилось и что ты замечаешь первым? твоё тело, твоя энергия, твои отношения, женщины, твоя работа: скажи, что для тебя действительно важно, каким ты видишь себя сегодня и почему хочешь что-то изменить именно сейчас."
    },
    "max": 2000
   },
@@ -941,71 +1012,71 @@
    ]
   },
   {
-   "id": "condition",
+   "id": "energy",
    "section": "body",
    "type": "single",
    "q": {
-    "en": "how would you rate your physical condition today?",
-    "de": "wie schätzt du deine körperliche verfassung heute ein?",
-    "fr": "comment évalues-tu ta condition physique aujourd'hui ?",
-    "es": "¿cómo valoras tu condición física hoy?",
-    "ar": "كيف تقيّم حالتك البدنية اليوم؟",
-    "ru": "как ты оцениваешь свою физическую форму сегодня?"
+    "en": "your energy on a normal day",
+    "de": "deine energie an einem normalen tag",
+    "fr": "ton énergie un jour normal",
+    "es": "tu energía en un día normal",
+    "ar": "طاقتك في يوم عادي",
+    "ru": "твоя энергия в обычный день"
    },
    "options": [
     {
-     "v": "1",
+     "v": "low",
      "l": {
-      "en": "weak",
-      "de": "schwach",
-      "fr": "faible",
-      "es": "débil",
-      "ar": "ضعيفة",
-      "ru": "слабая"
+      "en": "tired most of the time",
+      "de": "fast immer müde",
+      "fr": "fatigué presque tout le temps",
+      "es": "cansado casi siempre",
+      "ar": "متعب معظم الوقت",
+      "ru": "почти всегда уставший"
      }
     },
     {
-     "v": "2",
+     "v": "dip",
      "l": {
-      "en": "below average",
-      "de": "unter durchschnitt",
-      "fr": "en dessous de la moyenne",
-      "es": "por debajo de la media",
-      "ar": "أقل من المتوسط",
-      "ru": "ниже среднего"
+      "en": "a slump in the afternoon",
+      "de": "ein tief am nachmittag",
+      "fr": "un coup de barre l'après-midi",
+      "es": "un bajón por la tarde",
+      "ar": "هبوط بعد الظهر",
+      "ru": "спад после обеда"
      }
     },
     {
-     "v": "3",
+     "v": "swing",
      "l": {
-      "en": "average",
-      "de": "durchschnitt",
-      "fr": "moyenne",
-      "es": "media",
-      "ar": "متوسطة",
-      "ru": "средняя"
+      "en": "up and down, hard to predict",
+      "de": "auf und ab, schwer vorherzusagen",
+      "fr": "des hauts et des bas, difficile à prévoir",
+      "es": "altibajos, difícil de prever",
+      "ar": "صعود وهبوط، يصعب توقّعه",
+      "ru": "то вверх, то вниз, трудно предсказать"
      }
     },
     {
-     "v": "4",
+     "v": "good",
      "l": {
-      "en": "good",
-      "de": "gut",
-      "fr": "bonne",
-      "es": "buena",
-      "ar": "جيدة",
-      "ru": "хорошая"
+      "en": "mostly good",
+      "de": "meistens gut",
+      "fr": "plutôt bonne",
+      "es": "casi siempre buena",
+      "ar": "جيدة في الغالب",
+      "ru": "в основном хорошая"
      }
     },
     {
-     "v": "5",
+     "v": "high",
      "l": {
-      "en": "very good",
-      "de": "sehr gut",
-      "fr": "très bonne",
-      "es": "muy buena",
-      "ar": "جيدة جدًا",
-      "ru": "очень хорошая"
+      "en": "high, all day",
+      "de": "hoch, den ganzen tag",
+      "fr": "haute, toute la journée",
+      "es": "alta, todo el día",
+      "ar": "عالية طوال اليوم",
+      "ru": "высокая, весь день"
      }
     }
    ]
@@ -2038,12 +2109,12 @@
    "module": "p0",
    "polarity": 1,
    "q": {
-    "de": "entlädst du deine sexuelle energie meistens durch pornos oder schnelle selbstbefriedigung, statt sie in ein ritual, in deinen fokus oder in echte verbindung zu lenken?",
-    "en": "do you mostly release your sexual energy through porn or quick masturbation, instead of channeling it into a ritual, your focus, or real connection?",
-    "fr": "est-ce que tu évacues surtout ton énergie sexuelle par le porno ou une masturbation rapide, au lieu de la diriger vers un rituel, ta concentration ou une vraie connexion ?",
-    "es": "¿descargas tu energía sexual sobre todo con porno o masturbación rápida, en lugar de canalizarla hacia un ritual, tu enfoque o una conexión real?",
-    "ar": "هل تُفرّغ طاقتك الجنسية غالباً في الأفلام الإباحية أو في عادة سرية سريعة، بدلاً من أن توجّهها نحو طقس أو تركيز أو تواصل حقيقي؟",
-    "ru": "ты чаще всего сливаешь свою сексуальную энергию в порно или быструю мастурбацию, вместо того чтобы направлять её в ритуал, в фокус или в настоящую близость?"
+    "de": "wenn sich sexuelle energie aufstaut, landet sie meistens bei porno oder schneller selbstbefriedigung?",
+    "en": "when sexual energy builds up, does it usually end in porn or quick masturbation?",
+    "fr": "quand ton énergie sexuelle monte, est-ce qu'elle finit le plus souvent dans le porno ou une masturbation rapide ?",
+    "es": "cuando tu energía sexual se acumula, ¿suele terminar en porno o en una masturbación rápida?",
+    "ar": "عندما تتراكم طاقتك الجنسية، هل تنتهي غالبًا في الأفلام الإباحية أو في عادة سرية سريعة؟",
+    "ru": "когда накапливается сексуальная энергия, она обычно уходит в порно или быструю мастурбацию?"
    },
    "reads": {
     "yes": "His sexual energy leaves as quick relief instead of power: porn or masturbation is likely his default answer to stress, boredom or loneliness. He has not yet felt what this energy does when he holds it and directs it.",
@@ -2071,12 +2142,12 @@
    "module": "p0",
    "polarity": -1,
    "q": {
-    "de": "hast du deinen beckenboden schon mal bewusst trainiert und beobachtet, was sich dadurch verändert?",
-    "en": "have you ever trained your pelvic floor on purpose and watched what changed?",
-    "fr": "as-tu déjà entraîné consciemment ton plancher pelvien et observé ce que ça a changé ?",
-    "es": "¿alguna vez entrenaste conscientemente tu suelo pélvico y observaste qué cambió?",
-    "ar": "هل سبق أن درّبت عضلات قاع الحوض بوعي ولاحظت ما الذي تغيّر؟",
-    "ru": "ты когда-нибудь осознанно тренировал мышцы тазового дна и замечал, что от этого меняется?"
+    "de": "hast du deinen beckenboden schon einmal gezielt trainiert?",
+    "en": "have you ever trained your pelvic floor on purpose?",
+    "fr": "as-tu déjà entraîné ton plancher pelvien de façon ciblée ?",
+    "es": "¿alguna vez has entrenado tu suelo pélvico de forma consciente?",
+    "ar": "هل سبق أن درّبت عضلات قاع الحوض عن قصد؟",
+    "ru": "ты когда-нибудь целенаправленно тренировал мышцы тазового дна?"
    },
    "reads": {
     "yes": "He has gone below the surface and trained a muscle most men do not even know exists; he is curious and willing to experiment with his body. If he noticed changes, he already has his own proof that the body answers training.",
@@ -2104,12 +2175,12 @@
    "module": "p1",
    "polarity": 1,
    "q": {
-    "de": "gehst du oft ohne echten grund spät ins bett, obwohl du weißt, dass es dir nicht guttut?",
-    "en": "do you often go to bed late for no real reason, even though you know it's not good for you?",
-    "fr": "est-ce que tu te couches souvent tard sans vraie raison, alors que tu sais que ça ne te fait pas du bien ?",
-    "es": "¿sueles acostarte tarde sin una razón real, aunque sabes que no te hace bien?",
-    "ar": "هل كثيراً ما تتأخر في النوم من دون سبب حقيقي، مع أنك تعرف أن هذا ليس في صالحك؟",
-    "ru": "ты часто ложишься поздно без особой причины, хотя знаешь, что тебе это не на пользу?"
+    "de": "bleibst du abends oft länger wach, als du eigentlich willst?",
+    "en": "do you often stay up later than you actually want to?",
+    "fr": "est-ce que tu restes souvent éveillé le soir plus tard que tu ne le voudrais vraiment ?",
+    "es": "¿sueles quedarte despierto por la noche más tarde de lo que realmente quieres?",
+    "ar": "هل تسهر كثيرًا أطول مما تريد فعلًا؟",
+    "ru": "ты часто засиживаешься вечером дольше, чем на самом деле хочешь?"
    },
    "reads": {
     "yes": "He does not yet know how good real sleep can feel, he is not disciplined enough yet, and he has not understood that at the start he has to force himself. The knowing is there, the doing is missing; his lever is the same wake-up time every day, not an earlier bedtime.",
@@ -2137,12 +2208,12 @@
    "module": "p1",
    "polarity": -1,
    "q": {
-    "de": "hältst du die letzten 30 minuten vor dem schlafen meistens frei von handy, videos und lärm?",
-    "en": "do you usually keep the last 30 minutes before sleep free of phone, videos, and noise?",
-    "fr": "est-ce que tu gardes généralement les 30 dernières minutes avant de dormir sans téléphone, sans vidéos et sans bruit ?",
-    "es": "¿sueles mantener los últimos 30 minutos antes de dormir libres de móvil, videos y ruido?",
-    "ar": "هل تجعل عادةً آخر 30 دقيقة قبل النوم خالية من الهاتف والفيديوهات والضجيج؟",
-    "ru": "ты обычно проводишь последние 30 минут перед сном без телефона, видео и шума?"
+    "de": "legst du handy und bildschirme mindestens 30 minuten vor dem schlafen weg?",
+    "en": "do you put your phone and screens away at least 30 minutes before sleep?",
+    "fr": "est-ce que tu laisses ton téléphone et les écrans de côté au moins 30 minutes avant de dormir ?",
+    "es": "¿dejas el móvil y las pantallas al menos 30 minutos antes de dormir?",
+    "ar": "هل تبتعد عن هاتفك والشاشات قبل النوم بثلاثين دقيقة على الأقل؟",
+    "ru": "ты откладываешь телефон и экраны хотя бы за 30 минут до сна?"
    },
    "reads": {
     "yes": "He already draws a line between his day and his sleep; the phone does not own his last minutes, so his evenings are not run by stimulation. That is a basic discipline the rest of the sleep work can stand on.",
@@ -2170,12 +2241,12 @@
    "module": "p2",
    "polarity": 1,
    "q": {
-    "de": "vergeht manchmal eine ganze woche, ohne dass du deinen körper ein einziges mal richtig forderst?",
-    "en": "does a whole week sometimes go by without you pushing your body even once?",
-    "fr": "est-ce qu’il t’arrive de passer une semaine entière sans mettre ton corps à l’épreuve une seule fois ?",
-    "es": "¿a veces pasa una semana entera sin que le exijas de verdad a tu cuerpo ni una sola vez?",
-    "ar": "هل يمرّ عليك أحياناً أسبوع كامل من دون أن تتحدّى جسدك تحدياً حقيقياً ولو مرة واحدة؟",
-    "ru": "бывает, что проходит целая неделя, а ты ни разу по-настоящему не нагрузил своё тело?"
+    "de": "gibt es wochen, in denen du kein einziges mal so trainierst, dass du ins schwitzen kommst?",
+    "en": "are there weeks in which you do not once train hard enough to sweat?",
+    "fr": "y a-t-il des semaines où tu ne t'entraînes pas une seule fois au point de transpirer ?",
+    "es": "¿hay semanas en las que no entrenas ni una sola vez hasta sudar?",
+    "ar": "هل تمرّ عليك أسابيع لا تتمرّن فيها ولو مرة واحدة حتى تتعرّق؟",
+    "ru": "бывают ли недели, когда ты ни разу не тренируешься так, чтобы вспотеть?"
    },
    "reads": {
     "yes": "Movement is optional in his life, not part of who he is; his body only gets challenged when mood or circumstances allow. He needs the ladder at its very lowest, one push-up, until a day without movement starts to feel wrong.",
@@ -2199,15 +2270,15 @@
    "module": "p2",
    "polarity": -1,
    "q": {
-    "de": "hast du gerade ein festes trainingsritual, das du auch ohne lust durchziehst?",
-    "en": "do you currently have a fixed training ritual that you stick to even when you don't feel like it?",
-    "fr": "as-tu en ce moment un rituel d’entraînement fixe que tu tiens même quand tu n’as pas envie ?",
-    "es": "¿tienes ahora mismo un ritual fijo de entrenamiento que cumples aunque no tengas ganas?",
-    "ar": "هل لديك حالياً طقس تدريب ثابت تلتزم به حتى عندما لا تشعر بالرغبة؟",
-    "ru": "есть ли у тебя сейчас постоянный тренировочный ритуал, который ты соблюдаешь, даже когда нет настроения?"
+    "de": "trainierst du auch an tagen, an denen du keine lust hast?",
+    "en": "do you train even on days when you do not feel like it?",
+    "fr": "est-ce que tu t'entraînes aussi les jours où tu n'en as pas envie ?",
+    "es": "¿entrenas también los días en que no tienes ganas?",
+    "ar": "هل تتمرّن حتى في الأيام التي لا تكون فيها راغبًا في ذلك؟",
+    "ru": "ты тренируешься и в те дни, когда нет желания?"
    },
    "reads": {
-    "yes": "He trains on decision, not on mood: the core of the ladder is already in place, and he has proof that he keeps promises to himself. The blueprint should build on his ritual, not replace it.",
+    "yes": "He trains on decision, not on mood: the core of the ladder is already in place, and he has proof that he keeps promises to himself. The blueprint should build on what he already does, not replace it.",
     "no": "His training lives on motivation, so it comes and goes and the habit is not anchored. For him the rule 'same small load every day for 30 days, no progression' matters more than any program."
    },
    "traits": [
@@ -2232,12 +2303,12 @@
    "module": "p3",
    "polarity": 1,
    "q": {
-    "de": "isst du oft aus stress, als belohnung oder um dich zu betäuben, statt aus echtem hunger?",
-    "en": "do you often eat out of stress, as a reward, or to numb yourself, rather than from real hunger?",
-    "fr": "est-ce que tu manges souvent par stress, pour te récompenser ou pour t’anesthésier, plutôt que par vraie faim ?",
-    "es": "¿comes a menudo por estrés, como premio o para anestesiarte, en vez de por hambre real?",
-    "ar": "هل كثيراً ما تأكل بسبب التوتر، أو كمكافأة لنفسك، أو لتخدّر مشاعرك، بدلاً من أن تأكل لأنك جائع فعلاً؟",
-    "ru": "ты часто ешь от стресса, в награду себе или чтобы заглушить чувства, а не от настоящего голода?"
+    "de": "isst du oft, obwohl du keinen hunger hast, zum beispiel aus stress oder als belohnung?",
+    "en": "do you often eat when you are not hungry, for example out of stress or as a reward?",
+    "fr": "est-ce que tu manges souvent sans avoir faim, par exemple par stress ou pour te récompenser ?",
+    "es": "¿comes a menudo sin tener hambre, por ejemplo por estrés o como premio?",
+    "ar": "هل تأكل كثيرًا وأنت لست جائعًا، مثلًا بسبب التوتر أو كمكافأة لنفسك؟",
+    "ru": "ты часто ешь, когда не голоден, например от стресса или в награду себе?"
    },
    "reads": {
     "yes": "Food is one of his regulators: stress or emptiness gets answered with eating, the learned loop stress, eat, calm, repeat. It is an emotion pattern showing up on the plate, and the same pattern likely runs through phone or porn (compare u1_1).",
@@ -2298,12 +2369,12 @@
    "module": "p4",
    "polarity": -1,
    "q": {
-    "de": "merkst du, dass stress sich auf deinen atem auswirkt?",
-    "en": "do you notice that stress affects your breathing?",
-    "fr": "est-ce que tu remarques que le stress agit sur ta respiration ?",
-    "es": "¿notas que el estrés afecta a tu respiración?",
-    "ar": "هل تلاحظ أن التوتر يؤثر على تنفسك؟",
-    "ru": "ты замечаешь, что стресс влияет на твоё дыхание?"
+    "de": "merkst du in stressigen momenten, wie du gerade atmest?",
+    "en": "in stressful moments, do you notice how you are breathing?",
+    "fr": "dans les moments de stress, remarques-tu comment tu respires ?",
+    "es": "en los momentos de estrés, ¿notas cómo estás respirando?",
+    "ar": "في لحظات التوتر، هل تنتبه إلى طريقة تنفّسك؟",
+    "ru": "в моменты стресса ты замечаешь, как ты дышишь?"
    },
    "reads": {
     "yes": "He feels the link between his state and his body: under stress he notices his breath change. That awareness is the first step; whether he already uses breath as a lever shows in p4_2.",
@@ -2364,12 +2435,12 @@
    "module": "p5",
    "polarity": 1,
    "q": {
-    "de": "weichst du unbequemen dingen schnell aus, obwohl du weißt, dass sie dich stärker machen würden?",
-    "en": "do you quickly dodge uncomfortable things even though you know they would make you stronger?",
-    "fr": "est-ce que tu fuis vite ce qui est inconfortable, alors que tu sais que ça te rendrait plus fort ?",
-    "es": "¿esquivas rápido lo incómodo aunque sabes que te haría más fuerte?",
-    "ar": "هل تتهرّب بسرعة من الأشياء غير المريحة، مع أنك تعرف أنها ستجعلك أقوى؟",
-    "ru": "ты быстро уходишь от неприятного, хотя знаешь, что это сделало бы тебя сильнее?"
+    "de": "nimmst du oft den bequemen weg, obwohl du weißt, dass dich der unbequeme stärker machen würde?",
+    "en": "do you often take the easy way, even though you know the hard one would make you stronger?",
+    "fr": "prends-tu souvent le chemin le plus facile, alors que tu sais que le plus dur te rendrait plus fort ?",
+    "es": "¿sueles elegir el camino cómodo, aunque sabes que el incómodo te haría más fuerte?",
+    "ar": "هل تختار غالبًا الطريق المريح، مع أنك تعرف أن الطريق الصعب سيجعلك أقوى؟",
+    "ru": "ты часто выбираешь лёгкий путь, хотя знаешь, что трудный сделал бы тебя сильнее?"
    },
    "reads": {
     "yes": "Comfort decides for him in the moment, even against what he knows; the same gap between knowing and doing as in sleep. Voluntary discomfort is exactly his missing training: each small 'did it anyway' builds proof that he can do what he decided.",
@@ -2397,12 +2468,12 @@
    "module": "p5",
    "polarity": -1,
    "q": {
-    "de": "kannst du kalt duschen oder dich etwas unangenehmem stellen, ohne lange mit dir zu verhandeln?",
-    "en": "can you take a cold shower or face something uncomfortable without negotiating with yourself for long?",
-    "fr": "est-ce que tu peux prendre une douche froide ou affronter quelque chose de désagréable sans négocier longtemps avec toi-même ?",
-    "es": "¿puedes darte una ducha fría o enfrentarte a algo incómodo sin negociar mucho contigo mismo?",
-    "ar": "هل تستطيع أن تأخذ دشاً بارداً أو تواجه شيئاً غير مريح من دون أن تجادل نفسك طويلاً؟",
-    "ru": "можешь ли ты встать под холодный душ или пойти на что-то неприятное, не торгуясь долго с собой?"
+    "de": "wenn du dir etwas unbequemes vornimmst, zum beispiel kalt zu duschen: tust du es, ohne lange mit dir zu verhandeln?",
+    "en": "when you plan something uncomfortable, a cold shower for example: do you do it without long negotiating with yourself?",
+    "fr": "quand tu prévois quelque chose d'inconfortable, une douche froide par exemple : est-ce que tu le fais sans négocier longtemps avec toi-même ?",
+    "es": "cuando te propones algo incómodo, por ejemplo una ducha fría: ¿lo haces sin negociar mucho contigo mismo?",
+    "ar": "عندما تنوي فعل شيء غير مريح، مثل دش بارد: هل تفعله من دون أن تجادل نفسك طويلًا؟",
+    "ru": "когда ты собираешься сделать что-то неприятное, например принять холодный душ: ты делаешь это, не торгуясь долго с собой?"
    },
    "reads": {
     "yes": "He decides and goes; his inner negotiator is weak, so he trusts his decisions more than his mood. Cold can become his daily proof and his natural high.",
@@ -2430,12 +2501,12 @@
    "module": "u0",
    "polarity": 1,
    "q": {
-    "de": "reagierst du oft einfach, ohne zu merken, was du gerade fühlst?",
-    "en": "do you often just react, without noticing what you are feeling?",
-    "fr": "réagis-tu souvent tout de suite, sans remarquer ce que tu ressens ?",
-    "es": "¿sueles reaccionar sin más, sin darte cuenta de lo que sientes?",
-    "ar": "هل تتصرّف غالباً بردّة فعل سريعة، دون أن تنتبه لما تشعر به؟",
-    "ru": "часто ли ты просто реагируешь, не замечая, что чувствуешь?"
+    "de": "reagierst du oft schon, bevor du merkst, was du fühlst?",
+    "en": "do you often react before you notice what you are feeling?",
+    "fr": "réagis-tu souvent avant même de remarquer ce que tu ressens ?",
+    "es": "¿sueles reaccionar antes de darte cuenta de lo que sientes?",
+    "ar": "هل تتصرّف غالبًا قبل أن تنتبه لما تشعر به؟",
+    "ru": "ты часто реагируешь раньше, чем замечаешь, что чувствуешь?"
    },
    "reads": {
     "yes": "He lives on autopilot: the reaction fires before he has even seen the feeling, so the space between stimulus and response does not exist for him yet. Until he builds that pause, every other mind module (impulses, dopamine, emotions) stays theory for him.",
@@ -2463,12 +2534,12 @@
    "module": "u0",
    "polarity": -1,
    "q": {
-    "de": "hast du schon mal dieses experiment gemacht: einen impuls bemerken (zum beispiel den drang, aufs handy zu schauen) und dann bewusst nicht darauf reagieren?",
-    "en": "have you ever tried this experiment: notice an impulse (like the urge to check your phone) and then consciously not act on it?",
-    "fr": "as-tu déjà fait cette expérience : remarquer une impulsion (par exemple l’envie de regarder ton téléphone) puis choisir consciemment de ne pas y réagir ?",
-    "es": "¿has hecho alguna vez este experimento: notar un impulso (por ejemplo, las ganas de mirar el móvil) y luego, a propósito, no reaccionar?",
-    "ar": "هل جرّبت يوماً هذه التجربة: أن تلاحظ دافعاً (مثل الرغبة في النظر إلى هاتفك)، ثم تختار بوعي ألّا تستجيب له؟",
-    "ru": "пробовал ли ты такой эксперимент: заметить импульс (например, желание заглянуть в телефон) и сознательно на него не реагировать?"
+    "de": "hast du schon einmal einen drang bemerkt, etwa zum handy zu greifen, und ihm bewusst nicht nachgegeben?",
+    "en": "have you ever noticed an urge, like reaching for your phone, and on purpose not followed it?",
+    "fr": "as-tu déjà remarqué une envie, comme celle de prendre ton téléphone, et choisi exprès de ne pas y céder ?",
+    "es": "¿alguna vez has notado un impulso, como coger el móvil, y a propósito no le has hecho caso?",
+    "ar": "هل سبق أن لاحظت رغبة، مثل أن تمدّ يدك إلى هاتفك، ثم اخترت عن قصد ألا تستجيب لها؟",
+    "ru": "ты когда-нибудь замечал порыв, например взять телефон, и сознательно ему не поддавался?"
    },
    "reads": {
     "yes": "He has already felt that an impulse is a signal, not a command, and he knows the moment of choice from his own experience. He has proof he can find the gap; now it needs daily repetition in small things until it becomes his normal.",
@@ -2496,12 +2567,12 @@
    "module": "u1",
    "polarity": 1,
    "q": {
-    "de": "greifst du bei stress automatisch zu handy, essen, porno oder nikotin, ohne dich bewusst dafür zu entscheiden?",
-    "en": "when you are stressed, do you automatically reach for your phone, food, porn or nicotine without consciously deciding to?",
-    "fr": "quand tu es stressé, te jettes-tu automatiquement sur ton téléphone, la nourriture, le porno ou la nicotine, sans l’avoir décidé consciemment ?",
-    "es": "cuando estás estresado, ¿recurres automáticamente al móvil, la comida, el porno o la nicotina sin decidirlo conscientemente?",
-    "ar": "عندما تكون متوتراً، هل تلجأ تلقائياً إلى الهاتف أو الطعام أو الإباحية أو النيكوتين دون أن تقرّر ذلك بوعي؟",
-    "ru": "в стрессе ты на автомате хватаешься за телефон, еду, порно или никотин, даже не решив этого осознанно?"
+    "de": "greifst du bei stress automatisch zu etwas, das schnell beruhigt: handy, essen, porno, nikotin?",
+    "en": "under stress, do you automatically reach for something that calms you fast: phone, food, porn, nicotine?",
+    "fr": "sous stress, est-ce que tu attrapes automatiquement quelque chose qui calme vite : téléphone, nourriture, porno, nicotine ?",
+    "es": "con estrés, ¿recurres automáticamente a algo que calma rápido: móvil, comida, porno, nicotina?",
+    "ar": "تحت التوتر، هل تمدّ يدك تلقائيًا إلى شيء يهدّئك بسرعة: الهاتف، الطعام، الإباحية، النيكوتين؟",
+    "ru": "в стрессе ты на автомате хватаешься за то, что быстро успокаивает: телефон, еду, порно, никотин?"
    },
    "reads": {
     "yes": "Stress goes straight into a quick fix: feeling, impulse and action run so fast that he never registers what he actually felt. The phone, food, porn or nicotine is not the real need, it numbs a feeling he has not looked at, and his focus and sexual energy leak out through it.",
@@ -2533,12 +2604,12 @@
    "module": "u1",
    "polarity": -1,
    "q": {
-    "de": "kannst du unterscheiden, ob du wirklich hunger oder lust hast, oder ob du nur gelangweilt oder einsam bist?",
-    "en": "can you tell whether you are really hungry or really want something, or whether you are just bored or lonely?",
-    "fr": "sais-tu distinguer si tu as vraiment faim ou vraiment envie, ou si tu t’ennuies ou te sens seul ?",
-    "es": "¿sabes distinguir si de verdad tienes hambre o ganas, o si simplemente estás aburrido o te sientes solo?",
-    "ar": "هل تستطيع أن تميّز إن كنت جائعاً أو راغباً في شيء حقاً، أم أنك فقط تشعر بالملل أو الوحدة؟",
-    "ru": "можешь ли ты отличить, правда ли ты голоден или чего-то хочешь, или тебе просто скучно или одиноко?"
+    "de": "merkst du, wenn hinter deinem hunger oder deiner lust eigentlich langeweile oder einsamkeit steckt?",
+    "en": "do you notice when boredom or loneliness is hiding behind your hunger or desire?",
+    "fr": "remarques-tu quand c'est en fait l'ennui ou la solitude qui se cache derrière ta faim ou ton envie ?",
+    "es": "¿notas cuando detrás de tu hambre o tus ganas en realidad hay aburrimiento o soledad?",
+    "ar": "هل تنتبه عندما يكون وراء جوعك أو رغبتك في الحقيقة ملل أو وحدة؟",
+    "ru": "замечаешь ли ты, когда за твоим голодом или желанием на самом деле стоят скука или одиночество?"
    },
    "reads": {
     "yes": "He can read the signal behind a craving and separate real need from habit or emotion wearing the mask of need. With food, porn and women his own impulses can hardly fool him, and he can deal with the real feeling instead of feeding it.",
@@ -2566,12 +2637,12 @@
    "module": "u2",
    "polarity": 1,
    "q": {
-    "de": "findest du arbeit, training oder ruhe langweilig im vergleich zu handy, videos oder porno?",
-    "en": "do work, training or quiet feel boring to you compared to your phone, videos or porn?",
-    "fr": "le travail, l’entraînement ou le calme te paraissent-ils ennuyeux comparés au téléphone, aux vidéos ou au porno ?",
-    "es": "¿el trabajo, el entrenamiento o la calma te parecen aburridos comparados con el móvil, los vídeos o el porno?",
-    "ar": "هل يبدو لك العمل أو التمرين أو الهدوء مملاً مقارنةً بالهاتف أو الفيديوهات أو الإباحية؟",
-    "ru": "работа, тренировка или тишина кажутся тебе скучными по сравнению с телефоном, видео или порно?"
+    "de": "fühlt sich ein normaler tag ohne handy, videos oder porno für dich leer oder langweilig an?",
+    "en": "does a normal day without phone, videos or porn feel empty or boring to you?",
+    "fr": "une journée normale sans téléphone, vidéos ni porno te paraît-elle vide ou ennuyeuse ?",
+    "es": "¿un día normal sin móvil, vídeos ni porno te parece vacío o aburrido?",
+    "ar": "هل يبدو لك يوم عادي بلا هاتف ولا فيديوهات ولا إباحية فارغًا أو مملًا؟",
+    "ru": "обычный день без телефона, видео и порно кажется тебе пустым или скучным?"
    },
    "reads": {
     "yes": "His reward system is tuned to artificial spikes, so normal life feels flat and he needs more and more input to feel normal. That is not a weak character but a hijacked system, and he has not yet gone through a reset and its flat phase to find out what real rewards feel like again.",
@@ -2665,12 +2736,12 @@
    "module": "u3",
    "polarity": -1,
    "q": {
-    "de": "kannst du 30 minuten bei einer sache bleiben, ohne zwischendurch aufs handy zu schauen?",
-    "en": "can you stay on one thing for 30 minutes without checking your phone in between?",
-    "fr": "peux-tu rester 30 minutes sur une seule chose sans regarder ton téléphone entre-temps ?",
-    "es": "¿puedes quedarte 30 minutos con una sola cosa sin mirar el móvil entre medias?",
-    "ar": "هل تستطيع أن تبقى 30 دقيقة على شيء واحد دون أن تنظر إلى هاتفك في الأثناء؟",
-    "ru": "можешь ли ты 30 минут заниматься одним делом, ни разу не заглянув в телефон?"
+    "de": "bleibst du an einem normalen tag mindestens einmal 30 minuten bei einer sache, ohne aufs handy zu schauen?",
+    "en": "on a normal day, do you stay with one thing for 30 minutes at least once, without checking your phone?",
+    "fr": "un jour normal, restes-tu au moins une fois 30 minutes sur une seule chose sans regarder ton téléphone ?",
+    "es": "en un día normal, ¿te quedas al menos una vez 30 minutos con una sola cosa sin mirar el móvil?",
+    "ar": "في يوم عادي، هل تبقى مرة واحدة على الأقل 30 دقيقة على شيء واحد دون أن تنظر إلى هاتفك؟",
+    "ru": "в обычный день ты хотя бы раз занимаешься одним делом 30 минут, не заглядывая в телефон?"
    },
    "reads": {
     "yes": "His attention is not fully captured by the phone, so deep work is within reach for him. The next level is a fixed daily focus block, with the phone out of the room by default instead of relying on willpower.",
@@ -2698,12 +2769,12 @@
    "module": "u4",
    "polarity": 1,
    "q": {
-    "de": "passt du dich anderen so sehr an, dass du manchmal nicht mehr weißt, wer du eigentlich bist?",
-    "en": "do you adapt to others so much that you sometimes no longer know who you really are?",
-    "fr": "t’adaptes-tu tellement aux autres que tu ne sais parfois plus qui tu es vraiment ?",
-    "es": "¿te adaptas tanto a los demás que a veces ya no sabes quién eres de verdad?",
-    "ar": "هل تتأقلم مع الآخرين إلى درجة أنك أحياناً لا تعود تعرف من أنت حقاً؟",
-    "ru": "подстраиваешься ли ты под других так сильно, что иногда уже не понимаешь, кто ты на самом деле?"
+    "de": "ändern sich deine meinung und dein verhalten stark, je nachdem, mit wem du zusammen bist?",
+    "en": "do your opinions and your behaviour change a lot depending on who you are with?",
+    "fr": "tes opinions et ton comportement changent-ils beaucoup selon les personnes avec qui tu es ?",
+    "es": "¿tus opiniones y tu forma de actuar cambian mucho según con quién estés?",
+    "ar": "هل تتغيّر آراؤك وتصرّفاتك كثيرًا بحسب الأشخاص الذين تكون معهم؟",
+    "ru": "сильно ли меняются твои мнения и поведение в зависимости от того, с кем ты находишься?"
    },
    "reads": {
     "yes": "He follows the social impulse to belong and be approved, and becomes a different man depending on who is in the room. He has no clear 'who i am, what i do and what i do not do' yet, so his opinions, boundaries and decisions are borrowed from others.",
@@ -2764,12 +2835,12 @@
    "module": "u5",
    "polarity": 1,
    "q": {
-    "de": "wirst du bei kritik sofort angespannt, statt erst mal zu schauen, was dran ist?",
-    "en": "when you get criticized, do you tense up right away instead of first checking if there is something to it?",
-    "fr": "face à une critique, te crispes-tu tout de suite au lieu de regarder d’abord s’il y a du vrai ?",
-    "es": "cuando te critican, ¿te tensas enseguida en lugar de mirar primero si tienen algo de razón?",
-    "ar": "عندما ينتقدك أحد، هل تتوتّر فوراً بدلاً من أن ترى أولاً إن كان في كلامه شيء من الصحة؟",
-    "ru": "когда тебя критикуют, ты сразу напрягаешься, вместо того чтобы сначала посмотреть, есть ли в этом доля правды?"
+    "de": "gehst du bei kritik sofort in die verteidigung?",
+    "en": "when you are criticised, do you go straight into defence?",
+    "fr": "face à une critique, passes-tu tout de suite en mode défense ?",
+    "es": "cuando te critican, ¿te pones a la defensiva enseguida?",
+    "ar": "عندما تُنتقد، هل تتخذ موقف الدفاع فورًا؟",
+    "ru": "когда тебя критикуют, ты сразу уходишь в оборону?"
    },
    "reads": {
     "yes": "Criticism hits his identity, not just his behaviour, so he defends instead of learning, and his ego is easily touched. He reacts to his own interpretation of the words; the stoic pause between being criticised and feeling attacked is not there yet.",
@@ -2797,12 +2868,12 @@
    "module": "u5",
    "polarity": -1,
    "q": {
-    "de": "kannst du im streit ruhig und ehrlich bleiben, ohne kalt zu werden, dich zu verstellen oder auszurasten?",
-    "en": "can you stay calm and honest in an argument without going cold, faking it or blowing up?",
-    "fr": "peux-tu rester calme et honnête dans une dispute, sans devenir froid, faire semblant ou exploser ?",
-    "es": "¿puedes mantener la calma y la honestidad en una discusión sin volverte frío, fingir o explotar?",
-    "ar": "هل تستطيع أن تبقى هادئاً وصادقاً أثناء الخلاف، دون أن تصبح بارداً أو تتظاهر أو تنفجر غضباً؟",
-    "ru": "можешь ли ты в ссоре оставаться спокойным и честным, не становясь холодным, не притворяясь и не срываясь?"
+    "de": "bleibst du im streit ruhig und sagst trotzdem ehrlich, was du denkst?",
+    "en": "in an argument, do you stay calm and still say honestly what you think?",
+    "fr": "dans une dispute, restes-tu calme tout en disant honnêtement ce que tu penses ?",
+    "es": "en una discusión, ¿mantienes la calma y aun así dices con honestidad lo que piensas?",
+    "ar": "أثناء الخلاف، هل تبقى هادئًا وتقول مع ذلك بصدق ما تفكّر فيه؟",
+    "ru": "в ссоре ты остаёшься спокойным и всё равно честно говоришь, что думаешь?"
    },
    "reads": {
     "yes": "He can say the true thing without aggression or avoidance, which is rare and makes him trusted and respected. He feels the emotion fully and still responds instead of reacting.",
@@ -2834,15 +2905,15 @@
    "module": "r0",
    "polarity": 1,
    "q": {
-    "de": "gibst du oft anderen, den umständen oder deiner vergangenheit die schuld daran, wo du heute stehst?",
-    "en": "do you often blame other people, circumstances or your past for where you are today?",
-    "fr": "rends-tu souvent les autres, les circonstances ou ton passé responsables de là où tu en es aujourd'hui ?",
-    "es": "¿sueles echar la culpa a los demás, a las circunstancias o a tu pasado de dónde estás hoy?",
-    "ar": "هل تُلقي اللوم غالباً على الآخرين أو على الظروف أو على ماضيك في ما وصلتَ إليه اليوم؟",
-    "ru": "часто ли ты винишь других людей, обстоятельства или своё прошлое в том, где ты сейчас?"
+    "de": "siehst du die gründe dafür, wo du heute stehst, eher bei anderen, den umständen oder deiner vergangenheit als bei dir?",
+    "en": "do you see the reasons for where you stand today more in other people, circumstances or your past than in yourself?",
+    "fr": "vois-tu les raisons de là où tu en es aujourd'hui plutôt chez les autres, dans les circonstances ou ton passé qu'en toi-même ?",
+    "es": "¿ves las razones de dónde estás hoy más en los demás, en las circunstancias o en tu pasado que en ti mismo?",
+    "ar": "هل ترى أسباب ما وصلت إليه اليوم في الآخرين أو الظروف أو ماضيك أكثر مما تراها في نفسك؟",
+    "ru": "ты видишь причины того, где ты сейчас, скорее в других людях, обстоятельствах или своём прошлом, чем в себе?"
    },
    "reads": {
-    "yes": "He still lives inside a victim story: the cause of his situation sits outside him, so the solution does too, and he is waiting for something or someone to change before he does. He has not yet separated fault (who caused it) from responsibility (what he does now), and the energy that goes into blaming is missing for building.",
+    "yes": "He still explains his situation from the outside: the cause sits with other people, circumstances or his past, so the solution seems to sit there too, and he waits for something to change before he does. He has not yet separated fault (who caused it) from responsibility (what he does now), and the energy that goes into explaining is missing for building.",
     "no": "He has largely stopped waiting for rescue and treats himself as the only variable he can change, even where others were at fault. That is the foundation the whole responsibility pillar stands on, so he can go straight to action."
    },
    "traits": [
@@ -2995,12 +3066,12 @@
    "module": "r2",
    "polarity": -1,
    "q": {
-    "de": "könntest du sofort sagen, wofür du stehst und was für dich ein no-go ist?",
-    "en": "could you say right away what you stand for and what is a no-go for you?",
-    "fr": "pourrais-tu dire tout de suite ce que tu défends et ce qui est hors de question pour toi ?",
-    "es": "¿podrías decir ahora mismo qué defiendes y qué no aceptas bajo ningún concepto?",
-    "ar": "هل تستطيع أن تقول فوراً ما الذي تؤمن به وما هي خطوطك الحمراء؟",
-    "ru": "смог бы ты сразу сказать, какие у тебя принципы и что для тебя абсолютно недопустимо?"
+    "de": "könntest du sofort sagen, was für dich nicht verhandelbar ist?",
+    "en": "could you say right away what is non-negotiable for you?",
+    "fr": "pourrais-tu dire tout de suite ce qui, pour toi, n'est pas négociable ?",
+    "es": "¿podrías decir ahora mismo qué es innegociable para ti?",
+    "ar": "هل تستطيع أن تقول فورًا ما الذي لا تقبل التفاوض عليه؟",
+    "ru": "смог бы ты сразу сказать, что для тебя не обсуждается?"
    },
    "reads": {
     "yes": "His values are decided in advance, so under pressure (attraction, money, approval, a heated moment) he has a reference point instead of negotiating. He knows where he ends and others begin, which makes him easy to trust and hard to push around.",
@@ -3057,12 +3128,12 @@
    "module": "r3",
    "polarity": -1,
    "q": {
-    "de": "bleibst du ruhig und klar, wenn es in einer beziehung schwierig wird, ohne dich zu verbiegen, hinterherzulaufen oder kalt zu werden?",
-    "en": "do you stay calm and clear when things get hard in a relationship, without bending over backwards, chasing, or going cold?",
-    "fr": "restes-tu calme et clair quand ça devient difficile dans une relation, sans te plier en quatre, courir après l'autre ou devenir froid ?",
-    "es": "¿te mantienes tranquilo y claro cuando una relación se pone difícil, sin desvivirte por agradar, perseguir a la otra persona ni volverte frío?",
-    "ar": "هل تبقى هادئاً وواضحاً عندما تصعب الأمور في العلاقة، من دون أن تتنازل عن نفسك لإرضاء الطرف الآخر أو تلهث وراءه أو تصبح بارداً؟",
-    "ru": "остаёшься ли ты спокойным и ясным, когда в отношениях становится трудно, не прогибаясь, не бегая за человеком и не становясь холодным?"
+    "de": "bleibst du ruhig und zugewandt, wenn es in einer beziehung schwierig wird?",
+    "en": "when things get hard in a relationship, do you stay calm and warm?",
+    "fr": "restes-tu calme et bienveillant quand ça devient difficile dans une relation ?",
+    "es": "¿te mantienes tranquilo y cercano cuando una relación se pone difícil?",
+    "ar": "هل تبقى هادئًا وقريبًا عندما تصعب الأمور في العلاقة؟",
+    "ru": "остаёшься ли ты спокойным и тёплым, когда в отношениях становится трудно?"
    },
    "reads": {
     "yes": "He holds the frame when it gets hard: warm and steady, not seeking approval, not chasing, not punishing with distance. He does not need the other person's approval to feel okay about himself, which is what lets a partner relax and lets attraction last.",
@@ -3123,12 +3194,12 @@
    "module": "r4",
    "polarity": -1,
    "q": {
-    "de": "bist du gerade so konsequent, dass man sich auf dein wort verlassen kann, auch du selbst?",
-    "en": "are you consistent enough right now that people can count on your word, you included?",
-    "fr": "es-tu en ce moment assez constant pour qu'on puisse compter sur ta parole, toi compris ?",
-    "es": "¿eres ahora lo bastante constante como para que se pueda confiar en tu palabra, incluido tú mismo?",
-    "ar": "هل أنت ثابت بما يكفي هذه الأيام ليعتمد الناس على كلمتك، وتعتمد أنت عليها أيضاً؟",
-    "ru": "достаточно ли ты сейчас последователен, чтобы на твоё слово можно было положиться, в том числе тебе самому?"
+    "de": "tust du, was du sagst, auch bei kleinen zusagen wie pünktlich sein oder zurückrufen?",
+    "en": "do you do what you say, even with small commitments like being on time or calling back?",
+    "fr": "fais-tu ce que tu dis, même pour de petits engagements comme être à l'heure ou rappeler ?",
+    "es": "¿haces lo que dices, incluso en compromisos pequeños como llegar puntual o devolver una llamada?",
+    "ar": "هل تفعل ما تقوله، حتى في الالتزامات الصغيرة مثل أن تكون في الموعد أو أن تعاود الاتصال؟",
+    "ru": "ты делаешь то, что говоришь, даже в мелочах: прийти вовремя или перезвонить?"
    },
    "reads": {
     "yes": "His word works like currency: he does what he says in small things, over time, so people can organise around him and trust him with what matters. That is durable wealth, and the base for taking on bigger commitments.",
@@ -3156,12 +3227,12 @@
    "module": "r5",
    "polarity": 1,
    "q": {
-    "de": "lebst du eher in den tag hinein, ohne zu wissen, wofür du das alles machst?",
-    "en": "do you mostly live day to day, without knowing what it is all for?",
-    "fr": "vis-tu plutôt au jour le jour, sans savoir pourquoi tu fais tout ça ?",
-    "es": "¿vives más bien al día, sin saber para qué haces todo esto?",
-    "ar": "هل تعيش يوماً بيوم في الغالب، من دون أن تعرف لماذا تفعل كل هذا؟",
-    "ru": "живёшь ли ты скорее одним днём, не понимая, ради чего всё это делаешь?"
+    "de": "weißt du oft nicht so richtig, wofür du das alles machst?",
+    "en": "do you often not really know what you are doing all this for?",
+    "fr": "t'arrive-t-il souvent de ne pas vraiment savoir pourquoi tu fais tout ça ?",
+    "es": "¿a menudo no sabes muy bien para qué haces todo esto?",
+    "ar": "هل يحدث كثيرًا ألا تعرف حقًا لماذا تفعل كل هذا؟",
+    "ru": "часто ли ты толком не знаешь, ради чего всё это делаешь?"
    },
    "reads": {
     "yes": "He is living without a compass, so daily choices are made by the pull of the moment (comfort, phone, impulse) because nothing larger is pulling him. He is most likely still in the 'fuck around' part of the curve, and his motivation feels flat because no bigger why stands behind his days.",
@@ -3251,12 +3322,12 @@
    "module": "e1",
    "polarity": -1,
    "q": {
-    "de": "kannst du vor anderen zugeben, dass du falsch lagst, ohne dich rauszureden?",
-    "en": "can you admit in front of others that you were wrong, without making excuses?",
-    "fr": "peux-tu reconnaître devant les autres que tu avais tort, sans te chercher d'excuses ?",
-    "es": "¿puedes admitir delante de otros que te equivocaste, sin poner excusas?",
-    "ar": "هل تستطيع أن تعترف أمام الآخرين بأنك كنت مخطئاً، دون أن تختلق الأعذار؟",
-    "ru": "можешь ли ты признать при других, что был неправ, без оправданий?"
+    "de": "gibst du vor anderen zu, dass du falsch lagst, ohne ein „aber“ hinterherzuschieben?",
+    "en": "do you admit in front of others that you were wrong, without adding a “but”?",
+    "fr": "reconnais-tu devant les autres que tu avais tort, sans ajouter de « mais » ?",
+    "es": "¿admites delante de otros que te equivocaste, sin añadir un «pero»?",
+    "ar": "هل تعترف أمام الآخرين بأنك كنت مخطئًا، من دون أن تضيف «لكن»؟",
+    "ru": "признаёшь ли ты при других, что был неправ, не добавляя «но»?"
    },
    "reads": {
     "yes": "He can let go of being right and of his image: a mistake is something he did, not who he is. That keeps the ego small, lets him learn fast, and makes his word worth more to the people around him.",
@@ -3317,12 +3388,12 @@
    "module": "e2",
    "polarity": -1,
    "q": {
-    "de": "merkst du, wenn gerade dein ego spricht und nicht du?",
-    "en": "do you notice when it is your ego talking and not you?",
-    "fr": "te rends-tu compte quand c'est ton ego qui parle, et pas toi ?",
-    "es": "¿te das cuenta de cuándo habla tu ego y no tú?",
-    "ar": "هل تنتبه حين تكون الأنا هي التي تتكلم، لا أنت؟",
-    "ru": "замечаешь ли ты, когда говорит твоё эго, а не ты?"
+    "de": "merkst du im moment selbst, wenn du nur recht haben oder gut dastehen willst?",
+    "en": "do you notice in the moment when all you want is to be right or to look good?",
+    "fr": "remarques-tu sur le moment quand tout ce que tu veux, c'est avoir raison ou faire bonne figure ?",
+    "es": "¿notas en el momento cuando lo único que quieres es tener razón o quedar bien?",
+    "ar": "هل تنتبه في اللحظة نفسها عندما يكون كل ما تريده أن تكون على حق أو أن تظهر بمظهر جيد؟",
+    "ru": "замечаешь ли ты в моменте, когда тебе просто хочется быть правым или хорошо выглядеть?"
    },
    "reads": {
     "yes": "He can step back and see his ego as one voice, not as himself, so there is a gap between its reaction and his choice. That gap is the base for letting the ego go: you can only drop what you can see.",
@@ -3420,12 +3491,12 @@
    "module": "e5",
    "polarity": 1,
    "q": {
-    "de": "dreht sich in deinem leben gerade fast alles nur um dich?",
-    "en": "does almost everything in your life right now revolve around you?",
-    "fr": "est-ce qu'en ce moment presque tout dans ta vie tourne autour de toi ?",
-    "es": "¿ahora mismo casi todo en tu vida gira en torno a ti?",
-    "ar": "هل يدور كل شيء تقريباً في حياتك الآن حولك أنت؟",
-    "ru": "крутится ли сейчас почти всё в твоей жизни только вокруг тебя?"
+    "de": "dreht sich dein alltag gerade vor allem um deine eigenen ziele und bedürfnisse?",
+    "en": "is your everyday life right now mostly about your own goals and needs?",
+    "fr": "en ce moment, ton quotidien tourne-t-il surtout autour de tes propres objectifs et besoins ?",
+    "es": "¿tu día a día gira ahora sobre todo en torno a tus propios objetivos y necesidades?",
+    "ar": "هل تدور حياتك اليومية الآن في الغالب حول أهدافك واحتياجاتك أنت؟",
+    "ru": "крутится ли твоя повседневная жизнь сейчас в основном вокруг твоих собственных целей и потребностей?"
    },
    "reads": {
     "yes": "Right now there is no roof over his life: he is the biggest thing in it, so the ego sits where something greater should be. When it gets hard, he has only himself as a reason to keep going, and that rarely carries a man through.",
@@ -3486,12 +3557,12 @@
    "optional": true,
    "max": 2500,
    "q": {
-    "en": "what has held you back so far? tell me about your life. get everything off your chest, i am listening. this is your chance to let it all out: your wishes, your worries, everything.",
-    "de": "was hat dich bisher aufgehalten? erzähl mir von deinem leben. sprich dir alles von der seele, ich höre dir zu. hier ist die gelegenheit, alles loszuwerden: deine wünsche, deine sorgen, alles.",
-    "fr": "qu'est-ce qui t'a retenu jusqu'ici ? parle-moi de ta vie. vide ton sac, je t'écoute. c'est l'occasion de tout sortir : tes envies, tes soucis, tout.",
-    "es": "¿qué te ha frenado hasta ahora? háblame de tu vida. desahógate, te escucho. aquí tienes la ocasión de soltarlo todo: tus deseos, tus preocupaciones, todo.",
-    "ar": "ما الذي أوقفك حتى الآن؟ احكِ لي عن حياتك. أخرج كل ما في صدرك، أنا أسمعك. هذه فرصتك لتتخلّص من كل شيء: أمنياتك، همومك، كل شيء.",
-    "ru": "что тебя до сих пор останавливало? расскажи мне о своей жизни. выговорись, я тебя слушаю. здесь можно сбросить всё: твои желания, твои тревоги, всё."
+    "en": "what has held you back so far? tell me about your life: what shaped you, what you are proud of, what keeps you awake at night. get everything off your chest, i am listening.",
+    "de": "was hat dich bisher aufgehalten? erzähl mir von deinem leben: was dich geprägt hat, worauf du stolz bist, was dich nachts wach hält. sprich dir alles von der seele, ich höre dir zu.",
+    "fr": "qu'est-ce qui t'a retenu jusqu'ici ? parle-moi de ta vie : ce qui t'a marqué, ce dont tu es fier, ce qui t'empêche de dormir. vide ton sac, je t'écoute.",
+    "es": "¿qué te ha frenado hasta ahora? háblame de tu vida: lo que te marcó, de qué estás orgulloso, qué te quita el sueño. desahógate, te escucho.",
+    "ar": "ما الذي أوقفك حتى الآن؟ احكِ لي عن حياتك: ما الذي صنعك، وما الذي تفخر به، وما الذي يبقيك مستيقظًا في الليل. أخرج كل ما في صدرك، أنا أسمعك.",
+    "ru": "что тебя до сих пор останавливало? расскажи мне о своей жизни: что тебя сформировало, чем ты гордишься, что не даёт тебе спать по ночам. выговорись, я тебя слушаю."
    }
   },
   {
@@ -3570,12 +3641,12 @@
    "section": "values",
    "type": "scale",
    "q": {
-    "de": "hast du das gefühl, dass dir nie jemand gezeigt hat, wie man nach prinzipien lebt, grenzen setzt und als mann führt?",
-    "en": "do you feel nobody ever showed you how to live by principles, set boundaries and lead as a man?",
-    "fr": "as-tu l'impression que personne ne t'a jamais appris à vivre selon des principes, à poser des limites et à montrer la voie en tant qu'homme ?",
-    "es": "¿sientes que nadie te enseñó nunca a vivir con principios, a poner límites y a liderar como hombre?",
-    "ar": "هل تشعر أن أحداً لم يعلّمك يوماً كيف تعيش وفق مبادئ، وتضع حدوداً، وتقود كرجل؟",
-    "ru": "тебе кажется, что никто никогда не учил тебя жить по принципам, ставить границы и быть мужчиной, который ведёт за собой?"
+    "de": "hast du das gefühl, dass dir nie jemand gezeigt hat, wie man als mann klare grenzen setzt und führt?",
+    "en": "do you feel nobody ever showed you how to set clear boundaries and lead as a man?",
+    "fr": "as-tu l'impression que personne ne t'a jamais montré comment poser des limites claires et montrer la voie en tant qu'homme ?",
+    "es": "¿sientes que nadie te enseñó nunca a poner límites claros y a liderar como hombre?",
+    "ar": "هل تشعر أن أحدًا لم يُرِك يومًا كيف تضع حدودًا واضحة وتقود كرجل؟",
+    "ru": "тебе кажется, что никто никогда не показывал тебе, как ставить чёткие границы и вести за собой как мужчина?"
    },
    "polarity": 1,
    "reads": {
@@ -3594,6 +3665,39 @@
     {
      "trait": "openness",
      "w": 0.3
+    }
+   ]
+  },
+  {
+   "id": "restarts",
+   "section": "values",
+   "type": "scale",
+   "module": "syn",
+   "polarity": 1,
+   "q": {
+    "en": "have you often started something and stopped again after a few weeks, like training, eating better or sleeping earlier?",
+    "de": "hast du schon oft etwas angefangen und nach ein paar wochen wieder aufgehört, zum beispiel training, ernährung oder früher schlafen?",
+    "fr": "t'est-il souvent arrivé de commencer quelque chose puis d'arrêter au bout de quelques semaines, par exemple le sport, l'alimentation ou te coucher plus tôt ?",
+    "es": "¿has empezado a menudo algo y lo has dejado a las pocas semanas, por ejemplo entrenar, comer mejor o dormir antes?",
+    "ar": "هل بدأت كثيرًا شيئًا ثم توقّفت عنه بعد أسابيع قليلة، مثل التمرين أو الأكل الصحي أو النوم مبكرًا؟",
+    "ru": "часто ли ты что-то начинал и через пару недель бросал, например тренировки, правильное питание или ранний сон?"
+   },
+   "reads": {
+    "yes": "He knows the pattern of starting strong and stopping: the start is not his problem, the weeks after it are. Every restart that fades is one more broken promise to himself, so his plan must be so small that it survives the days without motivation, and the first 30 days must not grow too fast.",
+    "no": "Either he keeps what he starts, which is real self-trust to build on, or he rarely starts anything new. His habits and his R answers show which."
+   },
+   "traits": [
+    {
+     "trait": "discipline",
+     "w": -0.7
+    },
+    {
+     "trait": "self_trust",
+     "w": -0.6
+    },
+    {
+     "trait": "self_awareness",
+     "w": 0.2
     }
    ]
   },
@@ -3639,18 +3743,18 @@
    "section": "values",
    "type": "scale",
    "q": {
-    "de": "bist du bereit, 90 tage bequemlichkeit gegen echte veränderung einzutauschen?",
-    "en": "are you ready to trade 90 days of comfort for real change?",
-    "fr": "es-tu prêt à échanger 90 jours de confort contre un vrai changement ?",
-    "es": "¿estás dispuesto a dejar la comodidad durante 90 días para cambiar de verdad?",
-    "ar": "هل أنت مستعد أن تتخلى عن راحتك 90 يوماً مقابل تغيير حقيقي؟",
-    "ru": "ты готов отказаться от комфорта на 90 дней ради настоящих перемен?"
+    "de": "bist du bereit, 90 tage lang jeden tag einen kleinen schritt zu gehen, auch an tagen ohne lust?",
+    "en": "are you ready to take one small step every day for 90 days, even on days you do not feel like it?",
+    "fr": "es-tu prêt à faire un petit pas chaque jour pendant 90 jours, même les jours sans envie ?",
+    "es": "¿estás dispuesto a dar un pequeño paso cada día durante 90 días, incluso los días sin ganas?",
+    "ar": "هل أنت مستعد أن تخطو خطوة صغيرة كل يوم لمدة 90 يومًا، حتى في الأيام التي لا ترغب فيها؟",
+    "ru": "ты готов 90 дней каждый день делать маленький шаг, даже в дни, когда нет желания?"
    },
    "module": "syn",
    "polarity": -1,
    "reads": {
-    "yes": "He has decided before the plan even starts: he is willing to pay with comfort, the same attitude that carried Paul through his first three hard months. A yes is easy on a screen, though. The real test comes in weeks one and two, so his plan must hold up on the days he has no motivation.",
-    "no": "He is not ready to give up comfort, or he does not trust himself to keep it up for 90 days, probably because he has started and stopped before. For him the core rule matters most: start so low he barely notices it, one alarm, one push-up, until his brain wants more."
+    "yes": "He has decided before the plan even starts: one small step a day, also on the days without motivation, the same attitude that carried Paul through his first three hard months. A yes is easy on a screen, though. The real test comes in weeks one and two, so his plan must hold up on the days he has no motivation.",
+    "no": "He is not ready to commit to a daily step, or he does not trust himself to keep it up for 90 days, probably because he has started and stopped before. For him the core rule matters most: start so low he barely notices it, one alarm, one push-up, until his brain wants more."
    },
    "traits": [
     {
@@ -4065,14 +4169,16 @@
     const out = [];
     const has = (id, ...vals) => vals.includes(a[id]);
     if (a.p0_1 !== undefined && a.p0_1 <= 1 && has("porn", "several", "daily")) out.push("he says porn is not his default outlet, yet he watches it several times a week or daily. he does not see this pattern yet.");
-    if (a.p1_1 !== undefined && a.p1_1 <= 1 && (has("sleep", "lt5", "5_6") || (has("wake", "irregular") && a.work !== "shift"))) out.push("he says he does not go to bed late without reason, yet he sleeps under six hours or wakes at no fixed time. his sleep is worse than he thinks.");
-    if (a.p2_2 !== undefined && a.p2_2 >= 2 && has("training", "none", "walk")) out.push("he says he has a fixed training ritual, yet he trains less than once a week. the ritual exists in his head more than in his week.");
+    if (a.p1_1 !== undefined && a.p1_1 <= 1 && (has("sleep", "lt5", "5_6") || (has("wake", "irregular") && a.work !== "shift"))) out.push("he says he rarely stays up later than he wants, yet he sleeps under six hours or wakes at no fixed time. his sleep is worse than he thinks.");
+    if (a.p2_2 !== undefined && a.p2_2 >= 2 && has("training", "none", "walk")) out.push("he says he trains even on days without motivation, yet he trains less than once a week. the discipline exists in his head more than in his week.");
     if (a.u3_2 !== undefined && a.u3_2 >= 2 && has("phone_morning", "always") && has("screen", "gt4")) out.push("he says he can stay on one thing for 30 minutes, yet his phone comes first every morning and he spends over four hours a day on screens.");
     if (a.r4_2 !== undefined && a.r4_2 >= 2 && a.r1_1 !== undefined && a.r1_1 >= 2) out.push("he says people can count on his word, yet he often breaks promises to himself. the first person his word fails is himself.");
     if (a.e2_1 === 3 && a.e2_2 !== undefined && a.e2_2 <= 1) out.push("he sees ego clearly in others and rarely in himself. that is the ego's favourite hiding place.");
     if (a.p3_2 !== undefined && a.p3_2 >= 2 && has("belly", "clear", "large")) out.push("he says he stops eating when full, yet he carries a clear belly. what he eats or drinks between meals may be the gap.");
     if (a.u1_2 !== undefined && a.u1_2 >= 2 && a.u1_1 !== undefined && a.u1_1 >= 2) out.push("he believes he can tell real hunger and want from boredom, yet under stress he reaches for phone, food, porn or nicotine without deciding. knowing is not yet stopping.");
     if (a.syn_1 !== undefined && a.syn_1 >= 2 && a.syn_2 !== undefined && a.syn_2 <= 1) out.push("he feels he lives below his potential, yet he is not ready to trade comfort for change. the first 30 days must be so small that readiness is not needed.");
+    if (a.r1_1 !== undefined && a.r1_1 <= 1 && a.restarts !== undefined && a.restarts >= 2) out.push("he says he rarely breaks promises to himself, yet he has often started something and dropped it after a few weeks. the promises he does not count are the ones that cost him.");
+    if (a.syn_2 !== undefined && a.syn_2 >= 2 && a.restarts !== undefined && a.restarts >= 2) out.push("he says he is ready for a small daily step for 90 days, and he has felt ready before, then stopped after a few weeks. his readiness is real today; the plan has to carry him through week three, not his motivation.");
     if (has("libido", "low", "gone") && Number(a.age) < 45) out.push("his desire for sex is low for his age. sleep, stress, alcohol, body fat and porn all pull on it; a doctor can check the rest.");
     return out;
   }

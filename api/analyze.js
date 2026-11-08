@@ -21,7 +21,7 @@ const PILLAR_LEVELS = {
   R: ["r0", "r1", "r2", "r3", "r4", "r5"],
   E: ["e1", "e2", "ef", "e5"],
 };
-const GOALS = { ons: "one-night stands", open: "an open relationship", family: "married, with children", biglove: "the great love" };
+const GOALS = { ons: "one-night stands", open: "an open relationship", family: "married, with children", biglove: "the great love", unsure: "he does not know yet" };
 
 const AnthropicClient = Anthropic.default || Anthropic;
 let client;
