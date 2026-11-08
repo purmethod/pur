@@ -75,6 +75,13 @@ module.exports = async function handler(req, res) {
   const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "unknown";
   if (limited(ip)) return res.status(429).json({ error: "rate_limited" });
 
+  // one paid checkout writes one book (with a few retries if writing fails). previews stay free for testing.
+  if (process.env.VERCEL_ENV !== "preview") {
+    const paid = await claimPayment(body.session_id);
+    if (paid === "unreachable") return res.status(503).json({ error: "busy" });
+    if (paid !== "ok") return res.status(402).json({ error: "payment_required" });
+  }
+
   try {
     const blueprint = await writeBlueprint(check.answers, lang);
     return res.status(200).json({ ok: true, blueprint, scores: Q.score(check.answers) });
@@ -88,6 +95,19 @@ module.exports = async function handler(req, res) {
     return res.status(502).json({ error: error.code || "model_error" });
   }
 };
+
+// the payment is checked on brinkmannpaul.com, where the stripe key lives. "claim" counts one book on it.
+async function claimPayment(sessionId) {
+  if (typeof sessionId !== "string" || !/^cs_(test|live)_[A-Za-z0-9]+$/.test(sessionId)) return "missing";
+  try {
+    const r = await fetch(`https://brinkmannpaul.com/api/blueprint-paid?claim=1&session_id=${encodeURIComponent(sessionId)}`, { signal: AbortSignal.timeout(10000) });
+    if (r.status >= 500) return "unreachable";
+    const d = await r.json().catch(() => ({}));
+    return r.ok && d.paid === true ? "ok" : "missing";
+  } catch {
+    return "unreachable";
+  }
+}
 
 // previews sit behind vercel login, so they can test the book before it goes live
 function enabled() {
