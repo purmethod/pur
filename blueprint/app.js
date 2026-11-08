@@ -27,6 +27,12 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "too many blueprints are being written right now. try again in a few minutes.",
       errLimit: "you have written several blueprints in the last hour. try again later.",
       errGeneric: "something went wrong while writing your blueprint. your answers are kept, try again.",
+      payLead: "your map is ready, free. the book itself is written for you alone: 100 to 200 pages, after you pay.",
+      payBtn: "pay {price} and write my book",
+      payCancel: "the payment was cancelled. your answers are kept.",
+      payMissing: "no payment was found for this book. your answers are kept, try again.",
+      payWait: "opening the payment…",
+      mapFree: "your map",
       morning: "morning", day: "day", evening: "evening",
       restart: "start over", sign: "paul brinkmann", date: "{d}",
       disclaimer: "this blueprint is guidance from the pure method, not medical advice. talk to your doctor before you change training, food, cold or breathwork, especially with a health condition or medication.",
@@ -47,6 +53,12 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "gerade werden zu viele blueprints geschrieben. versuch es in ein paar minuten noch einmal.",
       errLimit: "du hast in der letzten stunde schon mehrere blueprints geschrieben. versuch es später noch einmal.",
       errGeneric: "beim schreiben deines blueprints ist etwas schiefgegangen. deine antworten bleiben erhalten, versuch es noch einmal.",
+      payLead: "deine karte ist fertig, kostenlos. das buch selbst wird nur für dich geschrieben: 100 bis 200 seiten, nachdem du bezahlt hast.",
+      payBtn: "{price} bezahlen und mein buch schreiben",
+      payCancel: "die zahlung wurde abgebrochen. deine antworten bleiben erhalten.",
+      payMissing: "für dieses buch wurde keine zahlung gefunden. deine antworten bleiben erhalten, versuch es noch einmal.",
+      payWait: "die zahlung wird geöffnet…",
+      mapFree: "deine karte",
       morning: "morgen", day: "tag", evening: "abend",
       restart: "neu beginnen", sign: "paul brinkmann", date: "{d}",
       disclaimer: "dieser blueprint ist eine orientierung aus der pure methode, keine ärztliche beratung. sprich mit deinem arzt, bevor du training, ernährung, kälte oder atemarbeit änderst, besonders bei erkrankungen oder medikamenten.",
@@ -67,6 +79,12 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "trop de blueprints sont en cours d'écriture. réessaie dans quelques minutes.",
       errLimit: "tu as déjà écrit plusieurs blueprints cette heure-ci. réessaie plus tard.",
       errGeneric: "un problème est survenu pendant l'écriture. tes réponses sont conservées, réessaie.",
+      payLead: "ta carte est prête, gratuitement. le livre lui-même est écrit pour toi seul : 100 à 200 pages, après le paiement.",
+      payBtn: "payer {price} et écrire mon livre",
+      payCancel: "le paiement a été annulé. tes réponses sont conservées.",
+      payMissing: "aucun paiement trouvé pour ce livre. tes réponses sont conservées, réessaie.",
+      payWait: "ouverture du paiement…",
+      mapFree: "ta carte",
       morning: "matin", day: "journée", evening: "soir",
       restart: "recommencer", sign: "paul brinkmann", date: "{d}",
       disclaimer: "ce blueprint est une orientation de la méthode pure, pas un avis médical. parle à ton médecin avant de changer ton entraînement, ton alimentation, le froid ou la respiration, surtout en cas de maladie ou de traitement.",
@@ -87,6 +105,12 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "ahora se están escribiendo demasiados blueprints. inténtalo de nuevo en unos minutos.",
       errLimit: "ya has escrito varios blueprints en la última hora. inténtalo más tarde.",
       errGeneric: "algo salió mal al escribir tu blueprint. tus respuestas se conservan, inténtalo de nuevo.",
+      payLead: "tu mapa está listo, gratis. el libro se escribe solo para ti: de 100 a 200 páginas, después de pagar.",
+      payBtn: "pagar {price} y escribir mi libro",
+      payCancel: "el pago se canceló. tus respuestas se conservan.",
+      payMissing: "no se encontró ningún pago para este libro. tus respuestas se conservan, inténtalo de nuevo.",
+      payWait: "abriendo el pago…",
+      mapFree: "tu mapa",
       morning: "mañana", day: "día", evening: "noche",
       restart: "empezar de nuevo", sign: "paul brinkmann", date: "{d}",
       disclaimer: "este blueprint es una orientación del método pure, no un consejo médico. habla con tu médico antes de cambiar entrenamiento, alimentación, frío o respiración, sobre todo si tienes una enfermedad o tomas medicación.",
@@ -107,6 +131,12 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "يتم الآن كتابة عدد كبير من المخططات. حاول مرة أخرى بعد بضع دقائق.",
       errLimit: "لقد كتبت عدة مخططات في الساعة الأخيرة. حاول لاحقًا.",
       errGeneric: "حدث خطأ أثناء كتابة مخططك. إجاباتك محفوظة، حاول مرة أخرى.",
+      payLead: "خريطتك جاهزة مجانًا. أما الكتاب فيُكتب لك وحدك: من 100 إلى 200 صفحة، بعد الدفع.",
+      payBtn: "ادفع {price} واكتب كتابي",
+      payCancel: "أُلغي الدفع. إجاباتك محفوظة.",
+      payMissing: "لم يُعثر على دفعة لهذا الكتاب. إجاباتك محفوظة، حاول مرة أخرى.",
+      payWait: "جارٍ فتح صفحة الدفع…",
+      mapFree: "خريطتك",
       morning: "الصباح", day: "النهار", evening: "المساء",
       restart: "ابدأ من جديد", sign: "paul brinkmann", date: "{d}",
       disclaimer: "هذا المخطط إرشاد من طريقة pure وليس نصيحة طبية. تحدث مع طبيبك قبل تغيير التدريب أو الطعام أو البرد أو تمارين التنفس، خاصة إذا كان لديك مرض أو تتناول أدوية.",
@@ -127,6 +157,12 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "сейчас пишется слишком много blueprint. попробуй через несколько минут.",
       errLimit: "за последний час ты уже написал несколько blueprint. попробуй позже.",
       errGeneric: "при написании blueprint что-то пошло не так. твои ответы сохранены, попробуй ещё раз.",
+      payLead: "твоя карта готова, бесплатно. сама книга пишется только для тебя: от 100 до 200 страниц, после оплаты.",
+      payBtn: "оплатить {price} и написать мою книгу",
+      payCancel: "оплата отменена. твои ответы сохранены.",
+      payMissing: "оплата для этой книги не найдена. твои ответы сохранены, попробуй ещё раз.",
+      payWait: "открываем оплату…",
+      mapFree: "твоя карта",
       morning: "утро", day: "день", evening: "вечер",
       restart: "начать заново", sign: "paul brinkmann", date: "{d}",
       disclaimer: "этот blueprint — ориентир метода pure, а не медицинская консультация. поговори с врачом, прежде чем менять тренировки, питание, холод или дыхание, особенно при заболеваниях или приёме лекарств.",
@@ -156,6 +192,8 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     between: null,
     view: "phone",
     chapters: null,
+    paid: saved.paid || null, // the stripe checkout session that pays for this book
+    price: null, // { amount, currency } for this visitor's country, null when the book is free (previews)
   };
 
   function pickLang() {
@@ -166,7 +204,33 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
   const L = (obj) => (obj ? obj[st.lang] || obj.en : "");
   const B = (key, vars) => fill(L(C.book[key]), vars);
   const fill = (s, vars) => String(s || "").replace(/\{(\w+)\}/g, (m, k) => (vars && vars[k] != null ? vars[k] : m));
-  const persist = () => store.save({ lang: st.lang, step: st.step === N + 1 && !st.blueprint ? N : st.step, answers: st.answers, blueprint: st.blueprint, scores: st.scores, created: st.created });
+  const persist = () => store.save({ lang: st.lang, step: st.step === N + 1 && !st.blueprint ? N : st.step, answers: st.answers, blueprint: st.blueprint, scores: st.scores, created: st.created, paid: st.paid });
+
+  // ---------- payment: answer first, pay, then the book is written ----------
+  // checkout runs on brinkmannpaul.com (the stripe key lives there); this page is served there too.
+  const PAY = "/api/blueprint-checkout";
+  const fmtPrice = (p) => { try { return new Intl.NumberFormat(st.lang, { style: "currency", currency: p.currency.toUpperCase(), minimumFractionDigits: p.amount % 100 ? 2 : 0 }).format(p.amount / 100); } catch { return (p.amount / 100) + " " + p.currency.toUpperCase(); } };
+  const pricing = location.hostname.endsWith("brinkmannpaul.com")
+    ? fetch(PAY).then((r) => (r.ok ? r.json() : null)).then((p) => { st.price = p && p.amount ? p : null; }).catch(() => { st.price = null; })
+    : Promise.resolve();
+  async function pay() {
+    const x = t();
+    st.error = x.payWait; persist(); render();
+    try {
+      const r = await fetch(PAY, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ lang: st.lang }) });
+      const d = await r.json().catch(() => ({}));
+      if (r.ok && d.url) { location.href = d.url; return; }
+    } catch { /* falls through to the message */ }
+    st.error = x.errGeneric; render();
+  }
+  // back from stripe: ?paid=cs_… starts the book, ?cancel=1 says it was cancelled
+  {
+    const q = new URLSearchParams(location.search);
+    const id = q.get("paid");
+    if (id && /^cs_(test|live)_[A-Za-z0-9]+$/.test(id)) { st.paid = id; st.step = N; st.autoWrite = true; }
+    if (q.get("cancel")) { st.step = N; st.cancelled = true; }
+    if (id || q.get("cancel")) history.replaceState(null, "", location.pathname);
+  }
 
   // native append turns null into the text "null", so empty slots are dropped first
   const add = (parent, ...kids) => parent.append(...kids.flat().filter((k) => k != null && k !== false));
@@ -509,13 +573,16 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     const x = t();
     const K = C.consent;
     const box = el("input", { type: "checkbox", id: "consent" });
-    const btn = el("button", { class: "btn", type: "button", disabled: true, onclick: submit }, x.generate);
+    const mustPay = st.price && !st.paid;
+    const btn = el("button", { class: "btn", type: "button", disabled: true, onclick: mustPay ? pay : submit }, mustPay ? x.payBtn.replace("{price}", fmtPrice(st.price)) : x.generate);
     box.addEventListener("change", () => (btn.disabled = !box.checked));
+    if (st.cancelled) { st.error = x.payCancel; st.cancelled = false; }
     add(app,
       el("p", { class: "tag" }, x.reviewTag),
       el("h2", {}, x.reviewH),
       el("p", { class: "lead" }, x.reviewLead),
       st.answers.inner === "crisis" ? el("p", { class: "note" }, x.crisis) : null,
+      mustPay ? el("div", { class: "free-map" }, el("p", { class: "tag" }, x.mapFree), mapGraphic(Q.score(st.answers)), el("p", { class: "lead" }, x.payLead)) : null,
       el("label", { class: "consent", for: "consent" }, box, el("span", { class: "consent-main" }, L(K.checkbox))),
       el("div", { class: "fine" },
         el("p", {}, L(K.stores_nothing)),
@@ -545,18 +612,20 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     }
     go(N + 1);
     try {
-      const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ lang: st.lang, consent: true, answers: check.answers }) });
+      const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ lang: st.lang, consent: true, answers: check.answers, session_id: st.paid || undefined }) });
       const data = await r.json().catch(() => ({}));
       clearInterval(waitTimer);
       if (r.ok && data.blueprint) {
         st.blueprint = data.blueprint;
         st.scores = data.scores || Q.score(check.answers);
         st.created = new Date().toISOString().slice(0, 10);
+        st.paid = null; // one payment, one book
         go(N + 2);
         return;
       }
       const x = t();
-      st.error = r.status === 429 ? x.errLimit : data.error === "busy" ? x.errBusy : data.error === "coming_soon" ? x.closed : x.errGeneric;
+      if (r.status === 402) st.paid = null;
+      st.error = r.status === 402 ? x.payMissing : r.status === 429 ? x.errLimit : data.error === "busy" ? x.errBusy : data.error === "coming_soon" ? x.closed : x.errGeneric;
     } catch {
       st.error = t().errGeneric;
     }
@@ -865,4 +934,9 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     .then((d) => { st.open = Boolean(d.open); })
     .catch(() => { st.open = false; })
     .finally(() => { if (st.step < 0 && st.between == null) render(); });
+  // the price decides the button on the last step; back from stripe, the book starts by itself
+  pricing.then(() => {
+    if (st.autoWrite) { st.autoWrite = false; persist(); submit(); }
+    else if (st.step === N) render();
+  });
 })();
