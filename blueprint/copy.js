@@ -1159,6 +1159,14 @@ window.PUR_COPY = {
    "es": "el método",
    "ar": "الطريقة",
    "ru": "метод"
+  },
+  "feminine_title": {
+   "en": "your feminine energy",
+   "de": "deine weibliche energie",
+   "fr": "ton énergie féminine",
+   "es": "tu energía femenina",
+   "ar": "طاقتك الأنثوية",
+   "ru": "твоя женская энергия"
   }
  }
 };
