@@ -186,6 +186,20 @@
       background: linear-gradient(to bottom, var(--ink3), transparent);
     }
 
+    /* the product on the first screen: a book, drawn in lines, with pages behind it */
+    .h_book { position: relative; width: 150px; aspect-ratio: 1 / 1.414; margin: 6px auto 34px; padding: 16px 14px 14px 18px; display: flex; flex-direction: column; text-align: start; background: #fff; border: 1px solid #cfcfca; border-left: 3px solid #5c5c56; box-shadow: 5px 5px 0 -1px #fff, 5px 5px 0 0 #cfcfca, 10px 10px 0 -1px #fff, 10px 10px 0 0 #e4e4e0; opacity: 0; animation: fu .8s .5s forwards; }
+    .bk_tag { font-size: 8px; letter-spacing: .3em; color: #7b7b75; }
+    .bk_name { font-size: 21px; line-height: 1.05; margin-top: 26px; color: #5c5c56; letter-spacing: -.02em; }
+    .bk_sub { font-size: 10px; line-height: 1.35; margin-top: 8px; color: #7b7b75; }
+    .bk_pages { font-size: 9px; margin-top: auto; color: #7b7b75; }
+    .bk_author { font-size: 9px; margin-top: 3px; color: #7b7b75; }
+    .h_cta { opacity: 0; animation: fu .8s .65s forwards; }
+    .h_note { font-size: 12px; color: var(--ink3); margin: 14px 0 26px; opacity: 0; animation: fu .8s .75s forwards; }
+    .h_quote { font-size: 13px; color: var(--ink3); max-width: 340px; margin: 0 auto 28px; line-height: 1.6; opacity: 0; animation: fu .8s .85s forwards; }
+    #hero .h_sub { margin-bottom: 30px; }
+    /* pact sits in the middle like the book above it */
+    #pact { padding: 100px 0; text-align: center; border-top: 1px solid #cfcfca; }
+
     #about {
       padding: 100px 0;
       border-top: 1px solid var(--line);
@@ -709,11 +723,21 @@
       <div class="w">
         <p class="h_brand">pure</p>
         <h1 class="h_title">
-          <span data_t="h1a">only</span>
-          <em data_t="h1b">you</em>
-          <span data_t="h1c">know the answers to your life.</span>
+          <span data_t="h1a">write</span>
+          <em data_t="h1b">your own</em>
+          <span data_t="h1c">book.</span>
         </h1>
-        <p class="h_sub" data_t="h1s">but i know the right questions.</p>
+        <p class="h_sub" data_t="h1s">my insights. your answers. one book about your life, 100 to 200 pages, written for you alone.</p>
+        <div class="h_book" aria-hidden="true">
+          <span class="bk_tag">pure</span>
+          <span class="bk_name" data_t="bk_name">your name.</span>
+          <span class="bk_sub" data_t="bk_sub">a book about your life</span>
+          <span class="bk_pages" data_t="bk_pages">100–200 pages</span>
+          <span class="bk_author">paul brinkmann</span>
+        </div>
+        <a class="btn_g h_cta" href="/pure/blueprint" data_t="h_cta">write your book</a>
+        <p class="h_note" data_t="h_note">10 minutes of questions. you have never seen this before.</p>
+        <p class="h_quote" data_t="h_quote">only you know the answers to your life. i know the right questions.</p>
         <div class="h_scroll" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
           <span class="h_scroll_t" data_t="begin">begin</span>
           <div class="h_scroll_l"></div>
@@ -1308,13 +1332,13 @@
 
     <section id="cb" class="z">
       <div class="w">
-        <p class="cb_tag rv" data_t="c_tag">your blueprint</p>
+        <p class="cb_tag rv" data_t="c_tag">the book</p>
         <h2 class="cb_h rv">
-          <span data_t="c_h1">the blueprint</span><br />
-          <em data_t="c_h2">is open.</em>
+          <span data_t="c_h1">your book</span><br />
+          <em data_t="c_h2">is waiting.</em>
         </h2>
-        <p class="cb_s rv" data_t="c_sub">68 honest questions. one personal 90-day plan, written for your age and your life.</p>
-        <a class="btn_g rv" href="/pure/blueprint" data_t="c_btn">start your blueprint</a>
+        <p class="cb_s rv" data_t="c_sub">honest questions, about 10 minutes. then a book about your life, 100 to 200 pages, written for you alone.</p>
+        <a class="btn_g rv" href="/pure/blueprint" data_t="c_btn">write your book</a>
       </div>
     </section>
 
@@ -1323,7 +1347,7 @@
         <p class="cb_tag rv" data_t="k_tag">pure pact</p>
         <h2 class="cb_h rv"><span data_t="k_h">the conversation most couples never have.</span></h2>
         <p class="cb_s rv" data_t="k_sub">before a relationship, both say what matters, where the boundaries are and what they wish for. send the link, see where you fit.</p>
-        <a class="btn_g rv" href="/pact" data_t="k_btn">start your pact</a>
+        <a class="btn_g rv" href="/pact" data_t="k_btn">start pact (free)</a>
       </div>
     </section>
 
@@ -1354,11 +1378,17 @@
   <script>
     const T = {
       en: {
-        h1a: "only",
-        h1b: "you",
-        h1c: "know the answers to your life.",
-        h1s: "but i know the right questions.",
+        h1a: "write",
+        h1b: "your own",
+        h1c: "book.",
+        h1s: "my insights. your answers. one book about your life, 100 to 200 pages, written for you alone.",
         begin: "begin",
+        h_cta: "write your book",
+        h_note: "10 minutes of questions. you have never seen this before.",
+        h_quote: "only you know the answers to your life. i know the right questions.",
+        bk_name: "your name.",
+        bk_sub: "a book about your life",
+        bk_pages: "100–200 pages",
         a_tag: "what this is",
         a_h1: "not a program.",
         a_h2: "a corridor.",
@@ -1542,15 +1572,15 @@
         m_r5l3: "mark in people not things",
         m_r5l4: "from taking to giving",
         m_r5l5: "your life as message",
-        c_tag: "your blueprint",
-        c_h1: "the blueprint",
-        c_h2: "is open.",
-        c_sub: "68 honest questions. one personal 90-day plan, written for your age and your life.",
-        c_btn: "start your blueprint",
+        c_tag: "the book",
+        c_h1: "your book",
+        c_h2: "is waiting.",
+        c_sub: "honest questions, about 10 minutes. then a book about your life, 100 to 200 pages, written for you alone.",
+        c_btn: "write your book",
         k_tag: "pure pact",
         k_h: "the conversation most couples never have.",
         k_sub: "before a relationship, both say what matters, where the boundaries are and what they wish for. send the link, see where you fit.",
-        k_btn: "start your pact",
+        k_btn: "start pact (free)",
         paul_tag: "the man behind the system",
         paul_q: "i became the brother i never had. this is what i would have told myself at 18.",
         paul_p1: "i did not build this system from books. i lived it. healed an incurable autoimmune disease through fasting and cold. rebuilt testosterone through nutrition. lost a fortune and rebuilt it.",
@@ -1558,11 +1588,17 @@
       },
 
       de: {
-        h1a: "nur",
-        h1b: "du",
-        h1c: "kennst die antworten auf dein leben.",
-        h1s: "aber ich kenne die richtigen fragen.",
+        h1a: "schreib",
+        h1b: "dein eigenes",
+        h1c: "buch.",
+        h1s: "meine erkenntnisse. deine antworten. ein buch über dein leben, 100 bis 200 seiten, nur für dich geschrieben.",
         begin: "beginnen",
+        h_cta: "schreib dein buch",
+        h_note: "10 minuten fragen. so etwas hast du noch nie gesehen.",
+        h_quote: "nur du kennst die antworten auf dein leben. ich kenne die richtigen fragen.",
+        bk_name: "dein name.",
+        bk_sub: "ein buch über dein leben",
+        bk_pages: "100–200 seiten",
         a_tag: "was das ist",
         a_h1: "kein programm.",
         a_h2: "ein korridor.",
@@ -1746,15 +1782,15 @@
         m_r5l3: "abdruck in menschen nicht dingen",
         m_r5l4: "vom nehmen zum geben",
         m_r5l5: "dein leben als botschaft",
-        c_tag: "dein blueprint",
-        c_h1: "der blueprint",
-        c_h2: "ist offen.",
-        c_sub: "68 ehrliche fragen. ein persönlicher 90-tage-plan, geschrieben für dein alter und dein leben.",
-        c_btn: "blueprint starten",
+        c_tag: "das buch",
+        c_h1: "dein buch",
+        c_h2: "wartet auf dich.",
+        c_sub: "ehrliche fragen, etwa 10 minuten. dann ein buch über dein leben, 100 bis 200 seiten, nur für dich geschrieben.",
+        c_btn: "schreib dein buch",
         k_tag: "pure pact",
         k_h: "das gespräch, das die meisten paare nie führen.",
         k_sub: "vor einer beziehung sagt jeder, was ihm wichtig ist, wo seine grenzen liegen und was er sich wünscht. link schicken, sehen, wo ihr passt.",
-        k_btn: "deinen pact starten",
+        k_btn: "pact starten (kostenlos)",
         paul_tag: "der mann hinter dem system",
         paul_q: "ich wurde der bruder, den ich nie hatte. das ist was ich mir mit 18 gesagt hätte.",
         paul_p1: "ich habe dieses system nicht aus büchern gebaut. ich habe es gelebt. eine unheilbare autoimmunerkrankung durch fasten und kälte geheilt. testosteron wieder aufgebaut. ein vermögen verloren und neu aufgebaut.",
@@ -1762,11 +1798,17 @@
       },
 
       fr: {
-        h1a: "seul",
-        h1b: "toi",
-        h1c: "connais les réponses à ta vie.",
-        h1s: "mais je connais les bonnes questions.",
+        h1a: "écris",
+        h1b: "ton propre",
+        h1c: "livre.",
+        h1s: "mes découvertes. tes réponses. un livre sur ta vie, de 100 à 200 pages, écrit pour toi seul.",
         begin: "commencer",
+        h_cta: "écris ton livre",
+        h_note: "10 minutes de questions. tu n'as jamais vu ça.",
+        h_quote: "toi seul connais les réponses de ta vie. moi, je connais les bonnes questions.",
+        bk_name: "ton nom.",
+        bk_sub: "un livre sur ta vie",
+        bk_pages: "100–200 pages",
         a_tag: "ce que c'est",
         a_h1: "pas un programme.",
         a_h2: "un corridor.",
@@ -1950,15 +1992,15 @@
         m_r5l3: "marque dans les personnes pas dans les choses",
         m_r5l4: "de prendre à donner",
         m_r5l5: "ta vie comme message",
-        c_tag: "ton blueprint",
-        c_h1: "le blueprint",
-        c_h2: "est ouvert.",
-        c_sub: "68 questions honnêtes. un plan personnel de 90 jours, écrit pour ton âge et ta vie.",
-        c_btn: "commencer ton blueprint",
+        c_tag: "le livre",
+        c_h1: "ton livre",
+        c_h2: "t'attend.",
+        c_sub: "des questions honnêtes, environ 10 minutes. puis un livre sur ta vie, de 100 à 200 pages, écrit pour toi seul.",
+        c_btn: "écris ton livre",
         k_tag: "pure pact",
         k_h: "la conversation que la plupart des couples n'ont jamais.",
         k_sub: "avant une relation, chacun dit ce qui compte, où sont ses limites et ce qu'il souhaite. envoie le lien, voyez où vous vous accordez.",
-        k_btn: "commencer ton pact",
+        k_btn: "commencer pact (gratuit)",
         paul_tag: "l'homme derrière le système",
         paul_q: "je suis devenu le frère que je n'ai jamais eu. c'est ce que j'aurais dit à moi même à 18 ans.",
         paul_p1: "je n'ai pas construit ce système à partir de livres. je l'ai vécu. j'ai guéri une maladie auto immune incurable par le jeûne et le froid. j'ai reconstruit ma testostérone par la nutrition. j'ai perdu une fortune et je l'ai reconstruite.",
@@ -1966,11 +2008,17 @@
       },
 
       es: {
-        h1a: "solo",
-        h1b: "tú",
-        h1c: "conoces las respuestas a tu vida.",
-        h1s: "pero yo conozco las preguntas correctas.",
+        h1a: "escribe",
+        h1b: "tu propio",
+        h1c: "libro.",
+        h1s: "mis descubrimientos. tus respuestas. un libro sobre tu vida, de 100 a 200 páginas, escrito solo para ti.",
         begin: "comenzar",
+        h_cta: "escribe tu libro",
+        h_note: "10 minutos de preguntas. nunca has visto algo así.",
+        h_quote: "solo tú conoces las respuestas de tu vida. yo conozco las preguntas correctas.",
+        bk_name: "tu nombre.",
+        bk_sub: "un libro sobre tu vida",
+        bk_pages: "100–200 páginas",
         a_tag: "qué es esto",
         a_h1: "no un programa.",
         a_h2: "un corredor.",
@@ -2154,15 +2202,15 @@
         m_r5l3: "huella en personas no en cosas",
         m_r5l4: "de tomar a dar",
         m_r5l5: "tu vida como mensaje",
-        c_tag: "tu blueprint",
-        c_h1: "el blueprint",
-        c_h2: "está abierto.",
-        c_sub: "68 preguntas honestas. un plan personal de 90 días, escrito para tu edad y tu vida.",
-        c_btn: "empezar tu blueprint",
+        c_tag: "el libro",
+        c_h1: "tu libro",
+        c_h2: "te espera.",
+        c_sub: "preguntas sinceras, unos 10 minutos. luego un libro sobre tu vida, de 100 a 200 páginas, escrito solo para ti.",
+        c_btn: "escribe tu libro",
         k_tag: "pure pact",
         k_h: "la conversación que la mayoría de las parejas nunca tiene.",
         k_sub: "antes de una relación, cada uno dice lo que le importa, dónde están sus límites y lo que desea. envía el enlace y mirad dónde encajáis.",
-        k_btn: "empezar tu pact",
+        k_btn: "empezar pact (gratis)",
         paul_tag: "el hombre detrás del sistema",
         paul_q: "me convertí en el hermano que nunca tuve. esto es lo que me habría dicho a los 18.",
         paul_p1: "no construí este sistema desde libros. lo viví. sané una enfermedad autoinmune incurable con ayuno y frío. reconstruí la testosterona con nutrición. perdí una fortuna y la reconstruí.",
@@ -2170,11 +2218,17 @@
       },
 
       ar: {
-        h1a: "فقط",
-        h1b: "أنت",
-        h1c: "تعرف إجابات حياتك.",
-        h1s: "لكنني أعرف الأسئلة الصحيحة.",
+        h1a: "اكتب",
+        h1b: "كتابك",
+        h1c: "الخاص.",
+        h1s: "خلاصاتي. إجاباتك. كتاب عن حياتك، من 100 إلى 200 صفحة، مكتوب لك وحدك.",
         begin: "ابدأ",
+        h_cta: "اكتب كتابك",
+        h_note: "10 دقائق من الأسئلة. لم ترَ شيئًا كهذا من قبل.",
+        h_quote: "أنت وحدك تعرف أجوبة حياتك. وأنا أعرف الأسئلة الصحيحة.",
+        bk_name: "اسمك.",
+        bk_sub: "كتاب عن حياتك",
+        bk_pages: "100–200 صفحة",
         a_tag: "ما هذا",
         a_h1: "ليس برنامجاً.",
         a_h2: "إنه ممر.",
@@ -2358,15 +2412,15 @@
         m_r5l3: "الأثر في الناس لا الأشياء",
         m_r5l4: "من الأخذ إلى العطاء",
         m_r5l5: "حياتك كرسالة",
-        c_tag: "مخططك",
-        c_h1: "المخطط",
-        c_h2: "مفتوح الآن.",
-        c_sub: "68 سؤالًا صادقًا. خطة شخصية لمدة 90 يومًا، مكتوبة لعمرك وحياتك.",
-        c_btn: "ابدأ مخططك",
+        c_tag: "الكتاب",
+        c_h1: "كتابك",
+        c_h2: "ينتظرك.",
+        c_sub: "أسئلة صادقة، نحو 10 دقائق. ثم كتاب عن حياتك، من 100 إلى 200 صفحة، مكتوب لك وحدك.",
+        c_btn: "اكتب كتابك",
         k_tag: "pure pact",
         k_h: "الحديث الذي لا يخوضه معظم الأزواج أبدًا.",
         k_sub: "قبل العلاقة، يقول كل منكما ما يهمه وأين حدوده وما يتمناه. أرسل الرابط وانظرا أين تتوافقان.",
-        k_btn: "ابدأ ميثاقك",
+        k_btn: "ابدأ pact (مجانًا)",
         paul_tag: "الرجل وراء النظام",
         paul_q: "أصبحت الأخ الذي لم يكن لديّ قط. هذا ما كنت سأقوله لنفسي في سن 18.",
         paul_p1: "لم أبن هذا النظام من الكتب. لقد عشته. شفيت مرضاً مناعياً ذاتياً غير قابل للشفاء بالصيام والبرد. أعدت بناء التستوستيرون عبر التغذية. خسرت ثروة ثم بنيتها من جديد.",
@@ -2374,11 +2428,17 @@
       },
 
       ru: {
-        h1a: "только",
-        h1b: "ты",
-        h1c: "знаешь ответы на свою жизнь.",
-        h1s: "но я знаю правильные вопросы.",
+        h1a: "напиши",
+        h1b: "свою собственную",
+        h1c: "книгу.",
+        h1s: "мои открытия. твои ответы. книга о твоей жизни, от 100 до 200 страниц, написанная только для тебя.",
         begin: "начать",
+        h_cta: "напиши свою книгу",
+        h_note: "10 минут вопросов. такого ты ещё не видел.",
+        h_quote: "только ты знаешь ответы о своей жизни. я знаю правильные вопросы.",
+        bk_name: "твоё имя.",
+        bk_sub: "книга о твоей жизни",
+        bk_pages: "100–200 страниц",
         a_tag: "что это такое",
         a_h1: "не программа.",
         a_h2: "коридор.",
@@ -2562,15 +2622,15 @@
         m_r5l3: "след в людях, не в вещах",
         m_r5l4: "от брать к давать",
         m_r5l5: "твоя жизнь как послание",
-        c_tag: "твой blueprint",
-        c_h1: "blueprint",
-        c_h2: "открыт.",
-        c_sub: "68 честных вопросов. личный план на 90 дней, написанный под твой возраст и твою жизнь.",
-        c_btn: "начать blueprint",
+        c_tag: "книга",
+        c_h1: "твоя книга",
+        c_h2: "ждёт тебя.",
+        c_sub: "честные вопросы, около 10 минут. потом книга о твоей жизни, от 100 до 200 страниц, написанная только для тебя.",
+        c_btn: "напиши свою книгу",
         k_tag: "pure pact",
         k_h: "разговор, который большинство пар так и не заводит.",
         k_sub: "перед отношениями каждый говорит, что ему важно, где его границы и чего он хочет. отправь ссылку и посмотрите, где вы совпадаете.",
-        k_btn: "начать свой pact",
+        k_btn: "начать pact (бесплатно)",
         paul_tag: "мужчина за системой",
         paul_q: "я стал тем братом, которого у меня никогда не было. именно это я сказал бы себе в 18.",
         paul_p1: "я не построил эту систему из книг. я прожил её. я вылечил неизлечимую аутоиммунную болезнь через голодание и холод. я восстановил тестостерон через питание. я потерял состояние и построил его заново.",
