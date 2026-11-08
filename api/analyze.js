@@ -21,7 +21,7 @@ const PILLAR_LEVELS = {
   R: ["r0", "r1", "r2", "r3", "r4", "r5"],
   E: ["e1", "e2", "ef", "e5"],
 };
-const GOALS = { ons: "one-night stands", open: "an open relationship", family: "married, with children", biglove: "the great love", unsure: "he does not know yet" };
+const GOALS = { ons: "one-night stands", open: "an open relationship", family: "married, with children", biglove: "the great love", unsure: "does not know yet" };
 
 const AnthropicClient = Anthropic.default || Anthropic;
 let client;
@@ -132,15 +132,17 @@ function lifeStage(age) {
   return "66+: preserving. balance, fall prevention, muscle and bone, walking, social connection, purpose, passing on what he knows. intensity always gentle.";
 }
 
-function safetyRules(s) {
+function safetyRules(s, woman) {
   const rules = [];
+  if (s.pregnant) rules.push("she is pregnant or breastfeeding. everything stays gentle and is cleared with her doctor or midwife first: no breath holds and no fast breathing at all, no cold beyond a cool end to a warm shower, no fasting or skipped meals, no new hard training. say this once, warmly.");
   if (s.crisis) rules.push("he says he is in a crisis. open the greeting by telling him plainly to talk to a person today: a doctor, someone he trusts, or a crisis line (germany: telefonseelsorge 0800 111 0 111 or 0800 111 0 222, free, day and night; elsewhere the local crisis line or emergency number). keep the whole blueprint gentle, small and stabilising: sleep, light, walking, one person to talk to. no cold, no fasting, no breath holds, no hard challenges.");
   else if (s.heavy) rules.push("most days are a struggle for him. be warm. keep the first 30 days small and steady, and name talking to a doctor or therapist as a strength, once, without drama.");
   if (s.noBreathHolds) rules.push("no hyperventilation, no wim hof rounds, no breath retention of any kind. only slow nasal breathing, long exhales, box breathing without holds beyond 4 seconds.");
   if (s.coldOnlyGentle) rules.push("cold only gentle: end a warm shower with 15 to 30 seconds of cool water, build slowly, never ice baths or open water, never alone, and only after his doctor agrees.");
   if (s.noFasting) rules.push("no fasting, no eating windows, no skipped meals. food advice is about regular, real, unprocessed meals.");
   if (s.noFoodRules) rules.push("he has or had an eating disorder: no rules about amounts, calories, weight or restriction at all. food only as regular meals and eating with others.");
-  if (s.sexualDoctorCheck) rules.push("his erections or his desire are weak. tell him once, plainly and without alarm, in the p0 part: weak morning erections or desire can be an early sign of problems with blood vessels, blood sugar or hormones, so a doctor should check blood pressure, blood sugar, blood fats and testosterone. it is a check, not a diagnosis.");
+  if (s.sexualDoctorCheck && woman) rules.push("her desire is almost gone. tell her once, plainly and without alarm, in the p0 part: a doctor can check hormones, thyroid, iron and her contraception as possible causes. it is a check, not a diagnosis.");
+  else if (s.sexualDoctorCheck) rules.push("his erections or his desire are weak. tell him once, plainly and without alarm, in the p0 part: weak morning erections or desire can be an early sign of problems with blood vessels, blood sugar or hormones, so a doctor should check blood pressure, blood sugar, blood fats and testosterone. it is a check, not a diagnosis.");
   if (s.doctorFirst) rules.push("before anything physically demanding, tell him once and clearly to check the plan with his doctor. do not repeat it in every section.");
   return rules.length ? rules.map((r) => `- ${r}`).join("\n") : "- no restrictions from the health check.";
 }
@@ -150,7 +152,7 @@ function buildSystem(knowledgeText) {
     {
       type: "text",
       // stable across requests so it stays cached: no dates, no user data, no language
-      text: `you are paul brinkmann, founder of the pure method. you write one man's personal 90-day blueprint from his answers to the pure questionnaire. the page prints it as a small book he reads on his phone or saves as a pdf.
+      text: `you are paul brinkmann, founder of the pure method. you write one person's personal book from their answers to the pure questionnaire. the page prints it as a book they read on the phone or save as a pdf. most readers are men, and the rules below say "he"; the brief says whether this reader is a man or a woman, and for a woman every rule applies to her, with the section "for a woman" on top.
 
 the pure method
 - pure is built like a house: four pillars, five points each, and a roof above them. P physical control (foundation: sexual control; sleep, movement, food, breath, temperature). U understanding the mind (foundation: awareness; impulses, dopamine, attention, identity, emotional regulation; the mind is not the brain). R responsibility (foundation: self accountability; self responsibility, principles, relationship leadership, trust, legacy). E ego (how to kill the ego without drugs, what the ego is, the curve from fuck around to find out to create, and the end boss: something greater than you).
@@ -180,6 +182,17 @@ no homework
 relationships and women
 - respect what he wants with women. paul's stance: long term only one thing counts, family and children are the most important. on the way to the right woman encounters happen. say this once, plainly, where it fits his goal, without moralising and without shaming him.
 
+for a woman
+- she chose "a woman". write to her as a woman, with the feminine grammar of her language wherever the language has it (french, spanish, arabic, russian and others).
+- paul built pure for men. for her, keep the method, its four pillars and the core rule, and translate every level to a woman's body and life. never give her male-only protocols: no ejaculation control, no morning erections, no testosterone targets, nothing about being a man.
+- p0 sexual control for her: where her sexual energy and attention go (porn and quick release work on her dopamine the same way), awareness of her body, pelvic floor training (it supports continence and sexual function in women), her desire, and what she allows in intimacy.
+- her cycle changes her energy, sleep and appetite across the month. invite her to notice her own pattern and plan around it. never present cycle-phase training or eating as proven.
+- strength training protects her muscles and bones for life. she starts with the ladder like everyone.
+- fasting stays gentle for her: long or hard fasting can disturb a woman's cycle. none when her cycle is irregular, when she is pregnant or breastfeeding, or with any eating disorder history.
+- relationships: respect what she wants with men. paul's stance, family and children matter most in the long run, is said once where it fits her goal, never as pressure. relationship leadership for her means how she leads herself in a relationship: her boundaries, what she expects from a man, how she stays calm and clear.
+- ego and comparison for her often run through looks, body, social media and other women's lives.
+- the older brother voice stays: warm, honest, direct, never condescending.
+
 hard rules
 - the safety rules in his brief override everything in the knowledge. follow them exactly and do not mention the rules themselves.
 - you are not a doctor. never diagnose, never promise to heal or cure anything, never tell him to stop or change medication.
@@ -196,7 +209,7 @@ evidence
 - say "linked to" for observational findings. never promise a result in a number of days.
 
 the book
-he receives a real book, 100 to 200 pages: his personal chapters and, after each of his levels, the method chapter on that level. you write one part of it per request, as the request names. write like a good non-fiction author who knows him: concrete, vivid, specific to his life, his age, his work, his day, his words. no filler, no repetition between sections, no generic advice that would fit any man. vary sentence length. every paragraph earns its place.
+he receives a real book, 200 to 300 pages: his personal chapters and, after each of his levels, the method chapter on that level. you write one part of it per request, as the request names. write like a good non-fiction author who knows him: concrete, vivid, specific to his life, his age, his work, his day, his words. no filler, no repetition between sections, no generic advice that would fit any man. vary sentence length. every paragraph earns its place.
 
 the pure method knowledge, your source for every protocol (scale it down to the core rule above):
 ${knowledgeText}`,
@@ -224,15 +237,18 @@ function buildBrief(a, lang) {
   const words = [a.goal && `what he wants in the next 90 days:\n${a.goal}`, a.story && `his life, what stopped him, what he wanted to say:\n${a.story}`].filter(Boolean).join("\n\n");
   const goals = (a.relationship_goal || []).map((g) => GOALS[g]).join(", ");
   const spots = Q.blindspots(a);
+  const woman = a.gender === "f";
   return `write in ${LANG_NAMES[lang]}.
+
+reader: ${woman ? "a woman. wherever this brief or the notes on her answers say he, him or his, read she and her. follow the section \"for a woman\"." : "a man."}
 
 name: ${a.name || "(no name given, do not invent one)"}
 age: ${a.age}
 life stage: ${lifeStage(a.age)}
-what he wants with women: ${goals || "not answered"}
+${woman ? "what she wants with men" : "what he wants with women"}: ${goals || "not answered"}
 
 safety rules for him:
-${safetyRules(Q.safety(a))}
+${safetyRules(Q.safety(a), a.gender === "f")}
 
 scores, 0 solid to 100 needs the most work, highest first (his own answers, weighted with his habits):
 ${ranked.join("\n") || "no pillar questions answered"}
@@ -302,10 +318,13 @@ const PILLAR_SCHEMA = {
       items: {
         type: "object",
         additionalProperties: false,
-        required: ["level", "title", "reading", "why", "start", "protocol", "obstacles", "signs"],
+        required: ["level", "title", "reading", "why", "deeper", "method", "start", "protocol", "obstacles", "signs", "scene"],
         properties: {
           level: { type: "string", enum: Q.order },
           title: STR,
+          deeper: STR,
+          method: STR,
+          scene: STR,
           reading: STR,
           why: STR,
           start: STR,
@@ -320,13 +339,13 @@ const PILLAR_SCHEMA = {
 };
 
 const CORE_TASK = `write the frame of his book: everything except the pillar chapters, which are written separately. every field is required and must be filled; only safety may be empty.
-- intro: a personal letter that opens the book, 250 to 400 words. what these 90 days are about for him, why now, what the book will do. no greeting formula like "dear", no "this blueprint is built from your answers". the page already prints the opening line, the three sources and his map.
-- insight: what you see in him, 350 to 500 words, in three to five paragraphs separated by blank lines. the pattern behind his answers and his words, his real strength, the one thing in his way, and how his levels pull on each other (for example how sleep feeds his impulses, or how his ego blocks his relationship).
-- blindspots: two to four, from his blind spots and patterns you see. title = a short sentence. text = 80 to 140 words: what he does not see yet, why it matters, the first thing to notice. if there are none in the brief, find the two most important patterns he is likely underrating.
+- intro: a personal letter that opens the book, 350 to 550 words. what these 90 days are about for him, why now, what the book will do. no greeting formula like "dear", no "this blueprint is built from your answers". the page already prints the opening line, the three sources and his map.
+- insight: what you see in him, 600 to 900 words, in four to six paragraphs separated by blank lines. the pattern behind his answers and his words, his real strength, the one thing in his way, and how his levels pull on each other (for example how sleep feeds his impulses, or how his ego blocks his relationship).
+- blindspots: three to five, from his blind spots and patterns you see. title = a short sentence. text = 150 to 250 words: what he does not see yet, why it matters, the first thing to notice. if there are none in the brief, find the three most important patterns he is likely underrating.
 - priorities: exactly three levels, most important first. foundations (p0, u0, r0) carry their pillars. his own goal and the highest needs decide. title = a short title. why = three to four sentences. start = the tiny first step, one sentence. growth = week1, week2, weeks34, month2, month3, one or two sentences each, each a small step up.
 - ladder: exercise = his ladder, two or three sentences, scaled to him, with the 1-minute rests. note = two sentences on how it grows over the 90 days.
 - non_negotiables: seven short rules for the 90 days.
-- message: the closing letter from paul, 200 to 300 words, personal, about who he is becoming and what waits after the 90 days. it closes the book, so write it as the last words he reads.
+- message: the closing letter from paul, 300 to 450 words, personal, about who he is becoming and what waits after the 90 days. it closes the book, so write it as the last words he reads.
 - weeks: exactly 13, week 1 to 13. focus = one line. actions = three to five short, concrete items, building on the week before, mixing his three priorities with the rest of his levels as they come in. check = one question he answers honestly at the end of the week, in his head or out loud.
 - daily: morning, day, evening for a working day and free_day for a day off, four to six short actions each, with times that fit his wake time and work. small at first.
 - safety: what he must watch out for given his health check, two to five sentences, or an empty string if nothing applies.
@@ -339,26 +358,31 @@ const PILLAR_INFO = {
   E: "E ego: e1 killing the ego without drugs, e2 what the ego is, ef fuck around, find out, create, e5 something greater than you (the end boss)",
 };
 
-// each pillar is written in two halves at once, so no single request runs too long
-const HALVES = { P: [["p0", "p1", "p2"], ["p3", "p4", "p5"]], U: [["u0", "u1", "u2"], ["u3", "u4", "u5"]], R: [["r0", "r1", "r2"], ["r3", "r4", "r5"]], E: [["e1", "e2"], ["ef", "e5"]] };
+// every level is its own request, all at once: each one goes deep and none runs too long
+const PARTS = { P: [["p0"], ["p1"], ["p2"], ["p3"], ["p4"], ["p5"]], U: [["u0"], ["u1"], ["u2"], ["u3"], ["u4"], ["u5"]], R: [["r0"], ["r1"], ["r2"], ["r3"], ["r4"], ["r5"]], E: [["e1"], ["e2"], ["ef"], ["e5"]] };
 
-function pillarTask(letter, scores, half) {
-  const mine = HALVES[letter][half];
+function pillarTask(letter, scores, part, woman) {
+  const mine = PARTS[letter][part];
+  const last = PARTS[letter].length - 1;
   const levels = mine.map((l) => `${l} (score ${scores[l] ?? "not answered"})`).join(", ");
-  const other = HALVES[letter][1 - half].join(", ");
-  return `write his personal chapters for one pillar: ${PILLAR_INFO[letter]}.
-this request covers only the levels ${mine.join(", ")}. the levels ${other} are written in a separate request, so do not write about them, though you may refer to them in a sentence.
-the method chapter on each level follows your text in the book, so do not retell the method. apply it to him.
-- intro: ${half === 0 ? "150 to 250 words. what this pillar means for him, where he stands in it as a whole, and how it connects to his goal." : "an empty string."}
-- levels: exactly these, in this order: ${levels}. for each:
+  const other = PARTS[letter].filter((_, i) => i !== part).flat().join(", ");
+  return `write his personal chapter for one level of one pillar: ${PILLAR_INFO[letter]}.
+this request covers only the level ${mine.join(", ")}. the levels ${other} are written in separate requests, so do not write about them, though you may refer to them in a sentence.
+this is a book that should change his life. go deep: every point of this level gets light, from the mechanism in his body and mind to his day, his relationships and his work. depth means more substance, never more words around the same thought.
+${woman ? "the book's method chapters are written for men, so her book has none. you write the method on this level for her, in the field method." : "the method chapter on this level follows your text in the book, so do not retell the method. apply it to him."}
+- intro: ${part === 0 ? "250 to 400 words. what this pillar means for him, where he stands in it as a whole, and how it connects to his goal." : "an empty string."}
+- levels: exactly this one: ${levels}, with:
   - title: a short title for his chapter on this level.
-  - reading: where he stands, 150 to 250 words, two paragraphs separated by a blank line. concrete to his life. a solid level (score under 35) gets a shorter reading on what to protect and how to use it as a strength for his weak levels.
-  - why: why this level matters for him now, 80 to 150 words, linked to his goal and his other levels.
+  - reading: where he stands, 400 to 600 words, three or four paragraphs separated by blank lines. concrete to his life. a solid level (score under 35) gets 200 to 300 words on what to protect and how to use it as a strength for his weak levels.
+  - why: why this level matters for him now, 150 to 250 words, linked to his goal and his other levels.
+  - deeper: how it works, 250 to 400 words, two or three paragraphs separated by blank lines: the mechanism behind this level in his body, brain or life, from the knowledge, explained so he understands why the steps work. plain words, no jargon without explaining it.
+  - method: ${woman ? "the pure method on this level for a woman, 400 to 600 words, three or four paragraphs separated by blank lines: what this level is, why it works and how she trains it. from the knowledge, only what fits a woman's body and life, following the section \"for a woman\". general, not about her answers." : "an empty string."}
   - start: the tiny first step, one sentence, almost silly.
-  - protocol: week1, week2, weeks34, month2, month3, one or two sentences each, each a small step up from the last. respect his safety rules.
-  - obstacles: two or three moments when he will want to quit (when) and what he does then (answer, one or two sentences).
-  - signs: three signs of progress he will notice in his body, his mind or his life.
-- closing: ${half === 1 ? "60 to 120 words that close this pillar for him." : "an empty string."}`;
+  - protocol: week1, week2, weeks34, month2, month3, two or three sentences each, each a small step up from the last. respect his safety rules.
+  - obstacles: three or four moments when he will want to quit (when) and what he does then (answer, two or three sentences).
+  - signs: four or five signs of progress he will notice in his body, his mind or his life.
+  - scene: 150 to 250 words, one ordinary day of his after the 90 days, seen through this level: what he does, what he feels, what has changed. second person, present tense, concrete.
+- closing: ${part === last ? "100 to 200 words that close this pillar for him." : "an empty string."}`;
 }
 
 // the schema cannot say "three priorities" or "levels of this pillar only", so the answer is tidied here
@@ -367,15 +391,16 @@ function tidyCore(b) {
   b.weeks = (b.weeks || []).slice(0, 13);
   return b;
 }
-function tidyPillar(letter, halves) {
+function tidyPillar(letter, parts) {
   const seen = new Set();
-  const [first, second] = halves;
-  const levels = [...((first && first.levels) || []), ...((second && second.levels) || [])];
+  const first = parts[0];
+  const last = parts[parts.length - 1];
+  const levels = parts.flatMap((p) => (p && p.levels) || []);
   return {
     pillar: letter,
     intro: (first && first.intro) || "",
     levels: levels.filter((l) => PILLAR_LEVELS[letter].includes(l.level) && !seen.has(l.level) && seen.add(l.level)),
-    closing: (second && second.closing) || "",
+    closing: (last && last.closing) || "",
   };
 }
 
@@ -413,12 +438,12 @@ function coreGaps(b) {
   if ((b.weeks || []).length < 13) gaps.push("weeks");
   return gaps;
 }
-function halfGaps(b, letter, half) {
-  const want = HALVES[letter][half];
+function partGaps(b, letter, part) {
+  const want = PARTS[letter][part];
   const got = (b.levels || []).filter((l) => want.includes(l.level) && filled(l.reading) && filled(l.start));
   const gaps = got.length < want.length ? ["levels"] : [];
-  if (half === 0 && !filled(b.intro)) gaps.push("intro");
-  if (half === 1 && !filled(b.closing)) gaps.push("closing");
+  if (part === 0 && !filled(b.intro)) gaps.push("intro");
+  if (part === PARTS[letter].length - 1 && !filled(b.closing)) gaps.push("closing");
   return gaps;
 }
 async function writeComplete(brief, task, schema, gapsOf, t0, started) {
@@ -430,12 +455,13 @@ async function writeComplete(brief, task, schema, gapsOf, t0, started) {
   return second && gapsOf(second).length < gaps.length ? second : first;
 }
 
-// the frame and two halves per pillar, all in parallel. the frame must succeed; a half that fails
+// the frame and one part per level, all in parallel. the frame must succeed; a part that fails
 // leaves those levels with their method chapters only. a man in crisis gets the frame only: short and steady.
 async function writeBlueprint(answers, lang) {
   const brief = buildBrief(answers, lang);
   const scores = Q.score(answers);
   const crisis = Q.safety(answers).crisis;
+  const woman = answers.gender === "f";
   const letters = crisis ? [] : ["P", "U", "R", "E"];
   let ready;
   const cached = new Promise((resolve) => { ready = resolve; setTimeout(resolve, 15000); });
@@ -443,14 +469,16 @@ async function writeBlueprint(answers, lang) {
   const core = writeComplete(brief, CORE_TASK, CORE_SCHEMA, coreGaps, t0, ready);
   core.catch(() => {}); // awaited below; this only keeps an early failure from counting as unhandled
   await cached;
-  const halves = await Promise.allSettled(letters.flatMap((l) => [0, 1].map((h) => writeComplete(brief, pillarTask(l, scores, h), PILLAR_SCHEMA, (b) => halfGaps(b, l, h), t0))));
+  const jobs = letters.flatMap((l) => PARTS[l].map((_, i) => ({ l, i })));
+  const results = await Promise.allSettled(jobs.map(({ l, i }) => writeComplete(brief, pillarTask(l, scores, i, woman), PILLAR_SCHEMA, (b) => partGaps(b, l, i), t0)));
   const book = tidyCore(await core);
   book.version = 2;
+  book.woman = woman;
   book.pillars = letters
-    .map((l, i) => {
-      const parts = [halves[2 * i], halves[2 * i + 1]].map((r) => {
+    .map((l) => {
+      const parts = jobs.map((j, k) => ({ j, r: results[k] })).filter(({ j }) => j.l === l).map(({ j, r }) => {
         if (r.status === "fulfilled") return r.value;
-        console.error("pillar half failed", l, r.reason && r.reason.message);
+        console.error("pillar part failed", l, j.i, r.reason && r.reason.message);
         return null;
       });
       return parts.some(Boolean) ? tidyPillar(l, parts) : null;
