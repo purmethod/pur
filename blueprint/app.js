@@ -176,7 +176,9 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     clear() { try { localStorage.removeItem(KEY); } catch { /* ignore */ } },
   };
 
-  const N = Q.sections.length;
+  // a woman gets one more step ("your femininity"): sections can be marked "for" one of them
+  let SECS = Q.sections;
+  let N = SECS.length;
   // steps: -1 intro, 0..N-1 sections, N review, N+1 writing, N+2 book; "between" shows the motivation card after step n
   const saved = store.load();
   const st = {
@@ -195,6 +197,8 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     paid: saved.paid || null, // the stripe checkout session that pays for this book
     price: null, // { amount, currency } for this visitor's country, null when the book is free (previews)
   };
+  const syncSections = () => { const g = st.answers.gender === "f" ? "f" : "m"; SECS = Q.sections.filter((s) => !s.for || s.for === g); N = SECS.length; };
+  syncSections();
 
   function pickLang() {
     const want = (navigator.language || "en").slice(0, 2);
@@ -319,7 +323,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     app.replaceChildren();
     if (st.between != null) return renderBetween(st.between);
     if (s < 0) return renderIntro();
-    if (s < N) return renderSection(Q.sections[s], s);
+    if (s < N) return renderSection(SECS[s], s);
     if (s === N) return renderReview();
     if (s === N + 1) return renderLoading();
     return renderBook();
@@ -329,14 +333,17 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
 
   function renderIntro() {
     const x = t();
-    const qCount = Q.items.length;
+    // the numbers for who answers; before the choice the longer one (hers), so nobody gets more than promised
+    const g = st.answers.gender === "m" ? "m" : "f";
+    const qCount = Q.items.filter((it) => !(it.showIf && it.showIf.gender) || it.showIf.gender.includes(g)).length;
+    const sCount = Q.sections.filter((s) => !s.for || s.for === g).length;
     add(app,
       el("p", { class: "tag" }, x.tag),
       el("h1", {}, x.h1a + " ", el("em", {}, x.h1b)),
       el("p", { class: "lead" }, x.lead),
       el("p", { class: "test-line" }, L(C.intro_test)),
       el("div", { class: "meta" },
-        el("span", { html: fill(x.meta1, { q: qCount, s: N }) }), el("span", { html: x.meta2 }), el("span", { html: x.meta3 })),
+        el("span", { html: fill(x.meta1, { q: qCount, s: sCount }) }), el("span", { html: x.meta2 }), el("span", { html: x.meta3 })),
     );
     const actions = el("div", { class: "actions" });
     if (st.open === false) {
@@ -504,6 +511,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
           set(list);
         } else set(o.v);
         // answers that change later questions or show a note need a redraw; the rest only update the buttons
+        if (it.id === "gender") syncSections();
         if (["gender", "relationship", "inner"].includes(it.id) || it.type === "multi") { const y = window.scrollY; render(); window.scrollTo(0, y); }
         else group.querySelectorAll(".opt").forEach((btn, i) => btn.setAttribute("aria-checked", String(options[i].v === o.v)));
       });
@@ -634,7 +642,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     // the same rules the server applies
     const check = Q.validate(st.answers);
     if (!check.ok) {
-      const first = Q.sections.findIndex((s) => check.errors.some((id) => Q.byId[id].section === s.id));
+      const first = SECS.findIndex((s) => check.errors.some((id) => Q.byId[id].section === s.id));
       st.step = Math.max(0, first); st.softMissing = true; persist(); render(); return;
     }
     go(N + 1);
@@ -723,7 +731,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       el("h1", {}, name ? name + "." : x.h1a + " " + x.h1b),
       el("p", { class: "cover-line" }, B("cover_line")),
       el("p", { class: "cover-meta" }, (st.created || "") + " · " + B("made_for", { name: name || "" }).trim()),
-      el("p", { class: "cover-sign" }, "paul brinkmann · " + L(C.ui.founder))));
+    ));
 
     // opening letter, the three sources and his map
     add(book, el("section", { class: "part page" },
@@ -735,7 +743,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
 
     // contents
     const pillarsIn = PILLARS.filter((P) => (b.pillars || []).some((p) => p.pillar === P.letter));
-    const toc = [["pt-insight", B("insight_title")], ["pt-prio", B("priorities")], ["pt-ladder", B("ladder_title")],
+    const toc = [["pt-insight", B("insight_title")], ...(b.feminine ? [["pt-fem", B("feminine_title")]] : []), ["pt-prio", B("priorities")], ["pt-ladder", B("ladder_title")],
       ...pillarsIn.map((P) => ["pt-" + P.letter, P.letter + " · " + pillarName(P.letter)]),
       ["pt-90", B("timeline")], ["pt-day", B("daily")], ["pt-end", B("closing_title")], ["pt-method", B("appendix")]];
     add(book, el("nav", { class: "part page", "aria-label": B("toc") },
@@ -749,6 +757,11 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     if ((b.blindspots || []).length) add(book, el("section", { class: "part" },
       el("p", { class: "tag" }, B("blindspots")),
       el("div", { class: "spots" }, b.blindspots.map((sp) => el("div", { class: "spot" }, el("h3", {}, sp.title), ...paras(sp.text))))));
+
+    // her feminine energy: paul's stance, read through her answers
+    if (b.feminine) add(book, el("section", { class: "part page", id: "pt-fem" },
+      el("p", { class: "tag" }, B("feminine_title")),
+      ...paras(b.feminine)));
 
     // three priorities
     add(book, el("section", { class: "part page", id: "pt-prio" },
@@ -851,7 +864,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     });
 
     add(app, el("div", { class: "actions no-print" },
-      el("button", { class: "ghost", type: "button", onclick: () => { store.clear(); st.answers = {}; st.blueprint = null; st.scores = null; go(-1); } }, x.restart),
+      el("button", { class: "ghost", type: "button", onclick: () => { store.clear(); st.answers = {}; st.blueprint = null; st.scores = null; syncSections(); go(-1); } }, x.restart),
       el("button", { class: "btn", type: "button", onclick: savePdf }, B("save_pdf"))));
   }
 

@@ -141,6 +141,7 @@ function lifeStage(age) {
 
 function safetyRules(s, woman) {
   const rules = [];
+  if (s.cycleCheck) rules.push("her period has stopped without pregnancy or menopause. tell her once, plainly and without alarm, in the p0 part, to see a doctor: it can be a sign of too little energy for her training and stress, or of something else a doctor should check. until then no fasting, enough food and no big jumps in training.");
   if (s.pregnant) rules.push("she is pregnant or breastfeeding. everything stays gentle and is cleared with her doctor or midwife first: no breath holds and no fast breathing at all, no cold beyond a cool end to a warm shower, no fasting or skipped meals, no new hard training. say this once, warmly.");
   if (s.crisis) rules.push("he says he is in a crisis. open the greeting by telling him plainly to talk to a person today: a doctor, someone he trusts, or a crisis line (germany: telefonseelsorge 0800 111 0 111 or 0800 111 0 222, free, day and night; elsewhere the local crisis line or emergency number). keep the whole blueprint gentle, small and stabilising: sleep, light, walking, one person to talk to. no cold, no fasting, no breath holds, no hard challenges.");
   else if (s.heavy) rules.push("most days are a struggle for him. be warm. keep the first 30 days small and steady, and name talking to a doctor or therapist as a strength, once, without drama.");
@@ -191,6 +192,11 @@ relationships and women
 
 for a woman
 - she chose "a woman". write to her as a woman, with the feminine grammar of her language wherever the language has it (french, spanish, arabic, russian and others).
+- paul's stance for her, the thread through her whole book (his conviction in his voice, never presented as a study): society today tries to turn women into men and men into women. paul wants her to shine in her feminine energy again, to be a woman fully, without apology.
+- body first: she puts herself first, not selfishly but physically. she does not neglect her body: food, sleep, movement, breath, all of it. her body is number one; that is the purpose. when she has found that, she gives more love, because she gives from fullness and not from emptiness.
+- femininity is a strength she lives from the inside, not a role she owes anyone. she can work, earn and lead and still be soft; the point is that she no longer lives in permanent fight mode. never tell her to submit, obey, shrink or give up her work, never shame her body, and her looks are never her value.
+- her answers in the step "your femininity" (fem_) read body first and six fields: doing and being, her body as home, receiving, soft and strong, intuition, love from fullness. the file woman/body-first-femininity.txt holds paul's stance and the studies for her; for her body use only studies named in the knowledge.
+- she eats enough. never praise eating less, never suggest calorie or weight targets. a period that stops without pregnancy or menopause is a warning sign, never a success.
 - paul built pure for men. for her, keep the method, its four pillars and the core rule, and translate every level to a woman's body and life. never give her male-only protocols: no ejaculation control, no morning erections, no testosterone targets, nothing about being a man.
 - p0 sexual control for her: where her sexual energy and attention go (porn and quick release work on her dopamine the same way), awareness of her body, pelvic floor training (it supports continence and sexual function in women), her desire, and what she allows in intimacy.
 - her cycle changes her energy, sleep and appetite across the month. invite her to notice her own pattern and plan around it. never present cycle-phase training or eating as proven.
@@ -313,6 +319,11 @@ const CORE_SCHEMA = {
     safety: STR,
   },
 };
+
+// her book adds one chapter, her feminine energy, written as its own part next to the others
+const FEM_SCHEMA = { type: "object", additionalProperties: false, required: ["feminine"], properties: { feminine: STR } };
+const FEM_TASK = `write one chapter of her book: her feminine energy. the frame and the pillar chapters are written separately.
+- feminine: 900 to 1200 words, six to nine paragraphs separated by blank lines. start from body first and the six fields in the knowledge for women (doing and being, her body as home, receiving, soft and strong, intuition, love from fullness) and her answers in the step "your femininity": where she stands, what costs her her softness today, and how putting her body first gives her the strength to love more. close with the one thing she starts with. paul's conviction in his voice, never presented as science.`;
 
 const PILLAR_SCHEMA = {
   type: "object",
@@ -478,10 +489,13 @@ async function writeBlueprint(answers, lang) {
   core.catch(() => {}); // awaited below; this only keeps an early failure from counting as unhandled
   await cached;
   const jobs = letters.flatMap((l) => PARTS[l].map((_, i) => ({ l, i })));
+  const fem = woman && !crisis ? writeComplete(sys, brief, FEM_TASK, FEM_SCHEMA, (b) => (filled(b.feminine) ? [] : ["feminine"]), t0).catch((e) => { console.error("feminine chapter failed", e && e.message); return null; }) : null;
   const results = await Promise.allSettled(jobs.map(({ l, i }) => writeComplete(sys, brief, pillarTask(l, scores, i, woman), PILLAR_SCHEMA, (b) => partGaps(b, l, i), t0)));
   const book = tidyCore(await core);
   book.version = 2;
   book.woman = woman;
+  const femDone = fem && (await fem);
+  if (femDone && femDone.feminine) book.feminine = femDone.feminine;
   book.pillars = letters
     .map((l) => {
       const parts = jobs.map((j, k) => ({ j, r: results[k] })).filter(({ j }) => j.l === l).map(({ j, r }) => {
@@ -497,6 +511,7 @@ async function writeBlueprint(answers, lang) {
 
 // exported for the local test script
 module.exports.buildBrief = buildBrief;
+module.exports.FEM_TASK = FEM_TASK;
 module.exports.CORE_SCHEMA = CORE_SCHEMA;
 module.exports.PILLAR_SCHEMA = PILLAR_SCHEMA;
 module.exports.CORE_TASK = CORE_TASK;

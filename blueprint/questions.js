@@ -188,6 +188,26 @@
    }
   },
   {
+   "id": "fem",
+   "for": "f",
+   "title": {
+    "en": "your femininity",
+    "de": "deine weiblichkeit",
+    "fr": "ta féminité",
+    "es": "tu feminidad",
+    "ar": "أنوثتك",
+    "ru": "твоя женственность"
+   },
+   "intro": {
+    "en": "how you live as a woman today: your body, your softness, your strength. there is no right answer, only yours.",
+    "de": "wie du heute als frau lebst: dein körper, deine weichheit, deine stärke. es gibt keine richtige antwort, nur deine.",
+    "fr": "comment tu vis aujourd'hui en tant que femme : ton corps, ta douceur, ta force. il n'y a pas de bonne réponse, seulement la tienne.",
+    "es": "cómo vives hoy como mujer: tu cuerpo, tu suavidad, tu fuerza. no hay respuesta correcta, solo la tuya.",
+    "ar": "كيف تعيشين اليوم كامرأة: جسدك، رقّتك، قوّتك. لا توجد إجابة صحيحة، فقط إجابتك.",
+    "ru": "как ты живёшь сегодня как женщина: твоё тело, твоя мягкость, твоя сила. правильного ответа нет, есть только твой."
+   }
+  },
+  {
    "id": "values",
    "title": {
     "en": "direction",
@@ -2021,6 +2041,17 @@
       "es": "irregular",
       "ar": "غير منتظمة",
       "ru": "нерегулярный"
+     }
+    },
+    {
+     "v": "absent",
+     "l": {
+      "en": "it has stopped, without pregnancy or menopause",
+      "de": "ausgeblieben, ohne schwangerschaft oder wechseljahre",
+      "fr": "il s'est arrêté, sans grossesse ni ménopause",
+      "es": "se me ha ido, sin embarazo ni menopausia",
+      "ar": "انقطعت من دون حمل أو انقطاع طمث",
+      "ru": "пропал, без беременности и менопаузы"
      }
     },
     {
@@ -4262,6 +4293,538 @@
    }
   },
   {
+   "id": "fem_b1",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": 1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "does your body usually come last, after everyone else is taken care of?",
+    "de": "kommt dein körper bei dir meistens erst dran, wenn alle anderen versorgt sind?",
+    "fr": "est-ce que ton corps passe le plus souvent en dernier, une fois que tout le monde est servi ?",
+    "es": "¿tu cuerpo suele ir al final, cuando ya has atendido a todos los demás?",
+    "ar": "هل يأتي جسدك غالبًا في آخر القائمة، بعد أن تهتمّي بالجميع؟",
+    "ru": "твоё тело обычно на последнем месте, когда обо всех остальных уже позаботились?"
+   },
+   "reads": {
+    "yes": "Her body gets what is left after everyone else: the late meal, the cut-short sleep, the cancelled training. She gives from emptiness, which is why giving costs her so much. Body first is her foundation: not selfish, physical, so that what she gives comes from fullness.",
+    "no": "She already keeps a place for her body in her day instead of serving it last. That is the foundation Paul builds everything on; her work is to protect it under pressure, not to build it."
+   },
+   "traits": [
+    {
+     "trait": "body_connection",
+     "w": -0.6
+    },
+    {
+     "trait": "self_trust",
+     "w": -0.5
+    },
+    {
+     "trait": "stress_regulation",
+     "w": -0.3
+    },
+    {
+     "trait": "feminine_flow",
+     "w": -0.4
+    }
+   ]
+  },
+  {
+   "id": "fem_b2",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": -1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "do you have fixed times just for your body that you keep even when others want something from you?",
+    "de": "hast du feste zeiten nur für deinen körper, die du auch hältst, wenn andere etwas von dir wollen?",
+    "fr": "as-tu des moments fixes rien que pour ton corps, que tu tiens même quand les autres te demandent quelque chose ?",
+    "es": "¿tienes momentos fijos solo para tu cuerpo que mantienes aunque otros te pidan algo?",
+    "ar": "هل لديكِ أوقات ثابتة لجسدك وحده، تحافظين عليها حتى عندما يطلب منكِ الآخرون شيئًا؟",
+    "ru": "есть ли у тебя постоянное время только для твоего тела, которое ты сохраняешь, даже когда другим что-то от тебя нужно?"
+   },
+   "reads": {
+    "yes": "She has made her body a fixed point in her day and defends it, even against requests from people she loves. That is body first lived, not only believed, and it gives her a base of self-trust for every other level.",
+    "no": "Her body has no fixed place in her day; it gets time only when nobody else needs her. Her first step is ten minutes that belong to her body alone, at the same time every day, so small that nobody can take them from her."
+   },
+   "traits": [
+    {
+     "trait": "discipline",
+     "w": 0.6
+    },
+    {
+     "trait": "body_connection",
+     "w": 0.6
+    },
+    {
+     "trait": "self_trust",
+     "w": 0.5
+    }
+   ]
+  },
+  {
+   "id": "fem_1",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": 1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "do you only feel worth something when you achieve something?",
+    "de": "fühlst du dich nur dann wertvoll, wenn du etwas leistest?",
+    "fr": "est-ce que tu ne te sens précieuse que lorsque tu accomplis quelque chose ?",
+    "es": "¿solo te sientes valiosa cuando logras algo?",
+    "ar": "هل تشعرين بقيمتك فقط عندما تُنجزين شيئًا؟",
+    "ru": "ты чувствуешь себя ценной, только когда чего-то добиваешься?"
+   },
+   "reads": {
+    "yes": "Her worth hangs on performance: she has to earn the right to rest, to be loved, to be seen. That keeps her in permanent doing, the mode Paul says society pushes women into. Her lesson is that she is enough before she has done anything.",
+    "no": "Her worth does not depend on what she achieves today, which lets her rest without guilt and receive without paying back. A strong base for her femininity."
+   },
+   "traits": [
+    {
+     "trait": "feminine_flow",
+     "w": -0.8
+    },
+    {
+     "trait": "self_trust",
+     "w": -0.5
+    },
+    {
+     "trait": "stress_regulation",
+     "w": -0.4
+    }
+   ]
+  },
+  {
+   "id": "fem_2",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": -1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "can you spend a whole evening doing nothing without feeling guilty?",
+    "de": "kannst du einen ganzen abend nichts tun, ohne schlechtes gewissen?",
+    "fr": "peux-tu passer toute une soirée à ne rien faire sans culpabiliser ?",
+    "es": "¿puedes pasar una tarde entera sin hacer nada y sin sentir culpa?",
+    "ar": "هل تستطيعين قضاء أمسية كاملة دون أن تفعلي شيئًا، ومن دون شعور بالذنب؟",
+    "ru": "можешь ли ты провести целый вечер, ничего не делая, без чувства вины?"
+   },
+   "reads": {
+    "yes": "She can simply be, without earning it first. Rest is not a reward for her but part of life; that is the ground her feminine energy grows from.",
+    "no": "Doing nothing feels wrong to her, so even her rest becomes a task to complete. Her body never fully switches off; one planned evening of nothing a week is training for her, not laziness."
+   },
+   "traits": [
+    {
+     "trait": "feminine_flow",
+     "w": 0.7
+    },
+    {
+     "trait": "stress_regulation",
+     "w": 0.6
+    }
+   ]
+  },
+  {
+   "id": "fem_3",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": -1,
+   "showIf": {
+    "gender": [
+     "f"
+    ],
+    "cycle": [
+     "regular",
+     "irregular"
+    ]
+   },
+   "q": {
+    "en": "do you notice which phase of your cycle you are in and how it changes your energy?",
+    "de": "merkst du, in welcher phase deines zyklus du gerade bist und wie sie deine energie verändert?",
+    "fr": "sens-tu dans quelle phase de ton cycle tu te trouves et comment elle change ton énergie ?",
+    "es": "¿notas en qué fase de tu ciclo estás y cómo cambia tu energía?",
+    "ar": "هل تلاحظين في أي مرحلة من دورتك أنتِ، وكيف تغيّر طاقتك؟",
+    "ru": "замечаешь ли ты, в какой фазе цикла находишься и как она меняет твою энергию?"
+   },
+   "reads": {
+    "yes": "She reads her body over the month and knows her energy is not the same every week. She can plan with her cycle instead of fighting it.",
+    "no": "Her cycle happens to her rather than with her; she probably expects the same output from herself every day of the month and judges herself when it is not there. Noticing her energy across one cycle is her first step, without rigid rules."
+   },
+   "traits": [
+    {
+     "trait": "body_connection",
+     "w": 0.8
+    },
+    {
+     "trait": "self_awareness",
+     "w": 0.5
+    },
+    {
+     "trait": "feminine_flow",
+     "w": 0.4
+    }
+   ]
+  },
+  {
+   "id": "fem_4",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": 1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "do you treat your body more like a project that has to work than like your home?",
+    "de": "behandelst du deinen körper eher wie ein projekt, das funktionieren muss, als wie dein zuhause?",
+    "fr": "traites-tu ton corps plutôt comme un projet qui doit fonctionner que comme ta maison ?",
+    "es": "¿tratas tu cuerpo más como un proyecto que tiene que funcionar que como tu hogar?",
+    "ar": "هل تعاملين جسدك كمشروع يجب أن يعمل أكثر من كونه بيتك؟",
+    "ru": "ты относишься к своему телу скорее как к проекту, который должен работать, чем как к своему дому?"
+   },
+   "reads": {
+    "yes": "Her body is a project: something to fix, shape and push, not a place she lives in. That turns food, training and rest into tasks and judgement and cuts her off from her body's signals. Body first for her means coming home, not optimising.",
+    "no": "She lives in her body rather than managing it. She can feel its signals and treat it with care, the natural base for body first."
+   },
+   "traits": [
+    {
+     "trait": "body_connection",
+     "w": -0.8
+    },
+    {
+     "trait": "feminine_flow",
+     "w": -0.6
+    },
+    {
+     "trait": "ego_freedom",
+     "w": -0.3
+    }
+   ]
+  },
+  {
+   "id": "fem_5",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": 1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "do you find it hard to simply accept help or a compliment?",
+    "de": "fällt es dir schwer, hilfe oder ein kompliment einfach anzunehmen?",
+    "fr": "as-tu du mal à accepter simplement de l'aide ou un compliment ?",
+    "es": "¿te cuesta aceptar sin más una ayuda o un cumplido?",
+    "ar": "هل يصعب عليكِ أن تقبلي مساعدة أو مجاملة ببساطة؟",
+    "ru": "тебе трудно просто принять помощь или комплимент?"
+   },
+   "reads": {
+    "yes": "She can give but hardly receive: help feels like a debt, a compliment like something to correct. A woman who can only give runs empty. Her practice is a plain 'thank you', with nothing after it.",
+    "no": "She can let things in: help, care, a compliment. That openness is a core of her femininity and keeps her from burning out on giving."
+   },
+   "traits": [
+    {
+     "trait": "feminine_flow",
+     "w": -0.7
+    },
+    {
+     "trait": "openness",
+     "w": -0.4
+    },
+    {
+     "trait": "connection",
+     "w": -0.3
+    }
+   ]
+  },
+  {
+   "id": "fem_6",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": -1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "can you let someone you trust take the lead sometimes?",
+    "de": "kannst du einem menschen, dem du vertraust, auch mal die führung überlassen?",
+    "fr": "peux-tu parfois laisser quelqu'un en qui tu as confiance prendre les choses en main ?",
+    "es": "¿puedes a veces dejar que alguien en quien confías tome la iniciativa?",
+    "ar": "هل تستطيعين أحيانًا أن تتركي القيادة لشخص تثقين به؟",
+    "ru": "можешь ли ты иногда отдать руководство человеку, которому доверяешь?"
+   },
+   "reads": {
+    "yes": "She does not have to hold everything herself. With someone she trusts she can lean back, which is trust, not weakness.",
+    "no": "She holds the wheel everywhere, probably because she learned that if she does not, nobody will. Control keeps her safe but tired and leaves no room for someone to carry her for a while. The point is not to give up her strength but to choose where she can rest."
+   },
+   "traits": [
+    {
+     "trait": "feminine_flow",
+     "w": 0.6
+    },
+    {
+     "trait": "openness",
+     "w": 0.5
+    },
+    {
+     "trait": "connection",
+     "w": 0.4
+    }
+   ]
+  },
+  {
+   "id": "fem_7",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": 1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "do you feel you have to be hard to be taken seriously?",
+    "de": "hast du das gefühl, hart sein zu müssen, damit man dich ernst nimmt?",
+    "fr": "as-tu l'impression de devoir être dure pour être prise au sérieux ?",
+    "es": "¿sientes que tienes que ser dura para que te tomen en serio?",
+    "ar": "هل تشعرين أنه يجب أن تكوني قاسية حتى يأخذكِ الناس على محمل الجد؟",
+    "ru": "тебе кажется, что нужно быть жёсткой, чтобы тебя воспринимали всерьёз?"
+   },
+   "reads": {
+    "yes": "She wears hardness as armour, at work, in conflict, sometimes at home. It protects her and costs her softness, and she may not be able to take it off when she is safe. Paul's point: she does not have to become a man to be strong.",
+    "no": "She can be taken seriously without armour; her strength does not need hardness to show."
+   },
+   "traits": [
+    {
+     "trait": "feminine_flow",
+     "w": -0.7
+    },
+    {
+     "trait": "stress_regulation",
+     "w": -0.3
+    },
+    {
+     "trait": "ego_freedom",
+     "w": -0.3
+    }
+   ]
+  },
+  {
+   "id": "fem_8",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": -1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "can you be soft without feeling weak?",
+    "de": "kannst du weich sein, ohne dich dabei schwach zu fühlen?",
+    "fr": "peux-tu être douce sans te sentir faible ?",
+    "es": "¿puedes ser suave sin sentirte débil?",
+    "ar": "هل تستطيعين أن تكوني ليّنة دون أن تشعري بالضعف؟",
+    "ru": "можешь ли ты быть мягкой и не чувствовать себя слабой?"
+   },
+   "reads": {
+    "yes": "Softness and strength live together in her. That is feminine power in Paul's sense: soft from strength, not soft from fear.",
+    "no": "For her, softness feels like losing ground, so she stays guarded. Her work is small moments of softness in safe places, until she feels that softness held from strength makes her more powerful, not less."
+   },
+   "traits": [
+    {
+     "trait": "feminine_flow",
+     "w": 0.8
+    },
+    {
+     "trait": "self_trust",
+     "w": 0.4
+    }
+   ]
+  },
+  {
+   "id": "fem_9",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": -1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "do you trust your gut feeling, even when you cannot explain it?",
+    "de": "vertraust du deinem bauchgefühl, auch wenn du es nicht begründen kannst?",
+    "fr": "fais-tu confiance à ton intuition, même quand tu ne peux pas l'expliquer ?",
+    "es": "¿confías en tu intuición, aunque no puedas explicarla?",
+    "ar": "هل تثقين بحدسك، حتى عندما لا تستطيعين تفسيره؟",
+    "ru": "доверяешь ли ты своему чутью, даже когда не можешь его объяснить?"
+   },
+   "reads": {
+    "yes": "She listens to her inner voice and lets it count. Her decisions use body and head together.",
+    "no": "She overrules her inner voice until her head has proof, and often regrets it later. Her practice: one breath before a decision, then ask her body first."
+   },
+   "traits": [
+    {
+     "trait": "self_trust",
+     "w": 0.6
+    },
+    {
+     "trait": "body_connection",
+     "w": 0.5
+    },
+    {
+     "trait": "feminine_flow",
+     "w": 0.5
+    }
+   ]
+  },
+  {
+   "id": "fem_10",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": 1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "do you have to think everything through and control it before you can relax?",
+    "de": "musst du erst alles durchdenken und kontrollieren, bevor du dich entspannen kannst?",
+    "fr": "dois-tu tout réfléchir et tout contrôler avant de pouvoir te détendre ?",
+    "es": "¿tienes que pensarlo y controlarlo todo antes de poder relajarte?",
+    "ar": "هل يجب أن تفكّري في كل شيء وتتحكّمي فيه قبل أن تستطيعي الاسترخاء؟",
+    "ru": "тебе нужно всё продумать и проконтролировать, прежде чем ты сможешь расслабиться?"
+   },
+   "reads": {
+    "yes": "Her nervous system only settles when everything is under control, so it rarely settles. The head runs her; the body waits. Breath and a fixed evening without plans are her way out.",
+    "no": "She can relax without having everything handled, which shows trust in herself and in life."
+   },
+   "traits": [
+    {
+     "trait": "stress_regulation",
+     "w": -0.7
+    },
+    {
+     "trait": "feminine_flow",
+     "w": -0.6
+    },
+    {
+     "trait": "openness",
+     "w": -0.3
+    }
+   ]
+  },
+  {
+   "id": "fem_11",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": 1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "in relationships, do you often fight about who is right or who decides?",
+    "de": "kämpfst du in beziehungen oft darum, wer recht hat oder wer bestimmt?",
+    "fr": "dans tes relations, te bats-tu souvent pour savoir qui a raison ou qui décide ?",
+    "es": "en tus relaciones, ¿peleas a menudo por quién tiene razón o quién decide?",
+    "ar": "في علاقاتك، هل تتشاجرين كثيرًا حول من على حق أو من يقرّر؟",
+    "ru": "в отношениях ты часто борешься за то, кто прав или кто решает?"
+   },
+   "reads": {
+    "yes": "Love turns into a power struggle for her: being right or being in charge wins over closeness. It usually comes from not feeling safe enough to let go. Both sides lose love in that fight.",
+    "no": "She does not need to win to feel safe in love, which leaves room for closeness and for her partner to step up."
+   },
+   "traits": [
+    {
+     "trait": "ego_freedom",
+     "w": -0.7
+    },
+    {
+     "trait": "connection",
+     "w": -0.5
+    },
+    {
+     "trait": "feminine_flow",
+     "w": -0.4
+    }
+   ]
+  },
+  {
+   "id": "fem_12",
+   "section": "fem",
+   "type": "scale",
+   "module": "fem",
+   "polarity": -1,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "do you have enough strength right now to give love without feeling empty afterwards?",
+    "de": "hast du gerade genug kraft, um liebe zu geben, ohne dich danach leer zu fühlen?",
+    "fr": "as-tu en ce moment assez de force pour donner de l'amour sans te sentir vide après ?",
+    "es": "¿tienes ahora fuerza suficiente para dar amor sin sentirte vacía después?",
+    "ar": "هل لديكِ الآن ما يكفي من القوة لتمنحي الحب دون أن تشعري بالفراغ بعده؟",
+    "ru": "хватает ли тебе сейчас сил дарить любовь, не чувствуя себя потом опустошённой?"
+   },
+   "reads": {
+    "yes": "She gives from fullness: love does not drain her. Her body and her days give her enough back.",
+    "no": "She gives from emptiness: love costs her more than she has, which is Paul's point exactly. Body first is not selfish for her; it is how she gets the strength to love again."
+   },
+   "traits": [
+    {
+     "trait": "connection",
+     "w": 0.6
+    },
+    {
+     "trait": "feminine_flow",
+     "w": 0.6
+    },
+    {
+     "trait": "body_connection",
+     "w": 0.3
+    }
+   ]
+  },
+  {
    "id": "story",
    "section": "values",
    "type": "voice",
@@ -4842,7 +5405,8 @@
   "self_trust",
   "direction",
   "ego_freedom",
-  "openness"
+  "openness",
+  "feminine_flow"
  ]
 };
   const byId = Object.fromEntries(Q.items.map((it) => [it.id, it]));
@@ -4852,9 +5416,11 @@
   function visible(it, a) {
     const s = it.showIf;
     if (!s) return true;
-    if (s.gender && !s.gender.includes(a.gender)) return false;
-    if (s.relationship && !s.relationship.includes(a.relationship)) return false;
-    if (s.age_max && Number(a.age) > s.age_max) return false;
+    // every key but age_max names an earlier answer and the values that show the question
+    for (const [k, vals] of Object.entries(s)) {
+      if (k === "age_max") { if (Number(a.age) > vals) return false; }
+      else if (!vals.includes(a[k])) return false;
+    }
     return true;
   }
 
@@ -4940,6 +5506,17 @@
     if (a.r1_1 !== undefined && a.r1_1 <= 1 && a.restarts !== undefined && a.restarts >= 2) out.push("he says he rarely breaks promises to himself, yet he has often started something and dropped it after a few weeks. the promises he does not count are the ones that cost him.");
     if (a.syn_2 !== undefined && a.syn_2 >= 2 && a.restarts !== undefined && a.restarts >= 2) out.push("he says he is ready for a small daily step for 90 days, and he has felt ready before, then stopped after a few weeks. his readiness is real today; the plan has to carry him through week three, not his motivation.");
     if (has("libido", "low", "gone") && Number(a.age) < 45) out.push("his desire for sex is low for his age. sleep, stress, alcohol, body fat and porn all pull on it; a doctor can check the rest.");
+    // her femininity: where what she says about herself and how she lives disagree
+    if (a.gender === "f") {
+      const yes = (id) => a[id] !== undefined && a[id] >= 2;
+      const no = (id) => a[id] !== undefined && a[id] <= 1;
+      if (yes("fem_b1") && yes("fem_12")) out.push("she says she has enough strength to give love, yet her body comes last after everyone else. that strength is borrowed, and borrowed strength runs out.");
+      if (yes("fem_6") && yes("fem_11")) out.push("she says she can let someone she trusts take the lead, yet in relationships she often fights about who is right or who decides. the trust is in her head before it is in her body.");
+      if (yes("fem_2") && yes("fem_1")) out.push("she says she can do nothing without guilt, yet she only feels worth something when she achieves. her rest is probably earned, not free.");
+      if (yes("fem_9") && yes("fem_10")) out.push("she says she trusts her gut, yet she has to think everything through and control it before she can relax. her head still has the last word.");
+      if (yes("fem_b2") && has("sleep", "lt5", "5_6")) out.push("she says she keeps fixed times for her body, yet she sleeps under six hours. sleep is the first place where her body loses.");
+      if (no("fem_4") && yes("fem_1")) out.push("she says her body is her home, not a project, yet her worth hangs on what she achieves. the body usually pays for that first.");
+    }
     return out;
   }
 
@@ -4965,15 +5542,18 @@
     const c = a.conditions || [];
     const age = Number(a.age) || 0;
     const pregnant = a.pregnant === "pregnant" || a.pregnant === "breastfeeding";
+    // a period that stops without pregnancy or menopause can mean too little energy (ioc reds consensus, mountjoy et al. 2023)
+    const cycleCheck = a.gender === "f" && a.cycle === "absent";
     return {
       pregnant,
+      cycleCheck,
       noBreathHolds: pregnant || c.includes("heart") || c.includes("bp") || c.includes("epilepsy") || c.includes("acute") || c.includes("circulation") || age >= 65,
       // erection trouble can be an early sign of heart and vessel disease (thompson et al., jama 2005)
       sexualDoctorCheck: a.morning === "rare" || a.libido === "gone",
       coldOnlyGentle: pregnant || c.includes("heart") || c.includes("bp") || c.includes("circulation") || c.includes("acute") || age >= 65,
-      noFasting: pregnant || c.includes("diabetes") || c.includes("eating_disorder") || c.includes("acute") || a.medication === "yes",
+      noFasting: pregnant || cycleCheck || c.includes("diabetes") || c.includes("eating_disorder") || c.includes("acute") || a.medication === "yes",
       noFoodRules: c.includes("eating_disorder"),
-      doctorFirst: pregnant || c.some((x) => x !== "none") || a.medication === "yes" || age >= 65,
+      doctorFirst: pregnant || cycleCheck || c.some((x) => x !== "none") || a.medication === "yes" || age >= 65,
       crisis: a.inner === "crisis",
       heavy: a.inner === "heavy",
     };
