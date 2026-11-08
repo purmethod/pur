@@ -1,7 +1,7 @@
 // reader-facing copy of the pure blueprint page in six languages.
 window.PUR_COPY = {
  "intro_test": {
-  "en": "this is your first test. whoever doesn't finish it shows he lacks perseverance.",
+  "en": "this is your first test. not finishing it shows a lack of perseverance.",
   "de": "das hier ist dein erster test. wer ihn nicht zu ende bringt, zeigt, dass ihm das durchhaltevermögen fehlt.",
   "fr": "c'est ton premier test. celui qui ne va pas jusqu'au bout montre qu'il manque de persévérance.",
   "es": "este es tu primer test. quien no lo termina demuestra que le falta constancia.",
@@ -26,6 +26,14 @@ window.PUR_COPY = {
     "es": "estás en el camino correcto. sé honesto y tu plan será de verdad tuyo.",
     "ar": "أنت على الطريق الصحيح. كن صادقًا لتكون خطتك على مقاسك.",
     "ru": "ты на правильном пути. будь честен, и план будет точно про тебя."
+   },
+   "line_f": {
+    "en": "you are on the right path. stay honest, and your plan will fit you.",
+    "de": "du bist auf dem richtigen weg. bleib ehrlich, dann passt dein plan zu dir.",
+    "fr": "tu es sur la bonne voie. reste honnête, et ton plan sera vraiment le tien.",
+    "es": "estás en el camino correcto. sé sincera y tu plan será de verdad tuyo.",
+    "ar": "أنتِ على الطريق الصحيح. كوني صادقة لتكون خطتك على مقاسك.",
+    "ru": "ты на правильном пути. будь честна, и план будет точно про тебя."
    }
   },
   {
@@ -44,6 +52,22 @@ window.PUR_COPY = {
     "fr": "chaque réponse honnête m'en dit plus sur toi. continue.",
     "es": "cada respuesta honesta me muestra más de ti. sigue así.",
     "ar": "كل إجابة صادقة تكشف لي المزيد عنك. واصل.",
+    "ru": "каждый честный ответ показывает мне тебя лучше. продолжай."
+   },
+   "head_f": {
+    "en": "keep going.",
+    "de": "weiter so.",
+    "fr": "c'est bien parti.",
+    "es": "vas bien.",
+    "ar": "استمري.",
+    "ru": "так держать."
+   },
+   "line_f": {
+    "en": "every honest answer shows me more of you. stay with it.",
+    "de": "jede ehrliche antwort zeigt mir mehr von dir. bleib dran.",
+    "fr": "chaque réponse honnête m'en dit plus sur toi. continue.",
+    "es": "cada respuesta honesta me muestra más de ti. sigue así.",
+    "ar": "كل إجابة صادقة تكشف لي المزيد عنكِ. واصلي.",
     "ru": "каждый честный ответ показывает мне тебя лучше. продолжай."
    }
   },
@@ -64,6 +88,22 @@ window.PUR_COPY = {
     "es": "termina el test. puede llevar más tiempo, pero aprieta los dientes y responde las preguntas.",
     "ar": "أكمل الاختبار حتى النهاية. قد يستغرق وقتًا أطول، لكن اصبر وشدّ عزيمتك وأجب عن الأسئلة.",
     "ru": "пройди тест до конца. это может занять больше времени, но стисни зубы и ответь на вопросы."
+   },
+   "head_f": {
+    "en": "don't stop now.",
+    "de": "hör nicht auf.",
+    "fr": "n'arrête pas.",
+    "es": "no pares.",
+    "ar": "لا تتوقفي.",
+    "ru": "не останавливайся."
+   },
+   "line_f": {
+    "en": "finish the test. it may take longer, but grit your teeth and answer the questions.",
+    "de": "mach den test zu ende. es kann länger dauern, aber beiß die zähne zusammen und beantworte die fragen.",
+    "fr": "va au bout du test. ça peut prendre plus de temps, mais serre les dents et réponds aux questions.",
+    "es": "termina el test. puede llevar más tiempo, pero aprieta los dientes y responde las preguntas.",
+    "ar": "أكملي الاختبار حتى النهاية. قد يستغرق وقتًا أطول، لكن اصبري وشدّي عزيمتك وأجيبي عن الأسئلة.",
+    "ru": "пройди тест до конца. это может занять больше времени, но стисни зубы и ответь на вопросы."
    }
   },
   {
@@ -83,6 +123,14 @@ window.PUR_COPY = {
     "es": "este es el camino hacia el hombre verdadero. hacia un hombre de verdad.",
     "ar": "هذا هو الطريق لتصبح رجلًا حقيقيًا. رجلًا بحق.",
     "ru": "это путь к истинному мужчине. к настоящему мужчине."
+   },
+   "line_f": {
+    "en": "this is the way to the woman you are meant to be.",
+    "de": "das ist der weg zu der frau, die du sein willst.",
+    "fr": "c’est le chemin vers la femme que tu veux être.",
+    "es": "este es el camino hacia la mujer que quieres ser.",
+    "ar": "هذا هو الطريق إلى المرأة التي تريدين أن تكونيها.",
+    "ru": "это путь к той женщине, которой ты хочешь быть."
    }
   },
   {
@@ -101,6 +149,14 @@ window.PUR_COPY = {
     "fr": "plus de la moitié est derrière toi. tiens bon.",
     "es": "ya llevas más de la mitad. sigue firme.",
     "ar": "أكثر من النصف صار خلفك. اثبت.",
+    "ru": "больше половины позади. держись."
+   },
+   "line_f": {
+    "en": "more than half is behind you. stay with it.",
+    "de": "mehr als die hälfte liegt hinter dir. bleib dran.",
+    "fr": "plus de la moitié est derrière toi. tiens bon.",
+    "es": "ya llevas más de la mitad. sigue firme.",
+    "ar": "أكثر من النصف صار خلفكِ. اثبتي.",
     "ru": "больше половины позади. держись."
    }
   },
@@ -121,6 +177,22 @@ window.PUR_COPY = {
     "es": "la mayoría de los hombres se quedan quietos. tú sigues adelante.",
     "ar": "معظم الرجال يبقون في مكانهم. أما أنت فتمضي إلى الأمام.",
     "ru": "большинство мужчин стоят на месте. ты идёшь дальше."
+   },
+   "line_f": {
+    "en": "most women stand still. you keep going.",
+    "de": "die meisten frauen bleiben stehen. du gehst weiter.",
+    "fr": "la plupart des femmes restent sur place. toi, tu avances.",
+    "es": "la mayoría de las mujeres se quedan quietas. tú sigues adelante.",
+    "ar": "معظم النساء يبقين في مكانهن. أما أنتِ فتمضين إلى الأمام.",
+    "ru": "большинство женщин стоят на месте. ты идёшь дальше."
+   },
+   "head_f": {
+    "en": "don't give up.",
+    "de": "gib nicht auf.",
+    "fr": "ne lâche rien.",
+    "es": "no te rindas.",
+    "ar": "لا تستسلمي.",
+    "ru": "не сдавайся."
    }
   },
   {
@@ -139,6 +211,14 @@ window.PUR_COPY = {
     "fr": "encore deux étapes. va jusqu'au bout.",
     "es": "quedan dos pasos. termínalo.",
     "ar": "بقيت خطوتان. أكمل حتى النهاية.",
+    "ru": "осталось два шага. доведи дело до конца."
+   },
+   "line_f": {
+    "en": "two more steps. finish it.",
+    "de": "noch zwei schritte. bring es zu ende.",
+    "fr": "encore deux étapes. va jusqu'au bout.",
+    "es": "quedan dos pasos. termínalo.",
+    "ar": "بقيت خطوتان. أكملي حتى النهاية.",
     "ru": "осталось два шага. доведи дело до конца."
    }
   },
@@ -159,6 +239,14 @@ window.PUR_COPY = {
     "es": "has aguantado. un paso más y tendrás tu plan.",
     "ar": "لقد صمدت. خطوة واحدة بعد، ثم تحصل على خطتك.",
     "ru": "ты выдержал. ещё один шаг — и у тебя будет твой план."
+   },
+   "line_f": {
+    "en": "you held on. one more step, then you get your plan.",
+    "de": "du hast durchgehalten. noch dieser schritt, dann bekommst du deinen plan.",
+    "fr": "tu as tenu bon. encore cette étape, et tu as ton plan.",
+    "es": "has aguantado. un paso más y tendrás tu plan.",
+    "ar": "لقد صمدتِ. خطوة واحدة بعد، ثم تحصلين على خطتك.",
+    "ru": "ты выдержала. ещё один шаг — и у тебя будет твой план."
    }
   }
  ],
@@ -180,20 +268,20 @@ window.PUR_COPY = {
    "ru": "нажми на микрофон и просто говори."
   },
   "story_q": {
-   "en": "what has held you back so far? tell me about your life. get everything off your chest, i am listening. this is your chance to let it all out: your wishes, your worries, everything.",
-   "de": "was hat dich bisher aufgehalten? erzähl mir von deinem leben. sprich dir alles von der seele, ich höre dir zu. hier ist die gelegenheit, alles loszuwerden: deine wünsche, deine sorgen, alles.",
-   "fr": "qu'est-ce qui t'a retenu jusqu'ici ? parle-moi de ta vie. vide ton sac, je t'écoute. c'est l'occasion de tout sortir : tes envies, tes soucis, tout.",
-   "es": "¿qué te ha frenado hasta ahora? háblame de tu vida. desahógate, te escucho. aquí tienes la ocasión de soltarlo todo: tus deseos, tus preocupaciones, todo.",
-   "ar": "ما الذي أوقفك حتى الآن؟ احكِ لي عن حياتك. أخرج كل ما في صدرك، أنا أسمعك. هذه فرصتك لتتخلّص من كل شيء: أمنياتك، همومك، كل شيء.",
-   "ru": "что тебя до сих пор останавливало? расскажи мне о своей жизни. выговорись, я тебя слушаю. здесь можно сбросить всё: твои желания, твои тревоги, всё."
+   "en": "what has held you back so far? tell me about your life, your wishes and your worries. everything can come out, i am listening.",
+   "de": "was hat dich bisher aufgehalten? erzähl mir von deinem leben, deinen wünschen und deinen sorgen. alles darf raus, ich höre zu.",
+   "fr": "qu'est-ce qui t'a retenu jusqu'ici ? parle-moi de ta vie, de tes envies et de tes peurs. tout peut sortir, je t'écoute.",
+   "es": "¿qué te ha frenado hasta ahora? háblame de tu vida, de tus deseos y de tus preocupaciones. todo puede salir, te escucho.",
+   "ar": "ما الذي أوقفك حتى الآن؟ احكِ لي عن حياتك، وعن أمنياتك وهمومك. كل شيء يمكن أن يخرج، أنا أسمعك.",
+   "ru": "что тебя до сих пор останавливало? расскажи мне о своей жизни, о своих желаниях и тревогах. можно всё, я слушаю."
   },
   "story_hint": {
-   "en": "sit down somewhere, go into the woods or sit on the toilet. then tap the microphone and say out loud what you wish for.",
-   "de": "setz dich irgendwo hin, geh in den wald oder sitz auf der toilette. dann tipp auf das mikrofon und sprich aus, was du dir wünschst.",
-   "fr": "assieds-toi quelque part, va en forêt ou installe-toi aux toilettes. puis touche le micro et dis à voix haute ce que tu souhaites.",
-   "es": "siéntate en algún sitio, vete al bosque o siéntate en el baño. luego toca el micrófono y di en voz alta lo que deseas.",
-   "ar": "اجلس في مكان ما، اذهب إلى الغابة أو اجلس في الحمّام. ثم اضغط على الميكروفون وقل بصوت عالٍ ما تتمناه.",
-   "ru": "сядь где-нибудь, сходи в лес или посиди в туалете. потом нажми на микрофон и скажи вслух, чего ты хочешь."
+   "en": "find a quiet place, in the woods or on the toilet, tap the microphone and just talk.",
+   "de": "such dir einen ruhigen ort, im wald oder auf der toilette, tipp auf das mikrofon und sprich drauflos.",
+   "fr": "trouve un endroit calme, en forêt ou aux toilettes, appuie sur le micro et parle.",
+   "es": "busca un sitio tranquilo, en el bosque o en el baño, toca el micrófono y habla.",
+   "ar": "ابحث عن مكان هادئ، في الغابة أو في الحمّام، اضغط على الميكروفون وتحدّث.",
+   "ru": "найди тихое место, в лесу или в туалете, нажми на микрофон и просто говори."
   },
   "start": {
    "en": "speak",
@@ -250,6 +338,62 @@ window.PUR_COPY = {
    "es": "añadir más",
    "ar": "أضف المزيد",
    "ru": "добавить ещё"
+  },
+  "goal_q_f": {
+   "en": "what do you want to change in the next 90 days? how should your relationship be, what kind of man do you want to meet, do you want more closeness or less fighting at home? just tell me what you want, how you see yourself and what your goals are: body, relationship, men.",
+   "de": "was willst du in den nächsten 90 tagen ändern? wie soll deine beziehung sein, was für einen mann willst du kennenlernen, willst du mehr nähe oder weniger streit zu hause? erzähl einfach, was du willst, wie du dich siehst und was deine ziele sind: körper, beziehung, männer.",
+   "fr": "que veux-tu changer dans les 90 prochains jours ? comment doit être ta relation, quel homme veux-tu rencontrer, veux-tu plus de proximité ou moins de disputes à la maison ? dis-moi simplement ce que tu veux, comment tu te vois et quels sont tes objectifs : corps, relation, hommes.",
+   "es": "¿qué quieres cambiar en los próximos 90 días? ¿cómo debe ser tu relación, qué hombre quieres conocer, quieres más cercanía o menos peleas en casa? cuéntame lo que quieres, cómo te ves y cuáles son tus metas: cuerpo, relación, hombres.",
+   "ar": "ماذا تريدين أن تغيّري في الأيام التسعين القادمة؟ كيف يجب أن تكون علاقتك، وأي رجل تريدين أن تقابلي، هل تريدين قربًا أكثر أو خلافات أقل في البيت؟ قولي ببساطة ما تريدين، وكيف ترين نفسك، وما أهدافك: الجسد، العلاقة، الرجال.",
+   "ru": "что ты хочешь изменить за следующие 90 дней? какими должны быть твои отношения, какого мужчину ты хочешь встретить, хочешь больше близости или меньше ссор дома? просто расскажи, чего ты хочешь, какой ты себя видишь и какие у тебя цели: тело, отношения, мужчины."
+  },
+  "goal_hint_f": {
+   "en": "tap the microphone and just talk.",
+   "de": "tipp auf das mikrofon und sprich einfach drauflos.",
+   "fr": "touche le micro et parle, tout simplement.",
+   "es": "toca el micrófono y habla sin más.",
+   "ar": "اضغطي على الميكروفون وتكلّمي بحرية.",
+   "ru": "нажми на микрофон и просто говори."
+  },
+  "story_hint_f": {
+   "en": "find a quiet place, in the woods or on the toilet, tap the microphone and just talk.",
+   "de": "such dir einen ruhigen ort, im wald oder auf der toilette, tipp auf das mikrofon und sprich drauflos.",
+   "fr": "trouve un endroit calme, en forêt ou aux toilettes, appuie sur le micro et parle.",
+   "es": "busca un sitio tranquilo, en el bosque o en el baño, toca el micrófono y habla.",
+   "ar": "ابحثي عن مكان هادئ، في الغابة أو في الحمّام، اضغطي على الميكروفون وتحدّثي.",
+   "ru": "найди тихое место, в лесу или в туалете, нажми на микрофон и просто говори."
+  },
+  "start_f": {
+   "en": "speak",
+   "de": "sprechen",
+   "fr": "parler",
+   "es": "hablar",
+   "ar": "تحدّثي",
+   "ru": "говорить"
+  },
+  "type_instead_f": {
+   "en": "type instead",
+   "de": "lieber tippen",
+   "fr": "écrire plutôt",
+   "es": "mejor escribir",
+   "ar": "اكتبي بدلًا من ذلك",
+   "ru": "лучше написать"
+  },
+  "unsupported_f": {
+   "en": "this browser cannot record speech. just type your answer.",
+   "de": "dieser browser kann keine sprache aufnehmen. tipp deine antwort einfach ein.",
+   "fr": "ce navigateur ne peut pas enregistrer la voix. écris simplement ta réponse.",
+   "es": "este navegador no puede grabar voz. escribe tu respuesta.",
+   "ar": "هذا المتصفح لا يستطيع تسجيل الصوت. اكتبي إجابتك ببساطة.",
+   "ru": "этот браузер не умеет записывать речь. просто напиши ответ."
+  },
+  "denied_f": {
+   "en": "the microphone is blocked. allow it in your browser or type your answer.",
+   "de": "das mikrofon ist blockiert. erlaub es in deinem browser oder tipp deine antwort ein.",
+   "fr": "le micro est bloqué. autorise-le dans ton navigateur ou écris ta réponse.",
+   "es": "el micrófono está bloqueado. permítelo en tu navegador o escribe tu respuesta.",
+   "ar": "الميكروفون محظور. اسمحي به في متصفحك أو اكتبي إجابتك.",
+   "ru": "микрофон заблокирован. разреши его в браузере или напиши ответ."
   }
  },
  "missing": {
@@ -890,6 +1034,43 @@ window.PUR_COPY = {
    "es": "por qué ahora",
    "ar": "لماذا الآن",
    "ru": "почему сейчас"
+  },
+  "start_small_f": {
+   "ar": "ابدئي صغيرًا جدًا حتى لا تكادي تلاحظين"
+  },
+  "never_too_late_f": {
+   "ar": "لم يفت الأوان أبدًا لتبدئي."
+  },
+  "blindspots_f": {
+   "ar": "ما لا ترينه بعد"
+  },
+  "where_you_stand_f": {
+   "ar": "أين تقفين"
+  },
+  "obstacles_f": {
+   "ar": "عندما تريدين أن تتوقفي"
+  },
+  "closing_title_f": {
+   "ar": "قبل أن تبدئي"
+  },
+  "source_answers_f": {
+   "ar": "إجاباتك: أين تقفين وماذا تريدين"
+  },
+  "how_it_works": {
+   "en": "how it works",
+   "de": "wie es wirkt",
+   "fr": "comment ça marche",
+   "es": "cómo funciona",
+   "ar": "كيف يعمل",
+   "ru": "как это работает"
+  },
+  "in_90_days": {
+   "en": "a day in 90 days",
+   "de": "ein tag in 90 tagen",
+   "fr": "une journée dans 90 jours",
+   "es": "un día dentro de 90 días",
+   "ar": "يوم بعد 90 يومًا",
+   "ru": "один день через 90 дней"
   },
   "obstacles": {
    "en": "when you want to quit",

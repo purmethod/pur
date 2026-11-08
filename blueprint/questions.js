@@ -28,6 +28,14 @@
     "es": "quién eres y qué quieres, para que el blueprint encaje con tu vida.",
     "ar": "من أنت وماذا تريد، حتى يناسب المخطط حياتك.",
     "ru": "кто ты и чего ты хочешь, чтобы blueprint подходил к твоей жизни."
+   },
+   "introf": {
+    "en": "who you are and what you want, so the blueprint fits your life.",
+    "de": "wer du bist und was du willst, damit der blueprint zu deinem leben passt.",
+    "fr": "qui tu es et ce que tu veux, pour que le blueprint colle à ta vie.",
+    "es": "quién eres y qué quieres, para que el blueprint encaje con tu vida.",
+    "ar": "من أنتِ وماذا تريدين، حتى يناسب المخطط حياتك.",
+    "ru": "кто ты и чего ты хочешь, чтобы blueprint подходил к твоей жизни."
    }
   },
   {
@@ -66,6 +74,14 @@
     "es": "sé honesto. nadie ve estas respuestas, solo el sistema que escribe tu blueprint.",
     "ar": "كن صادقًا. لا أحد يرى هذه الإجابات سوى النظام الذي يكتب مخططك.",
     "ru": "будь честен. эти ответы не видит никто, кроме системы, которая пишет твой blueprint."
+   },
+   "introf": {
+    "en": "be honest. nobody sees these answers except the system that writes your blueprint.",
+    "de": "sei ehrlich. niemand sieht diese antworten außer dem system, das deinen blueprint schreibt.",
+    "fr": "sois honnête. personne ne voit ces réponses, à part le système qui écrit ton blueprint.",
+    "es": "sé sincera. nadie ve estas respuestas, solo el sistema que escribe tu blueprint.",
+    "ar": "كوني صادقة. لا أحد يرى هذه الإجابات سوى النظام الذي يكتب مخططك.",
+    "ru": "будь честна. эти ответы не видит никто, кроме системы, которая пишет твой blueprint."
    }
   },
   {
@@ -161,6 +177,14 @@
     "es": "el pilar «ego»: qué es el ego y cómo matarlo, sin drogas. el jefe final: hay algo más grande que tú.",
     "ar": "ركيزة الأنا: ما هي الأنا، وكيف تقتلها من دون مخدرات. الزعيم الأخير: هناك ما هو أكبر منك.",
     "ru": "опора «эго»: что такое эго и как его убить, без наркотиков. финальный босс: есть что-то больше тебя."
+   },
+   "introf": {
+    "en": "the pillar of ego: what the ego is, and how to kill it, without drugs. the end boss: something is greater than you.",
+    "de": "die säule ego: was das ego ist und wie du es tötest, ohne drogen. der endboss: etwas ist größer als du.",
+    "fr": "le pilier « ego » : ce qu'est l'ego, et comment le tuer, sans drogues. le boss final : quelque chose est plus grand que toi.",
+    "es": "el pilar «ego»: qué es el ego y cómo matarlo, sin drogas. el jefe final: hay algo más grande que tú.",
+    "ar": "ركيزة الأنا: ما هي الأنا، وكيف تقتلينها من دون مخدرات. الزعيم الأخير: هناك ما هو أكبر منكِ.",
+    "ru": "опора «эго»: что такое эго и как его убить, без наркотиков. финальный босс: есть что-то больше тебя."
    }
   },
   {
@@ -174,16 +198,54 @@
     "ru": "направление"
    },
    "intro": {
-    "en": "what has held you back, what your life should become, and how i should speak to you.",
-    "de": "was dich bisher aufgehalten hat, was aus deinem leben werden soll, und wie ich mit dir sprechen soll.",
-    "fr": "ce qui t'a retenu jusqu'ici, ce que ta vie doit devenir, et comment je dois te parler.",
-    "es": "lo que te ha frenado hasta ahora, en qué quieres convertir tu vida, y cómo debo hablarte.",
-    "ar": "ما الذي أوقفك حتى الآن، وما الذي تريد أن تصبح عليه حياتك، وكيف أتحدث إليك.",
-    "ru": "что тебя до сих пор держало, какой должна стать твоя жизнь, и как мне с тобой говорить."
+    "en": "last: your story, and how i should speak to you.",
+    "de": "zum schluss: deine geschichte und wie ich mit dir sprechen soll.",
+    "fr": "pour finir : ton histoire, et comment je dois te parler.",
+    "es": "para terminar: tu historia y cómo debo hablarte.",
+    "ar": "في الختام: قصتك، وكيف أتحدث إليك.",
+    "ru": "напоследок: твоя история и то, как мне с тобой говорить."
    }
   }
  ],
  "items": [
+  {
+   "id": "gender",
+   "section": "you",
+   "type": "single",
+   "required": true,
+   "q": {
+    "en": "i am",
+    "de": "ich bin",
+    "fr": "je suis",
+    "es": "soy",
+    "ar": "أنا",
+    "ru": "я"
+   },
+   "options": [
+    {
+     "v": "m",
+     "l": {
+      "en": "a man",
+      "de": "ein mann",
+      "fr": "un homme",
+      "es": "un hombre",
+      "ar": "رجل",
+      "ru": "мужчина"
+     }
+    },
+    {
+     "v": "f",
+     "l": {
+      "en": "a woman",
+      "de": "eine frau",
+      "fr": "une femme",
+      "es": "una mujer",
+      "ar": "امرأة",
+      "ru": "женщина"
+     }
+    }
+   ]
+  },
   {
    "id": "name",
    "section": "you",
@@ -236,6 +298,12 @@
       "es": "soltero",
       "ar": "أعزب",
       "ru": "один"
+     },
+     "lf": {
+      "fr": "célibataire",
+      "es": "soltera",
+      "ru": "одна",
+      "ar": "عزباء"
      }
     },
     {
@@ -269,6 +337,12 @@
       "es": "casado",
       "ar": "متزوج",
       "ru": "женат"
+     },
+     "lf": {
+      "fr": "mariée",
+      "es": "casada",
+      "ru": "замужем",
+      "ar": "متزوجة"
      }
     },
     {
@@ -280,6 +354,11 @@
       "es": "separado o divorciado",
       "ar": "منفصل أو مطلق",
       "ru": "в разводе или расстались"
+     },
+     "lf": {
+      "fr": "séparée ou divorcée",
+      "es": "separada o divorciada",
+      "ar": "منفصلة أو مطلقة"
      }
     },
     {
@@ -291,6 +370,12 @@
       "es": "viudo",
       "ar": "أرمل",
       "ru": "вдовец"
+     },
+     "lf": {
+      "fr": "veuve",
+      "es": "viuda",
+      "ru": "вдова",
+      "ar": "أرملة"
      }
     }
    ]
@@ -339,6 +424,10 @@
       "es": "casado, con hijos",
       "ar": "الزواج والأطفال",
       "ru": "брак и дети"
+     },
+     "lf": {
+      "fr": "mariée, avec des enfants",
+      "es": "casada, con hijos"
      }
     },
     {
@@ -364,7 +453,15 @@
      }
     }
    ],
-   "exclusive": "unsure"
+   "exclusive": "unsure",
+   "qf": {
+    "en": "be honest: what do you want with men?",
+    "de": "sei ehrlich: was willst du mit männern?",
+    "fr": "sois honnête : qu'est-ce que tu veux avec les hommes ?",
+    "es": "sé sincera: ¿qué quieres con los hombres?",
+    "ar": "كوني صريحة: ماذا تريدين في علاقتك مع الرجال؟",
+    "ru": "будь честна: что ты ищешь в отношениях с мужчинами?"
+   }
   },
   {
    "id": "children",
@@ -469,6 +566,12 @@
       "es": "una pareja",
       "ar": "شريكة",
       "ru": "партнёрша"
+     },
+     "lf": {
+      "de": "ein partner",
+      "fr": "un partenaire",
+      "ar": "شريك",
+      "ru": "партнёр"
      }
     },
     {
@@ -575,7 +678,15 @@
       "ru": "больше чем трём"
      }
     }
-   ]
+   ],
+   "qf": {
+    "en": "how many people could you call at three in the morning if things were bad?",
+    "de": "wie viele menschen könntest du nachts um drei anrufen, wenn es dir schlecht geht?",
+    "fr": "combien de personnes pourrais-tu appeler à trois heures du matin si ça allait mal ?",
+    "es": "¿a cuántas personas podrías llamar a las tres de la madrugada si te fuera mal?",
+    "ar": "كم شخصًا يمكنك أن تتصلي به في الثالثة فجرًا إذا كنتِ في حال سيئة؟",
+    "ru": "скольким людям ты могла бы позвонить в три часа ночи, если тебе плохо?"
+   }
   },
   {
    "id": "work",
@@ -599,6 +710,11 @@
       "es": "empleado",
       "ar": "موظف",
       "ru": "работаю по найму"
+     },
+     "lf": {
+      "fr": "salariée",
+      "es": "empleada",
+      "ar": "موظفة"
      }
     },
     {
@@ -610,6 +726,11 @@
       "es": "autónomo o fundador",
       "ar": "عمل حر أو مؤسس",
       "ru": "свой бизнес или фриланс"
+     },
+     "lf": {
+      "fr": "indépendante ou fondatrice",
+      "es": "autónoma o fundadora",
+      "ar": "عمل حر أو مؤسِّسة"
      }
     },
     {
@@ -654,6 +775,10 @@
       "es": "jubilado",
       "ar": "متقاعد",
       "ru": "на пенсии"
+     },
+     "lf": {
+      "es": "jubilada",
+      "ar": "متقاعدة"
      }
     }
    ]
@@ -680,6 +805,10 @@
       "es": "sobre todo sentado",
       "ar": "جلوس في الغالب",
       "ru": "в основном сидя"
+     },
+     "lf": {
+      "fr": "surtout assise",
+      "es": "sobre todo sentada"
      }
     },
     {
@@ -718,7 +847,15 @@
     "ar": "تخيّل أن 90 يومًا مرّت وأن الأمر نجح. ما الذي تغيّر، وما أول شيء تلاحظه؟ جسدك، طاقتك، علاقتك، النساء، عملك: قل ما يهمّك حقًا، وكيف ترى نفسك اليوم، ولماذا تريد أن تغيّر شيئًا الآن بالذات.",
     "ru": "представь, что прошло 90 дней и всё получилось. что изменилось и что ты замечаешь первым? твоё тело, твоя энергия, твои отношения, женщины, твоя работа: скажи, что для тебя действительно важно, каким ты видишь себя сегодня и почему хочешь что-то изменить именно сейчас."
    },
-   "max": 2000
+   "max": 2000,
+   "qf": {
+    "en": "imagine 90 days have passed and it worked. what has changed, and what do you notice first? your body, your energy, your relationship, men, your work: say what really matters to you, how you see yourself today, and why you want to change something now.",
+    "de": "stell dir vor, 90 tage sind vorbei und es hat funktioniert. was hat sich verändert, woran merkst du es zuerst? dein körper, deine energie, deine beziehung, männer, deine arbeit: sag, was dir wirklich wichtig ist, wie du dich heute siehst und warum du gerade jetzt etwas ändern willst.",
+    "fr": "imagine que 90 jours sont passés et que ça a marché. qu'est-ce qui a changé, et qu'est-ce que tu remarques en premier ? ton corps, ton énergie, ta relation, les hommes, ton travail : dis ce qui compte vraiment pour toi, comment tu te vois aujourd'hui et pourquoi tu veux changer quelque chose maintenant.",
+    "es": "imagina que han pasado 90 días y ha funcionado. ¿qué ha cambiado y qué es lo primero que notas? tu cuerpo, tu energía, tu relación, los hombres, tu trabajo: di lo que de verdad te importa, cómo te ves hoy y por qué quieres cambiar algo justo ahora.",
+    "ar": "تخيّلي أن 90 يومًا مرّت وأن الأمر نجح. ما الذي تغيّر، وما أول شيء تلاحظينه؟ جسدك، طاقتك، علاقتك، الرجال، عملك: قولي ما يهمّك حقًا، وكيف ترين نفسك اليوم، ولماذا تريدين أن تغيّري شيئًا الآن بالذات.",
+    "ru": "представь, что прошло 90 дней и всё получилось. что изменилось и что ты замечаешь первым? твоё тело, твоя энергия, твои отношения, мужчины, твоя работа: скажи, что для тебя действительно важно, какой ты видишь себя сегодня и почему хочешь что-то изменить именно сейчас."
+   }
   },
   {
    "id": "wake",
@@ -799,7 +936,15 @@
       "ru": "сильно меняется"
      }
     }
-   ]
+   ],
+   "qf": {
+    "en": "when do you usually wake up?",
+    "de": "wann wachst du meistens auf?",
+    "fr": "à quelle heure te réveilles-tu d'habitude ?",
+    "es": "¿a qué hora sueles despertarte?",
+    "ar": "متى تستيقظين عادةً؟",
+    "ru": "когда ты обычно просыпаешься?"
+   }
   },
   {
    "id": "sleep",
@@ -869,7 +1014,15 @@
       "ru": "больше 8"
      }
     }
-   ]
+   ],
+   "qf": {
+    "en": "how many hours do you really sleep?",
+    "de": "wie viele stunden schläfst du wirklich?",
+    "fr": "combien d'heures dors-tu vraiment ?",
+    "es": "¿cuántas horas duermes de verdad?",
+    "ar": "كم ساعة تنامين فعلًا؟",
+    "ru": "сколько часов ты реально спишь?"
+   }
   },
   {
    "id": "training",
@@ -939,7 +1092,15 @@
       "ru": "5 раз и больше"
      }
     }
-   ]
+   ],
+   "qf": {
+    "en": "how often do you train in a normal week?",
+    "de": "wie oft trainierst du in einer normalen woche?",
+    "fr": "combien de fois t'entraînes-tu par semaine normale ?",
+    "es": "¿cuántas veces entrenas en una semana normal?",
+    "ar": "كم مرة تتدربين في أسبوع عادي؟",
+    "ru": "как часто ты тренируешься в обычную неделю?"
+   }
   },
   {
    "id": "pullups",
@@ -1009,7 +1170,15 @@
       "ru": "не знаю"
      }
     }
-   ]
+   ],
+   "qf": {
+    "en": "how many clean pull-ups can you do?",
+    "de": "wie viele saubere klimmzüge schaffst du?",
+    "fr": "combien de tractions propres peux-tu faire ?",
+    "es": "¿cuántas dominadas limpias puedes hacer?",
+    "ar": "كم عقلة نظيفة تستطيعين أن تؤدي؟",
+    "ru": "сколько чистых подтягиваний ты делаешь?"
+   }
   },
   {
    "id": "energy",
@@ -1033,6 +1202,12 @@
       "es": "cansado casi siempre",
       "ar": "متعب معظم الوقت",
       "ru": "почти всегда уставший"
+     },
+     "lf": {
+      "fr": "fatiguée presque tout le temps",
+      "es": "cansada casi siempre",
+      "ru": "почти всегда уставшая",
+      "ar": "متعبة معظم الوقت"
      }
     },
     {
@@ -1208,7 +1383,15 @@
       "ru": "один приём пищи в день"
      }
     }
-   ]
+   ],
+   "qf": {
+    "en": "how do you eat on a normal day?",
+    "de": "wie isst du an einem normalen tag?",
+    "fr": "comment manges-tu un jour normal ?",
+    "es": "¿cómo comes en un día normal?",
+    "ar": "كيف تأكلين في يوم عادي؟",
+    "ru": "как ты ешь в обычный день?"
+   }
   },
   {
    "id": "daylight",
@@ -1291,6 +1474,9 @@
       "es": "lo he probado algunas veces",
       "ar": "جربته بضع مرات",
       "ru": "пробовал несколько раз"
+     },
+     "lf": {
+      "ru": "пробовала несколько раз"
      }
     },
     {
@@ -1659,7 +1845,12 @@
       "ru": "не обращаю внимания"
      }
     }
-   ]
+   ],
+   "showIf": {
+    "gender": [
+     "m"
+    ]
+   }
   },
   {
    "id": "control",
@@ -1717,6 +1908,141 @@
       "es": "ahora mismo no tengo sexo",
       "ar": "لا علاقة جنسية حاليًا",
       "ru": "сейчас секса нет"
+     }
+    }
+   ],
+   "showIf": {
+    "gender": [
+     "m"
+    ]
+   }
+  },
+  {
+   "id": "orgasm",
+   "section": "habits",
+   "type": "single",
+   "optional": true,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "during sex, do you reach orgasm?",
+    "de": "kommst du beim sex zum orgasmus?",
+    "fr": "pendant le sexe, atteins-tu l’orgasme ?",
+    "es": "¿llegas al orgasmo en el sexo?",
+    "ar": "هل تصلين إلى النشوة أثناء الجماع؟",
+    "ru": "достигаешь ли ты оргазма во время секса?"
+   },
+   "options": [
+    {
+     "v": "yes",
+     "l": {
+      "en": "mostly",
+      "de": "meistens",
+      "fr": "la plupart du temps",
+      "es": "casi siempre",
+      "ar": "غالبًا",
+      "ru": "чаще всего да"
+     }
+    },
+    {
+     "v": "sometimes",
+     "l": {
+      "en": "sometimes",
+      "de": "manchmal",
+      "fr": "parfois",
+      "es": "a veces",
+      "ar": "أحيانًا",
+      "ru": "иногда"
+     }
+    },
+    {
+     "v": "rarely",
+     "l": {
+      "en": "rarely",
+      "de": "selten",
+      "fr": "rarement",
+      "es": "pocas veces",
+      "ar": "نادرًا",
+      "ru": "редко"
+     }
+    },
+    {
+     "v": "none",
+     "l": {
+      "en": "no sex at the moment",
+      "de": "gerade kein sex",
+      "fr": "pas de sexe en ce moment",
+      "es": "ahora mismo no tengo sexo",
+      "ar": "لا علاقة جنسية حاليًا",
+      "ru": "сейчас секса нет"
+     }
+    }
+   ]
+  },
+  {
+   "id": "cycle",
+   "section": "habits",
+   "type": "single",
+   "optional": true,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "your cycle",
+    "de": "dein zyklus",
+    "fr": "ton cycle",
+    "es": "tu ciclo",
+    "ar": "دورتك الشهرية",
+    "ru": "твой цикл"
+   },
+   "options": [
+    {
+     "v": "regular",
+     "l": {
+      "en": "regular",
+      "de": "regelmäßig",
+      "fr": "régulier",
+      "es": "regular",
+      "ar": "منتظمة",
+      "ru": "регулярный"
+     }
+    },
+    {
+     "v": "irregular",
+     "l": {
+      "en": "irregular",
+      "de": "unregelmäßig",
+      "fr": "irrégulier",
+      "es": "irregular",
+      "ar": "غير منتظمة",
+      "ru": "нерегулярный"
+     }
+    },
+    {
+     "v": "none",
+     "l": {
+      "en": "no cycle right now (pill, pregnancy, menopause)",
+      "de": "gerade kein zyklus (pille, schwangerschaft, wechseljahre)",
+      "fr": "pas de cycle en ce moment (pilule, grossesse, ménopause)",
+      "es": "sin ciclo ahora (píldora, embarazo, menopausia)",
+      "ar": "لا دورة حاليًا (حبوب، حمل، انقطاع الطمث)",
+      "ru": "сейчас нет цикла (таблетки, беременность, менопауза)"
+     }
+    },
+    {
+     "v": "skip",
+     "l": {
+      "en": "i'd rather not say",
+      "de": "möchte ich nicht sagen",
+      "fr": "je préfère ne pas répondre",
+      "es": "prefiero no decirlo",
+      "ar": "أفضّل ألا أقول",
+      "ru": "предпочитаю не говорить"
      }
     }
    ]
@@ -2040,6 +2366,68 @@
       "ru": "да"
      }
     }
+   ],
+   "qf": {
+    "en": "do you take medication regularly?",
+    "de": "nimmst du regelmäßig medikamente?",
+    "fr": "prends-tu des médicaments régulièrement ?",
+    "es": "¿tomas medicación con regularidad?",
+    "ar": "هل تتناولين أدوية بانتظام؟",
+    "ru": "принимаешь ли ты регулярно лекарства?"
+   }
+  },
+  {
+   "id": "pregnant",
+   "section": "health",
+   "type": "single",
+   "required": true,
+   "showIf": {
+    "gender": [
+     "f"
+    ]
+   },
+   "q": {
+    "en": "are you pregnant or breastfeeding?",
+    "de": "bist du schwanger oder stillst du?",
+    "fr": "es-tu enceinte ou allaites-tu ?",
+    "es": "¿estás embarazada o dando el pecho?",
+    "ar": "هل أنتِ حامل أو مرضعة؟",
+    "ru": "ты беременна или кормишь грудью?"
+   },
+   "options": [
+    {
+     "v": "no",
+     "l": {
+      "en": "no",
+      "de": "nein",
+      "fr": "non",
+      "es": "no",
+      "ar": "لا",
+      "ru": "нет"
+     }
+    },
+    {
+     "v": "pregnant",
+     "l": {
+      "en": "pregnant",
+      "de": "schwanger",
+      "fr": "enceinte",
+      "es": "embarazada",
+      "ar": "حامل",
+      "ru": "беременна"
+     }
+    },
+    {
+     "v": "breastfeeding",
+     "l": {
+      "en": "breastfeeding",
+      "de": "ich stille",
+      "fr": "j'allaite",
+      "es": "dando el pecho",
+      "ar": "مرضعة",
+      "ru": "кормлю грудью"
+     }
+    }
    ]
   },
   {
@@ -2065,6 +2453,9 @@
       "es": "estable",
       "ar": "مستقر",
       "ru": "стабильно"
+     },
+     "lf": {
+      "ar": "مستقرة"
      }
     },
     {
@@ -2166,7 +2557,15 @@
      "trait": "openness",
      "w": 0.4
     }
-   ]
+   ],
+   "qf": {
+    "de": "hast du deinen beckenboden schon einmal gezielt trainiert?",
+    "en": "have you ever trained your pelvic floor on purpose?",
+    "fr": "as-tu déjà entraîné ton plancher pelvien de façon ciblée ?",
+    "es": "¿alguna vez has entrenado tu suelo pélvico de forma consciente?",
+    "ar": "هل سبق أن درّبتِ عضلات قاع الحوض عن قصد؟",
+    "ru": "ты когда-нибудь целенаправленно тренировала мышцы тазового дна?"
+   }
   },
   {
    "id": "p1_1",
@@ -2199,7 +2598,15 @@
      "trait": "dopamine_balance",
      "w": -0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "bleibst du abends oft länger wach, als du eigentlich willst?",
+    "en": "do you often stay up later than you actually want to?",
+    "fr": "est-ce que tu restes souvent éveillée le soir plus tard que tu ne le voudrais vraiment ?",
+    "es": "¿sueles quedarte despierta por la noche más tarde de lo que realmente quieres?",
+    "ar": "هل تسهرين كثيرًا أطول مما تريدين فعلًا؟",
+    "ru": "ты часто засиживаешься вечером дольше, чем на самом деле хочешь?"
+   }
   },
   {
    "id": "p1_2",
@@ -2232,7 +2639,15 @@
      "trait": "impulse_control",
      "w": 0.4
     }
-   ]
+   ],
+   "qf": {
+    "de": "legst du handy und bildschirme mindestens 30 minuten vor dem schlafen weg?",
+    "en": "do you put your phone and screens away at least 30 minutes before sleep?",
+    "fr": "est-ce que tu laisses ton téléphone et les écrans de côté au moins 30 minutes avant de dormir ?",
+    "es": "¿dejas el móvil y las pantallas al menos 30 minutos antes de dormir?",
+    "ar": "هل تبتعدين عن هاتفك والشاشات قبل النوم بثلاثين دقيقة على الأقل؟",
+    "ru": "ты откладываешь телефон и экраны хотя бы за 30 минут до сна?"
+   }
   },
   {
    "id": "p2_1",
@@ -2261,7 +2676,15 @@
      "trait": "body_connection",
      "w": -0.6
     }
-   ]
+   ],
+   "qf": {
+    "de": "gibt es wochen, in denen du kein einziges mal so trainierst, dass du ins schwitzen kommst?",
+    "en": "are there weeks in which you do not once train hard enough to sweat?",
+    "fr": "y a-t-il des semaines où tu ne t'entraînes pas une seule fois au point de transpirer ?",
+    "es": "¿hay semanas en las que no entrenas ni una sola vez hasta sudar?",
+    "ar": "هل تمرّ عليكِ أسابيع لا تتمرّنين فيها ولو مرة واحدة حتى تتعرّقي؟",
+    "ru": "бывают ли недели, когда ты ни разу не тренируешься так, чтобы вспотеть?"
+   }
   },
   {
    "id": "p2_2",
@@ -2294,7 +2717,15 @@
      "trait": "body_connection",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "trainierst du auch an tagen, an denen du keine lust hast?",
+    "en": "do you train even on days when you do not feel like it?",
+    "fr": "est-ce que tu t'entraînes aussi les jours où tu n'en as pas envie ?",
+    "es": "¿entrenas también los días en que no tienes ganas?",
+    "ar": "هل تتمرّنين حتى في الأيام التي لا تكونين فيها راغبةً في ذلك؟",
+    "ru": "ты тренируешься и в те дни, когда нет желания?"
+   }
   },
   {
    "id": "p3_1",
@@ -2327,7 +2758,15 @@
      "trait": "dopamine_balance",
      "w": -0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "isst du oft, obwohl du keinen hunger hast, zum beispiel aus stress oder als belohnung?",
+    "en": "do you often eat when you are not hungry, for example out of stress or as a reward?",
+    "fr": "est-ce que tu manges souvent sans avoir faim, par exemple par stress ou pour te récompenser ?",
+    "es": "¿comes a menudo sin tener hambre, por ejemplo por estrés o como premio?",
+    "ar": "هل تأكلين كثيرًا وأنتِ لستِ جائعة، مثلًا بسبب التوتر أو كمكافأة لنفسك؟",
+    "ru": "ты часто ешь, когда не голодна, например от стресса или в награду себе?"
+   }
   },
   {
    "id": "p3_2",
@@ -2360,7 +2799,15 @@
      "trait": "discipline",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "hörst du meistens auf zu essen, wenn du satt bist, auch wenn es noch gut schmeckt?",
+    "en": "do you usually stop eating when you're full, even if it still tastes good?",
+    "fr": "est-ce que tu t’arrêtes généralement de manger quand tu es rassasiée, même si c’est encore bon ?",
+    "es": "¿sueles dejar de comer cuando ya estás llena, aunque todavía esté rico?",
+    "ar": "هل تتوقفين عادةً عن الأكل عندما تشبعين، حتى لو كان الطعام ما زال لذيذًا؟",
+    "ru": "ты обычно перестаёшь есть, когда сыта, даже если ещё вкусно?"
+   }
   },
   {
    "id": "p4_1",
@@ -2393,7 +2840,15 @@
      "trait": "stress_regulation",
      "w": 0.2
     }
-   ]
+   ],
+   "qf": {
+    "de": "merkst du in stressigen momenten, wie du gerade atmest?",
+    "en": "in stressful moments, do you notice how you are breathing?",
+    "fr": "dans les moments de stress, remarques-tu comment tu respires ?",
+    "es": "en los momentos de estrés, ¿notas cómo estás respirando?",
+    "ar": "في لحظات التوتر، هل تنتبهين إلى طريقة تنفّسك؟",
+    "ru": "в моменты стресса ты замечаешь, как ты дышишь?"
+   }
   },
   {
    "id": "p4_2",
@@ -2426,7 +2881,15 @@
      "trait": "self_awareness",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "nutzt du deinen atem schon bewusst, um dich zu beruhigen oder wacher zu werden?",
+    "en": "do you already use your breath on purpose to calm down or wake yourself up?",
+    "fr": "est-ce que tu utilises déjà ta respiration consciemment pour te calmer ou te réveiller ?",
+    "es": "¿ya usas tu respiración de forma consciente para calmarte o despejarte?",
+    "ar": "هل تستخدمين تنفسك بوعي فعلًا لتهدّئي نفسك أو لتنشّطيها؟",
+    "ru": "ты уже сознательно используешь дыхание, чтобы успокоиться или взбодриться?"
+   }
   },
   {
    "id": "p5_1",
@@ -2459,7 +2922,15 @@
      "trait": "stress_regulation",
      "w": -0.4
     }
-   ]
+   ],
+   "qf": {
+    "de": "nimmst du oft den bequemen weg, obwohl du weißt, dass dich der unbequeme stärker machen würde?",
+    "en": "do you often take the easy way, even though you know the hard one would make you stronger?",
+    "fr": "prends-tu souvent le chemin le plus facile, alors que tu sais que le plus dur te rendrait plus forte ?",
+    "es": "¿sueles elegir el camino cómodo, aunque sabes que el incómodo te haría más fuerte?",
+    "ar": "هل تختارين غالبًا الطريق المريح، مع أنكِ تعرفين أن الطريق الصعب سيجعلك أقوى؟",
+    "ru": "ты часто выбираешь лёгкий путь, хотя знаешь, что трудный сделал бы тебя сильнее?"
+   }
   },
   {
    "id": "p5_2",
@@ -2492,7 +2963,15 @@
      "trait": "stress_regulation",
      "w": 0.4
     }
-   ]
+   ],
+   "qf": {
+    "de": "wenn du dir etwas unbequemes vornimmst, zum beispiel kalt zu duschen: tust du es, ohne lange mit dir zu verhandeln?",
+    "en": "when you plan something uncomfortable, a cold shower for example: do you do it without long negotiating with yourself?",
+    "fr": "quand tu prévois quelque chose d'inconfortable, une douche froide par exemple : est-ce que tu le fais sans négocier longtemps avec toi-même ?",
+    "es": "cuando te propones algo incómodo, por ejemplo una ducha fría: ¿lo haces sin negociar mucho contigo misma?",
+    "ar": "عندما تنوين فعل شيء غير مريح، مثل دش بارد: هل تفعلينه من دون أن تجادلي نفسك طويلًا؟",
+    "ru": "когда ты собираешься сделать что-то неприятное, например принять холодный душ: ты делаешь это, не торгуясь долго с собой?"
+   }
   },
   {
    "id": "u0_1",
@@ -2525,7 +3004,15 @@
      "trait": "stress_regulation",
      "w": -0.4
     }
-   ]
+   ],
+   "qf": {
+    "de": "reagierst du oft schon, bevor du merkst, was du fühlst?",
+    "en": "do you often react before you notice what you are feeling?",
+    "fr": "réagis-tu souvent avant même de remarquer ce que tu ressens ?",
+    "es": "¿sueles reaccionar antes de darte cuenta de lo que sientes?",
+    "ar": "هل تتصرّفين غالبًا قبل أن تنتبهي لما تشعرين به؟",
+    "ru": "ты часто реагируешь раньше, чем замечаешь, что чувствуешь?"
+   }
   },
   {
    "id": "u0_2",
@@ -2558,7 +3045,15 @@
      "trait": "discipline",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "hast du schon einmal einen drang bemerkt, etwa zum handy zu greifen, und ihm bewusst nicht nachgegeben?",
+    "en": "have you ever noticed an urge, like reaching for your phone, and on purpose not followed it?",
+    "fr": "as-tu déjà remarqué une envie, comme celle de prendre ton téléphone, et choisi exprès de ne pas y céder ?",
+    "es": "¿alguna vez has notado un impulso, como coger el móvil, y a propósito no le has hecho caso?",
+    "ar": "هل سبق أن لاحظتِ رغبة، مثل أن تمدّي يدك إلى هاتفك، ثم اخترتِ عن قصد ألا تستجيبي لها؟",
+    "ru": "ты когда-нибудь замечала порыв, например взять телефон, и сознательно ему не поддавалась?"
+   }
   },
   {
    "id": "u1_1",
@@ -2595,7 +3090,15 @@
      "trait": "self_awareness",
      "w": -0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "greifst du bei stress automatisch zu etwas, das schnell beruhigt: handy, essen, porno, nikotin?",
+    "en": "under stress, do you automatically reach for something that calms you fast: phone, food, porn, nicotine?",
+    "fr": "sous stress, est-ce que tu attrapes automatiquement quelque chose qui calme vite : téléphone, nourriture, porno, nicotine ?",
+    "es": "con estrés, ¿recurres automáticamente a algo que calma rápido: móvil, comida, porno, nicotina?",
+    "ar": "تحت التوتر، هل تمدّين يدك تلقائيًا إلى شيء يهدّئك بسرعة: الهاتف، الطعام، الإباحية، النيكوتين؟",
+    "ru": "в стрессе ты на автомате хватаешься за то, что быстро успокаивает: телефон, еду, порно, никотин?"
+   }
   },
   {
    "id": "u1_2",
@@ -2628,7 +3131,15 @@
      "trait": "body_connection",
      "w": 0.4
     }
-   ]
+   ],
+   "qf": {
+    "de": "merkst du, wenn hinter deinem hunger oder deiner lust eigentlich langeweile oder einsamkeit steckt?",
+    "en": "do you notice when boredom or loneliness is hiding behind your hunger or desire?",
+    "fr": "remarques-tu quand c'est en fait l'ennui ou la solitude qui se cache derrière ta faim ou ton envie ?",
+    "es": "¿notas cuando detrás de tu hambre o tus ganas en realidad hay aburrimiento o soledad?",
+    "ar": "هل تنتبهين عندما يكون وراء جوعك أو رغبتك في الحقيقة ملل أو وحدة؟",
+    "ru": "замечаешь ли ты, когда за твоим голодом или желанием на самом деле стоят скука или одиночество?"
+   }
   },
   {
    "id": "u2_1",
@@ -2694,7 +3205,15 @@
      "trait": "self_awareness",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "hast du eine gewohnheit, die dir schnell einen kick gibt, dich danach aber leerer zurücklässt?",
+    "en": "do you have a habit that gives you a quick kick but leaves you emptier afterwards?",
+    "fr": "as-tu une habitude qui te donne un plaisir rapide, mais te laisse plus vide ensuite ?",
+    "es": "¿tienes algún hábito que te da un subidón rápido, pero después te deja más vacía?",
+    "ar": "هل لديكِ عادة تمنحك متعة سريعة، لكنها تتركك بعدها تشعرين بفراغ أكبر؟",
+    "ru": "есть ли у тебя привычка, которая даёт быстрый кайф, но потом оставляет тебя ещё более пустой?"
+   }
   },
   {
    "id": "u3_1",
@@ -2727,7 +3246,15 @@
      "trait": "discipline",
      "w": -0.4
     }
-   ]
+   ],
+   "qf": {
+    "de": "springst du automatisch zwischen apps, gedanken oder fantasien hin und her, wenn du eigentlich bei einer sache bleiben willst?",
+    "en": "do you automatically jump between apps, thoughts or fantasies when you actually want to stay on one thing?",
+    "fr": "sautes-tu automatiquement d’une appli, d’une pensée ou d’un fantasme à l’autre, alors que tu veux rester sur une seule chose ?",
+    "es": "¿saltas automáticamente entre apps, pensamientos o fantasías cuando en realidad quieres centrarte en una sola cosa?",
+    "ar": "هل تقفزين تلقائيًا بين التطبيقات أو الأفكار أو الخيالات، بينما تريدين في الحقيقة أن تبقي على شيء واحد؟",
+    "ru": "ты на автомате прыгаешь между приложениями, мыслями или фантазиями, когда на самом деле хочешь заниматься чем-то одним?"
+   }
   },
   {
    "id": "u3_2",
@@ -2760,7 +3287,15 @@
      "trait": "dopamine_balance",
      "w": 0.5
     }
-   ]
+   ],
+   "qf": {
+    "de": "bleibst du an einem normalen tag mindestens einmal 30 minuten bei einer sache, ohne aufs handy zu schauen?",
+    "en": "on a normal day, do you stay with one thing for 30 minutes at least once, without checking your phone?",
+    "fr": "un jour normal, restes-tu au moins une fois 30 minutes sur une seule chose sans regarder ton téléphone ?",
+    "es": "en un día normal, ¿te quedas al menos una vez 30 minutos con una sola cosa sin mirar el móvil?",
+    "ar": "في يوم عادي، هل تبقين مرة واحدة على الأقل 30 دقيقة على شيء واحد دون أن تنظري إلى هاتفك؟",
+    "ru": "в обычный день ты хотя бы раз занимаешься одним делом 30 минут, не заглядывая в телефон?"
+   }
   },
   {
    "id": "u4_1",
@@ -2793,7 +3328,15 @@
      "trait": "ego_freedom",
      "w": -0.4
     }
-   ]
+   ],
+   "qf": {
+    "de": "ändern sich deine meinung und dein verhalten stark, je nachdem, mit wem du zusammen bist?",
+    "en": "do your opinions and your behaviour change a lot depending on who you are with?",
+    "fr": "tes opinions et ton comportement changent-ils beaucoup selon les personnes avec qui tu es ?",
+    "es": "¿tus opiniones y tu forma de actuar cambian mucho según con quién estés?",
+    "ar": "هل تتغيّر آراؤك وتصرّفاتك كثيرًا بحسب الأشخاص الذين تكونين معهم؟",
+    "ru": "сильно ли меняются твои мнения и поведение в зависимости от того, с кем ты находишься?"
+   }
   },
   {
    "id": "u4_2",
@@ -2826,7 +3369,15 @@
      "trait": "direction",
      "w": 0.6
     }
-   ]
+   ],
+   "qf": {
+    "en": "do you already act today like the woman you want to become?",
+    "de": "handelst du heute schon wie die frau, die du werden willst?",
+    "fr": "agis-tu déjà aujourd’hui comme la femme que tu veux devenir ?",
+    "es": "¿ya actúas hoy como la mujer en la que quieres convertirte?",
+    "ar": "هل تتصرّفين اليوم بالفعل مثل المرأة التي تريدين أن تصبحيها؟",
+    "ru": "ведёшь ли ты себя уже сегодня как женщина, которой хочешь стать?"
+   }
   },
   {
    "id": "u5_1",
@@ -2859,7 +3410,15 @@
      "trait": "openness",
      "w": -0.6
     }
-   ]
+   ],
+   "qf": {
+    "de": "gehst du bei kritik sofort in die verteidigung?",
+    "en": "when you are criticised, do you go straight into defence?",
+    "fr": "face à une critique, passes-tu tout de suite en mode défense ?",
+    "es": "cuando te critican, ¿te pones a la defensiva enseguida?",
+    "ar": "عندما تُنتقدين، هل تتخذين موقف الدفاع فورًا؟",
+    "ru": "когда тебя критикуют, ты сразу уходишь в оборону?"
+   }
   },
   {
    "id": "u5_2",
@@ -2896,7 +3455,15 @@
      "trait": "ego_freedom",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "bleibst du im streit ruhig und sagst trotzdem ehrlich, was du denkst?",
+    "en": "in an argument, do you stay calm and still say honestly what you think?",
+    "fr": "dans une dispute, restes-tu calme tout en disant honnêtement ce que tu penses ?",
+    "es": "en una discusión, ¿mantienes la calma y aun así dices con honestidad lo que piensas?",
+    "ar": "أثناء الخلاف، هل تبقين هادئة وتقولين مع ذلك بصدق ما تفكّرين فيه؟",
+    "ru": "в ссоре ты остаёшься спокойной и всё равно честно говоришь, что думаешь?"
+   }
   },
   {
    "id": "r0_1",
@@ -2929,7 +3496,15 @@
      "trait": "self_awareness",
      "w": -0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "siehst du die gründe dafür, wo du heute stehst, eher bei anderen, den umständen oder deiner vergangenheit als bei dir?",
+    "en": "do you see the reasons for where you stand today more in other people, circumstances or your past than in yourself?",
+    "fr": "vois-tu les raisons de là où tu en es aujourd'hui plutôt chez les autres, dans les circonstances ou ton passé qu'en toi-même ?",
+    "es": "¿ves las razones de dónde estás hoy más en los demás, en las circunstancias o en tu pasado que en ti misma?",
+    "ar": "هل ترين أسباب ما وصلتِ إليه اليوم في الآخرين أو الظروف أو ماضيكِ أكثر مما ترينها في نفسك؟",
+    "ru": "ты видишь причины того, где ты сейчас, скорее в других людях, обстоятельствах или своём прошлом, чем в себе?"
+   }
   },
   {
    "id": "r0_2",
@@ -2962,7 +3537,15 @@
      "trait": "ego_freedom",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "wenn eine deiner entscheidungen schiefgeht, stehst du dazu, auch wenn es niemand merkt?",
+    "en": "when one of your decisions goes wrong, do you own it, even if nobody would notice?",
+    "fr": "quand une de tes décisions tourne mal, est-ce que tu l'assumes, même si personne ne le remarquerait ?",
+    "es": "cuando una de tus decisiones sale mal, ¿la asumes aunque nadie se dé cuenta?",
+    "ar": "عندما يفشل قرار اتخذتِه، هل تتحمّلين مسؤوليته حتى لو لم يلاحظ أحد؟",
+    "ru": "когда твоё решение оборачивается неудачей, берёшь ли ты ответственность на себя, даже если никто не заметит?"
+   }
   },
   {
    "id": "r1_1",
@@ -2995,7 +3578,15 @@
      "trait": "impulse_control",
      "w": -0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "brichst du oft versprechen, die du nur dir selbst gegeben hast?",
+    "en": "do you often break promises you made only to yourself?",
+    "fr": "romps-tu souvent des promesses que tu n'as faites qu'à toi-même ?",
+    "es": "¿rompes a menudo promesas que solo te has hecho a ti misma?",
+    "ar": "هل تُخلفين كثيرًا وعودًا لم تقطعيها إلا لنفسك؟",
+    "ru": "часто ли ты нарушаешь обещания, которые давала только самой себе?"
+   }
   },
   {
    "id": "r1_2",
@@ -3024,7 +3615,15 @@
      "trait": "discipline",
      "w": 0.4
     }
-   ]
+   ],
+   "qf": {
+    "de": "nimmst du ein versprechen an dich selbst so ernst wie eins an einen guten freund?",
+    "en": "do you take a promise to yourself as seriously as one to a good friend?",
+    "fr": "prends-tu une promesse faite à toi-même aussi au sérieux qu'une promesse faite à une bonne amie ?",
+    "es": "¿te tomas una promesa a ti misma tan en serio como una promesa a una buena amiga?",
+    "ar": "هل تأخذين وعدك لنفسك بنفس الجدية التي تأخذين بها وعدك لصديقة عزيزة؟",
+    "ru": "относишься ли ты к обещанию самой себе так же серьёзно, как к обещанию хорошей подруге?"
+   }
   },
   {
    "id": "r2_1",
@@ -3057,7 +3656,15 @@
      "trait": "connection",
      "w": -0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "wenn dir jemand sehr wichtig ist, sagst du dann ja, obwohl du nein meinst?",
+    "en": "when someone matters a lot to you, do you say yes even when you mean no?",
+    "fr": "quand quelqu'un compte beaucoup pour toi, dis-tu oui même quand tu penses non ?",
+    "es": "cuando alguien te importa mucho, ¿dices que sí aunque quieras decir que no?",
+    "ar": "عندما يكون شخص ما مهمًا جدًا بالنسبة لكِ، هل تقولين نعم وأنتِ تقصدين لا؟",
+    "ru": "когда человек очень важен для тебя, говоришь ли ты «да», хотя на самом деле хочешь сказать «нет»?"
+   }
   },
   {
    "id": "r2_2",
@@ -3090,7 +3697,15 @@
      "trait": "self_awareness",
      "w": 0.4
     }
-   ]
+   ],
+   "qf": {
+    "de": "könntest du sofort sagen, was für dich nicht verhandelbar ist?",
+    "en": "could you say right away what is non-negotiable for you?",
+    "fr": "pourrais-tu dire tout de suite ce qui, pour toi, n'est pas négociable ?",
+    "es": "¿podrías decir ahora mismo qué es innegociable para ti?",
+    "ar": "هل تستطيعين أن تقولي فورًا ما الذي لا تقبلين التفاوض عليه؟",
+    "ru": "смогла бы ты сразу сказать, что для тебя не обсуждается?"
+   }
   },
   {
    "id": "r3_1",
@@ -3152,7 +3767,15 @@
      "trait": "connection",
      "w": 0.4
     }
-   ]
+   ],
+   "qf": {
+    "de": "bleibst du ruhig und zugewandt, wenn es in einer beziehung schwierig wird?",
+    "en": "when things get hard in a relationship, do you stay calm and warm?",
+    "fr": "restes-tu calme et bienveillante quand ça devient difficile dans une relation ?",
+    "es": "¿te mantienes tranquila y cercana cuando una relación se pone difícil?",
+    "ar": "هل تبقين هادئة وقريبة عندما تصعب الأمور في العلاقة؟",
+    "ru": "остаёшься ли ты спокойной и тёплой, когда в отношениях становится трудно?"
+   }
   },
   {
    "id": "r4_1",
@@ -3185,7 +3808,15 @@
      "trait": "connection",
      "w": -0.2
     }
-   ]
+   ],
+   "qf": {
+    "de": "gibst du dich vor anderen oft sicherer, als du dich wirklich fühlst?",
+    "en": "do you often act more sure of yourself in front of others than you really feel?",
+    "fr": "fais-tu souvent semblant d'être plus sûre de toi devant les autres que tu ne l'es vraiment ?",
+    "es": "¿sueles aparentar ante los demás más seguridad de la que realmente sientes?",
+    "ar": "هل تتظاهرين غالبًا أمام الآخرين بثقة أكبر مما تشعرين به فعلًا؟",
+    "ru": "часто ли ты при других держишься увереннее, чем чувствуешь себя на самом деле?"
+   }
   },
   {
    "id": "r4_2",
@@ -3218,7 +3849,15 @@
      "trait": "direction",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "tust du, was du sagst, auch bei kleinen zusagen wie pünktlich sein oder zurückrufen?",
+    "en": "do you do what you say, even with small commitments like being on time or calling back?",
+    "fr": "fais-tu ce que tu dis, même pour de petits engagements comme être à l'heure ou rappeler ?",
+    "es": "¿haces lo que dices, incluso en compromisos pequeños como llegar puntual o devolver una llamada?",
+    "ar": "هل تفعلين ما تقولينه، حتى في الالتزامات الصغيرة مثل أن تكوني في الموعد أو أن تعاودي الاتصال؟",
+    "ru": "ты делаешь то, что говоришь, даже в мелочах: прийти вовремя или перезвонить?"
+   }
   },
   {
    "id": "r5_1",
@@ -3247,7 +3886,15 @@
      "trait": "discipline",
      "w": -0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "weißt du oft nicht so richtig, wofür du das alles machst?",
+    "en": "do you often not really know what you are doing all this for?",
+    "fr": "t'arrive-t-il souvent de ne pas vraiment savoir pourquoi tu fais tout ça ?",
+    "es": "¿a menudo no sabes muy bien para qué haces todo esto?",
+    "ar": "هل يحدث كثيرًا ألا تعرفي حقًا لماذا تفعلين كل هذا؟",
+    "ru": "часто ли ты толком не знаешь, ради чего всё это делаешь?"
+   }
   },
   {
    "id": "r5_2",
@@ -3280,7 +3927,15 @@
      "trait": "self_awareness",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "fragst du dich bei wichtigen entscheidungen, ob du später stolz darauf zurückblicken wirst?",
+    "en": "when you make an important decision, do you ask yourself whether you will look back on it with pride?",
+    "fr": "avant une décision importante, te demandes-tu si tu en seras fière plus tard ?",
+    "es": "antes de una decisión importante, ¿te preguntas si más adelante estarás orgullosa de ella?",
+    "ar": "قبل القرارات المهمة، هل تسألين نفسك إن كنتِ ستنظرين إليها لاحقًا بفخر؟",
+    "ru": "перед важными решениями спрашиваешь ли ты себя, будешь ли потом гордиться ими?"
+   }
   },
   {
    "id": "e1_1",
@@ -3313,7 +3968,15 @@
      "trait": "direction",
      "w": -0.3
     }
-   ]
+   ],
+   "qf": {
+    "en": "do you often compare yourself to other women when it comes to looks, body or men?",
+    "de": "vergleichst du dich oft mit anderen frauen, bei aussehen, körper oder männern?",
+    "fr": "te compares-tu souvent à d'autres femmes, côté apparence, physique ou hommes ?",
+    "es": "¿te comparas mucho con otras mujeres en apariencia, físico u hombres?",
+    "ar": "هل تقارنين نفسك كثيرًا بنساء أخريات في المظهر أو الجسد أو الرجال؟",
+    "ru": "часто ли ты сравниваешь себя с другими женщинами: внешность, тело, мужчины?"
+   }
   },
   {
    "id": "e1_2",
@@ -3346,7 +4009,15 @@
      "trait": "self_trust",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "gibst du vor anderen zu, dass du falsch lagst, ohne ein „aber“ hinterherzuschieben?",
+    "en": "do you admit in front of others that you were wrong, without adding a “but”?",
+    "fr": "reconnais-tu devant les autres que tu avais tort, sans ajouter de « mais » ?",
+    "es": "¿admites delante de otros que te equivocaste, sin añadir un «pero»?",
+    "ar": "هل تعترفين أمام الآخرين بأنكِ كنتِ مخطئة، من دون أن تضيفي «لكن»؟",
+    "ru": "признаёшь ли ты при других, что была неправа, не добавляя «но»?"
+   }
   },
   {
    "id": "e2_1",
@@ -3379,7 +4050,15 @@
      "trait": "openness",
      "w": -0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "fällt dir bei anderen das ego eher auf als bei dir selbst?",
+    "en": "do you notice ego in other people more than in yourself?",
+    "fr": "remarques-tu l'ego plus chez les autres que chez toi-même ?",
+    "es": "¿notas el ego más en los demás que en ti misma?",
+    "ar": "هل تلاحظين الأنا عند الآخرين أكثر مما تلاحظينها في نفسك؟",
+    "ru": "замечаешь ли ты эго у других чаще, чем у себя?"
+   }
   },
   {
    "id": "e2_2",
@@ -3412,7 +4091,15 @@
      "trait": "impulse_control",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "merkst du im moment selbst, wenn du nur recht haben oder gut dastehen willst?",
+    "en": "do you notice in the moment when all you want is to be right or to look good?",
+    "fr": "remarques-tu sur le moment quand tout ce que tu veux, c'est avoir raison ou faire bonne figure ?",
+    "es": "¿notas en el momento cuando lo único que quieres es tener razón o quedar bien?",
+    "ar": "هل تنتبهين في اللحظة نفسها عندما يكون كل ما تريدينه أن تكوني على حق أو أن تظهري بمظهر جيد؟",
+    "ru": "замечаешь ли ты в моменте, когда тебе просто хочется быть правой или хорошо выглядеть?"
+   }
   },
   {
    "id": "ef_1",
@@ -3445,7 +4132,15 @@
      "trait": "direction",
      "w": -0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "machst du bei geld, sex oder beziehungen immer wieder dieselben fehler?",
+    "en": "do you keep making the same mistakes with money, sex or relationships?",
+    "fr": "refais-tu sans cesse les mêmes erreurs avec l'argent, le sexe ou les relations ?",
+    "es": "¿cometes una y otra vez los mismos errores con el dinero, el sexo o las relaciones?",
+    "ar": "هل تكررين الأخطاء نفسها مرة بعد مرة في المال أو الجنس أو العلاقات؟",
+    "ru": "повторяешь ли ты снова и снова одни и те же ошибки в деньгах, сексе или отношениях?"
+   }
   },
   {
    "id": "ef_2",
@@ -3482,7 +4177,15 @@
      "trait": "ego_freedom",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "machst du nach einem rückschlag weiter, bis du herausfindest, was funktioniert?",
+    "en": "after a setback, do you keep going until you find out what works?",
+    "fr": "après un échec, continues-tu jusqu'à trouver ce qui marche ?",
+    "es": "¿sigues adelante después de un revés hasta descubrir qué funciona?",
+    "ar": "هل تواصلين بعد الخسارة حتى تكتشفي ما الذي ينجح؟",
+    "ru": "продолжаешь ли ты после неудачи, пока не разберёшься, что работает?"
+   }
   },
   {
    "id": "e5_1",
@@ -3548,7 +4251,15 @@
      "trait": "direction",
      "w": 0.5
     }
-   ]
+   ],
+   "qf": {
+    "de": "fühlst du dich als teil von etwas, das größer ist als du, egal wie du es nennst?",
+    "en": "do you feel part of something greater than you, whatever you call it?",
+    "fr": "as-tu le sentiment de faire partie de quelque chose de plus grand que toi, peu importe le nom que tu lui donnes ?",
+    "es": "¿te sientes parte de algo más grande que tú, lo llames como lo llames?",
+    "ar": "هل تشعرين أنكِ جزء من شيء أكبر منكِ، أيًا كان الاسم الذي تعطينه له؟",
+    "ru": "чувствуешь ли ты себя частью чего-то большего, чем ты, как бы ты это ни называла?"
+   }
   },
   {
    "id": "story",
@@ -3562,6 +4273,14 @@
     "fr": "qu'est-ce qui t'a retenu jusqu'ici ? parle-moi de ta vie : ce qui t'a marqué, ce dont tu es fier, ce qui t'empêche de dormir. vide ton sac, je t'écoute.",
     "es": "¿qué te ha frenado hasta ahora? háblame de tu vida: lo que te marcó, de qué estás orgulloso, qué te quita el sueño. desahógate, te escucho.",
     "ar": "ما الذي أوقفك حتى الآن؟ احكِ لي عن حياتك: ما الذي صنعك، وما الذي تفخر به، وما الذي يبقيك مستيقظًا في الليل. أخرج كل ما في صدرك، أنا أسمعك.",
+    "ru": "что тебя до сих пор останавливало? расскажи мне о своей жизни: что тебя сформировало, чем ты гордишься, что не даёт тебе спать по ночам. выговорись, я тебя слушаю."
+   },
+   "qf": {
+    "en": "what has held you back so far? tell me about your life: what shaped you, what you are proud of, what keeps you awake at night. get everything off your chest, i am listening.",
+    "de": "was hat dich bisher aufgehalten? erzähl mir von deinem leben: was dich geprägt hat, worauf du stolz bist, was dich nachts wach hält. sprich dir alles von der seele, ich höre dir zu.",
+    "fr": "qu'est-ce qui t'a retenue jusqu'ici ? parle-moi de ta vie : ce qui t'a marquée, ce dont tu es fière, ce qui t'empêche de dormir. vide ton sac, je t'écoute.",
+    "es": "¿qué te ha frenado hasta ahora? háblame de tu vida: lo que te marcó, de qué estás orgullosa, qué te quita el sueño. desahógate, te escucho.",
+    "ar": "ما الذي أوقفكِ حتى الآن؟ احكي لي عن حياتك: ما الذي صنعك، وما الذي تفخرين به، وما الذي يبقيك مستيقظة في الليل. أخرجي كل ما في صدرك، أنا أسمعك.",
     "ru": "что тебя до сих пор останавливало? расскажи мне о своей жизни: что тебя сформировало, чем ты гордишься, что не даёт тебе спать по ночам. выговорись, я тебя слушаю."
    }
   },
@@ -3599,7 +4318,15 @@
      "trait": "direction",
      "w": 0.6
     }
-   ]
+   ],
+   "qf": {
+    "en": "do you want to build something real with one man instead of keeping it casual?",
+    "de": "willst du mit einem mann etwas festes aufbauen, statt unverbindlich zu bleiben?",
+    "fr": "veux-tu construire quelque chose de sérieux avec un seul homme, au lieu de rester sans engagement ?",
+    "es": "¿quieres construir algo serio con un solo hombre, en vez de seguir sin compromiso?",
+    "ar": "هل تريدين أن تبني علاقة جادة مع رجل واحد، بدلًا من أن تبقي بلا التزام؟",
+    "ru": "ты хочешь построить что-то серьёзное с одним мужчиной, а не оставаться без обязательств?"
+   }
   },
   {
    "id": "meta_freedom",
@@ -3666,7 +4393,15 @@
      "trait": "openness",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "en": "do you feel nobody ever showed you how to set clear boundaries and stand up for yourself as a woman?",
+    "de": "hast du das gefühl, dass dir nie jemand gezeigt hat, wie man als frau klare grenzen setzt und für sich einsteht?",
+    "fr": "as-tu l'impression que personne ne t'a jamais montré comment poser des limites claires et t'affirmer en tant que femme ?",
+    "es": "¿sientes que nadie te enseñó nunca a poner límites claros y a defenderte como mujer?",
+    "ar": "هل تشعرين أن أحدًا لم يُريكِ يومًا كيف تضعين حدودًا واضحة وتدافعين عن نفسك كامرأة؟",
+    "ru": "тебе кажется, что никто никогда не показывал тебе, как ставить чёткие границы и отстаивать себя как женщина?"
+   }
   },
   {
    "id": "restarts",
@@ -3699,7 +4434,15 @@
      "trait": "self_awareness",
      "w": 0.2
     }
-   ]
+   ],
+   "qf": {
+    "en": "have you often started something and stopped again after a few weeks, like training, eating better or sleeping earlier?",
+    "de": "hast du schon oft etwas angefangen und nach ein paar wochen wieder aufgehört, zum beispiel training, ernährung oder früher schlafen?",
+    "fr": "t'est-il souvent arrivé de commencer quelque chose puis d'arrêter au bout de quelques semaines, par exemple le sport, l'alimentation ou te coucher plus tôt ?",
+    "es": "¿has empezado a menudo algo y lo has dejado a las pocas semanas, por ejemplo entrenar, comer mejor o dormir antes?",
+    "ar": "هل بدأتِ كثيرًا شيئًا ثم توقّفتِ عنه بعد أسابيع قليلة، مثل التمرين أو الأكل الصحي أو النوم مبكرًا؟",
+    "ru": "часто ли ты что-то начинала и через пару недель бросала, например тренировки, правильное питание или ранний сон?"
+   }
   },
   {
    "id": "syn_1",
@@ -3736,7 +4479,15 @@
      "trait": "ego_freedom",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "spürst du, dass du gerade unter deinen möglichkeiten lebst?",
+    "en": "do you feel you are living below your potential right now?",
+    "fr": "as-tu l'impression de vivre en dessous de ton potentiel en ce moment ?",
+    "es": "¿sientes que ahora mismo vives por debajo de tu potencial?",
+    "ar": "هل تشعرين أنكِ تعيشين الآن أقل من إمكانياتك؟",
+    "ru": "ты чувствуешь, что сейчас живёшь ниже своих возможностей?"
+   }
   },
   {
    "id": "syn_2",
@@ -3773,7 +4524,15 @@
      "trait": "openness",
      "w": 0.3
     }
-   ]
+   ],
+   "qf": {
+    "de": "bist du bereit, 90 tage lang jeden tag einen kleinen schritt zu gehen, auch an tagen ohne lust?",
+    "en": "are you ready to take one small step every day for 90 days, even on days you do not feel like it?",
+    "fr": "es-tu prête à faire un petit pas chaque jour pendant 90 jours, même les jours sans envie ?",
+    "es": "¿estás dispuesta a dar un pequeño paso cada día durante 90 días, incluso los días sin ganas?",
+    "ar": "هل أنتِ مستعدة أن تخطي خطوة صغيرة كل يوم لمدة 90 يومًا، حتى في الأيام التي لا ترغبين فيها؟",
+    "ru": "ты готова 90 дней каждый день делать маленький шаг, даже в дни, когда нет желания?"
+   }
   },
   {
    "id": "tone",
@@ -4093,6 +4852,7 @@
   function visible(it, a) {
     const s = it.showIf;
     if (!s) return true;
+    if (s.gender && !s.gender.includes(a.gender)) return false;
     if (s.relationship && !s.relationship.includes(a.relationship)) return false;
     if (s.age_max && Number(a.age) > s.age_max) return false;
     return true;
@@ -4133,7 +4893,7 @@
   // what his habits say about a level, 0 solid .. 100 needs work. people judge themselves
   // kindly; frequencies and hours are harder to bend, so they weigh in on the score.
   const HABITS = {
-    p0: { porn: { never: 0, monthly: 25, weekly: 55, several: 80, daily: 100 }, morning: { most: 0, some: 40, rare: 90 }, control: { yes: 0, sometimes: 50, rarely: 100 } },
+    p0: { porn: { never: 0, monthly: 25, weekly: 55, several: 80, daily: 100 }, morning: { most: 0, some: 40, rare: 90 }, control: { yes: 0, sometimes: 50, rarely: 100 }, orgasm: { yes: 0, sometimes: 40, rarely: 80 } },
     p1: { sleep: { lt5: 100, "5_6": 75, "6_7": 40, "7_8": 0, gt8: 30 }, wake: { lt5: 20, "5_6": 0, "6_7": 0, "7_8": 15, gt8: 60, irregular: 100 }, daylight: { lt15: 70, "15_60": 30, gt60: 0 } },
     p2: { training: { none: 100, walk: 70, "1_2": 40, "3_4": 10, "5p": 0 }, pullups: { 0: 90, "1_5": 55, "6_12": 20, gt12: 0 } },
     p3: { eating: { graze: 90, meals_snacks: 50, meals: 10, window: 10, omad: 30 }, belly: { flat: 0, little: 35, clear: 70, large: 100 } },
@@ -4204,14 +4964,16 @@
   function safety(a) {
     const c = a.conditions || [];
     const age = Number(a.age) || 0;
+    const pregnant = a.pregnant === "pregnant" || a.pregnant === "breastfeeding";
     return {
-      noBreathHolds: c.includes("heart") || c.includes("bp") || c.includes("epilepsy") || c.includes("acute") || c.includes("circulation") || age >= 65,
+      pregnant,
+      noBreathHolds: pregnant || c.includes("heart") || c.includes("bp") || c.includes("epilepsy") || c.includes("acute") || c.includes("circulation") || age >= 65,
       // erection trouble can be an early sign of heart and vessel disease (thompson et al., jama 2005)
       sexualDoctorCheck: a.morning === "rare" || a.libido === "gone",
-      coldOnlyGentle: c.includes("heart") || c.includes("bp") || c.includes("circulation") || c.includes("acute") || age >= 65,
-      noFasting: c.includes("diabetes") || c.includes("eating_disorder") || c.includes("acute") || a.medication === "yes",
+      coldOnlyGentle: pregnant || c.includes("heart") || c.includes("bp") || c.includes("circulation") || c.includes("acute") || age >= 65,
+      noFasting: pregnant || c.includes("diabetes") || c.includes("eating_disorder") || c.includes("acute") || a.medication === "yes",
       noFoodRules: c.includes("eating_disorder"),
-      doctorFirst: c.some((x) => x !== "none") || a.medication === "yes" || age >= 65,
+      doctorFirst: pregnant || c.some((x) => x !== "none") || a.medication === "yes" || age >= 65,
       crisis: a.inner === "crisis",
       heavy: a.inner === "heavy",
     };
@@ -4233,7 +4995,8 @@
       lines.push(`\n## ${s.title.en}`);
       for (const it of its) {
         const tag = it.module ? `[${it.module.toUpperCase()}] ` : "";
-        let line = `- ${tag}${it.q.en} -> ${label(it, a[it.id])}`;
+        const q = a.gender === "f" && it.qf ? it.qf.en : it.q.en;
+        let line = `- ${tag}${q} -> ${label(it, a[it.id])}`;
         if (it.reads) line += `\n  reveals: ${a[it.id] >= 2 ? it.reads.yes : it.reads.no}${a[it.id] === 1 || a[it.id] === 2 ? " (leaning, not certain)" : ""}`;
         lines.push(line);
       }

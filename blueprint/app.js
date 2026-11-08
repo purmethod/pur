@@ -17,7 +17,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       meta1: "<b>{q} questions</b> in {s} short steps", meta2: "<b>about 15 minutes</b>, speak instead of typing", meta3: "<b>written for you</b>, nothing from a template",
       start: "begin", next: "next", back: "back", step: "step", of: "of", go: "go on",
       closed: "the blueprint opens soon.",
-      under18: "the pure blueprint is for men aged 18 and over.",
+      under18: "the pure blueprint is for people aged 18 and over.",
       crisis: "if you are in a crisis, talk to someone today. germany: telefonseelsorge 0800 111 0 111 or 0800 111 0 222, free, day and night. elsewhere: your local crisis line or emergency number.",
       multi: "choose all that apply", optional: "optional",
       reviewTag: "last step", reviewH: "ready.", reviewLead: "the blueprint takes one to three minutes to write.",
@@ -27,7 +27,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "too many blueprints are being written right now. try again in a few minutes.",
       errLimit: "you have written several blueprints in the last hour. try again later.",
       errGeneric: "something went wrong while writing your blueprint. your answers are kept, try again.",
-      payLead: "your map is ready, free. the book itself is written for you alone: 100 to 200 pages, after you pay.",
+      payLead: "your map is ready, free. the book itself is written for you alone: 200 to 300 pages, after you pay.",
       payBtn: "pay {price} and write my book",
       payCancel: "the payment was cancelled. your answers are kept.",
       payMissing: "no payment was found for this book. your answers are kept, try again.",
@@ -43,7 +43,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       meta1: "<b>{q} fragen</b> in {s} kurzen schritten", meta2: "<b>etwa 15 minuten</b>, sprechen statt tippen", meta3: "<b>für dich geschrieben</b>, nichts aus einer vorlage",
       start: "beginnen", next: "weiter", back: "zurück", step: "schritt", of: "von", go: "weiter",
       closed: "der blueprint öffnet bald.",
-      under18: "der pure blueprint ist für männer ab 18 jahren.",
+      under18: "der pure blueprint ist für menschen ab 18 jahren.",
       crisis: "wenn du in einer krise bist, sprich heute mit jemandem. telefonseelsorge 0800 111 0 111 oder 0800 111 0 222, kostenlos, tag und nacht. außerhalb deutschlands: dein örtliches krisentelefon oder der notruf.",
       multi: "alles auswählen, was zutrifft", optional: "optional",
       reviewTag: "letzter schritt", reviewH: "bereit.", reviewLead: "der blueprint braucht ein bis drei minuten.",
@@ -53,7 +53,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "gerade werden zu viele blueprints geschrieben. versuch es in ein paar minuten noch einmal.",
       errLimit: "du hast in der letzten stunde schon mehrere blueprints geschrieben. versuch es später noch einmal.",
       errGeneric: "beim schreiben deines blueprints ist etwas schiefgegangen. deine antworten bleiben erhalten, versuch es noch einmal.",
-      payLead: "deine karte ist fertig, kostenlos. das buch selbst wird nur für dich geschrieben: 100 bis 200 seiten, nachdem du bezahlt hast.",
+      payLead: "deine karte ist fertig, kostenlos. das buch selbst wird nur für dich geschrieben: 200 bis 300 seiten, nachdem du bezahlt hast.",
       payBtn: "{price} bezahlen und mein buch schreiben",
       payCancel: "die zahlung wurde abgebrochen. deine antworten bleiben erhalten.",
       payMissing: "für dieses buch wurde keine zahlung gefunden. deine antworten bleiben erhalten, versuch es noch einmal.",
@@ -69,7 +69,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       meta1: "<b>{q} questions</b> en {s} courtes étapes", meta2: "<b>environ 15 minutes</b>, parler au lieu de taper", meta3: "<b>écrit pour toi</b>, rien d'un modèle",
       start: "commencer", next: "suivant", back: "retour", step: "étape", of: "sur", go: "continuer",
       closed: "le blueprint ouvre bientôt.",
-      under18: "le blueprint pure est destiné aux hommes de 18 ans et plus.",
+      under18: "le blueprint pure est destiné aux personnes de 18 ans et plus.",
       crisis: "si tu es en crise, parle à quelqu'un aujourd'hui : un médecin, une personne de confiance, ou la ligne de crise ou le numéro d'urgence de ton pays. en allemagne : telefonseelsorge 0800 111 0 111.",
       multi: "choisis tout ce qui s'applique", optional: "facultatif",
       reviewTag: "dernière étape", reviewH: "prêt.", reviewLead: "l'écriture du blueprint prend une à trois minutes.",
@@ -79,7 +79,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "trop de blueprints sont en cours d'écriture. réessaie dans quelques minutes.",
       errLimit: "tu as déjà écrit plusieurs blueprints cette heure-ci. réessaie plus tard.",
       errGeneric: "un problème est survenu pendant l'écriture. tes réponses sont conservées, réessaie.",
-      payLead: "ta carte est prête, gratuitement. le livre lui-même est écrit pour toi seul : 100 à 200 pages, après le paiement.",
+      payLead: "ta carte est prête, gratuitement. le livre lui-même est écrit rien que pour toi : 200 à 300 pages, après le paiement.",
       payBtn: "payer {price} et écrire mon livre",
       payCancel: "le paiement a été annulé. tes réponses sont conservées.",
       payMissing: "aucun paiement trouvé pour ce livre. tes réponses sont conservées, réessaie.",
@@ -95,7 +95,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       meta1: "<b>{q} preguntas</b> en {s} pasos cortos", meta2: "<b>unos 15 minutos</b>, hablar en vez de escribir", meta3: "<b>escrito para ti</b>, nada de plantillas",
       start: "empezar", next: "siguiente", back: "atrás", step: "paso", of: "de", go: "seguir",
       closed: "el blueprint abre pronto.",
-      under18: "el blueprint pure es para hombres de 18 años o más.",
+      under18: "el blueprint pure es para personas de 18 años o más.",
       crisis: "si estás en crisis, habla hoy con alguien: un médico, una persona de confianza, o la línea de crisis o el número de emergencias de tu país. en alemania: telefonseelsorge 0800 111 0 111.",
       multi: "elige todo lo que corresponda", optional: "opcional",
       reviewTag: "último paso", reviewH: "listo.", reviewLead: "escribir el blueprint lleva de uno a tres minutos.",
@@ -105,7 +105,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "ahora se están escribiendo demasiados blueprints. inténtalo de nuevo en unos minutos.",
       errLimit: "ya has escrito varios blueprints en la última hora. inténtalo más tarde.",
       errGeneric: "algo salió mal al escribir tu blueprint. tus respuestas se conservan, inténtalo de nuevo.",
-      payLead: "tu mapa está listo, gratis. el libro se escribe solo para ti: de 100 a 200 páginas, después de pagar.",
+      payLead: "tu mapa está listo, gratis. el libro se escribe solo para ti: de 200 a 300 páginas, después de pagar.",
       payBtn: "pagar {price} y escribir mi libro",
       payCancel: "el pago se canceló. tus respuestas se conservan.",
       payMissing: "no se encontró ningún pago para este libro. tus respuestas se conservan, inténtalo de nuevo.",
@@ -121,7 +121,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       meta1: "<b>{q} سؤالًا</b> في {s} خطوات قصيرة", meta2: "<b>حوالي 15 دقيقة</b>، تحدّث بدل الكتابة", meta3: "<b>مكتوب لك</b>، لا شيء من قالب جاهز",
       start: "ابدأ", next: "التالي", back: "رجوع", step: "الخطوة", of: "من", go: "تابع",
       closed: "المخطط يفتح قريبًا.",
-      under18: "مخطط pure مخصص للرجال من عمر 18 عامًا فما فوق.",
+      under18: "مخطط pure مخصص لمن هم في عمر 18 عامًا فما فوق.",
       crisis: "إذا كنت في أزمة، تحدث مع شخص اليوم: طبيب أو شخص تثق به أو خط الأزمات أو رقم الطوارئ في بلدك.",
       multi: "اختر كل ما ينطبق", optional: "اختياري",
       reviewTag: "الخطوة الأخيرة", reviewH: "جاهز.", reviewLead: "تستغرق كتابة المخطط من دقيقة إلى ثلاث دقائق.",
@@ -131,7 +131,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "يتم الآن كتابة عدد كبير من المخططات. حاول مرة أخرى بعد بضع دقائق.",
       errLimit: "لقد كتبت عدة مخططات في الساعة الأخيرة. حاول لاحقًا.",
       errGeneric: "حدث خطأ أثناء كتابة مخططك. إجاباتك محفوظة، حاول مرة أخرى.",
-      payLead: "خريطتك جاهزة مجانًا. أما الكتاب فيُكتب لك وحدك: من 100 إلى 200 صفحة، بعد الدفع.",
+      payLead: "خريطتك جاهزة مجانًا. أما الكتاب فيُكتب لك وحدك: من 200 إلى 300 صفحة، بعد الدفع.",
       payBtn: "ادفع {price} واكتب كتابي",
       payCancel: "أُلغي الدفع. إجاباتك محفوظة.",
       payMissing: "لم يُعثر على دفعة لهذا الكتاب. إجاباتك محفوظة، حاول مرة أخرى.",
@@ -147,7 +147,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       meta1: "<b>{q} вопросов</b> в {s} коротких шагах", meta2: "<b>около 15 минут</b>, говори вместо того, чтобы печатать", meta3: "<b>написано для тебя</b>, ничего по шаблону",
       start: "начать", next: "дальше", back: "назад", step: "шаг", of: "из", go: "дальше",
       closed: "blueprint скоро откроется.",
-      under18: "blueprint pure предназначен для мужчин от 18 лет.",
+      under18: "blueprint pure предназначен для людей от 18 лет.",
       crisis: "если ты в кризисе, поговори с кем-нибудь сегодня: с врачом, с близким человеком или позвони на линию помощи или в экстренную службу своей страны.",
       multi: "выбери всё, что подходит", optional: "необязательно",
       reviewTag: "последний шаг", reviewH: "готово.", reviewLead: "написание blueprint занимает от одной до трёх минут.",
@@ -157,7 +157,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "сейчас пишется слишком много blueprint. попробуй через несколько минут.",
       errLimit: "за последний час ты уже написал несколько blueprint. попробуй позже.",
       errGeneric: "при написании blueprint что-то пошло не так. твои ответы сохранены, попробуй ещё раз.",
-      payLead: "твоя карта готова, бесплатно. сама книга пишется только для тебя: от 100 до 200 страниц, после оплаты.",
+      payLead: "твоя карта готова, бесплатно. сама книга пишется только для тебя: от 200 до 300 страниц, после оплаты.",
       payBtn: "оплатить {price} и написать мою книгу",
       payCancel: "оплата отменена. твои ответы сохранены.",
       payMissing: "оплата для этой книги не найдена. твои ответы сохранены, попробуй ещё раз.",
@@ -200,9 +200,35 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     const want = (navigator.language || "en").slice(0, 2);
     return T[want] ? want : "en";
   }
-  const t = () => T[st.lang];
+  // the same page in a woman's grammar, where her language has one
+  const TF = {
+    fr: { reviewH: "prête." },
+    es: { reviewH: "lista." },
+    ru: { errLimit: "за последний час ты уже написала несколько blueprint. попробуй позже." },
+    ar: {
+      meta2: "<b>حوالي 15 دقيقة</b>، تحدّثي بدل الكتابة", start: "ابدئي", restart: "ابدئي من جديد",
+      crisis: "إذا كنتِ في أزمة، تحدّثي مع شخص اليوم: طبيب أو شخص تثقين به أو خط الأزمات أو رقم الطوارئ في بلدك.",
+      multi: "اختاري كل ما ينطبق", reviewH: "جاهزة.",
+      errBusy: "يتم الآن كتابة عدد كبير من المخططات. حاولي مرة أخرى بعد بضع دقائق.",
+      errLimit: "لقد كتبتِ عدة مخططات في الساعة الأخيرة. حاولي لاحقًا.",
+      errGeneric: "حدث خطأ أثناء كتابة مخططك. إجاباتك محفوظة، حاولي مرة أخرى.",
+      payMissing: "لم يُعثر على دفعة لهذا الكتاب. إجاباتك محفوظة، حاولي مرة أخرى.",
+      disclaimer: "هذا المخطط إرشاد من طريقة pure وليس نصيحة طبية. تحدّثي مع طبيبك قبل تغيير التدريب أو الطعام أو البرد أو تمارين التنفس، خاصة إذا كان لديكِ مرض أو تتناولين أدوية.",
+    },
+  };
+  const t = () => {
+    const f = st.answers.gender === "f" && TF[st.lang];
+    if (!f) return T[st.lang];
+    const x = { ...T[st.lang], ...f };
+    if (st.lang === "ar") x.wait = T.ar.wait.map((w) => w.replace("أبقِ", "أبقي"));
+    return x;
+  };
   const L = (obj) => (obj ? obj[st.lang] || obj.en : "");
-  const B = (key, vars) => fill(L(C.book[key]), vars);
+  // a woman gets the feminine form of a book line where her language has one (key_f)
+  const B = (key, vars) => {
+    const f = st.answers.gender === "f" && C.book[key + "_f"];
+    return fill(L(f && f[st.lang] ? f : C.book[key]), vars);
+  };
   const fill = (s, vars) => String(s || "").replace(/\{(\w+)\}/g, (m, k) => (vars && vars[k] != null ? vars[k] : m));
   const persist = () => store.save({ lang: st.lang, step: st.step === N + 1 && !st.blueprint ? N : st.step, answers: st.answers, blueprint: st.blueprint, scores: st.scores, created: st.created, paid: st.paid });
 
@@ -380,7 +406,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
         letter ? el("span", { class: "step-letter", "aria-hidden": "true" }, letter) : null,
         el("p", { class: "tag" }, `${x.step} ${idx + 1} ${x.of} ${N}`),
         el("h2", {}, L(sec.title)),
-        el("p", { class: "lead" }, L(sec.intro)),
+        el("p", { class: "lead" }, L(st.answers.gender === "f" && sec.introf ? sec.introf : sec.intro)),
       ),
     );
     for (const it of visibleItems(sec.id)) add(app, renderItem(it));
@@ -422,8 +448,8 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     add(app, el("div", { class: "between", role: "status" },
       el("p", { class: "tag" }, `${x.step} ${idx + 1} ${x.of} ${N}`),
       el("div", { class: "between-mark", "aria-hidden": "true" }, "✓"),
-      el("h2", {}, L(card.head)),
-      el("p", { class: "lead" }, L(card.line)),
+      el("h2", {}, L(st.answers.gender === "f" && card.head_f ? card.head_f : card.head)),
+      el("p", { class: "lead" }, L(st.answers.gender === "f" && card.line_f ? card.line_f : card.line)),
       el("div", { class: "between-bar", "aria-hidden": "true" }, el("i")),
       el("button", { class: "btn", type: "button", onclick: next }, x.go)));
     clearTimeout(betweenTimer);
@@ -436,7 +462,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     const wrap = el("div", { class: "q" + (st.softMissing && !isAnswered(it) ? " open" : ""), id });
     const code = it.module && it.module !== "syn" && !it.module.startsWith("meta") ? el("span", { class: "q-code" }, it.module.toUpperCase()) : null;
     if (it.optional) add(wrap, el("p", { class: "tag" }, x.optional));
-    add(wrap, el("p", { class: "q-text" + (it.type === "voice" ? " voice-q" : ""), id: id + "-l" }, code, L(it.q)));
+    add(wrap, el("p", { class: "q-text" + (it.type === "voice" ? " voice-q" : ""), id: id + "-l" }, code, L(st.answers.gender === "f" && it.qf ? it.qf : it.q)));
     const set = (v) => { st.answers[it.id] = v; persist(); wrap.classList.remove("open"); };
 
     if (it.type === "voice") return renderVoice(it, wrap, set);
@@ -469,7 +495,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     for (const o of options) {
       const cur = st.answers[it.id];
       const on = it.type === "multi" ? Array.isArray(cur) && cur.includes(o.v) : cur === o.v;
-      const b = el("button", { class: "opt", type: "button", role: it.type === "multi" ? "checkbox" : "radio", "aria-checked": String(on) }, L(o.l));
+      const b = el("button", { class: "opt", type: "button", role: it.type === "multi" ? "checkbox" : "radio", "aria-checked": String(on) }, L(st.answers.gender === "f" && o.lf && o.lf[st.lang] ? o.lf : o.l));
       b.addEventListener("click", () => {
         if (it.type === "multi") {
           let list = Array.isArray(st.answers[it.id]) ? [...st.answers[it.id]] : [];
@@ -478,7 +504,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
           set(list);
         } else set(o.v);
         // answers that change later questions or show a note need a redraw; the rest only update the buttons
-        if (["relationship", "inner"].includes(it.id) || it.type === "multi") { const y = window.scrollY; render(); window.scrollTo(0, y); }
+        if (["gender", "relationship", "inner"].includes(it.id) || it.type === "multi") { const y = window.scrollY; render(); window.scrollTo(0, y); }
         else group.querySelectorAll(".opt").forEach((btn, i) => btn.setAttribute("aria-checked", String(options[i].v === o.v)));
       });
       group.append(b);
@@ -502,7 +528,8 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     const V = C.voice;
     const isGoal = it.id === "goal";
     const id = "q-" + it.id;
-    const hint = el("p", { class: "hint" }, L(isGoal ? V.goal_hint : V.story_hint));
+    const fem = (k) => (st.answers.gender === "f" && V[k + "_f"] ? V[k + "_f"] : V[k]);
+    const hint = el("p", { class: "hint" }, L(isGoal ? fem("goal_hint") : fem("story_hint")));
     const area = el("textarea", { id: id + "-i", maxlength: it.max, "aria-labelledby": id + "-l", class: "voice-text" });
     area.value = st.answers[it.id] || "";
     const live = el("p", { class: "voice-live", "aria-live": "polite" });
@@ -512,12 +539,12 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     area.addEventListener("input", () => set(area.value));
 
     const mic = el("button", { class: "mic", type: "button", "aria-pressed": "false" },
-      el("span", { class: "mic-dot", "aria-hidden": "true" }), el("span", { class: "mic-label" }, L(area.value ? V.again : V.start)));
-    const typeBtn = el("button", { class: "ghost", type: "button", onclick: () => { showArea(); area.focus(); } }, L(V.type_instead));
+      el("span", { class: "mic-dot", "aria-hidden": "true" }), el("span", { class: "mic-label" }, L(area.value ? V.again : fem("start"))));
+    const typeBtn = el("button", { class: "ghost", type: "button", onclick: () => { showArea(); area.focus(); } }, L(fem("type_instead")));
     typeBtn.hidden = !area.hidden;
 
     if (!Recognition) {
-      add(wrap, hint, el("p", { class: "note soft-note" }, L(V.unsupported)), area);
+      add(wrap, hint, el("p", { class: "note soft-note" }, L(fem("unsupported"))), area);
       area.hidden = false;
       return wrap;
     }
@@ -543,14 +570,14 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
         set(area.value);
       };
       rec.onerror = (e) => {
-        if (e.error === "not-allowed" || e.error === "service-not-allowed") { keep = false; status.textContent = L(V.denied); showArea(); }
+        if (e.error === "not-allowed" || e.error === "service-not-allowed") { keep = false; status.textContent = L(fem("denied")); showArea(); }
       };
       // browsers end a session after a pause; keep listening until he presses stop
       rec.onend = () => { if (keep && active && active.rec === rec) { try { rec.start(); } catch { finish(); } } else finish(); };
       const finish = () => {
         mic.setAttribute("aria-pressed", "false");
         mic.classList.remove("on");
-        mic.querySelector(".mic-label").textContent = L(area.value ? V.again : V.start);
+        mic.querySelector(".mic-label").textContent = L(area.value ? V.again : fem("start"));
         status.textContent = "";
         if (area.value) { area.hidden = false; typeBtn.hidden = true; }
         live.textContent = "";
@@ -681,6 +708,8 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     const name = st.answers.name || "";
     const scores = st.scores || Q.score(st.answers);
     const book = el("article", { class: "book" });
+    // the method chapters are written for men: a woman's book carries its own method per level
+    const woman = Boolean(b.woman) || st.answers.gender === "f";
     usedPaul = new Set();
     add(app, el("div", { class: "book-tools no-print" },
       el("div", { class: "seg", role: "group", "aria-label": B("view_phone") + " / " + B("view_pdf") },
@@ -763,14 +792,17 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
           ...paras(lv.reading),
           lv.why ? el("p", { class: "start-tag" }, B("why_now")) : null,
           ...paras(lv.why),
+          lv.deeper ? el("p", { class: "start-tag" }, B("how_it_works")) : null,
+          ...paras(lv.deeper),
           el("div", { class: "start" }, el("p", { class: "start-tag" }, B("start_small")), el("p", { class: "start-text" }, lv.start)),
           lv.next ? el("p", { class: "next" }, "→ " + lv.next) : null,
           growthGraphic(lv.protocol),
           (lv.obstacles || []).length ? el("div", { class: "obstacles" }, el("p", { class: "start-tag" }, B("obstacles")),
             el("dl", {}, lv.obstacles.flatMap((o) => [el("dt", {}, o.when), el("dd", {}, o.answer)]))) : null,
           (lv.signs || []).length ? el("div", { class: "signs" }, el("p", { class: "start-tag" }, B("signs")), list(lv.signs)) : null,
+          lv.scene ? el("div", { class: "scene" }, el("p", { class: "start-tag" }, B("in_90_days")), ...paras(lv.scene)) : null,
           paulNote(lv.level),
-          chapterSlot(lv.level)));
+          woman ? (lv.method ? el("div", { class: "her-method" }, el("p", { class: "tag method-tag" }, B("the_method_on") + " · " + levelName(lv.level)), ...paras(lv.method)) : null) : chapterSlot(lv.level)));
       }
       if (mine.closing) add(book, el("section", { class: "part pillar-close" }, ...paras(mine.closing)));
     }
@@ -813,7 +845,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       const placed = new Set();
       document.querySelectorAll(".chapter-slot").forEach((slot) => { if (fillSlot(slot)) placed.add(slot.dataset.level); });
       const order = (c) => (c.id === "pure" ? 1000 : Math.max(0, ...c.levels.map((l) => scores[l] || 0)));
-      const rest = chs.filter((c) => c.id !== "notes" && !placed.has(c.id)).sort((a, z) => order(z) - order(a));
+      const rest = chs.filter((c) => c.id !== "notes" && !placed.has(c.id) && (!woman || c.id === "pure")).sort((a, z) => order(z) - order(a));
       add(method, rest.map((c) => chapterEl(c, st.view === "pdf")));
       document.querySelectorAll("[data-paul]").forEach((n) => { const box = paulNote(n.dataset.paul); if (box) n.replaceWith(box); else n.remove(); });
     });
