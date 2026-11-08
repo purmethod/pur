@@ -25,8 +25,8 @@ const GOALS = { ons: "one-night stands", open: "an open relationship", family: "
 
 const AnthropicClient = Anthropic.default || Anthropic;
 let client;
-const knowledge = loadKnowledge();
-const system = buildSystem(knowledge);
+// the method is shared; knowledge/man and knowledge/woman hold only what differs, so each book reads its own
+const systems = { m: buildSystem(loadKnowledge("man")), f: buildSystem(loadKnowledge("woman")) };
 
 // a few blueprints per visitor and instance per hour; the spend limit in the anthropic console is the real cap
 const recent = new Map();
@@ -75,15 +75,18 @@ module.exports = async function handler(req, res) {
   const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "unknown";
   if (limited(ip)) return res.status(429).json({ error: "rate_limited" });
 
-  // one paid checkout writes one book (with a few retries if writing fails). previews stay free for testing.
-  if (process.env.VERCEL_ENV !== "preview") {
-    const paid = await claimPayment(body.session_id);
+  // one payment, one book: checked before writing, counted once the book is written, so a failed
+  // book can be tried again with the same payment. previews stay free for testing.
+  const pays = process.env.VERCEL_ENV !== "preview";
+  if (pays) {
+    const paid = await payment(body.session_id, "check");
     if (paid === "unreachable") return res.status(503).json({ error: "busy" });
     if (paid !== "ok") return res.status(402).json({ error: "payment_required" });
   }
 
   try {
     const blueprint = await writeBlueprint(check.answers, lang);
+    if (pays && (await payment(body.session_id, "claim")) !== "ok") console.error("blueprint written but not counted on its payment");
     return res.status(200).json({ ok: true, blueprint, scores: Q.score(check.answers) });
   } catch (error) {
     if (error instanceof Anthropic.RateLimitError) return res.status(503).json({ error: "busy" });
@@ -96,11 +99,12 @@ module.exports = async function handler(req, res) {
   }
 };
 
-// the payment is checked on brinkmannpaul.com, where the stripe key lives. "claim" counts one book on it.
-async function claimPayment(sessionId) {
+// the payment is checked on brinkmannpaul.com, where the stripe key lives. "check": paid and no book
+// written on it yet; "claim": count the written book on it.
+async function payment(sessionId, mode) {
   if (typeof sessionId !== "string" || !/^cs_(test|live)_[A-Za-z0-9]+$/.test(sessionId)) return "missing";
   try {
-    const r = await fetch(`https://brinkmannpaul.com/api/blueprint-paid?claim=1&session_id=${encodeURIComponent(sessionId)}`, { signal: AbortSignal.timeout(10000) });
+    const r = await fetch(`https://brinkmannpaul.com/api/blueprint-paid?${mode}=1&session_id=${encodeURIComponent(sessionId)}`, { signal: AbortSignal.timeout(10000) });
     if (r.status >= 500) return "unreachable";
     const d = await r.json().catch(() => ({}));
     return r.ok && d.paid === true ? "ok" : "missing";
@@ -114,14 +118,17 @@ function enabled() {
   return process.env.PUR_BLUEPRINT_ENABLED === "1" || process.env.VERCEL_ENV === "preview";
 }
 
-function loadKnowledge() {
-  const dir = path.join(__dirname, "..", "knowledge");
-  return fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith(".txt"))
-    .sort()
-    .map((f) => `<file name="${f}">\n${fs.readFileSync(path.join(dir, f), "utf8").trim()}\n</file>`)
-    .join("\n\n");
+function loadKnowledge(who) {
+  const root = path.join(__dirname, "..", "knowledge");
+  const read = (sub) => {
+    const dir = path.join(root, sub);
+    return fs
+      .readdirSync(dir)
+      .filter((f) => f.endsWith(".txt"))
+      .sort()
+      .map((f) => `<file name="${path.posix.join(sub, f)}">\n${fs.readFileSync(path.join(dir, f), "utf8").trim()}\n</file>`);
+  };
+  return [...read(""), ...read(who)].join("\n\n");
 }
 
 function lifeStage(age) {
@@ -406,7 +413,7 @@ function tidyPillar(letter, parts) {
 
 // started: called once the model has read the prompt, so the parts started after it read the
 // method knowledge from the cache instead of paying to write it again
-async function writePart(brief, task, schema, started) {
+async function writePart(system, brief, task, schema, started) {
   client = client || new AnthropicClient();
   const stream = client.beta.messages.stream({
     model: MODEL,
@@ -446,12 +453,12 @@ function partGaps(b, letter, part) {
   if (part === PARTS[letter].length - 1 && !filled(b.closing)) gaps.push("closing");
   return gaps;
 }
-async function writeComplete(brief, task, schema, gapsOf, t0, started) {
-  const first = await writePart(brief, task, schema, started);
+async function writeComplete(system, brief, task, schema, gapsOf, t0, started) {
+  const first = await writePart(system, brief, task, schema, started);
   const gaps = gapsOf(first);
   if (!gaps.length || Date.now() - t0 > 140000) return first;
   console.error("part incomplete, writing it again:", gaps.join(", "));
-  const second = await writePart(brief, task, schema).catch(() => null);
+  const second = await writePart(system, brief, task, schema).catch(() => null);
   return second && gapsOf(second).length < gaps.length ? second : first;
 }
 
@@ -462,15 +469,16 @@ async function writeBlueprint(answers, lang) {
   const scores = Q.score(answers);
   const crisis = Q.safety(answers).crisis;
   const woman = answers.gender === "f";
+  const sys = systems[woman ? "f" : "m"];
   const letters = crisis ? [] : ["P", "U", "R", "E"];
   let ready;
   const cached = new Promise((resolve) => { ready = resolve; setTimeout(resolve, 15000); });
   const t0 = Date.now();
-  const core = writeComplete(brief, CORE_TASK, CORE_SCHEMA, coreGaps, t0, ready);
+  const core = writeComplete(sys, brief, CORE_TASK, CORE_SCHEMA, coreGaps, t0, ready);
   core.catch(() => {}); // awaited below; this only keeps an early failure from counting as unhandled
   await cached;
   const jobs = letters.flatMap((l) => PARTS[l].map((_, i) => ({ l, i })));
-  const results = await Promise.allSettled(jobs.map(({ l, i }) => writeComplete(brief, pillarTask(l, scores, i, woman), PILLAR_SCHEMA, (b) => partGaps(b, l, i), t0)));
+  const results = await Promise.allSettled(jobs.map(({ l, i }) => writeComplete(sys, brief, pillarTask(l, scores, i, woman), PILLAR_SCHEMA, (b) => partGaps(b, l, i), t0)));
   const book = tidyCore(await core);
   book.version = 2;
   book.woman = woman;
@@ -493,5 +501,5 @@ module.exports.CORE_SCHEMA = CORE_SCHEMA;
 module.exports.PILLAR_SCHEMA = PILLAR_SCHEMA;
 module.exports.CORE_TASK = CORE_TASK;
 module.exports.pillarTask = pillarTask;
-module.exports.system = system;
+module.exports.systems = systems;
 module.exports.writeBlueprint = writeBlueprint;
