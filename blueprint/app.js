@@ -435,12 +435,8 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
             covers.length ? el("div", { class: "alst" }, el("p", { class: "albl" }, m.covers), el("ul", {}, covers.map((c) => el("li", {}, c)))) : null)));
       return acc;
     };
-    ["p", "u", "r"].forEach((p, i) => add(box, el("div", { class: "ps" }, head(p.toUpperCase(), m["pn" + (i + 1)], m["ps" + (i + 1)]), [0, 1, 2, 3, 4, 5].map((n) => level(p + n)))));
-    // ego: its four levels as the book names them; the landing page has no texts to open for them yet
-    const e = C.building.pillars.find((p) => p.letter === "E");
-    const still = (code, name) => el("div", { class: "acc still" }, el("div", { class: "acc_btn" }, el("span", { class: "al" }, el("span", { class: "an" }, code.toUpperCase()), el("span", { class: "at" }, name))));
-    add(box, el("div", { class: "ps" }, head("E", L(e.name)),
-      still("e1", L(e.points[0])), still("e2", L(e.points[1])), still("ef", "fuck around · find out"), still("e5", L(e.points[4]))));
+    // P, U and R have a foundation (0) and five modules, ego has five modules
+    ["p", "u", "r", "e"].forEach((p, i) => add(box, el("div", { class: "ps" }, head(p.toUpperCase(), m["pn" + (i + 1)], m["ps" + (i + 1)]), (p === "e" ? [1, 2, 3, 4, 5] : [0, 1, 2, 3, 4, 5]).map((n) => level(p + n)))));
     return box;
   }
 
@@ -727,7 +723,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     { letter: "P", mods: ["p0", "p1", "p2", "p3", "p4", "p5"] },
     { letter: "U", mods: ["u0", "u1", "u2", "u3", "u4", "u5"] },
     { letter: "R", mods: ["r0", "r1", "r2", "r3", "r4", "r5"] },
-    { letter: "E", mods: ["e1", "e2", "ef", "e5"] },
+    { letter: "E", mods: ["e1", "e2", "e3", "e4", "e5"] },
   ];
   const levelName = (code) => {
     if (Q.blocks[code]) return L(Q.blocks[code]);
@@ -911,7 +907,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     loadChapters().then((chs) => {
       if (st.step !== N + 2) return;
       const placed = new Set();
-      document.querySelectorAll(".chapter-slot").forEach((slot) => { if (fillSlot(slot)) placed.add(slot.dataset.level); });
+      document.querySelectorAll(".chapter-slot").forEach((slot) => { const id = fillSlot(slot); if (id) placed.add(id); });
       const order = (c) => (c.id === "pure" ? 1000 : Math.max(0, ...c.levels.map((l) => scores[l] || 0)));
       const rest = chs.filter((c) => c.id !== "notes" && !placed.has(c.id) && (!woman || c.id === "pure")).sort((a, z) => order(z) - order(a));
       add(method, rest.map((c) => chapterEl(c, st.view === "pdf")));
@@ -926,12 +922,15 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
   function chapterSlot(level) {
     return el("div", { class: "chapter-slot", "data-level": level });
   }
-  // the method chapter on a level, right after his personal chapter on it
+  // the method chapter on a level, right after his personal chapter on it. a chapter also serves the
+  // older names in its levels (e3 serves "ef" of books written before e3 and e4). returns its id.
   function fillSlot(slot) {
-    const ch = (st.chapters || []).find((c) => c.id === slot.dataset.level);
+    const lv = slot.dataset.level;
+    const chs = st.chapters || [];
+    const ch = chs.find((c) => c.id === lv) || chs.find((c) => (c.levels || []).includes(lv));
     if (!ch) return false;
     slot.replaceChildren(el("p", { class: "tag method-tag" }, B("the_method_on") + " · " + levelName(ch.id)), chapterEl(ch, st.view === "pdf"));
-    return true;
+    return ch.id;
   }
   function chapterEl(c, open) {
     return el("details", { class: "chapter", id: "ch-" + c.id, open },
@@ -971,7 +970,8 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       PILLARS.map((P) => el("div", { class: "map-row" },
         el("span", { class: "map-letter", "aria-hidden": "true" }, P.letter),
         el("div", { class: "map-cells", style: `grid-template-columns:repeat(${P.mods.length},minmax(0,1fr))` }, P.mods.map((m) => {
-          const raw = scores[m];
+          // books written before e3 and e4 had one level "ef" for both
+          const raw = scores[m] ?? ((m === "e3" || m === "e4") ? scores.ef : undefined);
           const v = Math.max(0, Math.min(100, Number(raw) || 0));
           const cls = "map-cell" + (raw == null ? " none" : v >= 55 ? " hot" : "");
           return el("div", { class: cls, style: `--v:${(v / 100) * 0.95}`, title: levelName(m) + (raw == null ? "" : " · " + v) },
