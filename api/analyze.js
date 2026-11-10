@@ -119,7 +119,7 @@ async function payment(sessionId, mode) {
 }
 
 // free codes live in vercel (BLUEPRINT_FREE_CODES, comma separated), never in this public repo.
-// case and spaces do not matter: "paul 100" is PAUL100.
+// case and spaces do not matter: "abc 123" is ABC123.
 const normCode = (s) => String(s || "").toUpperCase().replace(/\s+/g, "").slice(0, 40);
 function freeCode(code) {
   const got = normCode(code);
