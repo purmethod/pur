@@ -2,12 +2,12 @@
 
 The site is shown at **https://brinkmannpaul.com/pure**: brinkmannpaul.com proxies `/pure/*` to this project, which serves everything under `/pure` (see `vercel.json`). `purmethod.com/` and `/blueprint` redirect there. The blueprint calls `https://purmethod.com/api/analyze` directly (CORS allows brinkmannpaul.com), so a long answer never runs through the proxy.
 
-Static site (`index.html`) plus the PURE blueprint: a questionnaire at `/blueprint` and one Vercel function that writes a personal book with Claude, about 170 pages: a letter, what the method sees in him, his blind spots, three priorities, the ladder, one personal chapter per level of all four pillars, each followed by the method chapter on that level, thirteen weeks, his day, his rules and a closing letter. Read on the phone or saved as a PDF.
+Static site (`index.html`) plus the PURE blueprint: a questionnaire at `/blueprint` and one Vercel function that writes a personal book with Claude, about 190 to 200 pages: a letter, what the method sees in him, his blind spots, three priorities, the ladder, one personal chapter per level of all four pillars, each followed by the method chapter on that level, thirteen weeks, his day, his rules and a closing letter. Read on the phone or saved as a PDF.
 
 ### The book format
 
 - **Trim: 12.7 x 20.3 cm (5 x 8 inches)**, the size of a classic small non-fiction book (The War of Art). Set in `@page` in `blueprint/index.html`; the same file can go to a printer later.
-- **Length: about 170 pages.** The method chapters (Paul's own words, `blueprint/book/<lang>.json`) are always complete, about 145 pages with the book's structure. The personal parts the model writes have word ranges in `api/analyze.js` (`CORE_TASK`, `pillarTask`); at the top of every range the book has 184 pages. Each written book logs `blueprint words` in the Vercel logs: change the ranges there if books run long or short.
+- **Length: about 190 to 200 pages.** The method chapters (Paul's own words, `blueprint/book/<lang>.json`) are always complete, about 145 pages with the book's structure. The personal parts the model writes have word ranges in `api/analyze.js` (`CORE_TASK`, `pillarTask`); in the middle of every range a sample book has 207 pages, and the model usually writes a little less. Each written book logs `blueprint words` in the Vercel logs: change the ranges there if books run long or short.
 - **Design:** the palette and type of brinkmannpaul.com and pact. Thin-line boxes, one strong line between levels, a light line before the method on a level, Paul's notes on the faintest grey. Print is plain blocks (no grid or flex), because Safari on the iPhone cuts lines in half across a page break inside a grid.
 - **No dashes.** `Q.undash` (in `blueprint/questions.js`) turns dashes into commas or colons and number ranges into words. It runs on every written book, on the method chapters and on older books when they are shown. Russian keeps its dash, it is grammar there.
 
@@ -23,6 +23,8 @@ Static site (`index.html`) plus the PURE blueprint: a questionnaire at `/bluepri
 | `knowledge/*.txt` | the PURE Method itself (`0-pure-structure.txt` the building, `e-ego.txt` the E pillar, `paul-notes.txt` Paul's own experiences for the "from paul's life" boxes). Edit these to change what the blueprint teaches. Every study named here was checked against the paper; keep it that way. `woman/body-first-femininity.txt` is for women only: Paul's stance (body first, femininity, love from fullness) and the checked studies for her body; a woman's book also gets a chapter on her feminine energy. |
 
 ### Switch it on (Vercel → project `pur` → Settings → Environment Variables)
+
+- `BLUEPRINT_FREE_CODES`: codes that write a book without payment (Paul's tests and gifts), comma separated, case and spaces do not matter. They live only in Vercel, never in this public repo.
 
 - `ANTHROPIC_API_KEY`: the Anthropic API key
 - `PUR_BLUEPRINT_ENABLED` = `1`

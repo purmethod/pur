@@ -27,8 +27,9 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "too many blueprints are being written right now. try again in a few minutes.",
       errLimit: "you have written several blueprints in the last hour. try again later.",
       errGeneric: "something went wrong while writing your blueprint. your answers are kept, try again.",
-      payLead: "your map is ready, free. the book itself is written for you alone: about 170 pages, after you pay.",
+      payLead: "your map is ready, free. the book itself is written for you alone: about 190 to 200 pages, after you pay.",
       payBtn: "pay {price} and write my book",
+      codeAsk: "have a code?", codeLabel: "code", codeBtn: "redeem", codeWrong: "this code is not valid.",
       payCancel: "the payment was cancelled. your answers are kept.",
       payMissing: "no payment was found for this book. your answers are kept, try again.",
       payWait: "opening the payment…",
@@ -53,8 +54,9 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "gerade werden zu viele blueprints geschrieben. versuch es in ein paar minuten noch einmal.",
       errLimit: "du hast in der letzten stunde schon mehrere blueprints geschrieben. versuch es später noch einmal.",
       errGeneric: "beim schreiben deines blueprints ist etwas schiefgegangen. deine antworten bleiben erhalten, versuch es noch einmal.",
-      payLead: "deine karte ist fertig, kostenlos. das buch selbst wird nur für dich geschrieben: rund 170 seiten, nachdem du bezahlt hast.",
+      payLead: "deine karte ist fertig, kostenlos. das buch selbst wird nur für dich geschrieben: 190 bis 200 seiten, nachdem du bezahlt hast.",
       payBtn: "{price} bezahlen und mein buch schreiben",
+      codeAsk: "du hast einen code?", codeLabel: "code", codeBtn: "einlösen", codeWrong: "dieser code gilt nicht.",
       payCancel: "die zahlung wurde abgebrochen. deine antworten bleiben erhalten.",
       payMissing: "für dieses buch wurde keine zahlung gefunden. deine antworten bleiben erhalten, versuch es noch einmal.",
       payWait: "die zahlung wird geöffnet…",
@@ -79,8 +81,9 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "trop de blueprints sont en cours d'écriture. réessaie dans quelques minutes.",
       errLimit: "tu as déjà écrit plusieurs blueprints cette heure-ci. réessaie plus tard.",
       errGeneric: "un problème est survenu pendant l'écriture. tes réponses sont conservées, réessaie.",
-      payLead: "ta carte est prête, gratuitement. le livre lui-même est écrit rien que pour toi : environ 170 pages, après le paiement.",
+      payLead: "ta carte est prête, gratuitement. le livre lui-même est écrit rien que pour toi : 190 à 200 pages environ, après le paiement.",
       payBtn: "payer {price} et écrire mon livre",
+      codeAsk: "tu as un code ?", codeLabel: "code", codeBtn: "utiliser", codeWrong: "ce code n'est pas valable.",
       payCancel: "le paiement a été annulé. tes réponses sont conservées.",
       payMissing: "aucun paiement trouvé pour ce livre. tes réponses sont conservées, réessaie.",
       payWait: "ouverture du paiement…",
@@ -105,8 +108,9 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "ahora se están escribiendo demasiados blueprints. inténtalo de nuevo en unos minutos.",
       errLimit: "ya has escrito varios blueprints en la última hora. inténtalo más tarde.",
       errGeneric: "algo salió mal al escribir tu blueprint. tus respuestas se conservan, inténtalo de nuevo.",
-      payLead: "tu mapa está listo, gratis. el libro se escribe solo para ti: unas 170 páginas, después de pagar.",
+      payLead: "tu mapa está listo, gratis. el libro se escribe solo para ti: entre 190 y 200 páginas, después de pagar.",
       payBtn: "pagar {price} y escribir mi libro",
+      codeAsk: "¿tienes un código?", codeLabel: "código", codeBtn: "canjear", codeWrong: "este código no es válido.",
       payCancel: "el pago se canceló. tus respuestas se conservan.",
       payMissing: "no se encontró ningún pago para este libro. tus respuestas se conservan, inténtalo de nuevo.",
       payWait: "abriendo el pago…",
@@ -131,8 +135,9 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "يتم الآن كتابة عدد كبير من المخططات. حاول مرة أخرى بعد بضع دقائق.",
       errLimit: "لقد كتبت عدة مخططات في الساعة الأخيرة. حاول لاحقًا.",
       errGeneric: "حدث خطأ أثناء كتابة مخططك. إجاباتك محفوظة، حاول مرة أخرى.",
-      payLead: "خريطتك جاهزة مجانًا. أما الكتاب فيُكتب لك وحدك: نحو 170 صفحة، بعد الدفع.",
+      payLead: "خريطتك جاهزة مجانًا. أما الكتاب فيُكتب لك وحدك: نحو 190 إلى 200 صفحة، بعد الدفع.",
       payBtn: "ادفع {price} واكتب كتابي",
+      codeAsk: "هل لديك رمز؟", codeLabel: "الرمز", codeBtn: "استخدام الرمز", codeWrong: "هذا الرمز غير صالح.",
       payCancel: "أُلغي الدفع. إجاباتك محفوظة.",
       payMissing: "لم يُعثر على دفعة لهذا الكتاب. إجاباتك محفوظة، حاول مرة أخرى.",
       payWait: "جارٍ فتح صفحة الدفع…",
@@ -157,8 +162,9 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "сейчас пишется слишком много blueprint. попробуй через несколько минут.",
       errLimit: "за последний час ты уже написал несколько blueprint. попробуй позже.",
       errGeneric: "при написании blueprint что-то пошло не так. твои ответы сохранены, попробуй ещё раз.",
-      payLead: "твоя карта готова, бесплатно. сама книга пишется только для тебя: около 170 страниц, после оплаты.",
+      payLead: "твоя карта готова, бесплатно. сама книга пишется только для тебя: около 190–200 страниц, после оплаты.",
       payBtn: "оплатить {price} и написать мою книгу",
+      codeAsk: "есть код?", codeLabel: "код", codeBtn: "применить", codeWrong: "этот код недействителен.",
       payCancel: "оплата отменена. твои ответы сохранены.",
       payMissing: "оплата для этой книги не найдена. твои ответы сохранены, попробуй ещё раз.",
       payWait: "открываем оплату…",
@@ -610,7 +616,14 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     const box = el("input", { type: "checkbox", id: "consent" });
     const mustPay = st.price && !st.paid;
     const btn = el("button", { class: "btn", type: "button", disabled: true, onclick: mustPay ? pay : submit }, mustPay ? x.payBtn.replace("{price}", fmtPrice(st.price)) : x.generate);
-    box.addEventListener("change", () => (btn.disabled = !box.checked));
+    // a free code writes the book without the payment; the server checks it
+    const codeIn = el("input", { type: "text", id: "code", autocomplete: "off", autocapitalize: "characters", spellcheck: "false", maxlength: 40, "aria-label": x.codeLabel, placeholder: x.codeLabel });
+    const codeBtn = el("button", { class: "ghost strong", type: "button", disabled: true, onclick: () => { st.code = codeIn.value.trim(); submit(); } }, x.codeBtn);
+    const codeRow = el("div", { class: "code-row", hidden: !st.showCode }, codeIn, codeBtn);
+    const sync = () => { btn.disabled = !box.checked; codeBtn.disabled = !box.checked || !codeIn.value.trim(); };
+    box.addEventListener("change", sync);
+    codeIn.addEventListener("input", sync);
+    codeIn.addEventListener("keydown", (e) => { if (e.key === "Enter" && !codeBtn.disabled) codeBtn.click(); });
     if (st.cancelled) { st.error = x.payCancel; st.cancelled = false; }
     add(app,
       el("p", { class: "tag" }, x.reviewTag),
@@ -625,6 +638,9 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
         el("p", {}, L(K.orientation))),
       st.error ? el("p", { class: "err", role: "alert" }, st.error) : null,
       el("div", { class: "actions" }, el("button", { class: "ghost", type: "button", onclick: () => go(N - 1) }, x.back), btn),
+      mustPay ? el("div", { class: "code" },
+        el("button", { class: "ghost", type: "button", "aria-expanded": String(Boolean(st.showCode)), onclick: (e) => { st.showCode = !st.showCode; codeRow.hidden = !st.showCode; e.currentTarget.setAttribute("aria-expanded", String(st.showCode)); if (st.showCode) codeIn.focus(); } }, x.codeAsk),
+        codeRow) : null,
     );
   }
 
@@ -647,7 +663,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     }
     go(N + 1);
     try {
-      const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ lang: st.lang, consent: true, answers: check.answers, session_id: st.paid || undefined }) });
+      const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ lang: st.lang, consent: true, answers: check.answers, session_id: st.paid || undefined, code: st.code || undefined }) });
       const data = await r.json().catch(() => ({}));
       clearInterval(waitTimer);
       if (r.ok && data.blueprint) {
@@ -655,15 +671,17 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
         st.scores = data.scores || Q.score(check.answers);
         st.created = new Date().toISOString().slice(0, 10);
         st.paid = null; // one payment, one book
+        st.code = null;
         go(N + 2);
         return;
       }
       const x = t();
       if (r.status === 402) st.paid = null;
-      st.error = r.status === 402 ? x.payMissing : r.status === 429 ? x.errLimit : data.error === "busy" ? x.errBusy : data.error === "coming_soon" ? x.closed : x.errGeneric;
+      st.error = data.error === "code_invalid" ? x.codeWrong : r.status === 402 ? x.payMissing : r.status === 429 ? x.errLimit : data.error === "busy" ? x.errBusy : data.error === "coming_soon" ? x.closed : x.errGeneric;
     } catch {
       st.error = t().errGeneric;
     }
+    st.code = null;
     clearInterval(waitTimer);
     st.step = N; persist(); render();
   }
