@@ -11,6 +11,10 @@ Static site (`index.html`) plus the PURE blueprint: a questionnaire at `/bluepri
 - **Design:** the palette and type of brinkmannpaul.com and pact. Thin-line boxes, one strong line between levels, a light line before the method on a level, Paul's notes on the faintest grey. Print is plain blocks (no grid or flex), because Safari on the iPhone cuts lines in half across a page break inside a grid.
 - **No dashes.** `Q.undash` (in `blueprint/questions.js`) turns dashes into commas or colons and number ranges into words. It runs on every written book, on the method chapters and on older books when they are shown. Russian keeps its dash, it is grammar there.
 
+### The levels: one source
+
+`modules.js` holds the levels P0 to R5 in six languages (name, tag, text, science, what each covers) and `modules.css` the accordion that opens them. The landing page (`index.html`, "the 18 levels") and the blueprint's start page (under the building) both use them, so they always show the same. Change a level there, never in one page alone.
+
 ## Blueprint
 
 | File | What it does |

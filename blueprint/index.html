@@ -58,7 +58,7 @@
     .meta b { color: var(--ink); font-weight: 500; }
     .test-line { margin-top: 26px; padding: 14px 18px; border-inline-start: 2px solid var(--gold); background: var(--off); font-family: var(--serif); font-style: italic; font-size: 21px; line-height: 1.35; color: var(--ink); }
 
-    /* the building: four pillars, five points each, a roof above */
+    /* the building: four pillars, a roof above, every level to open below */
     .building { margin-top: 56px; padding-top: 36px; border-top: 1px solid var(--line); }
     .building svg { display: block; width: 100%; height: auto; margin: 18px 0 10px; }
     .b-line { fill: none; stroke: var(--ink); stroke-width: 1.4; }
@@ -69,14 +69,9 @@
     .b-roof { font-family: var(--sans); font-size: 15px; letter-spacing: .04em; fill: var(--gold); }
     .b-small { font-family: var(--sans); font-size: 11px; letter-spacing: .25em; fill: var(--ink3); }
     .building figcaption { color: var(--ink2); font-size: 15px; max-width: 58ch; }
-    .points { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 22px; }
-    .point-card { padding: 14px 12px; background: var(--off); }
-    .point-card .pl { font-family: var(--serif); font-size: 30px; line-height: 1; color: var(--gold); }
-    .point-card .pn { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 500; margin: 6px 0 8px; hyphens: auto; }
-    .point-card ol { list-style: none; counter-reset: p; display: grid; gap: 4px; }
-    .point-card li { counter-increment: p; font-size: 13px; line-height: 1.35; color: var(--ink2); display: flex; gap: 6px; hyphens: auto; overflow-wrap: anywhere; }
-    .point-card li::before { content: counter(p); color: var(--gold); font-size: 11px; min-width: 9px; padding-top: 1px; }
-    .point-card li.open { color: var(--ink3); }
+    /* the levels under the building: modules.css styles the accordion, as on the landing page */
+    .levels { margin-top: 40px; }
+    .levels .acc.still .acc_btn { cursor: default; }
 
     .step-head { position: relative; padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
     .step-letter { position: absolute; inset-inline-end: 0; top: -14px; font-family: var(--serif); font-size: 120px; line-height: 1; color: rgba(0,0,0,.05); pointer-events: none; }
@@ -321,7 +316,6 @@
       .opts.scale { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .day { grid-template-columns: 1fr; }
       .step-letter { font-size: 90px; }
-      .points { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .sources-row { grid-template-columns: 1fr; }
       .source { display: flex; gap: 14px; align-items: center; }
       .source p { margin-top: 0; }
@@ -412,11 +406,12 @@
       .chapter > summary::after { display: none; }
       .chapter-body { padding-bottom: 0; }
       .ch-sec { margin-top: 4mm; }
-      .start, .paul, .source, .sources, .map, .ladder, .timeline, .week, .spot, .day > div, .ch-sec blockquote, .science, .growth li, .nn li, ul.clean li, ol.steps li, .obstacles dd, .point-card, .toc li { break-inside: avoid; }
+      .start, .paul, .source, .sources, .map, .ladder, .timeline, .week, .spot, .day > div, .ch-sec blockquote, .science, .growth li, .nn li, ul.clean li, ol.steps li, .obstacles dd, .toc li { break-inside: avoid; }
       h2, h3, h4, h5, dt, .tag, .start-tag, .code, .level-head, .chapter-title, .chapter > summary, .pillar-head { break-after: avoid; }
       p { orphans: 3; widows: 3; }
     }
   </style>
+  <link rel="stylesheet" href="/pure/modules.css?v=1" />
   <link rel="stylesheet" href="/pure/pure.css?v=4" />
 </head>
 <body>
@@ -444,6 +439,7 @@
 
   <script src="/pure/blueprint/questions.js?v=5"></script>
   <script src="/pure/blueprint/copy.js?v=4"></script>
-  <script src="/pure/blueprint/app.js?v=7"></script>
+  <script src="/pure/modules.js?v=1"></script>
+  <script src="/pure/blueprint/app.js?v=8"></script>
 </body>
 </html>
