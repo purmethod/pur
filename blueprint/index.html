@@ -144,7 +144,8 @@
     .loading p { color: var(--ink3); min-height: 1.6em; }
 
     /* ---------- the book ---------- */
-    .book-tools { position: sticky; top: 61px; z-index: 5; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 0; margin: -24px 0 18px; background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); }
+    /* solid and on its own layer, so on the iphone nothing scrolls through it; it sits right under the header */
+    .book-tools { position: sticky; top: 55px; z-index: 5; -webkit-transform: translateZ(0); transform: translateZ(0); display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 0; margin: -24px 0 18px; background: #ffffff; border-bottom: 1px solid var(--line); }
     .seg { display: inline-flex; border: 1px solid var(--line); }
     .seg button { background: none; border: 0; padding: 10px 14px; min-height: 42px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink3); cursor: pointer; }
     .seg button[aria-pressed="true"] { background: var(--ink); color: var(--w); }
@@ -297,13 +298,17 @@
 
     footer { border-top: 1px solid var(--line); padding: 24px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 11px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink3); }
 
-    /* pdf view on screen: the book as pages */
-    body[data-view="pdf"] { background: #e9e7e1; }
-    body[data-view="pdf"] main { max-width: 860px; }
-    body[data-view="pdf"] .book { background: var(--w); box-shadow: 0 2px 30px rgba(0,0,0,.08); padding: 0 56px; }
-    body[data-view="pdf"] .cover { margin-inline: -56px; padding-inline: 56px; }
-    body[data-view="pdf"] .book-tools { background: rgba(233,231,225,.96); }
+    /* pdf view on screen: the book as pages, in the narrow width of the printed book */
+    body[data-view="pdf"] { background: #f1f1ef; }
+    body[data-view="pdf"] main { max-width: 620px; }
+    body[data-view="pdf"] .book { background: var(--w); box-shadow: 0 1px 18px rgba(0,0,0,.06); padding: 0 46px; }
+    body[data-view="pdf"] .cover { margin-inline: -46px; padding-inline: 46px; }
+    body[data-view="pdf"] .book-tools { background: #f1f1ef; }
     body[data-view="pdf"] .map-name { display: block; }
+    /* the method on a level follows his chapter on it, set off by one strong line */
+    .chapter-slot, .her-method { margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line); }
+    .chapter-slot .chapter { border-top: 0; }
+    .scene { margin-top: 22px; padding-inline-start: 16px; border-inline-start: 1px solid var(--line); }
 
     @media (max-width: 560px) {
       main { padding: 32px 16px 100px; }
@@ -327,26 +332,85 @@
     }
     @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 
-    /* the pdf is a book: a5 pages, every chapter on a new page, page numbers at the foot */
-    @page { size: A5; margin: 17mm 15mm 19mm; @bottom-center { content: counter(page); font: 8pt Arial, sans-serif; color: #7b7b75; } }
+    /* the pdf is a book: 12.7 x 20.3 cm (5 x 8 inches), the trim of a classic small non-fiction book,
+       so the same file can go to a printer later. every part starts on a new page, numbers at the foot. */
+    @page { size: 127mm 203mm; margin: 14mm 13mm 15mm; @bottom-center { content: counter(page); font: 7pt Arial, sans-serif; color: #7b7b75; } }
     @page :first { @bottom-center { content: none; } }
     @media print {
-      body, body[data-view="pdf"] { background: #fff; font-size: 10pt; }
+      html, body, body[data-view="pdf"] { background: #fff; font-size: 9.5pt; line-height: 1.44; }
       nav, .bar, .actions, footer, .no-print, .book-tools { display: none !important; }
       main, body[data-view="pdf"] main { padding: 0; max-width: none; }
       body[data-view="pdf"] .book, .book { box-shadow: none; padding: 0; }
-      .book p { max-width: none; }
-      .cover { min-height: 170mm; margin: 0 !important; padding: 0 !important; break-after: page; }
-      .part { break-inside: auto; padding: 14px 0; border: 0; }
-      .page, .pillar-part, .method, .chapter { break-before: page; }
-      .insight { font-size: 15pt; }
-      .level-title { font-size: 18pt; }
-      .prio-card, .paul, .source, .phase, .week, .spot, .day > div, .map, .ladder, .ch-sec blockquote, .point-card, .obstacles dd, .start { break-inside: avoid; }
-      h2, h3, h4, h5, dt, .start-tag, .chapter-title { break-after: avoid; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; hyphens: manual !important; }
+      a { color: inherit; text-decoration: none; }
+
+      /* the iphone and the mac cannot split a grid or flex box over two pages: they cut the line in
+         half. everything that can run over a page is a plain block in print. */
+      .book, .prio, .prio-card, .spots, .weeks, .phases, .levels, .toc, ul.clean, .nn, .obstacles dl, .growth ol, ol.steps, .day { display: block !important; }
+      .prio-card + .prio-card, .spot + .spot, .week + .week, .phase + .phase, .day > div + div { margin-top: 4mm; }
+      ul.clean li + li, .nn li + li, ol.steps li + li, .toc li + li { margin-top: .9mm; }
+      .nn li { display: block; position: relative; padding-inline-start: 6mm; }
+      .nn li::before { position: absolute; inset-inline-start: 0; top: -.5mm; font-size: 11pt; }
+      .growth ol { margin-top: 2mm; padding-inline-start: 3.5mm; border-inline-start: 1px solid var(--line); }
+      .growth li { display: block; padding: .7mm 0; }
+      .growth li::before, .growth li::after { display: none; }
+      .g-when { display: inline; padding: 0; margin-inline-end: 1.5mm; }
+      .g-what { display: inline; }
+      .g-what { padding: 0; }
+      .obstacles dt { margin-top: 2.5mm; }
+      .obstacles dd { margin: .5mm 0 0; }
+
+      /* type: one calm size for reading, small quiet labels, light headings */
+      .book p, .book li, .book dd, .book dt { font-size: 9.5pt; line-height: 1.44; max-width: none; }
+      .book p + p { margin-top: 2mm; }
+      .tag, .start-tag, .code, .paul-tag, .g-when, .level-name, .chapter-sub, .map-code, .phase h4, .day h4, .ch-sec h5 { font-size: 7pt !important; line-height: 1.4; }
+      .part > .tag { margin-bottom: 4mm; }
+      h2 { font-size: 19pt; line-height: 1.12; margin: 1mm 0 4mm; }
+      h3 { font-size: 13pt; line-height: 1.2; }
+      .cover h1 { font-size: 40pt; line-height: 1; margin: 8mm 0 4mm; }
+      .cover-line, .opening, .sign, .sources-result { font-size: 12.5pt !important; line-height: 1.35 !important; }
+      .insight, .closing, .ladder-why, .pillar-close p, .phase .focus, .ch-sec blockquote, .never { font-size: 10.5pt !important; line-height: 1.55; }
+      .level-title, .chapter-title { font-size: 15pt; line-height: 1.15; }
+      .ch-sec h4 { font-size: 11.5pt; margin-bottom: 2mm; }
+      .prio-card h3 { font-size: 13pt; }
+      .prio-n { font-size: 30pt; top: 2mm; }
+      .pillar-big { font-size: 46pt; }
+      .source-n { font-size: 16pt; }
+      .map-letter { font-size: 14pt; }
+      .map-cell { min-height: 11mm; padding: 1mm; }
+      .map-name { display: block; font-size: 5.5pt; overflow-wrap: anywhere; }
+      .toc a { padding: 2mm 0; font-size: 10pt; }
+
+      /* the boxes: thin lines on white, or the faintest grey, the way pure and pact draw them */
+      .start { background: none; border: 1px solid var(--line); border-inline-start: 2px solid var(--ink); padding: 2.5mm 3.5mm; margin-top: 3.5mm; }
+      .start-text { font-size: 10pt !important; }
+      .prio-card, .spot { border: 1px solid var(--line); padding: 4mm; }
+      .week { border: 1px solid var(--line); padding: 3mm 3.5mm; }
+      .paul { background: #f7f7f5; padding: 3.5mm 4mm; margin-top: 4mm; }
+      .paul p:not(.paul-tag) { font-size: 10pt; line-height: 1.5; }
+      .science { background: #f7f7f5; padding: 2.5mm 3.5mm; font-size: 8.5pt !important; }
+      .day > div { background: none; border-top: 1px solid var(--line); padding: 2.5mm 0 0; }
+      .ch-sec blockquote { border-inline-start: 2px solid var(--ink); padding-inline-start: 3.5mm; }
+      .scene { padding-inline-start: 3.5mm; margin-top: 4mm; }
+
+      /* pages: the cover alone, every part and every level on a new page. the method chapter on a
+         level follows his chapter directly; the rest of the method starts each chapter on a new page. */
+      .part { break-inside: auto; padding: 0 0 5mm; border: 0; }
+      .cover { min-height: 0; height: 165mm; margin: 0 !important; padding: 0 !important; background: none; justify-content: center; break-after: page; }
+      .page, .pillar-part, .method, .method > .chapter { break-before: page; }
+      /* the levels of a pillar run on like the sections of a chapter: one strong line, room above */
+      .level-ch.page { break-before: auto; margin-top: 11mm; padding-top: 4mm; border-top: 2px solid var(--ink); }
+      .pillar-part + .level-ch.page { margin-top: 6mm; }
+      .chapter { border: 0; }
+      .level-ch { border-bottom: 0; }
+      .chapter-slot, .her-method { margin-top: 8mm; padding-top: 4mm; }
+      .chapter > summary { padding: 0 0 2mm; }
       .chapter > summary::after { display: none; }
-      .map-name { display: block; font-size: 6pt; overflow-wrap: anywhere; hyphens: auto; }
-      a { color: var(--ink); text-decoration: none; }
-      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .chapter-body { padding-bottom: 0; }
+      .ch-sec { margin-top: 4mm; }
+      .start, .paul, .source, .sources, .map, .ladder, .timeline, .week, .spot, .day > div, .ch-sec blockquote, .science, .growth li, .nn li, ul.clean li, ol.steps li, .obstacles dd, .point-card, .toc li { break-inside: avoid; }
+      h2, h3, h4, h5, dt, .tag, .start-tag, .code, .level-head, .chapter-title, .chapter > summary, .pillar-head { break-after: avoid; }
+      p { orphans: 3; widows: 3; }
     }
   </style>
   <link rel="stylesheet" href="/pure/pure.css?v=4" />
@@ -374,8 +438,8 @@
     <span>© 2026 Paul Brinkmann</span>
   </footer>
 
-  <script src="/pure/blueprint/questions.js?v=4"></script>
+  <script src="/pure/blueprint/questions.js?v=5"></script>
   <script src="/pure/blueprint/copy.js?v=4"></script>
-  <script src="/pure/blueprint/app.js?v=4"></script>
+  <script src="/pure/blueprint/app.js?v=5"></script>
 </body>
 </html>

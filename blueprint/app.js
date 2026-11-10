@@ -27,7 +27,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "too many blueprints are being written right now. try again in a few minutes.",
       errLimit: "you have written several blueprints in the last hour. try again later.",
       errGeneric: "something went wrong while writing your blueprint. your answers are kept, try again.",
-      payLead: "your map is ready, free. the book itself is written for you alone: 200 to 300 pages, after you pay.",
+      payLead: "your map is ready, free. the book itself is written for you alone: about 170 pages, after you pay.",
       payBtn: "pay {price} and write my book",
       payCancel: "the payment was cancelled. your answers are kept.",
       payMissing: "no payment was found for this book. your answers are kept, try again.",
@@ -53,7 +53,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "gerade werden zu viele blueprints geschrieben. versuch es in ein paar minuten noch einmal.",
       errLimit: "du hast in der letzten stunde schon mehrere blueprints geschrieben. versuch es später noch einmal.",
       errGeneric: "beim schreiben deines blueprints ist etwas schiefgegangen. deine antworten bleiben erhalten, versuch es noch einmal.",
-      payLead: "deine karte ist fertig, kostenlos. das buch selbst wird nur für dich geschrieben: 200 bis 300 seiten, nachdem du bezahlt hast.",
+      payLead: "deine karte ist fertig, kostenlos. das buch selbst wird nur für dich geschrieben: rund 170 seiten, nachdem du bezahlt hast.",
       payBtn: "{price} bezahlen und mein buch schreiben",
       payCancel: "die zahlung wurde abgebrochen. deine antworten bleiben erhalten.",
       payMissing: "für dieses buch wurde keine zahlung gefunden. deine antworten bleiben erhalten, versuch es noch einmal.",
@@ -79,7 +79,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "trop de blueprints sont en cours d'écriture. réessaie dans quelques minutes.",
       errLimit: "tu as déjà écrit plusieurs blueprints cette heure-ci. réessaie plus tard.",
       errGeneric: "un problème est survenu pendant l'écriture. tes réponses sont conservées, réessaie.",
-      payLead: "ta carte est prête, gratuitement. le livre lui-même est écrit rien que pour toi : 200 à 300 pages, après le paiement.",
+      payLead: "ta carte est prête, gratuitement. le livre lui-même est écrit rien que pour toi : environ 170 pages, après le paiement.",
       payBtn: "payer {price} et écrire mon livre",
       payCancel: "le paiement a été annulé. tes réponses sont conservées.",
       payMissing: "aucun paiement trouvé pour ce livre. tes réponses sont conservées, réessaie.",
@@ -105,7 +105,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "ahora se están escribiendo demasiados blueprints. inténtalo de nuevo en unos minutos.",
       errLimit: "ya has escrito varios blueprints en la última hora. inténtalo más tarde.",
       errGeneric: "algo salió mal al escribir tu blueprint. tus respuestas se conservan, inténtalo de nuevo.",
-      payLead: "tu mapa está listo, gratis. el libro se escribe solo para ti: de 200 a 300 páginas, después de pagar.",
+      payLead: "tu mapa está listo, gratis. el libro se escribe solo para ti: unas 170 páginas, después de pagar.",
       payBtn: "pagar {price} y escribir mi libro",
       payCancel: "el pago se canceló. tus respuestas se conservan.",
       payMissing: "no se encontró ningún pago para este libro. tus respuestas se conservan, inténtalo de nuevo.",
@@ -131,7 +131,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "يتم الآن كتابة عدد كبير من المخططات. حاول مرة أخرى بعد بضع دقائق.",
       errLimit: "لقد كتبت عدة مخططات في الساعة الأخيرة. حاول لاحقًا.",
       errGeneric: "حدث خطأ أثناء كتابة مخططك. إجاباتك محفوظة، حاول مرة أخرى.",
-      payLead: "خريطتك جاهزة مجانًا. أما الكتاب فيُكتب لك وحدك: من 200 إلى 300 صفحة، بعد الدفع.",
+      payLead: "خريطتك جاهزة مجانًا. أما الكتاب فيُكتب لك وحدك: نحو 170 صفحة، بعد الدفع.",
       payBtn: "ادفع {price} واكتب كتابي",
       payCancel: "أُلغي الدفع. إجاباتك محفوظة.",
       payMissing: "لم يُعثر على دفعة لهذا الكتاب. إجاباتك محفوظة، حاول مرة أخرى.",
@@ -157,7 +157,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
       errBusy: "сейчас пишется слишком много blueprint. попробуй через несколько минут.",
       errLimit: "за последний час ты уже написал несколько blueprint. попробуй позже.",
       errGeneric: "при написании blueprint что-то пошло не так. твои ответы сохранены, попробуй ещё раз.",
-      payLead: "твоя карта готова, бесплатно. сама книга пишется только для тебя: от 200 до 300 страниц, после оплаты.",
+      payLead: "твоя карта готова, бесплатно. сама книга пишется только для тебя: около 170 страниц, после оплаты.",
       payBtn: "оплатить {price} и написать мою книгу",
       payCancel: "оплата отменена. твои ответы сохранены.",
       payMissing: "оплата для этой книги не найдена. твои ответы сохранены, попробуй ещё раз.",
@@ -693,7 +693,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     if (st.chapters) return st.chapters;
     try {
       const r = await fetch(`/pure/blueprint/book/${st.lang}.json`);
-      st.chapters = r.ok ? await r.json() : [];
+      st.chapters = r.ok ? Q.undash(await r.json(), st.lang) : [];
     } catch { st.chapters = []; }
     return st.chapters;
   }
@@ -712,7 +712,8 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
 
   function renderBook() {
     const x = t();
-    const b = st.blueprint || {};
+    // books written before the dash rule are cleaned when they are shown
+    const b = Q.undash(st.blueprint || {}, st.lang);
     const name = st.answers.name || "";
     const scores = st.scores || Q.score(st.answers);
     const book = el("article", { class: "book" });
@@ -746,7 +747,8 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     const toc = [["pt-insight", B("insight_title")], ...(b.feminine ? [["pt-fem", B("feminine_title")]] : []), ["pt-prio", B("priorities")], ["pt-ladder", B("ladder_title")],
       ...pillarsIn.map((P) => ["pt-" + P.letter, P.letter + " · " + pillarName(P.letter)]),
       ["pt-90", B("timeline")], ["pt-day", B("daily")], ["pt-end", B("closing_title")], ["pt-method", B("appendix")]];
-    add(book, el("nav", { class: "part page", "aria-label": B("toc") },
+    // a div, not a nav: the page's nav style (sticky, on top) would pin the contents over the book
+    add(book, el("div", { class: "part page contents", role: "navigation", "aria-label": B("toc") },
       el("p", { class: "tag" }, B("toc")),
       el("ol", { class: "toc" }, toc.map(([id, label]) => el("li", {}, el("a", { href: "#" + id }, label))))));
 
@@ -825,7 +827,7 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     const weeks = b.weeks || [];
     add(book, el("section", { class: "part page", id: "pt-90" },
       el("p", { class: "tag" }, B("timeline")),
-      timelineGraphic(b.phases && b.phases.length ? b.phases : [{ days: "1–30" }, { days: "31–60" }, { days: "61–90" }]),
+      timelineGraphic(b.phases && b.phases.length ? b.phases : Q.undash([{ days: "1–30" }, { days: "31–60" }, { days: "61–90" }], st.lang)),
       weeks.length
         ? el("div", { class: "weeks" }, weeks.map((w) => el("div", { class: "week" },
             el("h4", {}, B("week_n", { n: w.week })), el("p", { class: "focus" }, w.focus), list(w.actions),

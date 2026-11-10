@@ -5584,6 +5584,37 @@
     return lines.join("\n");
   }
 
+  // paul's rule for every text in the book: no dashes. a dash between clauses becomes a comma, or a
+  // colon after a short lead ("keine spiegel: du trainierst nach gefühl"); a range of numbers is
+  // written out ("24 bis 48"). hyphens inside words stay, they are spelling. russian keeps its dash,
+  // it is grammar there ("дофамин — это").
+  const RANGE = { en: "to", de: "bis", fr: "à", es: "a", ar: "إلى" };
+  function undashText(s, lang) {
+    if (typeof s !== "string" || lang === "ru" || !/[—–]|\d\s*-\s*\d/.test(s)) return s;
+    const comma = lang === "ar" ? "، " : ", ";
+    const to = RANGE[lang] || RANGE.en;
+    let out = s.replace(/(\d)\s*[–—-]\s*(\d)/g, `$1 ${to} $2`);
+    out = out.replace(/^\s*[—–]\s*/gm, "").replace(/\s*[—–]\s*$/gm, "");
+    // a sentence with one dash after a short lead reads as a label: colon. paired dashes and
+    // longer leads become commas.
+    out = out.replace(/[^.!?\n]+[.!?]*/g, (sen) => {
+      const dashes = (sen.match(/[—–]/g) || []).length;
+      if (dashes === 1) {
+        const lead = sen.split(/[—–]/)[0];
+        if (!/[,،:]/.test(lead) && lead.trim().split(/\s+/).length <= 3) return sen.replace(/\s*[—–]\s*/, ": ");
+      }
+      return sen.replace(/\s*[—–]\s*/g, comma);
+    });
+    return out.replace(/[,،]\s*[,،]\s*/g, comma).replace(/[,،]\s*([.!?:;)])/g, "$1").replace(/\(\s*[,،]\s*/g, "(");
+  }
+  function undash(v, lang) {
+    if (typeof v === "string") return undashText(v, lang);
+    if (Array.isArray(v)) return v.map((x) => undash(x, lang));
+    if (v && typeof v === "object") return Object.fromEntries(Object.entries(v).map(([k, x]) => [k, undash(x, lang)]));
+    return v;
+  }
+
+  Q.undash = undash;
   Q.byId = byId;
   Q.visible = visible;
   Q.validate = validate;
