@@ -395,16 +395,53 @@ const API = location.hostname.endsWith("brinkmannpaul.com") ? "https://purmethod
     g.append(svg("rect", { x: 30, y: 332, width: 540, height: 16, class: "b-col" }));
     g.append(svg("rect", { x: 14, y: 348, width: 572, height: 16, class: "b-col" }));
     g.append(svg("text", { x: 300, y: 390, "text-anchor": "middle", class: "b-small" }, "P · U · R · E"));
-    const cards = b.pillars.map((p) =>
-      el("div", { class: "point-card" },
-        el("p", { class: "pl", "aria-hidden": "true" }, p.letter),
-        el("p", { class: "pn" }, L(p.name)),
-        el("ol", {}, p.points.map((pt) => { const v = L(pt); return el("li", { class: v === "—" ? "open" : null }, v); }))));
     return el("figure", { class: "building" },
       el("p", { class: "tag" }, L(b.title)),
       g,
       el("figcaption", {}, L(b.caption)),
-      el("div", { class: "points" }, cards));
+      renderLevels());
+  }
+
+  // under the building, every level to open: the same accordion as the landing page (index.html),
+  // from the same texts (/pure/modules.js) and the same styles (/pure/modules.css). one level open at a time.
+  function renderLevels() {
+    const all = window.PURE_MODULES || {};
+    const m = all[st.lang] || all.en;
+    if (!m) return null;
+    const box = el("div", { class: "levels" });
+    const toggle = (acc) => {
+      const was = acc.classList.contains("open");
+      box.querySelectorAll(".acc.open").forEach((a) => { a.classList.remove("open"); a.firstChild.setAttribute("aria-expanded", "false"); });
+      if (!was) { acc.classList.add("open"); acc.firstChild.setAttribute("aria-expanded", "true"); }
+    };
+    const head = (letter, name, sub) =>
+      el("div", { class: "ph" }, el("span", { class: "pb" }, letter), el("div", {}, el("div", { class: "ph_name" }, name), sub ? el("div", { class: "ph_sub" }, sub) : null));
+    const level = (code) => {
+      const k = "m_" + code;
+      const covers = [1, 2, 3, 4, 5].map((n) => m[k + "l" + n]).filter(Boolean);
+      const acc = el("div", { class: "acc" });
+      add(acc,
+        el("button", { class: "acc_btn", type: "button", "aria-expanded": "false", "aria-controls": "lv-" + code, onclick: () => toggle(acc) },
+          el("span", { class: "al" },
+            el("span", { class: "an" }, code.toUpperCase()),
+            el("span", { class: "at" }, el("span", {}, m[k]), el("span", { class: "atg" }, " ", el("span", {}, m[k + "t"])))),
+          el("span", { class: "ai", "aria-hidden": "true" }, "+")),
+        el("div", { class: "ab2", id: "lv-" + code },
+          el("div", { class: "ain" },
+            el("div", { class: "atea" },
+              code.endsWith("0") ? [el("div", { class: "fund_badge" }, m.fund), el("br")] : null,
+              el("span", {}, m[k + "d"]),
+              m[k + "sci"] ? el("div", { class: "sci" }, el("div", { class: "sci_lbl" }, m.sci), el("div", { class: "sci_txt" }, m[k + "sci"])) : null),
+            covers.length ? el("div", { class: "alst" }, el("p", { class: "albl" }, m.covers), el("ul", {}, covers.map((c) => el("li", {}, c)))) : null)));
+      return acc;
+    };
+    ["p", "u", "r"].forEach((p, i) => add(box, el("div", { class: "ps" }, head(p.toUpperCase(), m["pn" + (i + 1)], m["ps" + (i + 1)]), [0, 1, 2, 3, 4, 5].map((n) => level(p + n)))));
+    // ego: its four levels as the book names them; the landing page has no texts to open for them yet
+    const e = C.building.pillars.find((p) => p.letter === "E");
+    const still = (code, name) => el("div", { class: "acc still" }, el("div", { class: "acc_btn" }, el("span", { class: "al" }, el("span", { class: "an" }, code.toUpperCase()), el("span", { class: "at" }, name))));
+    add(box, el("div", { class: "ps" }, head("E", L(e.name)),
+      still("e1", L(e.points[0])), still("e2", L(e.points[1])), still("ef", "fuck around · find out"), still("e5", L(e.points[4]))));
+    return box;
   }
 
   // ---------- questionnaire ----------

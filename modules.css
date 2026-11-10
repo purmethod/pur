@@ -1,0 +1,199 @@
+/* the level accordion (P0 to R5): the same on the landing page and on the blueprint's start page.
+   one source for both; /pure/pure.css, loaded after it, gives it the brinkmannpaul.com palette. */
+.ps {
+  margin-bottom: 56px;
+}
+
+.ph {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 4px;
+}
+
+.pb {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 50px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.ph_name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--ink);
+}
+
+.ph_sub {
+  font-size: 9px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-top: 2px;
+}
+
+.acc {
+  border-bottom: 1px solid var(--line2);
+  overflow: hidden;
+}
+
+.acc_btn {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 16px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  transition: all .2s;
+}
+
+.acc_btn:hover .at {
+  color: var(--gold);
+}
+
+.al {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.an {
+  font-size: 10px;
+  color: rgba(0,0,0,.2);
+  min-width: 18px;
+}
+
+.at {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ink);
+  transition: color .2s;
+}
+
+.atg {
+  font-size: 9px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,.2);
+  margin-left: 6px;
+}
+
+.ai {
+  font-size: 15px;
+  color: rgba(0,0,0,.2);
+  transition: transform .3s, color .2s;
+  flex-shrink: 0;
+}
+
+.acc.open .ai {
+  transform: rotate(45deg);
+  color: var(--gold);
+}
+
+.acc.open .at {
+  color: var(--gold);
+}
+
+.ab2 {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1);
+}
+
+.acc.open .ab2 {
+  max-height: 950px;
+}
+
+.ain {
+  padding: 0 0 20px 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.atea {
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.75;
+  grid-column: 1;
+  font-style: italic;
+}
+
+.alst {
+  grid-column: 2;
+}
+
+.albl {
+  font-size: 9px;
+  letter-spacing: .4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.alst ul { list-style: none; }
+
+.alst ul li {
+  font-size: 12px;
+  color: var(--ink3);
+  padding: 3px 0;
+  border-bottom: 1px solid var(--line2);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.alst ul li::before {
+  content: '•';
+  color: rgba(0,0,0,.15);
+  font-size: 9px;
+}
+
+.sci {
+  margin: 14px 0;
+  padding: 12px 16px;
+  background: var(--sci);
+  border-left: 3px solid var(--sci_b);
+}
+
+.sci_lbl {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--sci_t);
+  margin-bottom: 4px;
+}
+
+.sci_txt {
+  font-size: 12px;
+  color: var(--sci_t);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.fund_badge {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 2px 8px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .ain { grid-template-columns: 1fr; padding: 0 0 16px 0; }
+  .atea, .alst { grid-column: 1; }
+  .acc.open .ab2 { max-height: 1200px; }
+}
