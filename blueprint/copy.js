@@ -677,20 +677,20 @@ window.PUR_COPY = {
       "ru": "что такое эго"
      },
      {
-      "en": "—",
-      "de": "—",
-      "fr": "—",
-      "es": "—",
-      "ar": "—",
-      "ru": "—"
+      "en": "fuck around: the four arenas",
+      "de": "fuck around: die vier arenen",
+      "fr": "fuck around : les quatre arènes",
+      "es": "fuck around: las cuatro arenas",
+      "ar": "fuck around: الساحات الأربع",
+      "ru": "fuck around: четыре арены"
      },
      {
-      "en": "—",
-      "de": "—",
-      "fr": "—",
-      "es": "—",
-      "ar": "—",
-      "ru": "—"
+      "en": "find out: rock bottom",
+      "de": "find out: rock bottom",
+      "fr": "find out : rock bottom",
+      "es": "find out: rock bottom",
+      "ar": "find out: القاع",
+      "ru": "find out: дно"
      },
      {
       "en": "the end boss: something is greater than you",
@@ -836,12 +836,12 @@ window.PUR_COPY = {
    "ru": "неделя 2"
   },
   "weeks34": {
-   "en": "weeks 3–4",
-   "de": "woche 3–4",
-   "fr": "semaines 3–4",
-   "es": "semanas 3–4",
+   "en": "weeks 3 and 4",
+   "de": "wochen 3 und 4",
+   "fr": "semaines 3 et 4",
+   "es": "semanas 3 y 4",
    "ar": "الأسبوعان الثالث والرابع",
-   "ru": "недели 3–4"
+   "ru": "недели 3 и 4"
   },
   "month2": {
    "en": "month 2",

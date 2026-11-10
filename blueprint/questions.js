@@ -4136,7 +4136,7 @@
    "id": "ef_1",
    "section": "e",
    "type": "scale",
-   "module": "ef",
+   "module": "e3",
    "polarity": 1,
    "q": {
     "de": "machst du bei geld, sex oder beziehungen immer wieder dieselben fehler?",
@@ -4177,7 +4177,7 @@
    "id": "ef_2",
    "section": "e",
    "type": "scale",
-   "module": "ef",
+   "module": "e4",
    "polarity": -1,
    "q": {
     "de": "machst du nach einem rückschlag weiter, bis du herausfindest, was funktioniert?",
@@ -5353,6 +5353,22 @@
    "ar": "ما هي الأنا",
    "ru": "что такое эго"
   },
+  "e3": {
+   "en": "fuck around: the four arenas",
+   "de": "fuck around: die vier arenen",
+   "fr": "fuck around : les quatre arènes",
+   "es": "fuck around: las cuatro arenas",
+   "ar": "fuck around: الساحات الأربع",
+   "ru": "fuck around: четыре арены"
+  },
+  "e4": {
+   "en": "find out: rock bottom",
+   "de": "find out: rock bottom",
+   "fr": "find out : rock bottom",
+   "es": "find out: rock bottom",
+   "ar": "find out: القاع",
+   "ru": "find out: дно"
+  },
   "e5": {
    "en": "the end boss: something is greater than you",
    "de": "der endboss: etwas ist größer als du",
@@ -5391,7 +5407,8 @@
   "r5",
   "e1",
   "e2",
-  "ef",
+  "e3",
+  "e4",
   "e5"
  ],
  "traits": [

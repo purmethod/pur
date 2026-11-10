@@ -13,13 +13,13 @@ const MODULE_NAMES = {
   p0: "sexual control", p1: "sleep", p2: "movement", p3: "food", p4: "breath", p5: "temperature",
   u0: "awareness", u1: "impulse awareness", u2: "dopamine system", u3: "attention control", u4: "identity architecture", u5: "emotional regulation",
   r0: "self accountability", r1: "self responsibility", r2: "principles", r3: "relationship leadership", r4: "trust economy", r5: "legacy thinking",
-  e1: "killing the ego (without drugs)", e2: "what the ego is", ef: "fuck around, find out, create", e5: "something greater than you",
+  e1: "killing the ego (without drugs)", e2: "what the ego is", e3: "fuck around: the four arenas", e4: "find out: rock bottom", ef: "fuck around, find out, create", e5: "something greater than you",
 };
 const PILLAR_LEVELS = {
   P: ["p0", "p1", "p2", "p3", "p4", "p5"],
   U: ["u0", "u1", "u2", "u3", "u4", "u5"],
   R: ["r0", "r1", "r2", "r3", "r4", "r5"],
-  E: ["e1", "e2", "ef", "e5"],
+  E: ["e1", "e2", "e3", "e4", "e5"],
 };
 const GOALS = { ons: "one-night stands", open: "an open relationship", family: "married, with children", biglove: "the great love", unsure: "does not know yet" };
 
@@ -244,7 +244,7 @@ hard rules
 evidence
 - every claim about the body must be one the knowledge supports or one that is well established. when you name a study, use only studies named in the knowledge, with the finding as stated there. never invent studies, numbers or percentages.
 - the zhejiang 2003 study on testosterone peaking on day seven of abstinence was retracted in 2021. never cite it, never claim that holding back ejaculation raises testosterone. the reasons for sexual control are control, focus, presence and connection.
-- never claim that tallow, a cream or any skin care raises testosterone. testosterone is moved by sleep, body fat, training, fasting, cold, alcohol and stress, as the knowledge describes.
+- never state as a fact that tallow, a cream or any skin care raises testosterone. testosterone is moved by sleep, body fat, training, fasting, cold, alcohol and stress, as the knowledge describes. paul's own experience with the fat of the bull on his skin, as the knowledge tells it, may be told as his experience, in his words.
 - say "linked to" for observational findings. never promise a result in a number of days.
 
 the book
@@ -400,11 +400,11 @@ const PILLAR_INFO = {
   P: "P physical control: p0 sexual control (foundation), p1 sleep, p2 movement, p3 food, p4 breath, p5 temperature",
   U: "U understanding the mind: u0 awareness (foundation), u1 impulse awareness, u2 dopamine system, u3 attention control, u4 identity architecture, u5 emotional regulation",
   R: "R responsibility: r0 self accountability (foundation), r1 self responsibility, r2 principles, r3 relationship leadership, r4 trust economy, r5 legacy thinking",
-  E: "E ego: e1 killing the ego without drugs, e2 what the ego is, ef fuck around, find out, create, e5 something greater than you (the end boss)",
+  E: "E ego: e1 killing the ego without drugs, e2 what the ego is, e3 fuck around: the four arenas, e4 find out: rock bottom, e5 something greater than you (the end boss)",
 };
 
 // every level is its own request, all at once: each one goes deep and none runs too long
-const PARTS = { P: [["p0"], ["p1"], ["p2"], ["p3"], ["p4"], ["p5"]], U: [["u0"], ["u1"], ["u2"], ["u3"], ["u4"], ["u5"]], R: [["r0"], ["r1"], ["r2"], ["r3"], ["r4"], ["r5"]], E: [["e1"], ["e2"], ["ef"], ["e5"]] };
+const PARTS = { P: [["p0"], ["p1"], ["p2"], ["p3"], ["p4"], ["p5"]], U: [["u0"], ["u1"], ["u2"], ["u3"], ["u4"], ["u5"]], R: [["r0"], ["r1"], ["r2"], ["r3"], ["r4"], ["r5"]], E: [["e1"], ["e2"], ["e3"], ["e4"], ["e5"]] };
 
 function pillarTask(letter, scores, part, woman) {
   const mine = PARTS[letter][part];
