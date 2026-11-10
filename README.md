@@ -24,12 +24,14 @@ Static site (`index.html`) plus the PURE blueprint: a questionnaire at `/bluepri
 
 ### Switch it on (Vercel → project `pur` → Settings → Environment Variables)
 
-- `BLUEPRINT_FREE_CODES`: codes that write a book without payment (Paul's tests and gifts), comma separated, case and spaces do not matter. They live only in Vercel, never in this public repo.
-
 - `ANTHROPIC_API_KEY`: the Anthropic API key
 - `PUR_BLUEPRINT_ENABLED` = `1`
 
 Without both, the page shows "opens soon" before anyone starts, and the API refuses with 503.
+
+### Free codes
+
+Paul's codes for tests and gifts write one book each, without payment. The field "have a code?" sits open right under the pay button. `api/analyze.js` sends the code to `brinkmannpaul.com/api/blueprint-code` (`check` before writing, `claim` once the book is written), like a payment. The codes are never stored as text: the Vercel project `brinkmannpaul` holds only their fingerprints (`BLUEPRINT_CODE_HASHES`), and Stripe marks a used one. Never write a code into this repo, a commit or a pull request.
 
 Set a monthly spend limit in the Anthropic console. One book costs roughly 2 USD and takes two to three minutes. Preview deployments are open for testing (they sit behind Vercel login).
 

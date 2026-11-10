@@ -3,7 +3,6 @@
 // and are applied here again, so nothing the browser sends can widen what the model is asked.
 const fs = require("fs");
 const path = require("path");
-const crypto = require("crypto");
 const Anthropic = require("@anthropic-ai/sdk");
 const Q = require("../blueprint/questions.js");
 
@@ -76,22 +75,23 @@ module.exports = async function handler(req, res) {
   const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "unknown";
   if (limited(ip)) return res.status(429).json({ error: "rate_limited" });
 
-  // one payment, one book: checked before writing, counted once the book is written, so a failed
-  // book can be tried again with the same payment. previews stay free for testing, and a free code
-  // (paul's tests and gifts) skips the payment too.
-  const free = freeCode(body.code);
-  if (body.code && !free) return res.status(402).json({ error: "code_invalid" });
-  if (free) console.log("blueprint written with a free code");
-  const pays = process.env.VERCEL_ENV !== "preview" && !free;
-  if (pays) {
-    const paid = await payment(body.session_id, "check");
-    if (paid === "unreachable") return res.status(503).json({ error: "busy" });
-    if (paid !== "ok") return res.status(402).json({ error: "payment_required" });
+  // one payment or one free code (paul's tests and gifts), one book: checked before writing, counted
+  // once the book is written, so a failed book can be tried again. previews stay free for testing.
+  const charged = process.env.VERCEL_ENV !== "preview";
+  const code = typeof body.code === "string" ? body.code.trim().slice(0, 60) : "";
+  const pass = code ? (step) => freeCode(code, step) : (step) => payment(body.session_id, step);
+  if (charged) {
+    const ok = await pass("check");
+    if (ok === "unreachable") return res.status(503).json({ error: "busy" });
+    if (ok === "limited") return res.status(429).json({ error: "rate_limited" });
+    if (ok === "used") return res.status(409).json({ error: "code_used" });
+    if (ok !== "ok") return res.status(402).json({ error: code ? "code_invalid" : "payment_required" });
   }
 
   try {
     const blueprint = await writeBlueprint(check.answers, lang);
-    if (pays && (await payment(body.session_id, "claim")) !== "ok") console.error("blueprint written but not counted on its payment");
+    if (charged && (await pass("claim")) !== "ok") console.error(`blueprint written but not counted on its ${code ? "free code" : "payment"}`);
+    else if (charged && code) console.log("blueprint written with a free code");
     return res.status(200).json({ ok: true, blueprint, scores: Q.score(check.answers) });
   } catch (error) {
     if (error instanceof Anthropic.RateLimitError) return res.status(503).json({ error: "busy" });
@@ -118,14 +118,24 @@ async function payment(sessionId, mode) {
   }
 }
 
-// free codes live in vercel (BLUEPRINT_FREE_CODES, comma separated), never in this public repo.
-// case and spaces do not matter: "abc 123" is ABC123.
-const normCode = (s) => String(s || "").toUpperCase().replace(/\s+/g, "").slice(0, 40);
-function freeCode(code) {
-  const got = normCode(code);
-  if (!got) return false;
-  return String(process.env.BLUEPRINT_FREE_CODES || "").split(",").map(normCode).filter(Boolean)
-    .some((want) => want.length === got.length && crypto.timingSafeEqual(Buffer.from(want), Buffer.from(got)));
+// a free code is checked on brinkmannpaul.com as well (api/blueprint-code.js): the codes exist there only
+// as fingerprints, never as text, and each one writes a single book. the code goes in the body, never the url.
+async function freeCode(code, step) {
+  try {
+    const r = await fetch("https://brinkmannpaul.com/api/blueprint-code", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code, step }),
+      signal: AbortSignal.timeout(10000),
+    });
+    if (r.status === 409) return "used";
+    if (r.status === 429) return "limited";
+    if (r.status >= 500) return "unreachable";
+    const d = await r.json().catch(() => ({}));
+    return r.ok && d.ok === true ? "ok" : "invalid";
+  } catch {
+    return "unreachable";
+  }
 }
 
 // previews sit behind vercel login, so they can test the book before it goes live
@@ -539,4 +549,3 @@ module.exports.CORE_TASK = CORE_TASK;
 module.exports.pillarTask = pillarTask;
 module.exports.systems = systems;
 module.exports.writeBlueprint = writeBlueprint;
-module.exports.freeCode = freeCode;
