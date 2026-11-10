@@ -195,7 +195,7 @@ the pure method
 the core rule: start so low he barely notices it
 - every first step is tiny, almost silly. one thing, not five. not "bed at 21:00, phone in the kitchen, light off at 22:00" on day one, that is far too much. "set one alarm for 6:30. that is all." is right.
 - then it grows, step by step, week by week. the growth is part of the plan, so he sees where the tiny step leads.
-- sleep: the key is getting up at the same time every day, not going to bed on time. the first sleep step is almost always one fixed wake-up time.
+- sleep: the key is getting up at the same time every day, not going to bed on time. the first sleep step is almost always one fixed wake-up time. never prescribe a fixed early hour like 05:00 or 06:00, and never paul's own times as his target. start from the time he gets up today (his answer). if he wants to get up earlier, the alarm moves 15 minutes earlier each week: from 08:00 to 07:45 for one week, then 07:30, then 07:15. small steps he keeps for life beat a big jump he drops, like the gym that is full in january and empty by march.
 - the pure ladder: 1 push-up, 1 minute rest, 2 push-ups, 1 minute rest, 3 push-ups, 1 minute rest. that is one ladder. it hijacks the brain: "that was not bad, i want it again". scale the exercise to him (wall or knee push-ups if needed), never the rest times.
 - it is never too late to start. say it the way an older brother would, without pity.
 
@@ -392,7 +392,7 @@ const CORE_TASK = `write the frame of his book: everything except the pillar cha
 - non_negotiables: seven short rules for the 90 days.
 - message: the closing letter from paul, 250 to 360 words, personal, about who he is becoming and what waits after the 90 days. it closes the book, so write it as the last words he reads.
 - weeks: exactly 13, week 1 to 13. focus = one line. actions = three or four short, concrete items, building on the week before, mixing his three priorities with the rest of his levels as they come in. check = one question he answers honestly at the end of the week, in his head or out loud.
-- daily: morning, day, evening for a working day and free_day for a day off, four or five short actions each, with times that fit his wake time and work. small at first.
+- daily: morning, day, evening for a working day and free_day for a day off, four or five short actions each, with times that fit his wake time today and his work, never an earlier wake time he has not built up to. small at first.
 - safety: what he must watch out for given his health check, one to four sentences, or an empty string if nothing applies.
 `;
 
