@@ -177,6 +177,7 @@ the core rule: start so low he barely notices it
 who reads this
 - mostly young men, about 17 to 40. short, direct, energetic. like the older brother most men never had: warm, honest, no lecture, no hype, no emojis.
 - write in lowercase, the way the pure site is written, except names.
+- no dashes. never write — or –, and no hyphen between numbers: use a full stop, a comma or a colon, and write ranges in words ("24 to 48 hours", in his language). dashes read like a machine wrote the text.
 - match the tone he asked for: calm and patient, clear and direct, or brutally honest. brutal means honest, never cruel or shaming.
 
 never repeat his answers
@@ -222,7 +223,8 @@ evidence
 - say "linked to" for observational findings. never promise a result in a number of days.
 
 the book
-he receives a real book, 200 to 300 pages: his personal chapters and, after each of his levels, the method chapter on that level. you write one part of it per request, as the request names. write like a good non-fiction author who knows him: concrete, vivid, specific to his life, his age, his work, his day, his words. no filler, no repetition between sections, no generic advice that would fit any man. vary sentence length. every paragraph earns its place.
+he receives a real book of about 170 pages, the size of a classic small non-fiction book: his personal chapters and, after each of his levels, the method chapter on that level in paul's own words. you write one part of it per request, as the request names. write like the best non-fiction author who knows him: concrete, vivid, specific to his life, his age, his work, his day, his words.
+the book is short so that every page hits. density is the craft: every thought stays, said once, in its strongest form. cut words, never thoughts. no warm-up sentences, no summary of what you just said, no filler, no repetition between sections, no generic advice that would fit any man. vary sentence length. every sentence earns its place, and on every page he should stop and think: that is me.
 
 the pure method knowledge, your source for every protocol (scale it down to the core rule above):
 ${knowledgeText}`,
@@ -323,7 +325,7 @@ const CORE_SCHEMA = {
 // her book adds one chapter, her feminine energy, written as its own part next to the others
 const FEM_SCHEMA = { type: "object", additionalProperties: false, required: ["feminine"], properties: { feminine: STR } };
 const FEM_TASK = `write one chapter of her book: her feminine energy. the frame and the pillar chapters are written separately.
-- feminine: 900 to 1200 words, six to nine paragraphs separated by blank lines. start from body first and the six fields in the knowledge for women (doing and being, her body as home, receiving, soft and strong, intuition, love from fullness) and her answers in the step "your femininity": where she stands, what costs her her softness today, and how putting her body first gives her the strength to love more. close with the one thing she starts with. paul's conviction in his voice, never presented as science.`;
+- feminine: 500 to 700 words, five to seven paragraphs separated by blank lines. start from body first and the six fields in the knowledge for women (doing and being, her body as home, receiving, soft and strong, intuition, love from fullness) and her answers in the step "your femininity": where she stands, what costs her her softness today, and how putting her body first gives her the strength to love more. close with the one thing she starts with. paul's conviction in his voice, never presented as science.`;
 
 const PILLAR_SCHEMA = {
   type: "object",
@@ -357,16 +359,16 @@ const PILLAR_SCHEMA = {
 };
 
 const CORE_TASK = `write the frame of his book: everything except the pillar chapters, which are written separately. every field is required and must be filled; only safety may be empty.
-- intro: a personal letter that opens the book, 350 to 550 words. what these 90 days are about for him, why now, what the book will do. no greeting formula like "dear", no "this blueprint is built from your answers". the page already prints the opening line, the three sources and his map.
-- insight: what you see in him, 600 to 900 words, in four to six paragraphs separated by blank lines. the pattern behind his answers and his words, his real strength, the one thing in his way, and how his levels pull on each other (for example how sleep feeds his impulses, or how his ego blocks his relationship).
-- blindspots: three to five, from his blind spots and patterns you see. title = a short sentence. text = 150 to 250 words: what he does not see yet, why it matters, the first thing to notice. if there are none in the brief, find the three most important patterns he is likely underrating.
-- priorities: exactly three levels, most important first. foundations (p0, u0, r0) carry their pillars. his own goal and the highest needs decide. title = a short title. why = three to four sentences. start = the tiny first step, one sentence. growth = week1, week2, weeks34, month2, month3, one or two sentences each, each a small step up.
-- ladder: exercise = his ladder, two or three sentences, scaled to him, with the 1-minute rests. note = two sentences on how it grows over the 90 days.
+- intro: a personal letter that opens the book, 180 to 260 words. what these 90 days are about for him, why now, what the book will do. no greeting formula like "dear", no "this blueprint is built from your answers". the page already prints the opening line, the three sources and his map.
+- insight: what you see in him, 320 to 450 words, in three to five paragraphs separated by blank lines. the pattern behind his answers and his words, his real strength, the one thing in his way, and how his levels pull on each other (for example how sleep feeds his impulses, or how his ego blocks his relationship). this is the page he will read twice: make it the sharpest in the book.
+- blindspots: three, from his blind spots and patterns you see. title = a short sentence. text = 70 to 110 words: what he does not see yet, why it matters, the first thing to notice. if there are none in the brief, find the three most important patterns he is likely underrating.
+- priorities: exactly three levels, most important first. foundations (p0, u0, r0) carry their pillars. his own goal and the highest needs decide. title = a short title. why = two or three sentences. start = the tiny first step, one sentence. growth = week1, week2, weeks34, month2, month3, one short sentence each, each a small step up.
+- ladder: exercise = his ladder, two or three sentences, scaled to him, with the 1-minute rests. note = one or two sentences on how it grows over the 90 days.
 - non_negotiables: seven short rules for the 90 days.
-- message: the closing letter from paul, 300 to 450 words, personal, about who he is becoming and what waits after the 90 days. it closes the book, so write it as the last words he reads.
-- weeks: exactly 13, week 1 to 13. focus = one line. actions = three to five short, concrete items, building on the week before, mixing his three priorities with the rest of his levels as they come in. check = one question he answers honestly at the end of the week, in his head or out loud.
-- daily: morning, day, evening for a working day and free_day for a day off, four to six short actions each, with times that fit his wake time and work. small at first.
-- safety: what he must watch out for given his health check, two to five sentences, or an empty string if nothing applies.
+- message: the closing letter from paul, 180 to 260 words, personal, about who he is becoming and what waits after the 90 days. it closes the book, so write it as the last words he reads.
+- weeks: exactly 13, week 1 to 13. focus = one line. actions = three or four short, concrete items, building on the week before, mixing his three priorities with the rest of his levels as they come in. check = one question he answers honestly at the end of the week, in his head or out loud.
+- daily: morning, day, evening for a working day and free_day for a day off, four or five short actions each, with times that fit his wake time and work. small at first.
+- safety: what he must watch out for given his health check, one to four sentences, or an empty string if nothing applies.
 `;
 
 const PILLAR_INFO = {
@@ -386,21 +388,21 @@ function pillarTask(letter, scores, part, woman) {
   const other = PARTS[letter].filter((_, i) => i !== part).flat().join(", ");
   return `write his personal chapter for one level of one pillar: ${PILLAR_INFO[letter]}.
 this request covers only the level ${mine.join(", ")}. the levels ${other} are written in separate requests, so do not write about them, though you may refer to them in a sentence.
-this is a book that should change his life. go deep: every point of this level gets light, from the mechanism in his body and mind to his day, his relationships and his work. depth means more substance, never more words around the same thought.
-${woman ? "the book's method chapters are written for men, so her book has none. you write the method on this level for her, in the field method." : "the method chapter on this level follows your text in the book, so do not retell the method. apply it to him."}
-- intro: ${part === 0 ? "250 to 400 words. what this pillar means for him, where he stands in it as a whole, and how it connects to his goal." : "an empty string."}
+this is a book that should change his life. go deep: every point of this level gets light, from the mechanism in his body and mind to his day, his relationships and his work. depth means more substance, never more words around the same thought. the space is small on purpose: one dense chapter per level, every element below kept, every sentence carrying something new.
+${woman ? "the book's method chapters are written for men, so her book has none. you write the method on this level for her, in the field method." : "the method chapter on this level follows your text in the book, in paul's own words, so do not retell the method. apply it to him."}
+- intro: ${part === 0 ? "100 to 160 words. what this pillar means for him, where he stands in it as a whole, and how it connects to his goal." : "an empty string."}
 - levels: exactly this one: ${levels}, with:
   - title: a short title for his chapter on this level.
-  - reading: where he stands, 400 to 600 words, three or four paragraphs separated by blank lines. concrete to his life. a solid level (score under 35) gets 200 to 300 words on what to protect and how to use it as a strength for his weak levels.
-  - why: why this level matters for him now, 150 to 250 words, linked to his goal and his other levels.
-  - deeper: how it works, 250 to 400 words, two or three paragraphs separated by blank lines: the mechanism behind this level in his body, brain or life, from the knowledge, explained so he understands why the steps work. plain words, no jargon without explaining it.
-  - method: ${woman ? "the pure method on this level for a woman, 400 to 600 words, three or four paragraphs separated by blank lines: what this level is, why it works and how she trains it. from the knowledge, only what fits a woman's body and life, following the section \"for a woman\". general, not about her answers." : "an empty string."}
+  - reading: where he stands, 160 to 240 words, two or three paragraphs separated by blank lines. concrete to his life. a solid level (score under 35) gets 80 to 120 words on what to protect and how to use it as a strength for his weak levels.
+  - why: why this level matters for him now, two to four sentences, linked to his goal and his other levels.
+  - deeper: how it works in him, 50 to 90 words: where the mechanism behind this level bites in his body, brain or life, so he understands why the steps work. ${woman ? "the field method explains the mechanism in full, so do not explain it twice." : "the method chapter right after explains the mechanism in full, so do not explain it again."} plain words, no jargon without explaining it.
+  - method: ${woman ? "the pure method on this level for a woman, 250 to 400 words, two or three paragraphs separated by blank lines: what this level is, why it works and how she trains it. from the knowledge, only what fits a woman's body and life, following the section \"for a woman\". general, not about her answers." : "an empty string."}
   - start: the tiny first step, one sentence, almost silly.
-  - protocol: week1, week2, weeks34, month2, month3, two or three sentences each, each a small step up from the last. respect his safety rules.
-  - obstacles: three or four moments when he will want to quit (when) and what he does then (answer, two or three sentences).
-  - signs: four or five signs of progress he will notice in his body, his mind or his life.
-  - scene: 150 to 250 words, one ordinary day of his after the 90 days, seen through this level: what he does, what he feels, what has changed. second person, present tense, concrete.
-- closing: ${part === last ? "100 to 200 words that close this pillar for him." : "an empty string."}`;
+  - protocol: week1, week2, weeks34, month2, month3, one short sentence each, each a small step up from the last. respect his safety rules.
+  - obstacles: three moments when he will want to quit (when) and what he does then (answer, one or two short sentences).
+  - signs: three or four signs of progress he will notice in his body, his mind or his life.
+  - scene: 45 to 70 words, three or four sentences: one ordinary moment of his after the 90 days, seen through this level, what he does, what he feels, what has changed. second person, present tense, concrete.
+- closing: ${part === last ? "40 to 80 words that close this pillar for him." : "an empty string."}`;
 }
 
 // the schema cannot say "three priorities" or "levels of this pillar only", so the answer is tidied here
@@ -506,7 +508,11 @@ async function writeBlueprint(answers, lang) {
       return parts.some(Boolean) ? tidyPillar(l, parts) : null;
     })
     .filter(Boolean);
-  return book;
+  // paul's rule: no dashes, even when the model slips; and the length, so the page count can be tuned
+  const clean = Q.undash(book, lang);
+  const count = (v) => (typeof v === "string" ? v.split(/\s+/).filter(Boolean).length : v && typeof v === "object" ? Object.values(v).reduce((n, x) => n + count(x), 0) : 0);
+  console.log("blueprint words", JSON.stringify({ lang, woman, words: count(clean), pillars: clean.pillars.length }));
+  return clean;
 }
 
 // exported for the local test script
